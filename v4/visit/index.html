@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visit — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Opening hours, how to get to Mounties at 254 Humphries Road, Mount Pritchard, the members' courtesy bus and how to contact the club.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/pg-exterior.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the building, full width, with a live "are we open" card */
+.vb{position:relative;min-height:min(100svh,780px);display:flex;align-items:flex-end;background:var(--night);color:var(--paper);overflow:hidden}
+.vb__img{position:absolute;inset:0}
+.vb__img img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.vb__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,23,.82),rgba(13,14,23,.28) 26%,rgba(13,14,23,.3) 48%,rgba(13,14,23,.9)),linear-gradient(90deg,rgba(13,14,23,.6),rgba(13,14,23,0) 62%)}
+.js .vb__img img{transform:scale(1.12);transition:transform 2.8s var(--ease)}
+.js .is-loaded .vb__img img{transform:none}
+.vb__in{position:relative;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:28px clamp(28px,5vw,80px);padding-top:150px;padding-bottom:clamp(30px,5vh,56px)}
+.vb h1{font-size:clamp(46px,7.2vw,118px);line-height:1;letter-spacing:-.025em;margin:22px 0 22px}
+.vb h1 em{font-style:italic;color:var(--sand)}
+.vb .ib__lede{max-width:46ch}
+.open{width:min(360px,100%);padding:24px 26px;border-radius:var(--r);background:rgba(246,239,228,.96);color:var(--ink)}
+.open b{display:block;font:400 clamp(30px,2.8vw,40px)/1.1 var(--display);letter-spacing:-.02em;margin:14px 0 6px}
+.open p{font-size:14.5px;color:var(--muted)}
+.open .cta{margin-top:18px}
+.vb .jump{grid-column:1/-1;margin-top:8px}
+
+/* Hours: one day drawn as a 24-hour line */
+.clock{position:relative;margin:clamp(34px,4vw,60px) 0 0;padding-top:64px}
+.clock__bar{position:relative;height:16px;border-radius:999px;background:rgba(22,24,37,.1);overflow:hidden}
+.clock__bar i{position:absolute;top:0;bottom:0;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease-io)}
+.clock__bar i:nth-child(1){left:0;width:16.667%}
+.clock__bar i:nth-child(2){left:37.5%;width:62.5%;transition-delay:.25s}
+.clock.in .clock__bar i{transform:none}
+.clock__now{position:absolute;top:0;left:calc(var(--t,.5) * 100%);translate:-50% 0;display:grid;justify-items:center;gap:6px;transition:opacity .8s var(--ease) 1.2s}
+.js .clock:not(.in) .clock__now{opacity:0}
+.clock__now span{padding:7px 12px;border-radius:999px;background:var(--amber);font:600 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.clock__now::after{content:"";width:2px;height:38px;background:var(--amber)}
+.clock__ticks{display:flex;justify-content:space-between;margin-top:14px;font:500 12px/1 var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.hrs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,110px);margin-top:clamp(48px,6vw,90px);align-items:start}
+
+/* Getting here */
+.pin{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;background:rgba(246,239,228,.95);color:var(--ink);clip-path:none!important}
+.pin b{display:block;font:400 21px/1.2 var(--display)}
+.pin span{font-size:13.5px;color:var(--muted)}
+.pin i{flex:none;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-style:normal;transition:transform .6s var(--ease)}
+.pin:hover i{transform:rotate(-45deg)}
+
+/* Courtesy bus */
+.bus{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,110px);align-items:start}
+.bus__days>div{position:relative;transition:color .4s}
+.bus__days dd{font:400 clamp(20px,1.9vw,27px)/1.2 var(--display);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.bus__days .is-today dt{color:var(--amber)}
+.bus__days .is-today::before{content:"";position:absolute;inset:0 -14px;border-radius:12px;background:rgba(230,164,92,.12)}
+.bus__days .is-today>*{position:relative}
+.bus__call{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.bus .pic{aspect-ratio:5/3.6;margin-bottom:26px}
+.bus ul.rules li{position:relative;padding:12px 0 12px 22px;border-bottom:1px solid var(--line-d);color:var(--muted-d);font-size:15px}
+.bus ul.rules li::before{content:"";position:absolute;left:0;top:1.45em;width:10px;height:1px;background:var(--amber)}
+
+/* Contact */
+.ct{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,110px);align-items:start}
+.ct__big{display:block;font:400 clamp(34px,4vw,60px)/1.05 var(--display);letter-spacing:-.02em;margin:18px 0 26px;transition:color .3s}
+.ct__big:hover{color:#b9772f}
+
+@media (max-width:1000px){
+  .vb__in{grid-template-columns:1fr}
+  .hrs,.bus,.ct{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .clock__ticks span:nth-child(even){display:none}
+  .vb__in{padding-top:120px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="./" data-t="Visit" aria-current="page"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="./" aria-current="page">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="vb">
+    <div class="vb__img" data-vt-hero style="view-transition-name:v4-visit"><img src="../../assets/mo/pg-exterior.jpg" alt="The Mounties building on Humphries Road, Mount Pritchard" fetchpriority="high"></div>
+    <div class="wrap vb__in">
+      <div>
+        <nav class="crumb rise" aria-label="Breadcrumb">
+          <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+          <span aria-current="page">Visit</span>
+        </nav>
+        <h1 data-split="load">Come on in, <em>we're open late.</em></h1>
+        <p class="ib__lede rise" style="--d:4">254 Humphries Road, Mount Pritchard. Six dining and restaurant options, thirteen bars and a welcome at the door, every day of the week.</p>
+      </div>
+      <aside class="open rise" style="--d:5" aria-live="polite">
+        <span class="status" id="st"><i></i><span id="stText">Open daily</span></span>
+        <b id="stBig">9am – 4am</b>
+        <p id="stSub">Monday to Sunday</p>
+        <div class="cta"><a class="btn btn--ink" href="#getting-here">Get directions <span class="arrow">→</span></a></div>
+      </aside>
+      <div class="jump rise" style="--d:6">
+        <a href="#hours"><span>01</span>Opening hours</a>
+        <a href="#getting-here"><span>02</span>Getting here</a>
+        <a href="#courtesy-bus"><span>03</span>Courtesy bus</a>
+        <a href="#contact"><span>04</span>Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="hours">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Opening hours</p><h2 data-split>Nine in the morning <em>till four.</em></h2></div>
+        <p class="reveal">Mounties trades Monday to Sunday, 9am to 4am. Restaurants and bars keep their own hours inside the club.</p>
+      </div>
+      <div class="clock reveal" id="clock" role="img" aria-label="Open from 9am until 4am the next morning, every day">
+        <div class="clock__now"><span id="clockNow">Now</span></div>
+        <div class="clock__bar"><i></i><i></i></div>
+        <div class="clock__ticks" aria-hidden="true"><span>12am</span><span>4am</span><span>8am</span><span>12pm</span><span>4pm</span><span>8pm</span><span>12am</span></div>
+      </div>
+      <div class="hrs">
+        <div>
+          <dl class="rows reveal">
+            <div><dt>The club</dt><dd>Monday to Sunday, 9am – 4am</dd></div>
+            <div><dt>Restaurants</dt><dd>Each kitchen keeps its own hours. <a class="tlink" href="../dining/">See Dining &amp; Bars</a></dd></div>
+            <div><dt>Courtesy bus</dt><dd><span id="busLine">Runs every day.</span> <a class="tlink" href="#courtesy-bus">Timetable</a></dd></div>
+            <div><dt>Public holidays</dt><dd>Times may vary. Call <a class="tlink" href="tel:0298223555">(02) 9822 3555</a> to check.</dd></div>
+          </dl>
+        </div>
+        <div>
+          <p class="eyebrow reveal">Good to know</p>
+          <div class="fold reveal" style="margin-top:22px">
+            <details>
+              <summary>What to wear</summary>
+              <div><p>Dress is smart casual: clean, neat and tidy. The following are not permitted:</p>
+                <ul><li>Provocative shorts, training apparel or bare feet</li><li>Rubber thongs after 8:30pm</li><li>Muscle shirts, tank tops, see-through, midriff or crop tops</li><li>Hats or head-wear, except for religious, cultural or medical reasons</li><li>Leotards or swimwear</li><li>Offensive or political slogans</li><li>Dirty or untidy clothing, including work overalls</li><li>Torn or ripped clothing, unless by design</li><li>Motorcycle club colours</li></ul></div>
+            </details>
+            <details>
+              <summary>What to bring</summary>
+              <div><p>Members, bring your card. Guests need a driver's licence, passport or other acceptable ID to sign in at the door.</p></div>
+            </details>
+            <details>
+              <summary>Coming with children</summary>
+              <div><p>Members have access to Major Fun, the indoor children's play centre at Mounties. Children under 14 cannot travel on the courtesy bus. <a class="tlink" href="../whats-on/#kids">More for kids</a></p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--card" id="getting-here">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <p class="eyebrow reveal">Getting here</p>
+          <h2 data-split>254 Humphries Road, <em>Mount Pritchard.</em></h2>
+          <p class="lede reveal">Our award-winning Mt Pritchard venue sits on Humphries Road. The courtesy bus leaves from the Humphries Road Foyer.</p>
+          <dl class="rows reveal" style="margin-top:26px">
+            <div><dt>Address</dt><dd>254 Humphries Road, Mount Pritchard NSW 2170</dd></div>
+            <div><dt>Phone</dt><dd><a class="tlink" href="tel:0298223555">(02) 9822 3555</a></dd></div>
+            <div><dt>Parking &amp; access</dt><dd>Ask reception when you call and the team will point you the right way.</dd></div>
+          </dl>
+          <div class="cta reveal">
+            <a class="btn btn--ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mounties+254+Humphries+Road+Mount+Pritchard+NSW+2170" target="_blank" rel="noopener">Directions in Google Maps <span class="arrow">→</span></a>
+            <a class="btn" href="#courtesy-bus">Or catch the bus</a>
+          </div>
+        </div>
+        <figure class="pic pic--drift wipe" data-progress="view">
+          <img src="../../assets/mo/pg-entrance.jpg" alt="The entrance doors at Mounties" loading="lazy">
+          <a class="pin" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mounties+254+Humphries+Road+Mount+Pritchard+NSW+2170" target="_blank" rel="noopener"><span><b>Mounties</b><span>254 Humphries Road, Mount Pritchard</span></span><i aria-hidden="true">→</i></a>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--ink" id="courtesy-bus">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Courtesy bus</p><h2 data-split>Door to door, <em>on the house.</em></h2></div>
+        <p class="reveal">A free service for Mounties Group members living within 5km, running continuously from the Humphries Road Foyer.</p>
+      </div>
+      <div class="bus">
+        <div>
+          <span class="status reveal" id="busSt"><i></i><span id="busStText">Runs every day</span></span>
+          <dl class="rows bus__days reveal" id="busDays" style="margin-top:22px">
+            <div data-d="1"><dt>Monday</dt><dd>12pm – 11pm</dd></div>
+            <div data-d="2"><dt>Tuesday</dt><dd>12pm – 11pm</dd></div>
+            <div data-d="3"><dt>Wednesday</dt><dd>9:30am – 11pm</dd></div>
+            <div data-d="4"><dt>Thursday</dt><dd>12pm – 11pm</dd></div>
+            <div data-d="5"><dt>Friday</dt><dd>10:30am – 12am</dd></div>
+            <div data-d="6"><dt>Saturday</dt><dd>11:30am – 12am</dd></div>
+            <div data-d="0"><dt>Sunday</dt><dd>12pm – 11pm</dd></div>
+          </dl>
+          <div class="bus__call reveal">
+            <a class="btn btn--amber" href="tel:1300660255">Call the bus: 1300 660 255 <span class="arrow">→</span></a>
+            <span class="note">Times may vary on public holidays.</span>
+          </div>
+        </div>
+        <div>
+          <figure class="pic wipe"><img src="../../assets/mo/pg-bus.jpg" alt="Two courtesy bus drivers standing beside the Mounties Group bus" loading="lazy" style="object-position:50% 70%"></figure>
+          <ul class="rules reveal">
+            <li>Drivers confirm announcement times with door staff, so listen for the call in the foyer.</li>
+            <li>Door-to-door drop-offs are based only on the address on your membership file.</li>
+            <li>No drop-offs to train stations or shopping centres.</li>
+            <li>Children under 14 are not permitted, due to child restraint laws.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="ct">
+        <div>
+          <p class="eyebrow reveal">Contact us</p>
+          <a class="ct__big reveal" href="tel:0298223555">(02) 9822 3555</a>
+          <dl class="rows reveal">
+            <div><dt>Address</dt><dd>254 Humphries Road, Mount Pritchard NSW 2170</dd></div>
+            <div><dt>Courtesy bus</dt><dd><a class="tlink" href="tel:1300660255">1300 660 255</a></dd></div>
+            <div><dt>Functions</dt><dd><a class="tlink" href="../functions/#enquire">Send an enquiry</a></dd></div>
+            <div><dt>Holidays</dt><dd><a class="tlink" href="tel:0298223519">(02) 9822 3519</a></dd></div>
+            <div><dt>Follow</dt><dd><a class="tlink" href="https://www.facebook.com/MountiesClub/" target="_blank" rel="noopener">Facebook</a> &nbsp; <a class="tlink" href="https://www.instagram.com/mountiesclub/" target="_blank" rel="noopener">Instagram</a></dd></div>
+          </dl>
+        </div>
+        <form class="form reveal" data-mock novalidate>
+          <h3>Send us a note</h3>
+          <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" autocomplete="name" placeholder="Your name"></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="Optional"></div>
+          <div class="field"><label for="c-topic">About</label><select id="c-topic" name="topic"><option>General enquiry</option><option>Membership</option><option>Dining &amp; bars</option><option>Courtesy bus</option><option>Feedback</option></select></div>
+          <div class="field field--full"><label for="c-msg">Message</label><textarea id="c-msg" name="message" placeholder="How can we help?"></textarea></div>
+          <div class="form__end"><button class="btn btn--ink" type="submit">Send message <span class="arrow">→</span></button><p class="form__note" role="status" hidden>This is a design mock-up, nothing was sent.</p></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Once you're <em>through the door.</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../dining/"><img src="../../assets/mo/brasserie.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>Find a table</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../whats-on/"><img src="../../assets/mo/live-singer.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>What's On</small><b>This week</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../functions/"><img src="../../assets/mo/functions-room.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Functions</small><b>Plan an event</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="#hours">Opening hours</a>
+      <a href="#courtesy-bus">Courtesy bus</a>
+      <a href="#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" for date-aware bits; override with ?now=YYYY-MM-DD (or ?now=YYYY-MM-DDTHH:MM)
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Mock forms: nothing is sent
+  document.querySelectorAll('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = f.querySelector('.form__note');
+    n.hidden = false; n.classList.remove('in'); void n.offsetWidth; n.classList.add('in');
+  }));
+
+  // Open 9am to 4am, every day
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const isOpen = mins >= 540 || mins < 240;
+  const fmt = (m) => { m = (m + 1440) % 1440; const h = Math.floor(m / 60), mm = m % 60; return `${h % 12 || 12}${mm ? ':' + String(mm).padStart(2, '0') : ''}${h < 12 ? 'am' : 'pm'}`; };
+  const st = document.getElementById('st');
+  st.classList.toggle('is-on', isOpen);
+  document.getElementById('stText').textContent = isOpen ? 'Open now' : 'Closed right now';
+  document.getElementById('stBig').textContent = isOpen ? 'Until 4am' : 'Opens 9am';
+  document.getElementById('stSub').textContent = isOpen ? 'Open 9am to 4am, Monday to Sunday.' : 'Back at 9am. Open 9am to 4am, Monday to Sunday.';
+  const clock = document.getElementById('clock');
+  clock.style.setProperty('--t', Math.min(.955, Math.max(.045, mins / 1440)).toFixed(4));
+  document.getElementById('clockNow').textContent = `${fmt(mins)} · ${isOpen ? 'open' : 'closed'}`;
+
+  // Courtesy bus: today's row, and whether it is running at this minute
+  const BUS = { 0: [720, 1380], 1: [720, 1380], 2: [720, 1380], 3: [570, 1380], 4: [720, 1380], 5: [630, 1440], 6: [690, 1440] };
+  const wd = now.getDay(), [from, to] = BUS[wd];
+  const row = document.querySelector(`#busDays [data-d="${wd}"]`);
+  row.classList.add('is-today');
+  row.querySelector('dd').insertAdjacentHTML('beforeend', '<span class="tag tag--amber">Today</span>');
+  const running = mins >= from && mins < to;
+  document.getElementById('busSt').classList.toggle('is-on', running);
+  const busText = running ? `Running now, until ${fmt(to)}` : mins < from ? `First run today at ${fmt(from)}` : 'Finished for today';
+  document.getElementById('busStText').textContent = busText;
+  document.getElementById('busLine').textContent = `Today ${fmt(from)} – ${fmt(to)}.`;
+})();
+</script>
+</body>
+</html>

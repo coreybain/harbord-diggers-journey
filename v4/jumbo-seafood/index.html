@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jumbo Seafood — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Jumbo Seafood at Mounties, Mount Pritchard: modern Cantonese dining, daily yum cha and live seafood. Hours, menus, member specials and bookings.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/yumcha-spread.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+.jb .bn__img img{object-position:50% 60%}
+/* Tanks band */
+.tanks{padding-block:0 clamp(72px,10vw,150px)}
+.tanks .lbl{display:block;padding:0 var(--pad) 18px}
+/* Day planner */
+.pl__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,110px);align-items:center}
+.pl__photo{aspect-ratio:4/4.6}
+.pl__photo img{transform:scale(1.08) translate3d(0,calc((var(--p,.5) - .5) * -8%),0)}
+.pl__day{font:400 clamp(34px,4vw,60px)/1.05 var(--display);letter-spacing:-.02em;margin-top:clamp(26px,3vw,40px)}
+.pl__day em{color:var(--sand)}
+.pl dl{margin:clamp(20px,2.4vw,32px) 0 0;border-top:1px solid var(--line-d)}
+.pl dl>div{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line-d);align-items:baseline}
+.pl dt{color:var(--muted-d);font-size:15px}
+.pl dd{margin:0;font-size:clamp(17px,1.5vw,20px)}
+.pl dd b{font:400 clamp(30px,3vw,44px)/1 var(--display);color:var(--sand);letter-spacing:-.02em;margin-right:8px}
+.pl dd small{display:block;margin-top:4px;font-size:13.5px;color:var(--muted-d)}
+.pl__body>*{transition:opacity .35s var(--ease),transform .5s var(--ease)}
+.pl__body.is-swap>*{opacity:0;transform:translateY(10px)}
+/* Favourites rail */
+.fav{padding-inline:0;overflow:hidden}
+.fav .sec-head{padding-inline:var(--pad);max-width:none}
+.fav .rail figure:nth-child(even){margin-top:clamp(20px,3vw,48px)}
+@media (max-width:1000px){
+  .pl__grid{grid-template-columns:1fr}
+  .pl__photo{aspect-ratio:4/3;order:2}
+}
+@media (max-width:560px){
+  .pl dl>div{grid-template-columns:1fr;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="./" aria-current="page">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="./" aria-current="page">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="bn jb">
+    <div class="bn__frame">
+      <div class="bn__img" data-vt-hero style="view-transition-name:v4-jumbo-seafood"><img src="../../assets/mo/yumcha-spread.jpg" alt="Bamboo baskets of yum cha and shared plates at Jumbo Seafood" fetchpriority="high"></div>
+      <div class="bn__top"><nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; Bars</a><i>/</i>
+        <span aria-current="page">Jumbo Seafood</span>
+      </nav></div>
+      <div class="bn__body">
+        <div>
+          <p class="eyebrow rise" style="--d:1">Chinese restaurant &amp; daily yum cha</p>
+          <h1 data-split="load">Modern Cantonese, <em>yum cha daily.</em></h1>
+          <p class="bn__lede rise" style="--d:4">Authentic Chinese dining and contemporary yum cha, with live seafood tanks and private dining areas for larger groups.</p>
+          <div class="cta rise" style="--d:5">
+            <a class="btn btn--amber" href="https://www.jumboseafoodrestaurant.com.au/" target="_blank" rel="noopener">Book a table <span class="arrow">↗</span></a>
+            <a class="btn btn--ghost" href="#menus">Menus &amp; hours</a>
+          </div>
+        </div>
+        <aside class="glass rise" style="--d:6">
+          <p class="lbl">Today · <span data-today>today</span></p>
+          <p class="status" data-status="jumbo"><i></i><span>See hours below</span></p>
+          <dl>
+            <div><dt>Yum cha</dt><dd id="g-yc">Daily until 3pm</dd></div>
+            <div><dt>Dinner</dt><dd id="g-dn">From 5.30pm</dd></div>
+            <div><dt>Bookings</dt><dd><a href="tel:0297323788">(02) 9732 3788</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap story" data-progress="view">
+      <div>
+        <p class="eyebrow reveal">The restaurant</p>
+        <p class="story__statement" data-words>Authentic recipes from restaurateur Jordan Wu, daily yum cha with all your favourites, and live seafood that is a feast for the eyes too.</p>
+      </div>
+      <div class="story__side reveal">
+        <p>Experienced restaurateur Jordan Wu brings authentic recipes alongside his enthusiasm to Mounties members, specialising in seafood with an array of live options.</p>
+        <p>There is a Cantonese menu, daily yum cha, private dining areas for larger groups and live seafood tanks.</p>
+        <a class="btn btn--ink" href="tel:0297323788">Call (02) 9732 3788</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tanks">
+    <span class="lbl reveal">Live from the tanks</span>
+    <div class="band" aria-label="Live seafood: lobsters, coral trout, barramundi, crabs and abalone">
+      <div class="band__in" aria-hidden="true">
+        <span>Lobsters</span><span>Coral trout</span><span>Barramundi</span><span>Crabs</span><span>Abalone</span>
+        <span>Lobsters</span><span>Coral trout</span><span>Barramundi</span><span>Crabs</span><span>Abalone</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pl sec--ink" id="specials">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Plan your table</p><h2 data-split>Pick a day, <em>see what's on.</em></h2></div>
+        <p class="reveal">Yum cha runs every day and the live seafood discount changes through the week.</p>
+      </div>
+      <div class="pl__grid">
+        <div class="ph pl__photo wipe" data-progress="view"><img src="../../assets/mo/ve-jumbo-prawns.jpg" alt="A seafood dish from the Jumbo Seafood kitchen" loading="lazy"></div>
+        <div>
+          <div class="days reveal" role="group" aria-label="Choose a day">
+            <button type="button" data-day="1">Mon</button><button type="button" data-day="2">Tue</button><button type="button" data-day="3">Wed</button><button type="button" data-day="4">Thu</button><button type="button" data-day="5">Fri</button><button type="button" data-day="6">Sat</button><button type="button" data-day="0">Sun</button>
+          </div>
+          <div class="pl__body reveal" aria-live="polite">
+            <p class="pl__day" id="pl-day">This week</p>
+            <dl>
+              <div><dt>Yum cha</dt><dd id="pl-yc">Daily</dd></div>
+              <div><dt>Dinner</dt><dd id="pl-dn">Daily</dd></div>
+              <div><dt>All you can eat yum cha</dt><dd id="pl-ay">Monday to Saturday</dd></div>
+              <div><dt>Live seafood</dt><dd id="pl-ls">Member discount at dinner</dd></div>
+            </dl>
+          </div>
+          <p class="fine reveal">Specials exclude public holidays. Members only. Dine in only.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fav">
+    <div class="sec-head">
+      <div><p class="eyebrow reveal">Daily yum cha</p><h2 data-split>All your <em>favourites.</em></h2></div>
+      <div class="reveal" style="display:flex;align-items:end;gap:32px;flex-wrap:wrap">
+        <p>Prawn dumplings, BBQ pork buns, dim sims and egg tarts, served every day at lunch.</p>
+        <div class="rail-ctrl"><button type="button" data-rail-prev="fav" aria-label="Previous photos">←</button><button type="button" data-rail-next="fav" aria-label="More photos">→</button></div>
+      </div>
+    </div>
+    <div class="rail" data-rail="fav">
+      <figure class="reveal"><div class="ph"><img src="../../assets/mo/ve-jumbo-hargow.jpg" alt="Steamed dumplings in a bamboo steamer" loading="lazy"></div></figure>
+      <figure class="reveal" style="--d:1"><div class="ph"><img src="../../assets/mo/jumbo-table.jpg" alt="A table set with dishes at Jumbo Seafood" loading="lazy"></div></figure>
+      <figure class="reveal" style="--d:2"><div class="ph"><img src="../../assets/mo/ve-jumbo-buns.jpg" alt="Yum cha in a bamboo basket" loading="lazy"></div></figure>
+      <figure class="reveal" style="--d:3"><div class="ph"><img src="../../assets/mo/ve-jumbo-noodles.jpg" alt="A noodle dish from the Jumbo Seafood menu" loading="lazy"></div></figure>
+      <figure class="reveal"><div class="ph"><img src="../../assets/mo/siumai.jpg" alt="Steamed dumplings" loading="lazy"></div></figure>
+      <figure class="reveal"><div class="ph"><img src="../../assets/mo/ve-jumbo-guests.jpg" alt="Guests dining at Jumbo Seafood" loading="lazy"></div></figure>
+      <figure class="reveal"><div class="ph"><img src="../../assets/mo/ve-jumbo-salad.jpg" alt="A dish from the Jumbo Seafood kitchen" loading="lazy"></div></figure>
+      <figure class="reveal"><div class="ph"><img src="../../assets/mo/jumbo-spread.jpg" alt="Shared plates at Jumbo Seafood" loading="lazy"></div></figure>
+    </div>
+  </section>
+
+  <section class="sec--card" id="menus">
+    <div class="wrap plan">
+      <div>
+        <p class="eyebrow reveal">Opening hours</p>
+        <h2 data-split>When to <em>come by.</em></h2>
+        <table class="hrs reveal">
+          <tbody>
+          <tr class="hrs__cap"><th colspan="2"><span class="lbl">Yum cha</span></th></tr>
+          <tr data-d="1,2,3,4,5"><th scope="row">Monday to Friday</th><td>11am – 3pm</td></tr>
+          <tr data-d="0,6"><th scope="row">Saturday &amp; Sunday</th><td>10am – 3pm</td></tr>
+          </tbody>
+          <tbody>
+          <tr class="hrs__cap"><th colspan="2"><span class="lbl">Dinner</span></th></tr>
+          <tr data-d="0,1,2,3,4"><th scope="row">Sunday to Thursday</th><td>5.30pm – 9.30pm</td></tr>
+          <tr data-d="5,6"><th scope="row">Friday &amp; Saturday</th><td>5.30pm – 10.30pm</td></tr>
+          </tbody>
+          </table>
+        <div class="dayline reveal" data-dayline="jumbo" data-from="9" data-to="24">
+          <div class="dayline__head"><p class="lbl">Today · <span data-today>today</span></p><span class="status" data-status="jumbo"><i></i><span>See hours</span></span></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal">Menus &amp; bookings</p>
+        <h2 data-split>Read ahead, <em>arrive hungry.</em></h2>
+        <div class="mlinks reveal">
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/Jumbo%20Menu%202026July.pdf" target="_blank" rel="noopener"><span><b>Full menu</b><small>The Cantonese menu, with live seafood</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/Jumbo%20YumChaMenu.pdf" target="_blank" rel="noopener"><span><b>Yum cha &amp; lunch menu</b><small>Served daily until 3pm</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/All%20You%20Can%20Eat%20Yum%20Cha%20Menu-May25-3.pdf" target="_blank" rel="noopener"><span><b>All you can eat yum cha</b><small>$32 members · $42 non-members · Monday to Saturday lunch</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/Seafood%20Banquet.pdf" target="_blank" rel="noopener"><span><b>Banquet menu</b><small>For larger tables and private dining</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://www.jumboseafoodrestaurant.com.au/" target="_blank" rel="noopener"><span><b>Book a table</b><small>Online with Jumbo Seafood</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <p class="fine reveal">Menus open as PDFs from Mounties. Bookings are taken by the restaurant on <a class="ulink" href="tel:0297323788">(02) 9732 3788</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Still <em>hungry?</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../m-brasserie/"><img src="../../assets/mo/brasserie.jpg" alt="" loading="lazy" style="view-transition-name:v4-m-brasserie"><span class="tile__body"><span><small>M Brasserie</small><b>Pizza, pasta, steaks &amp; more</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../bau-truong/"><img src="../../assets/mo/bau-guest.jpg" alt="" loading="lazy" style="view-transition-name:v4-bau-truong;object-position:50% 30%"><span class="tile__body"><span><small>Bau Truong</small><b>Modern Vietnamese</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../dining/"><img src="../../assets/mo/terrace-shakes.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>All seven venues</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" in Sydney; override with ?now=YYYY-MM-DD or ?now=YYYY-MM-DDTHH:MM
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+  const dow = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const D3 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = (m) => { m %= 1440; const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? '.' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm'); };
+  // Published trading hours: [label, days (0 = Sunday), open, close] in minutes
+  const H = {
+    jumbo: [['Yum cha', [1, 2, 3, 4, 5], 660, 900], ['Yum cha', [0, 6], 600, 900], ['Dinner', [0, 1, 2, 3, 4], 1050, 1290], ['Dinner', [5, 6], 1050, 1350]],
+    brasserie: [['Lunch', [0, 1, 2, 3, 4, 5, 6], 690, 870], ['Dinner', [0, 1, 2, 3, 4], 1020, 1260], ['Dinner', [5, 6], 1020, 1290]],
+    bau: [['Open', [1, 2, 3, 4], 660, 1260], ['Open', [5, 6, 0], 660, 1320]],
+    fresh: [['Open', [1, 2, 3, 4, 5], 420, 840], ['Open', [6], 480, 840]],
+    sports: [['Bar service', [1, 2, 3], 840, 1230], ['Bar service', [4, 5], 690, 1380], ['Bar service', [6], 540, 1440], ['Bar service', [0], 540, 1260]],
+    terrace: [['Open', [0, 1, 2, 3], 540, 1320], ['Open', [4], 540, 1380], ['Open', [5, 6], 540, 1440]],
+    murphys: [['Bar service', [1, 2, 3, 4, 5], 930, 1320], ['Bar service', [6, 0], 540, 1320]],
+  };
+  const UNK = { fresh: [0] }; // days with no published hours
+  const unk = (k, d = dow) => (UNK[k] || []).includes(d);
+  const sessions = (k, d = dow) => H[k].filter((s) => s[1].includes(d)).sort((a, b) => a[2] - b[2]);
+  const state = (k) => {
+    const t = sessions(k);
+    const cur = t.find((s) => mins >= s[2] && mins < s[3]);
+    if (cur) return { open: true, soon: cur[3] - mins <= 45, s: cur };
+    const next = t.find((s) => s[2] > mins);
+    if (next) return { open: false, s: next, day: 0 };
+    for (let i = 1; i <= 7; i++) { const n = sessions(k, (dow + i) % 7); if (n.length) return { open: false, s: n[0], day: i, dn: (dow + i) % 7 }; }
+    return { open: false };
+  };
+  const say = (k, short) => {
+    const st = state(k);
+    const lab = (s) => (s[0] === 'Open' || s[0] === 'Bar service' || short ? '' : s[0].toLowerCase() + ' ');
+    if (st.open) return (st.soon ? 'Closing soon · ' : 'Open now · ') + lab(st.s) + 'until ' + fmt(st.s[3]);
+    if (unk(k)) return DAYS[dow] + ' hours: ask at reception';
+    if (!st.s) return 'Closed';
+    return 'Closed · ' + (st.day === 0 && lab(st.s) ? lab(st.s) + 'from ' : 'opens ') + (st.day === 1 ? 'tomorrow ' : st.day > 1 ? D3[st.dn] + ' ' : '') + fmt(st.s[2]);
+  };
+  const hoursToday = (k, d = dow) => { const t = sessions(k, d); return t.length ? t.map((s) => (s[0] === 'Open' || s[0] === 'Bar service' ? '' : s[0] + ' ') + fmt(s[2]) + ' – ' + fmt(s[3])).join(' · ') : unk(k, d) ? 'Ask at reception' : 'Closed'; };
+  $$('[data-status]').forEach((el) => {
+    const st = state(el.dataset.status);
+    el.classList.add(st.open ? (st.soon ? 'is-soon' : 'is-open') : 'is-closed');
+    el.lastElementChild.textContent = say(el.dataset.status, el.hasAttribute('data-short'));
+  });
+  $$('[data-today-hours]').forEach((el) => { el.textContent = hoursToday(el.dataset.todayHours); });
+  $$('[data-today]').forEach((el) => { el.textContent = DAYS[dow]; });
+  $$('.hrs tr[data-d]').forEach((tr) => tr.classList.toggle('is-today', tr.dataset.d.split(',').map(Number).includes(dow)));
+  // Offers: lit when they run today, retired once their end date has passed
+  const ymd = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const ended = (el) => !!el.dataset.until && ymd > el.dataset.until;
+  $$('.deal[data-days]').forEach((el) => {
+    const flag = $('.deal__flag', el);
+    if (ended(el)) { el.classList.add('is-ended'); if (flag) flag.textContent = 'Offer ended'; return; }
+    if (!el.closest('[data-daypick]')) el.classList.toggle('is-today', el.dataset.days.split(',').map(Number).includes(dow));
+  });
+  // Today's service drawn on a timeline with a "now" marker
+  $$('[data-dayline]').forEach((el) => {
+    const k = el.dataset.dayline, a = +(el.dataset.from || 7) * 60, b = +(el.dataset.to || 24) * 60;
+    const pos = (m) => ((Math.min(Math.max(m, a), b) - a) / (b - a) * 100).toFixed(2) + '%';
+    const t = sessions(k);
+    const p = (mins - a) / (b - a);
+    let ticks = '';
+    for (let m = a; m <= b; m += 180) ticks += `<span style="left:${pos(m)}">${fmt(m)}</span>`;
+    el.insertAdjacentHTML('beforeend',
+      `<div class="dayline__track" role="img" aria-label="${DAYS[dow]}: ${hoursToday(k)}">` +
+      t.map((s) => `<span class="dayline__blk${mins >= s[2] && mins < s[3] ? ' is-live' : ''}" style="left:${pos(s[2])};width:${((s[3] - s[2]) / (b - a) * 100).toFixed(2)}%"></span>`).join('') +
+      (p >= 0 && p <= 1 ? `<i class="dayline__now${p < .1 ? ' is-l' : p > .9 ? ' is-r' : ''}" style="left:${pos(mins)}"><em>Now ${fmt(mins)}</em></i>` : '') +
+      `</div><div class="dayline__ticks" aria-hidden="true">${ticks}</div>` +
+      `<p class="dayline__key">${t.length ? t.map((s) => `<span><b>${s[0]}</b> ${fmt(s[2])} – ${fmt(s[3])}</span>`).join('') : `<span>${unk(k) ? DAYS[dow] + ' hours are not published. Ask at reception.' : 'Closed today.'}</span>`}</p>`);
+  });
+  // Banner card: today's two services
+  const tod = sessions('jumbo');
+  const yc = tod.find((s) => s[0] === 'Yum cha'), dn = tod.find((s) => s[0] === 'Dinner');
+  $('#g-yc').textContent = fmt(yc[2]) + ' – ' + fmt(yc[3]);
+  $('#g-dn').textContent = fmt(dn[2]) + ' – ' + fmt(dn[3]);
+
+  // Day planner
+  const pct = { 0: 35, 1: 50, 2: 50, 3: 50, 4: 50, 5: 50, 6: 25 };
+  const body = $('.pl__body'), btns = $$('.pl [data-day]');
+  const fill = (d) => {
+    const t = sessions('jumbo', d), y = t.find((s) => s[0] === 'Yum cha'), n = t.find((s) => s[0] === 'Dinner');
+    $('#pl-day').innerHTML = (d === dow ? 'Today, ' : '') + `<em>${DAYS[d]}</em>`;
+    $('#pl-yc').textContent = fmt(y[2]) + ' – ' + fmt(y[3]);
+    $('#pl-dn').textContent = fmt(n[2]) + ' – ' + fmt(n[3]);
+    $('#pl-ay').innerHTML = d === 0 ? 'Not on Sundays<small>Monday to Saturday, lunch service only</small>' : '<b>$32</b>members<small>$42 non-members · lunch service only · 30 menu items</small>';
+    $('#pl-ls').innerHTML = `<b>${pct[d]}% off</b><small>Members, during dinner service</small>`;
+  };
+  let first = true;
+  const pick = (d) => {
+    btns.forEach((b) => b.setAttribute('aria-pressed', +b.dataset.day === d));
+    if (first || matchMedia('(prefers-reduced-motion:reduce)').matches) { first = false; fill(d); return; }
+    body.classList.add('is-swap');
+    setTimeout(() => { fill(d); body.classList.remove('is-swap'); }, 300);
+  };
+  btns.forEach((b) => { b.classList.toggle('is-today', +b.dataset.day === dow); b.addEventListener('click', () => pick(+b.dataset.day)); });
+  pick(dow);
+})();
+</script>
+</body>
+</html>

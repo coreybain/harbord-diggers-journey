@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bau Truong — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Bau Truong at Mounties, Mount Pritchard: family-run modern Vietnamese dining direct from Cabramatta. Hours, menu, phone and the $12 member lunch specials.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/bau-guest.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: centred words over a triptych */
+.bt{padding:0 12px 12px;background:var(--ink);color:var(--paper);overflow:hidden}
+.bt__text{padding:104px clamp(12px,calc(var(--pad) - 12px),72px) 0;display:flex;flex-direction:column;align-items:center;text-align:center}
+.bt .crumb{align-self:flex-start}
+.bt .eyebrow{color:var(--sand);margin-top:clamp(12px,2.5vh,36px)}
+.bt .eyebrow::after{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.bt h1{font-size:clamp(46px,6.8vw,116px);margin-top:22px;--base:300ms}
+.bt h1 em{color:var(--sand)}
+.bt__lede{max-width:52ch;margin-top:22px;color:var(--muted-d);font-size:17px}
+.bt .cta{margin-top:28px;justify-content:center}
+.bt__status{margin-top:22px}
+.bt__tri{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:12px;margin-top:clamp(28px,4vh,48px);align-items:end}
+.bt__tri figure{border-radius:var(--r);overflow:hidden;background:var(--night);height:clamp(260px,40vh,400px)}
+.bt__tri figure:nth-child(2){height:clamp(320px,50vh,500px)}
+.bt__tri img{width:100%;height:118%;object-fit:cover;transform:translate3d(0,calc(var(--sy,0) * -.06px),0)}
+.js .bt__tri figure{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io) calc(var(--i) * 140ms + .2s)}
+.js .is-loaded .bt__tri figure{clip-path:inset(0 round var(--r))}
+.vt .bt__tri figure{transition:none}
+
+/* Three to try: rows take turns */
+.try__grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,110px);align-items:center}
+.try__photo{aspect-ratio:4/5}
+.try__photo img{transform:scale(1.1) translate3d(0,calc((var(--p,.5) - .5) * -8%),0)}
+.try__list{border-top:1px solid var(--line)}
+.try__item{position:relative;display:block;width:100%;text-align:left;padding:clamp(20px,2.2vw,30px) 0;border-bottom:1px solid var(--line)}
+.try__item::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left}
+.try__item.is-on::after{animation:fill var(--dur,7s) linear forwards}
+.try.is-paused .try__item.is-on::after{animation-play-state:paused}
+.try__item small{font:500 12px/1 var(--body);letter-spacing:.14em;color:var(--amber)}
+.try__item b{display:block;margin-top:10px;font:400 clamp(26px,2.8vw,42px)/1.1 var(--display);letter-spacing:-.02em;opacity:.38;transition:opacity .6s var(--ease)}
+.try__item.is-on b{opacity:1}
+.try__item span{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease-io)}
+.try__item.is-on span{grid-template-rows:1fr}
+.try__item span i{overflow:hidden;font-style:normal;color:var(--muted);font-size:16.5px;max-width:46ch}
+.try__item span i::before{content:"";display:block;height:12px}
+.sel{padding-block:0 clamp(72px,10vw,150px)}
+.sel .lbl{display:block;padding:0 var(--pad) 18px}
+
+/* Lunch special + drinks */
+.ls__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,110px);align-items:center}
+.ls__copy h2{margin-top:20px}
+.ls__copy p{margin-top:22px;color:var(--muted-d);max-width:46ch}
+.ls .deal__price{font-size:clamp(64px,7vw,110px)}
+
+@media (max-width:1000px){
+  .try__grid,.ls__grid{grid-template-columns:1fr}
+  .try__photo{aspect-ratio:4/3}
+}
+@media (max-width:560px){
+  .bt{padding:0 8px 8px}
+  .bt__text{padding-top:92px}
+  .bt h1{font-size:clamp(42px,12.5vw,60px)}
+  .bt__tri{grid-template-columns:1fr 1.5fr 1fr;gap:8px}
+  .bt__tri figure{height:200px}
+  .bt__tri figure:nth-child(2){height:250px}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .bt__tri figure{clip-path:none}.bt__tri img,.try__photo img{transform:none}
+  .try__item.is-on::after{animation:none;transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="./" aria-current="page">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="./" aria-current="page">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="bt">
+    <div class="bt__text">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; Bars</a><i>/</i>
+        <span aria-current="page">Bau Truong</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">Vietnamese restaurant</p>
+      <h1 data-split="load">Feast on modern <em>Vietnamese.</em></h1>
+      <p class="bt__lede rise" style="--d:4">Direct from its humble roots in Cabramatta, Bau Truong is now at Mounties offering authentic Vietnamese dining in South West Sydney.</p>
+      <div class="cta rise" style="--d:5">
+        <a class="btn btn--amber" href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/BT%20MP%20Menu%201.pdf" target="_blank" rel="noopener">View the menu <span class="arrow">↗</span></a>
+        <a class="btn btn--ghost" href="tel:0424326388">Call 0424 326 388</a>
+      </div>
+      <p class="status bt__status rise" style="--d:6" data-status="bau"><i></i><span>Open seven days from 11am</span></p>
+    </div>
+    <div class="bt__tri">
+      <figure style="--i:1"><img src="../../assets/mo/bau.jpg" alt="Bowls of vermicelli noodles with herbs and peanuts"></figure>
+      <figure style="--i:0;view-transition-name:v4-bau-truong" data-vt-hero><img src="../../assets/mo/bau-guest.jpg" alt="A guest enjoying a meal at Bau Truong" style="object-position:50% 28%" fetchpriority="high"></figure>
+      <figure style="--i:2"><img src="../../assets/mo/ve-bau-plates.jpg" alt="Rice plates and a bowl of soup at Bau Truong"></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap story" data-progress="view">
+      <div>
+        <p class="eyebrow reveal">The family behind it</p>
+        <p class="story__statement" data-words>A family-run eatery using safely guarded recipes, traced back to the childhood of Vietnamese migrant and head chef and owner, Bac Cang.</p>
+      </div>
+      <div class="story__side reveal">
+        <p>Inspiration for the menu comes from Vietnam's vibrant food culture, with emphasis on the use of fresh locally sourced produce and in-season ingredients.</p>
+        <p>You will find Bau Truong adjacent to the <a class="ulink" href="../terrace-bar-cafe/">Terrace Bar</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="try sec--card">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">On the menu</p><h2 data-split>Three to <em>start with.</em></h2></div>
+        <p class="reveal">Highlights from the kitchen. The full menu runs from entrees to desserts.</p>
+      </div>
+      <div class="try__grid">
+        <div class="ph try__photo wipe" data-progress="view"><img src="../../assets/mo/bau-bowls.jpg" alt="Noodle bowls and dipping sauces at Bau Truong" loading="lazy"></div>
+        <div class="try__list reveal" role="group" aria-label="Menu highlights">
+          <button type="button" class="try__item is-on" aria-expanded="true"><small>01</small><b>Soft-shell crab rice paper roll</b><span><i>Crispy golden soft-shell crab, wrapped in a fresh rice paper roll.</i></span></button>
+          <button type="button" class="try__item" aria-expanded="false"><small>02</small><b>Slow-cooked pork belly</b><span><i>Pork belly slow-cooked in a fish sauce, with a side of mixed pickle.</i></span></button>
+          <button type="button" class="try__item" aria-expanded="false"><small>03</small><b>Pho noodle soup</b><span><i>The quintessential Vietnamese dish.</i></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sel sec--card">
+    <span class="lbl reveal">The selection</span>
+    <div class="band" aria-label="Entrees, fresh salads, char-grilled meats, stir-fried rice and noodle dishes, fragrant soups, fish and desserts">
+      <div class="band__in" aria-hidden="true">
+        <span>Entrees</span><span>Fresh salads</span><span>Char-grilled meats</span><span>Stir-fried rice &amp; noodles</span><span>Fragrant soups</span><span>Fish</span><span>Desserts</span>
+        <span>Entrees</span><span>Fresh salads</span><span>Char-grilled meats</span><span>Stir-fried rice &amp; noodles</span><span>Fragrant soups</span><span>Fish</span><span>Desserts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ls sec--ink" id="specials">
+    <div class="wrap ls__grid">
+      <div class="ls__copy">
+        <p class="eyebrow reveal">From the open kitchen</p>
+        <h2 data-split>Watch it <em>being made.</em></h2>
+        <p class="reveal">The open kitchen lets diners watch as each drink and dish is prepared. To drink there are tropical fruit drinks, sodas, juices and traditional Vietnamese iced coffees.</p>
+        <p class="reveal"><a class="btn btn--ghost" href="../dining/#specials">All member meal specials <span class="arrow">→</span></a></p>
+      </div>
+      <article class="deal reveal" style="--d:0" data-days="1,2,3,4">
+          <div class="deal__top"><span class="lbl">Member lunch specials</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$12</p>
+          <h3>Monday to Thursday</h3>
+          <ul><li>Vermicelli with Vegetarian Spring Rolls</li><li>Chicken Fried Rice</li></ul>
+          <p class="deal__when">Lunch service only</p>
+          <p class="deal__fine">Excluding public holidays. Members only. Dine in only.</p>
+        </article>
+    </div>
+  </section>
+
+  <section class="sec--card" id="hours">
+    <div class="wrap plan">
+      <div>
+        <p class="eyebrow reveal">Opening hours</p>
+        <h2 data-split>Open from <em>eleven.</em></h2>
+        <table class="hrs reveal">
+          <tbody>
+          <tr data-d="1,2,3,4"><th scope="row">Monday to Thursday</th><td>11am – 9pm</td></tr>
+          <tr data-d="0,5,6"><th scope="row">Friday, Saturday &amp; Sunday</th><td>11am – 10pm</td></tr>
+          </tbody>
+          </table>
+        <div class="dayline reveal" data-dayline="bau" data-from="9" data-to="24">
+          <div class="dayline__head"><p class="lbl">Today · <span data-today>today</span></p><span class="status" data-status="bau"><i></i><span>See hours</span></span></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal">Menu &amp; contact</p>
+        <h2 data-split>Come as <em>you are.</em></h2>
+        <div class="mlinks reveal">
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/BT%20MP%20Menu%201.pdf" target="_blank" rel="noopener"><span><b>Bau Truong menu</b><small>Opens as a PDF from Mounties</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="tel:0424326388"><span><b>Call the restaurant</b><small>0424 326 388</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a href="../visit/#getting-here"><span><b>Getting here</b><small>254 Humphries Road, Mount Pritchard</small></span><span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>More to <em>taste.</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../jumbo-seafood/"><img src="../../assets/mo/yumcha-spread.jpg" alt="" loading="lazy" style="view-transition-name:v4-jumbo-seafood"><span class="tile__body"><span><small>Jumbo Seafood</small><b>Cantonese &amp; daily yum cha</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../terrace-bar-cafe/"><img src="../../assets/mo/terrace-shakes.jpg" alt="" loading="lazy" style="view-transition-name:v4-terrace-bar-cafe"><span class="tile__body"><span><small>Terrace Bar &amp; Cafe</small><b>Right next door</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../dining/"><img src="../../assets/mo/brasserie-tall.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>All seven venues</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" in Sydney; override with ?now=YYYY-MM-DD or ?now=YYYY-MM-DDTHH:MM
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+  const dow = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const D3 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = (m) => { m %= 1440; const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? '.' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm'); };
+  // Published trading hours: [label, days (0 = Sunday), open, close] in minutes
+  const H = {
+    jumbo: [['Yum cha', [1, 2, 3, 4, 5], 660, 900], ['Yum cha', [0, 6], 600, 900], ['Dinner', [0, 1, 2, 3, 4], 1050, 1290], ['Dinner', [5, 6], 1050, 1350]],
+    brasserie: [['Lunch', [0, 1, 2, 3, 4, 5, 6], 690, 870], ['Dinner', [0, 1, 2, 3, 4], 1020, 1260], ['Dinner', [5, 6], 1020, 1290]],
+    bau: [['Open', [1, 2, 3, 4], 660, 1260], ['Open', [5, 6, 0], 660, 1320]],
+    fresh: [['Open', [1, 2, 3, 4, 5], 420, 840], ['Open', [6], 480, 840]],
+    sports: [['Bar service', [1, 2, 3], 840, 1230], ['Bar service', [4, 5], 690, 1380], ['Bar service', [6], 540, 1440], ['Bar service', [0], 540, 1260]],
+    terrace: [['Open', [0, 1, 2, 3], 540, 1320], ['Open', [4], 540, 1380], ['Open', [5, 6], 540, 1440]],
+    murphys: [['Bar service', [1, 2, 3, 4, 5], 930, 1320], ['Bar service', [6, 0], 540, 1320]],
+  };
+  const UNK = { fresh: [0] }; // days with no published hours
+  const unk = (k, d = dow) => (UNK[k] || []).includes(d);
+  const sessions = (k, d = dow) => H[k].filter((s) => s[1].includes(d)).sort((a, b) => a[2] - b[2]);
+  const state = (k) => {
+    const t = sessions(k);
+    const cur = t.find((s) => mins >= s[2] && mins < s[3]);
+    if (cur) return { open: true, soon: cur[3] - mins <= 45, s: cur };
+    const next = t.find((s) => s[2] > mins);
+    if (next) return { open: false, s: next, day: 0 };
+    for (let i = 1; i <= 7; i++) { const n = sessions(k, (dow + i) % 7); if (n.length) return { open: false, s: n[0], day: i, dn: (dow + i) % 7 }; }
+    return { open: false };
+  };
+  const say = (k, short) => {
+    const st = state(k);
+    const lab = (s) => (s[0] === 'Open' || s[0] === 'Bar service' || short ? '' : s[0].toLowerCase() + ' ');
+    if (st.open) return (st.soon ? 'Closing soon · ' : 'Open now · ') + lab(st.s) + 'until ' + fmt(st.s[3]);
+    if (unk(k)) return DAYS[dow] + ' hours: ask at reception';
+    if (!st.s) return 'Closed';
+    return 'Closed · ' + (st.day === 0 && lab(st.s) ? lab(st.s) + 'from ' : 'opens ') + (st.day === 1 ? 'tomorrow ' : st.day > 1 ? D3[st.dn] + ' ' : '') + fmt(st.s[2]);
+  };
+  const hoursToday = (k, d = dow) => { const t = sessions(k, d); return t.length ? t.map((s) => (s[0] === 'Open' || s[0] === 'Bar service' ? '' : s[0] + ' ') + fmt(s[2]) + ' – ' + fmt(s[3])).join(' · ') : unk(k, d) ? 'Ask at reception' : 'Closed'; };
+  $$('[data-status]').forEach((el) => {
+    const st = state(el.dataset.status);
+    el.classList.add(st.open ? (st.soon ? 'is-soon' : 'is-open') : 'is-closed');
+    el.lastElementChild.textContent = say(el.dataset.status, el.hasAttribute('data-short'));
+  });
+  $$('[data-today-hours]').forEach((el) => { el.textContent = hoursToday(el.dataset.todayHours); });
+  $$('[data-today]').forEach((el) => { el.textContent = DAYS[dow]; });
+  $$('.hrs tr[data-d]').forEach((tr) => tr.classList.toggle('is-today', tr.dataset.d.split(',').map(Number).includes(dow)));
+  // Offers: lit when they run today, retired once their end date has passed
+  const ymd = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const ended = (el) => !!el.dataset.until && ymd > el.dataset.until;
+  $$('.deal[data-days]').forEach((el) => {
+    const flag = $('.deal__flag', el);
+    if (ended(el)) { el.classList.add('is-ended'); if (flag) flag.textContent = 'Offer ended'; return; }
+    if (!el.closest('[data-daypick]')) el.classList.toggle('is-today', el.dataset.days.split(',').map(Number).includes(dow));
+  });
+  // Today's service drawn on a timeline with a "now" marker
+  $$('[data-dayline]').forEach((el) => {
+    const k = el.dataset.dayline, a = +(el.dataset.from || 7) * 60, b = +(el.dataset.to || 24) * 60;
+    const pos = (m) => ((Math.min(Math.max(m, a), b) - a) / (b - a) * 100).toFixed(2) + '%';
+    const t = sessions(k);
+    const p = (mins - a) / (b - a);
+    let ticks = '';
+    for (let m = a; m <= b; m += 180) ticks += `<span style="left:${pos(m)}">${fmt(m)}</span>`;
+    el.insertAdjacentHTML('beforeend',
+      `<div class="dayline__track" role="img" aria-label="${DAYS[dow]}: ${hoursToday(k)}">` +
+      t.map((s) => `<span class="dayline__blk${mins >= s[2] && mins < s[3] ? ' is-live' : ''}" style="left:${pos(s[2])};width:${((s[3] - s[2]) / (b - a) * 100).toFixed(2)}%"></span>`).join('') +
+      (p >= 0 && p <= 1 ? `<i class="dayline__now${p < .1 ? ' is-l' : p > .9 ? ' is-r' : ''}" style="left:${pos(mins)}"><em>Now ${fmt(mins)}</em></i>` : '') +
+      `</div><div class="dayline__ticks" aria-hidden="true">${ticks}</div>` +
+      `<p class="dayline__key">${t.length ? t.map((s) => `<span><b>${s[0]}</b> ${fmt(s[2])} – ${fmt(s[3])}</span>`).join('') : `<span>${unk(k) ? DAYS[dow] + ' hours are not published. Ask at reception.' : 'Closed today.'}</span>`}</p>`);
+  });
+  // Highlights take turns; hover or focus pauses, a tap chooses
+  const wrap = $('.try'), items = $$('.try__item');
+  let cur = 0, seen = false;
+  const go = (i) => {
+    cur = i;
+    items.forEach((el, n) => { el.classList.toggle('is-on', n === i); el.setAttribute('aria-expanded', n === i); });
+  };
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => go(i));
+    el.addEventListener('animationend', () => go((cur + 1) % items.length));
+  });
+  const list = $('.try__list');
+  ['pointerenter', 'focusin'].forEach((e) => list.addEventListener(e, () => wrap.classList.add('is-paused')));
+  ['pointerleave', 'focusout'].forEach((e) => list.addEventListener(e, () => wrap.classList.remove('is-paused')));
+  // only run the timer while the list is on screen
+  wrap.classList.add('is-paused');
+  new IntersectionObserver(([e]) => { if (!list.matches(':hover')) wrap.classList.toggle('is-paused', !e.isIntersecting); }, { threshold: .4 }).observe(list);
+})();
+</script>
+</body>
+</html>

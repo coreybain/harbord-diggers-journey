@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Functions — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Function rooms at Mounties, Mount Pritchard: The Showroom, The Elizabeth, Starz, the Conference Room and the Terrace Deck.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/pg-fn-lilac.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: three tall slats of the rooms, stepped like place settings */
+.fm{position:relative;display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;margin:12px 12px 12px 0}
+.fm figure{position:relative;margin:0;border-radius:var(--r);overflow:hidden;background:var(--night)}
+.fm figure:nth-child(1){margin-bottom:0}
+.fm figure:nth-child(2){margin-top:17%}
+.fm figure:nth-child(3){margin-top:34%}
+.fm img{width:100%;height:100%;object-fit:cover}
+.fm figure:first-child::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,23,.6),rgba(13,14,23,0) 30%)}
+.js .fm figure{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io);transition-delay:calc(.15s + var(--k) * .16s)}
+.js .is-loaded .fm figure{clip-path:inset(0 round var(--r))}
+.js .fm img{transform:scale(1.16);transition:transform 2.6s var(--ease);transition-delay:calc(.15s + var(--k) * .16s)}
+.js .is-loaded .fm img{transform:none}
+html.vt .fm figure:first-child{clip-path:none;transition:none}
+
+/* Spaces explorer */
+.gc{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px 24px;padding:20px clamp(18px,2.4vw,32px);border-radius:var(--r);border:1px solid var(--line);margin-bottom:clamp(26px,3vw,44px)}
+.gc label{font:600 11px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.gc output{font:400 clamp(26px,2.6vw,38px)/1 var(--display);min-width:5.2ch;text-align:right;font-variant-numeric:tabular-nums}
+.gc input{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:none;cursor:pointer}
+.gc input::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--ink) var(--f,10%),rgba(22,24,37,.18) var(--f,10%))}
+.gc input::-moz-range-track{height:2px;background:rgba(22,24,37,.18)}
+.gc input::-moz-range-progress{height:2px;background:var(--ink)}
+.gc input::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-12px;border-radius:50%;background:var(--amber);border:6px solid var(--paper);box-shadow:0 0 0 1px var(--ink);transition:transform .3s var(--ease)}
+.gc input::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--amber);border:6px solid var(--paper);box-shadow:0 0 0 1px var(--ink)}
+.gc input:active::-webkit-slider-thumb{transform:scale(1.15)}
+.sx{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(28px,5vw,90px);align-items:start}
+.sx__list{border-top:1px solid var(--line)}
+.sx__list button{display:grid;grid-template-columns:40px 1fr auto;align-items:baseline;gap:10px;width:100%;text-align:left;padding:22px 0;border-bottom:1px solid var(--line);position:relative;transition:opacity .5s,padding .6s var(--ease)}
+.sx__list button>span{font:500 12px/1 var(--body);letter-spacing:.14em;color:#b9772f}
+.sx__list button b{font:400 clamp(26px,2.8vw,42px)/1.1 var(--display);letter-spacing:-.02em;transition:font-style .1s}
+.sx__list button i{font:600 10.5px/1 var(--body);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.sx__list button::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.sx__list button[aria-selected="true"]{padding-left:12px}
+.sx__list button[aria-selected="true"] b{font-style:italic}
+.sx__list button[aria-selected="true"]::after{transform:scaleX(1)}
+.sx__list button.is-small{opacity:.34}
+.sx__pane{position:sticky;top:96px}
+.sx__pic{position:relative;aspect-ratio:5/3.5;border-radius:var(--r);overflow:hidden;background:#ddd4c5}
+.sx__pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 0 100%);transition:clip-path 1.1s var(--ease-io),transform 1.8s var(--ease);transform:scale(1.08)}
+.sx__pic img.is-on{clip-path:inset(0);transform:none;z-index:1}
+.sx__pic img.is-out{clip-path:inset(0);z-index:0;transition:none}
+.sx__body{display:grid;grid-template-columns:1fr auto;gap:12px 28px;align-items:start;margin-top:24px}
+.sx__body h3{font-size:clamp(28px,2.8vw,40px)}
+.sx__body p{color:var(--muted);margin-top:10px;max-width:52ch}
+.sx__cap{text-align:right}
+.sx__cap b{display:block;font:400 clamp(40px,4vw,64px)/1 var(--display);letter-spacing:-.03em}
+.sx__cap span{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sx__body>*{animation:rowin .8s var(--ease) both}
+.sx__feat{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.sx__body .cta{grid-column:1/-1;margin-top:10px}
+
+/* Offers */
+.offers{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.4vw,20px);margin-top:clamp(48px,6vw,90px)}
+.offers:empty{display:none}
+.of{padding:clamp(22px,2.6vw,36px);border-radius:var(--r);background:var(--ink);color:var(--paper)}
+.of b{display:block;font:400 clamp(24px,2.3vw,34px)/1.12 var(--display);letter-spacing:-.015em;margin:16px 0 10px}
+.of p{color:var(--muted-d);font-size:15px;max-width:48ch}
+
+/* How it comes together */
+.steps{counter-reset:s;border-top:1px solid var(--line);margin-top:26px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:54px 1fr;gap:6px;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font:italic 400 26px/1.1 var(--display);color:#b9772f}
+.steps b{display:block;font:400 clamp(20px,1.8vw,25px)/1.2 var(--display)}
+.steps span{color:var(--muted);font-size:15px}
+.sis{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.4vw,20px);margin-top:clamp(48px,6vw,90px)}
+.sis a{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:clamp(22px,2.6vw,36px);border-radius:var(--r);border:1px solid var(--line);transition:background .5s,color .5s,border-color .5s}
+.sis a:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sis small{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.sis b{display:block;font:400 clamp(24px,2.3vw,34px)/1.12 var(--display);margin:12px 0 8px}
+.sis p{font-size:14.5px;opacity:.7;max-width:40ch}
+
+.enq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,110px);align-items:start}
+.enq h2{margin:20px 0 22px}
+
+@media (max-width:1000px){
+  .fm{margin:0 12px 12px;height:56svh;min-height:380px}
+  .sx,.enq{grid-template-columns:1fr}
+  .sx__pane{position:static;order:-1}
+  .offers,.sis{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .fm{grid-template-columns:1.2fr 1fr}
+  .fm figure:nth-child(3){display:none}
+  .gc{grid-template-columns:1fr auto}
+  .gc input{grid-column:1/-1;order:3}
+  .sx__list button{grid-template-columns:30px 1fr;padding:16px 0}
+  .sx__list button i{grid-column:2}
+  .sx__body{grid-template-columns:1fr}
+  .sx__cap{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="ib">
+    <div class="ib__text">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <span aria-current="page">Functions</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">Functions &amp; events</p>
+      <h1 data-split="load">A room for <em>every occasion.</em></h1>
+      <p class="ib__lede rise" style="--d:4">A corporate meeting, a conference, a wedding, a milestone birthday or a Christmas celebration: there is a space here to suit, and a Functions team to plan it with you.</p>
+      <div class="ib__cta rise" style="--d:5">
+        <a class="btn btn--amber" href="#enquire">Enquire now <span class="arrow">→</span></a>
+        <a class="btn btn--ghost" href="#spaces">See the spaces</a>
+      </div>
+    </div>
+    <div class="fm">
+      <figure style="--k:0;view-transition-name:v4-functions" data-vt-hero><img src="../../assets/mo/pg-fn-lilac.jpg" alt="A function room at Mounties dressed with round tables and lilac lighting" fetchpriority="high"></figure>
+      <figure style="--k:1"><img src="../../assets/mo/pg-fn-red.jpg" alt="A function room at Mounties set for a celebration"></figure>
+      <figure style="--k:2"><img src="../../assets/mo/pg-fn-navy.jpg" alt="A function room at Mounties set with navy linen"></figure>
+    </div>
+  </section>
+
+  <section id="spaces">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Our spaces</p><h2 data-split>Five rooms, <em>twenty to five hundred.</em></h2></div>
+        <p class="reveal">Tell us roughly how many are coming and the rooms that are too small will step back.</p>
+      </div>
+      <div class="gc reveal">
+        <label for="guests">Guests</label>
+        <input id="guests" type="range" min="10" max="500" step="10" value="60">
+        <output id="guestsOut" for="guests">60</output>
+      </div>
+      <div class="sx">
+        <div class="sx__list reveal" role="tablist" aria-label="Function spaces" id="sxList"></div>
+        <div class="sx__pane reveal" style="--d:1">
+          <div class="sx__pic" id="sxPic"></div>
+          <div class="sx__body" id="sxBody" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="offers" id="offers"></div>
+    </div>
+  </section>
+
+  <section class="sec--card" id="catering">
+    <div class="wrap">
+      <div class="cols cols--top">
+        <div class="pair">
+          <figure class="pic pic--tall wipe"><img src="../../assets/mo/pg-fn-green.jpg" alt="A long table dressed for a function at Mounties" loading="lazy"></figure>
+          <figure class="pic wipe" style="--d:2"><img src="../../assets/mo/pg-chandelier.jpg" alt="A chandelier above the foyer at Mounties" loading="lazy"></figure>
+        </div>
+        <div>
+          <p class="eyebrow reveal">Packages &amp; catering</p>
+          <h2 data-split>Thoughtfully curated, <em>then made yours.</em></h2>
+          <p class="lede reveal">Mounties offers thoughtfully curated event packages, and the Functions team will work with you on a customised plan for your day. Ask them for the current packages and menus.</p>
+          <ol class="steps reveal" style="list-style:none;padding:0">
+            <li><div><b>Tell us about it</b><span>The occasion, the date you have in mind and how many guests.</span></div></li>
+            <li><div><b>Choose a room</b><span>From the Conference Room for 20 to The Showroom for 500 seated.</span></div></li>
+            <li><div><b>Shape the plan</b><span>The Functions team tailors a package, catering and room set-up to suit.</span></div></li>
+          </ol>
+          <div class="cta reveal">
+            <a class="btn btn--ink" href="#enquire">Start an enquiry <span class="arrow">→</span></a>
+            <a class="btn" href="tel:0298223555">(02) 9822 3555</a>
+          </div>
+          <p class="note reveal" style="margin-top:20px">Community groups can apply for ClubGRANTS Category 2 in-kind room hire through the Functions &amp; Events team. <a class="tlink" href="../community/#profit-for-purpose">How Mounties gives back</a></p>
+        </div>
+      </div>
+      <div class="sis">
+        <a class="reveal" href="https://manlybowlingclub.com.au/" target="_blank" rel="noopener"><span><small>Sister venue</small><b>Manly Bowling Club</b><p>The Bowlers Lounge hosts up to 150 guests.</p></span><span class="arrow">→</span></a>
+        <a class="reveal" style="--d:1" href="https://triglav.com.au/" target="_blank" rel="noopener"><span><small>Sister venue</small><b>Triglav</b><p>For smaller functions, with an outside terrace.</p></span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--ink" id="enquire">
+    <div class="wrap">
+      <div class="enq">
+        <div>
+          <p class="eyebrow reveal">Enquire</p>
+          <h2 data-split>Let's plan <em>your event.</em></h2>
+          <p class="lede reveal">Share a few details and the Functions team will come back with a customised plan.</p>
+          <dl class="rows reveal" style="margin-top:26px">
+            <div><dt>Phone</dt><dd><a class="tlink" href="tel:0298223555">(02) 9822 3555</a></dd></div>
+            <div><dt>Where</dt><dd>254 Humphries Road, Mount Pritchard</dd></div>
+            <div><dt>Getting here</dt><dd><a class="tlink" href="../visit/#getting-here">Directions and the courtesy bus</a></dd></div>
+          </dl>
+        </div>
+        <form class="form reveal" data-mock novalidate>
+          <h3>Function enquiry</h3>
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" placeholder="Your name"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Best number"></div>
+          <div class="field"><label for="f-type">Occasion</label><select id="f-type" name="type"><option>Milestone birthday</option><option>Wedding</option><option>Corporate meeting</option><option>Conference</option><option>Christmas celebration</option><option>Something else</option></select></div>
+          <div class="field"><label for="f-space">Space</label><select id="f-space" name="space"><option>Not sure yet</option></select></div>
+          <div class="field"><label for="f-guests">Guests</label><input id="f-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="Approximate number"></div>
+          <div class="field"><label for="f-date">Preferred date</label><input id="f-date" name="date" type="date"></div>
+          <div class="field field--full"><label for="f-msg">Anything else</label><textarea id="f-msg" name="message" placeholder="Tell us about the day"></textarea></div>
+          <div class="form__end"><button class="btn btn--ink" type="submit">Send enquiry <span class="arrow">→</span></button><p class="form__note" role="status" hidden>This is a design mock-up, nothing was sent.</p></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>While you're <em>planning.</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../dining/"><img src="../../assets/mo/yumcha-spread.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>Taste the kitchens</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../visit/"><img src="../../assets/mo/pg-exterior.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Visit</small><b>Come and look around</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../whats-on/"><img src="../../assets/mo/live-singer.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>What's On</small><b>Live at Mounties</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="./" aria-current="page">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" for date-aware bits; override with ?now=YYYY-MM-DD (or ?now=YYYY-MM-DDTHH:MM)
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Mock forms: nothing is sent
+  document.querySelectorAll('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = f.querySelector('.form__note');
+    n.hidden = false; n.classList.remove('in'); void n.offsetWidth; n.classList.add('in');
+  }));
+
+  // Spaces as described by Mounties. `cap` is the largest number the site quotes; null where it gives none.
+  const ROOMS = [
+    { n: 'The Showroom', cap: 500, unit: 'seated', img: 'pg-fn-lilac.jpg', p: 'The largest room in the house, with audio-visual built in. Suited to a gala dinner, a conference, a live performance or a wedding.', f: ['Audio-visual', 'Gala dinners', 'Weddings'] },
+    { n: 'Starz', cap: 200, unit: 'guests', img: 'pg-fn-navy.jpg', p: 'A bar along one side and a large stage, with a ceiling projector, two large screens and a PA system with microphones.', f: ['Large stage', 'Projector & screens', 'PA & microphones'] },
+    { n: 'The Elizabeth', cap: 100, unit: 'guests', img: 'pg-fn-red.jpg', p: 'On level one next to M Brasserie, with modern lighting, audio-visual, a floating dance floor and a fully-serviced bar. It divides into two rooms.', f: ['Dance floor', 'Fully-serviced bar', 'Divides in two'] },
+    { n: 'Conference Room', cap: 20, unit: 'guests', img: 'functions-room.jpg', p: 'A small room for meetings and gatherings of up to 20 guests.', f: ['Meetings', 'Up to 20'] },
+    { n: 'Terrace Deck', cap: null, unit: '', img: 'terrace.jpg', p: 'An outdoor space for the warmer months, available from October to February only. Ask the Functions team how many it suits.', f: ['Outdoor', 'October to February'] },
+  ];
+  const list = document.getElementById('sxList'), pic = document.getElementById('sxPic'), body = document.getElementById('sxBody');
+  const space = document.getElementById('f-space'), guests = document.getElementById('guests'), out = document.getElementById('guestsOut');
+  const imgs = ROOMS.map((r, i) => { const im = new Image(); im.src = '../../assets/mo/' + r.img; im.alt = `A function space at Mounties, shown for ${r.n}`; if (i) im.loading = 'lazy'; pic.append(im); return im; });
+  const btns = ROOMS.map((r, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('role', 'tab');
+    b.innerHTML = `<span>0${i + 1}</span><b>${r.n}</b><i>${r.cap ? (r.unit === 'seated' ? r.cap + ' seated' : 'Up to ' + r.cap) : 'Oct – Feb'}</i>`;
+    b.addEventListener('click', () => show(i));
+    list.append(b);
+    space.add(new Option(r.n));
+    return b;
+  });
+  let cur = -1;
+  const show = (i) => {
+    if (i === cur) return;
+    imgs.forEach((im, k) => { im.classList.toggle('is-out', k === cur); im.classList.toggle('is-on', k === i); });
+    cur = i;
+    const r = ROOMS[i];
+    btns.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+    body.innerHTML = `<div><h3>${r.n}</h3><p>${r.p}</p></div><div class="sx__cap">${r.cap ? `<b>${r.cap}</b><span>${r.unit === 'seated' ? 'seated' : 'guests, up to'}</span>` : '<b>Ask</b><span>the team</span>'}</div><div class="sx__feat">${r.f.map((t) => `<span class="tag">${t}</span>`).join('')}</div><div class="cta"><a class="btn btn--ink" href="#enquire" data-pick="${r.n}">Enquire about ${r.n} <span class="arrow">→</span></a></div>`;
+  };
+  body.addEventListener('click', (e) => { const a = e.target.closest('[data-pick]'); if (a) { space.value = a.dataset.pick; document.getElementById('f-guests').value = guests.value; } });
+  const fit = () => {
+    const g = +guests.value;
+    out.textContent = g >= 500 ? '500' : g;
+    guests.style.setProperty('--f', ((g - 10) / 490 * 100).toFixed(1) + '%');
+    btns.forEach((b, k) => b.classList.toggle('is-small', ROOMS[k].cap != null && ROOMS[k].cap < g));
+  };
+  guests.addEventListener('input', () => {
+    fit();
+    // step to the smallest room that still fits if the current one no longer does
+    if (ROOMS[cur].cap != null && ROOMS[cur].cap < +guests.value) {
+      const ok = ROOMS.map((r, k) => [r, k]).filter(([r]) => r.cap != null && r.cap >= +guests.value).sort((a, b) => a[0].cap - b[0].cap)[0];
+      if (ok) show(ok[1]);
+    }
+  });
+  fit(); show(0);
+
+  // Offers, shown only while they are still current
+  const d0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  [
+    ['2026-10-31', 'Milestone birthdays', '$100 off room hire, plus free number balloons.', 'For milestone birthdays from 21st to 90th. Book by 31 October 2026 for a 2027 celebration. Conditions apply.'],
+    ['2026-12-31', 'Add some play', 'One hour of unlimited play at Send It! for $300.', 'Add it to your function at Mounties until 31 December 2026. Send It! Mounties only. Conditions apply.'],
+  ].forEach(([until, tag, head, text]) => {
+    if (new Date(until + 'T00:00') < d0) return;
+    document.getElementById('offers').insertAdjacentHTML('beforeend', `<article class="of"><span class="tag tag--amber">${tag}</span><b>${head}</b><p>${text}</p></article>`);
+  });
+})();
+</script>
+</body>
+</html>

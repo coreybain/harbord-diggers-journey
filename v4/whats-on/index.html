@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What's On — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Live & Local music, live sport, weekly activities, events and kids' fun at Mounties, Mount Pritchard.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/live-singer.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the stage photo, a second singer tucked over its corner, and whoever is on next */
+.wm{position:relative;margin:12px 12px 12px 0}
+.wm__main{position:absolute;inset:0 0 0 13%;border-radius:var(--r);overflow:hidden;background:var(--night)}
+.wm__main img,.wm__side img{width:100%;height:100%;object-fit:cover}
+.wm__main::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(13,14,23,.78),rgba(13,14,23,.3) 14%,rgba(13,14,23,0) 30%,rgba(13,14,23,0) 60%,rgba(13,14,23,.55))}
+.js .wm__main{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io) .15s}
+.js .is-loaded .wm__main{clip-path:inset(0 round var(--r))}
+.js .wm__main img{transform:scale(1.14);transition:transform 2.6s var(--ease) .15s}
+.js .is-loaded .wm__main img{transform:none}
+.wm__side{position:absolute;left:0;bottom:11%;width:29%;aspect-ratio:3/3.9;border-radius:var(--r);overflow:hidden;border:8px solid var(--ink);background:var(--night);transition:clip-path 1.3s var(--ease-io) .7s,transform 1.6s var(--ease) .7s}
+.js body:not(.is-loaded) .wm__side{clip-path:inset(100% 0 0 0);transform:translateY(30px)}
+.wm__side{clip-path:inset(0)}
+.wm__next{position:absolute;right:clamp(14px,1.8vw,26px);bottom:clamp(14px,1.8vw,26px);min-width:270px;max-width:calc(100% - 28px);padding:18px 20px;border-radius:14px;background:rgba(246,239,228,.95);color:var(--ink);display:grid;grid-template-columns:1fr auto;align-items:end;gap:4px 18px;transition:opacity 1s var(--ease) 1.3s,transform 1.2s var(--ease) 1.3s}
+.js body:not(.is-loaded) .wm__next{opacity:0;transform:translateY(22px)}
+.wm__next small{grid-column:1/-1;font:600 10.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.wm__next small::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.wm__next b{font:400 clamp(24px,2.2vw,32px)/1.1 var(--display);letter-spacing:-.015em}
+.wm__next span{font-size:14px;color:var(--muted);grid-column:1}
+.wm__next i{grid-row:2/4;grid-column:2;font-style:normal;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .4s,color .4s,transform .6s var(--ease)}
+.wm__next:hover i{background:var(--ink);color:var(--paper);transform:rotate(90deg)}
+
+/* Live & Local: the next act on a photo, the rest of the month as a list */
+.gl{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(28px,5vw,90px);align-items:start}
+.nx{position:sticky;top:96px;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1.06;background:var(--night);color:var(--paper)}
+.nx img{width:100%;height:116%;object-fit:cover;transform:translateY(calc(var(--p,.5) * -12%))}
+.js .nx.wipe.in>img{transform:translateY(calc(var(--p,.5) * -12%))}
+.nx::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,23,0) 38%,rgba(13,14,23,.86))}
+.nx__cap{position:absolute;z-index:2;left:28px;right:28px;bottom:26px;clip-path:none!important}
+.nx__cap small{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+.nx__cap b{display:block;font:400 clamp(32px,3.6vw,56px)/1.05 var(--display);letter-spacing:-.02em;margin-top:12px}
+.nx__cap span{display:block;margin-top:10px;font-size:15px;opacity:.85}
+.gigs{border-top:1px solid var(--line);list-style:none;margin:0;padding:0}
+.gig{display:grid;grid-template-columns:76px 1fr auto;align-items:center;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);animation:rowin .9s var(--ease) both;animation-delay:calc(var(--i,0) * 55ms)}
+.gig time{display:grid;justify-items:start;gap:5px}
+.gig time b{font:400 clamp(30px,2.8vw,42px)/1 var(--display);letter-spacing:-.03em}
+.gig time span{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.gig h3{font-size:clamp(21px,1.9vw,28px);line-height:1.15}
+.gig p{color:var(--muted);font-size:14px;margin-top:3px}
+.gig.is-past{opacity:.45}
+.gig.is-next time b{color:#b9772f}
+.gigs__more{margin-top:20px}
+.gl__lede{margin-bottom:28px}
+
+/* This week */
+.wk__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 24px;margin:clamp(28px,3.4vw,48px) 0 6px}
+.wk__head h3{font-size:clamp(28px,3.2vw,48px)}
+.wk__head h3 em{font-style:italic;color:var(--sand)}
+.wk__list{border-top:1px solid var(--line-d);margin-top:18px;min-height:240px}
+.act{display:grid;grid-template-columns:clamp(110px,16vw,220px) 1fr auto;align-items:baseline;gap:6px 24px;padding:20px 0;border-bottom:1px solid var(--line-d);animation:rowin .9s var(--ease) both;animation-delay:calc(var(--i,0) * 80ms)}
+.act__t{font:500 15px/1.4 var(--body);color:var(--sand);font-variant-numeric:tabular-nums}
+.act h4{margin:0;font:400 clamp(22px,2.2vw,32px)/1.12 var(--display);letter-spacing:-.015em}
+.act p{color:var(--muted-d);font-size:14.5px;margin-top:5px;max-width:60ch}
+.wk .note{margin-top:22px}
+.wk .note a{border-bottom:1px solid rgba(246,239,228,.3)}
+
+/* Coming up: a rail you can drag */
+.up__rail{scroll-padding-inline:var(--pad);display:flex;gap:clamp(12px,1.4vw,20px);overflow-x:auto;scroll-snap-type:x proximity;padding:0 var(--pad) 8px;scrollbar-width:none;cursor:grab}
+.up__rail::-webkit-scrollbar{display:none}
+.up__rail.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.up__rail.is-dragging a{pointer-events:none}
+.ev{flex:none;width:min(400px,82vw);scroll-snap-align:start;display:flex;flex-direction:column;padding:clamp(22px,2.2vw,32px);border-radius:var(--r);background:var(--card);border:1px solid var(--line);min-height:400px;animation:rowin 1s var(--ease) both;animation-delay:calc(var(--i,0) * 90ms)}
+.ev__when{display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 11px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.ev__d{font:400 clamp(54px,5vw,78px)/1 var(--display);letter-spacing:-.03em;margin-top:26px}
+.ev__d small{font-size:.3em;letter-spacing:.02em;margin-left:.35em;font-style:italic}
+.ev h3{font-size:clamp(24px,2.1vw,30px);margin-top:16px}
+.ev p{color:var(--muted);font-size:14.5px;margin-top:10px}
+.ev__go{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase}
+.ev__go a{padding-bottom:5px;border-bottom:1px solid var(--amber)}
+.up__nav{display:flex;gap:8px}
+.up__nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .4s,color .4s}
+.up__nav button:hover{background:var(--ink);color:var(--paper)}
+
+/* Live sport: the codes drift past */
+.codes{overflow:hidden;margin-top:clamp(40px,6vw,90px);border-block:1px solid var(--line);padding:18px 0}
+.codes div{display:flex;width:max-content;animation:slide 38s linear infinite}
+.codes span{font:italic 400 clamp(34px,5vw,78px)/1.1 var(--display);letter-spacing:-.02em;white-space:nowrap;padding-right:.5em}
+.codes span::after{content:"·";padding-left:.5em;color:var(--amber);font-style:normal}
+
+@media (max-width:1000px){
+  .wm{margin:0 12px 12px;height:60svh;min-height:400px}
+  .wm__main{inset:0}
+  .wm__side{display:none}
+  .gl{grid-template-columns:1fr}
+  .nx{position:relative;top:auto;aspect-ratio:4/3.4}
+}
+@media (max-width:560px){
+  .wm__next{left:12px;right:12px;min-width:0}
+  .gig{grid-template-columns:58px 1fr;gap:6px 14px}
+  .gig .tag{grid-column:2;justify-self:start}
+  .act{grid-template-columns:1fr auto}
+  .act__t{grid-column:1/-1}
+  .ev{min-height:360px}
+}
+@media (prefers-reduced-motion:reduce){
+  .codes div{animation:none}
+  .nx img{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="./" data-t="What's On" aria-current="page"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="./" aria-current="page">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="ib">
+    <div class="ib__text">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <span aria-current="page">What's On</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">What's On at Mounties</p>
+      <h1 data-split="load">Live music, sport <em>&amp; a full week.</em></h1>
+      <p class="ib__lede rise" style="--d:4">The best live music, entertainment and events in South-West Sydney, all week long.</p>
+      <div class="jump rise" style="--d:6">
+        <a href="#live-music"><span>01</span>Live &amp; Local</a>
+        <a href="#weekly"><span>02</span>Weekly activities</a>
+        <a href="#live-sport"><span>03</span>Live sport</a>
+        <a href="#kids"><span>04</span>Kids</a>
+      </div>
+    </div>
+    <div class="wm">
+      <div class="wm__main" data-vt-hero style="view-transition-name:v4-whats-on"><img src="../../assets/mo/live-singer.jpg" alt="A singer performing on stage at Mounties" fetchpriority="high"></div>
+      <figure class="wm__side"><img src="../../assets/mo/pg-singer-pink.jpg" alt="A performer mid-song under stage lights" style="object-position:38% 40%"></figure>
+      <a class="wm__next" href="#live-music"><small id="nextLabel">Next on stage</small><b id="nextAct">Live &amp; Local</b><span id="nextWhen">Friday to Sunday</span><i aria-hidden="true">↓</i></a>
+    </div>
+  </section>
+
+  <section id="live-music">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Live &amp; Local</p><h2 data-split>Supporting <em>local artists.</em></h2></div>
+        <p class="reveal">Discover original music and the talented people behind the craft. Fridays and Saturdays from 7pm, Sundays from 2pm.</p>
+      </div>
+      <div class="gl">
+        <div class="nx wipe" data-progress="view">
+          <img src="../../assets/mo/pg-landl.jpg" alt="A Live &amp; Local singer performing at Mounties" loading="lazy">
+          <div class="nx__cap"><small id="nxLabel">Next up</small><b id="nxAct">Live &amp; Local</b><span id="nxWhen">Every Friday, Saturday and Sunday</span></div>
+        </div>
+        <div>
+          <p class="lede gl__lede reveal">Mounties has a long history of supporting live entertainment in Sydney's South West. By supporting the local music community you are helping it grow.</p>
+          <ol class="gigs" id="gigs" aria-label="Live &amp; Local line-up"></ol>
+          <button class="btn gigs__more" id="gigsMore" hidden>Earlier this month</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--ink wk" id="weekly">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Weekly activities</p><h2 data-split>Pick a day, <em>see what's on.</em></h2></div>
+        <p class="reveal">Bingo, poker, raffles and live music. Member Services can help with tickets on <a href="tel:0298223555">(02) 9822 3555</a>.</p>
+      </div>
+      <div class="days reveal" id="days" role="tablist" aria-label="Choose a day"><i class="days__ind" aria-hidden="true"></i></div>
+      <div class="wk__head"><h3 id="wkTitle" aria-live="polite"></h3><span class="tag" id="wkCount"></span></div>
+      <div class="wk__list" id="wkList"></div>
+      <p class="note">Times and prices as published by Mounties and may change; check with Member Services. Poker, raffles and promotions are for members aged 18 and over. Help is close at hand: GambleAware, <a href="tel:1800858858">1800 858 858</a>.</p>
+    </div>
+  </section>
+
+  <section class="up" id="events">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Coming up</p><h2 data-split>Dates for <em>the diary.</em></h2></div>
+        <div class="up__nav reveal"><button data-rail-prev="up" aria-label="Earlier events">←</button><button data-rail-next="up" aria-label="Later events">→</button></div>
+      </div>
+    </div>
+    <div class="up__rail" id="upRail" data-rail="up"></div>
+  </section>
+
+  <section class="sec--card" id="live-sport">
+    <div class="wrap">
+      <div class="cols">
+        <figure class="pic pic--drift wipe" data-progress="view"><img src="../../assets/mo/sports-bar.jpg" alt="Screens and booths in The Sports Bar" loading="lazy"></figure>
+        <div>
+          <p class="eyebrow reveal">Live sport · The Sports Bar</p>
+          <h2 data-split>Don't miss <em>a minute.</em></h2>
+          <p class="lede reveal">Watch everything from the NRL, AFL and UFC to the Rugby World Cup and the EPL. Don't miss a minute of the action, live at Mounties.</p>
+          <p class="lede reveal" style="--d:1">The bar team keeps the live and loud schedule: ask what's showing when you arrive.</p>
+          <div class="cta reveal" style="--d:2">
+            <a class="btn btn--ink" href="../sports-bar/">The Sports Bar <span class="arrow">→</span></a>
+            <a class="btn" href="../dining/">All dining &amp; bars</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="codes" aria-hidden="true"><div>
+      <span>NRL</span><span>AFL</span><span>UFC</span><span>Rugby World Cup</span><span>EPL</span><span>Live &amp; loud</span>
+      <span>NRL</span><span>AFL</span><span>UFC</span><span>Rugby World Cup</span><span>EPL</span><span>Live &amp; loud</span>
+    </div></div>
+  </section>
+
+  <section id="kids">
+    <div class="wrap">
+      <div class="cols cols--flip">
+        <div class="pair">
+          <figure class="pic wipe"><img src="../../assets/mo/major-fun.jpg" alt="The Major Fun indoor play centre at Mounties" loading="lazy"></figure>
+          <figure class="pic wipe" style="--d:2"><img src="../../assets/mo/pg-kid.jpg" alt="A child grinning on the play equipment at Major Fun" loading="lazy" style="object-position:50% 30%"></figure>
+        </div>
+        <div>
+          <p class="eyebrow reveal">Kids · Major Fun</p>
+          <h2 data-split>Somewhere for <em>the little ones.</em></h2>
+          <p class="lede reveal">Members have access to Major Fun, our indoor children's play centre at Mounties.</p>
+          <dl class="rows reveal" style="margin-top:26px" id="kidsRows">
+            <div><dt>Drop &amp; Dine</dt><dd>Enjoy your night while the kids have supervised play. Kids aged 3 to 12 years.</dd></div>
+            <div data-until="2026-10-31"><dt>Sat 31 Oct</dt><dd>Halloween Drop &amp; Dine, 6pm to 9.30pm, with face painting and balloon artists. Entry and meal $30, entry only $20. Member pricing.</dd></div>
+          </dl>
+          <div class="cta reveal" style="--d:1">
+            <a class="btn btn--ink" href="https://www.majorfun.com.au/mount-pritchard/explore" target="_blank" rel="noopener">Explore Major Fun <span class="arrow">→</span></a>
+            <a class="btn" href="https://www.majorfun.com.au/major-fun-mount-pritchard/drop-and-dine" target="_blank" rel="noopener">Book Drop &amp; Dine</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Make a night <em>of it.</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../dining/"><img src="../../assets/mo/brasserie.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>Dinner before the show</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../membership/"><img src="../../assets/mo/members-bar.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Membership</small><b>Member pricing</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../visit/#courtesy-bus"><img src="../../assets/mo/pg-bus.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Visit</small><b>Catch the courtesy bus</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="./">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" for date-aware bits; override with ?now=YYYY-MM-DD (or ?now=YYYY-MM-DDTHH:MM)
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Mock forms: nothing is sent
+  document.querySelectorAll('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = f.querySelector('.form__note');
+    n.hidden = false; n.classList.remove('in'); void n.offsetWidth; n.classList.add('in');
+  }));
+
+  const DAY = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const d0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const at = (s) => new Date(s + 'T00:00');
+  const daysTo = (d) => Math.round((d - d0) / 864e5);
+  const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+
+  // Live & Local line-up as published for October 2026
+  const GIGS = [
+    ['2026-10-02', 'Mesa Groove', '7pm – 10pm'], ['2026-10-03', 'Regroove', '7pm – 11pm'], ['2026-10-04', 'Rockaholics', '2pm – 6pm'],
+    ['2026-10-09', 'Zoltan', '7pm – 10pm'], ['2026-10-10', 'Roxteady', '7pm – 11pm'], ['2026-10-11', 'Shane Edwards', '2pm – 6pm'],
+    ['2026-10-16', 'Groove City', '7pm – 10pm'], ['2026-10-17', 'Talk of the Town', '7pm – 11pm'], ['2026-10-18', 'The Avenue', '2pm – 6pm'],
+    ['2026-10-23', 'Celebration Mix Band', '7pm – 10.30pm', 'Oktoberfest'], ['2026-10-24', 'Showpony', '7pm – 11pm'], ['2026-10-25', 'David Agius', '2pm – 6pm'],
+    ['2026-10-30', 'M7 Band', '7pm – 10.30pm'], ['2026-10-31', 'Skybound Duo', '7pm – 10pm', 'Halloween'],
+  ].map(([date, act, time, tag]) => ({ date, act, time, tag, d: at(date) }));
+  const soon = (n, d) => n === 0 ? (d.getDay() === 0 ? 'This afternoon' : 'Tonight') : n === 1 ? 'Tomorrow' : `In ${n} days`;
+  const upcoming = GIGS.filter((g) => g.d >= d0);
+  const past = GIGS.filter((g) => g.d < d0);
+  const next = upcoming[0];
+  if (next) {
+    const when = `${DAY[next.d.getDay()]} ${next.d.getDate()} ${MON[next.d.getMonth()]} · ${next.time}`;
+    const label = soon(daysTo(next.d), next.d);
+    nextLabel.textContent = `Next on stage · ${label}`; nextAct.textContent = next.act; nextWhen.textContent = when;
+    nxLabel.textContent = `Next up · ${label}`; nxAct.textContent = next.act; nxWhen.textContent = when;
+  } else {
+    nxLabel.textContent = 'Live & Local'; nxAct.textContent = 'The next line-up is on its way.'; nxWhen.textContent = 'Ask Member Services who is playing this weekend.';
+  }
+  const gigRow = (g, i, cls) => {
+    const li = el('li', 'gig ' + cls);
+    li.style.setProperty('--i', i);
+    li.innerHTML = `<time datetime="${g.date}"><b>${g.d.getDate()}</b><span>${DAY[g.d.getDay()].slice(0, 3)} · ${MON[g.d.getMonth()]}</span></time><div><h3>${g.act}</h3><p>${g.time}</p></div>` +
+      (g === next ? '<span class="tag tag--amber">Next up</span>' : g.tag ? `<span class="tag">${g.tag}</span>` : '<span></span>');
+    return li;
+  };
+  upcoming.forEach((g, i) => gigs.append(gigRow(g, i, g === next ? 'is-next' : '')));
+  if (!upcoming.length) gigs.append(el('li', 'gig', '<time><b>…</b><span>Soon</span></time><div><h3>New dates soon</h3><p>Fridays and Saturdays from 7pm, Sundays from 2pm</p></div><span></span>'));
+  if (past.length && upcoming.length) {
+    gigsMore.hidden = false;
+    gigsMore.addEventListener('click', () => { past.slice().reverse().forEach((g, i) => gigs.append(gigRow(g, i, 'is-past'))); gigsMore.hidden = true; });
+  }
+
+  // Weekly activities by weekday (0 = Sunday), plus a few that only run between certain dates
+  const POKER = (rego, start, late) => ({ m: start[0], t: start[1], n: 'Poker $2,000 GTD', p: `Rego ${rego}, late rego until ${late}. $15 Members. No sales after ${late}.`, w: "Inside Murphy's" });
+  const WEEK = {
+    0: [{ m: 930, t: '3.30pm', n: 'Meat Raffle', p: 'Score yourself a feast and win a meat tray. Tickets on sale from 2pm.', w: "Inside Murphy's" }],
+    3: [{ m: 630, t: '10.30am', n: 'Bingo', p: 'Doors open 10am. $5 Members and $6 Guests.', w: 'Mounties Showroom' }],
+    4: [{ m: 1170, t: '7.30pm', n: '$1,500 Points Raffle', p: 'Tickets on sale from 5pm, drawn 7.30pm. Win, convert, spend.', w: 'Members' }, POKER('6.30pm', [1170.5, '7.30pm'], '9pm')],
+    5: [{ m: 630, t: '10.30am', n: 'Little Wings Cash Housie', p: 'Books on sale 10am, eyes down 10.30am.', w: 'Fridays' }, POKER('6pm', [1110, '6.30pm'], '8pm')],
+    6: [POKER('2.30pm', [900, '3pm'], '4.30pm')],
+  };
+  const forDay = (d) => {
+    const list = (WEEK[d.getDay()] || []).slice();
+    const key = iso(d), wd = d.getDay();
+    const gig = GIGS.find((g) => g.date === key);
+    if (wd === 5 || wd === 6 || wd === 0) list.push({ m: wd === 0 ? 840 : 1140, t: gig ? gig.time.split(' – ')[0] : (wd === 0 ? 'Afternoon' : 'Evening'), n: gig ? `Live & Local: ${gig.act}` : 'Live & Local', p: gig ? `${gig.time}. Local musicians performing within the venue.` : 'Local solo and duo musicians performing within the venue.', w: gig && gig.tag ? gig.tag : 'Live music' });
+    if (wd === 5 && d.getDate() >= 8 && d.getDate() <= 14) list.push({ m: 629, t: '10.30am', n: 'Morning Melodies', p: 'Second Friday of the month. Doors open 9.30am for morning tea. $5 Members, $15 Guests. Tickets from Member Services.', w: 'Show' });
+    if ((wd === 3 || wd === 4) && key >= '2026-08-28' && key <= '2026-11-26') list.push({ m: 1140, t: '7pm – 9pm', n: 'Mystery Money Cases', p: 'Pick a case for your chance to win a share of $10,000 cash, with a winner drawn every 30 minutes. Members must be in the venue at the time of the draw.', w: 'Members' });
+    if (key >= '2026-10-01' && key <= '2026-12-19') list.push({ m: 540, t: '9am – 7pm', n: 'Rally into Summer', p: 'Book a tennis or pickleball court for an hour for only $20. No membership needed: everyone is welcome to play.', w: 'Courts' });
+    return list.sort((a, b) => a.m - b.m);
+  };
+  const week = [...Array(7)].map((_, i) => new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() + i));
+  const btns = week.map((d, i) => {
+    const b = el('button', i === 0 ? 'is-today' : '', `<span>${i === 0 ? 'Today' : DAY[d.getDay()].slice(0, 3)}</span><b>${d.getDate()}</b>`);
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', `${DAY[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}`);
+    b.addEventListener('click', () => pick(i));
+    days.append(b);
+    return b;
+  });
+  const pick = (i) => {
+    const d = week[i];
+    days.style.setProperty('--i', i);
+    btns.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+    const list = forDay(d);
+    wkTitle.innerHTML = `${i === 0 ? 'Today' : i === 1 ? 'Tomorrow' : DAY[d.getDay()]}, <em>${d.getDate()} ${MON[d.getMonth()]}</em>`;
+    wkCount.textContent = list.length === 1 ? '1 thing on' : `${list.length} things on`;
+    wkList.replaceChildren(...list.map((a, k) => {
+      const row = el('article', 'act', `<span class="act__t">${a.t}</span><div><h4>${a.n}</h4><p>${a.p}</p></div><span class="tag">${a.w}</span>`);
+      row.style.setProperty('--i', k);
+      return row;
+    }));
+    if (!list.length) wkList.append(el('article', 'act', '<span class="act__t">All day</span><div><h4>A quiet one</h4><p>Nothing on the weekly calendar today. The restaurants and bars are open as usual.</p></div><span class="tag">Dining</span>'));
+  };
+  pick(0);
+
+  // Coming up: dated events as published, hidden once they have passed
+  const EVENTS = [
+    { from: '2026-10-31', to: '2026-10-31', when: 'Saturday · 6pm – 9.30pm', n: 'Halloween Drop & Dine', p: 'A special spooky themed Drop & Dine session at Major Fun, complete with face painting and balloon artists. Entry and meal $30, entry only $20. Member pricing, kids aged 3 to 12.', links: [['Book a place', 'https://www.majorfun.com.au/major-fun-mount-pritchard/drop-and-dine']] },
+    { from: '2026-11-03', to: '2026-11-03', when: 'Tuesday · from 11.30am', n: 'Melbourne Cup Lunch', p: "A two-course meal and live entertainment with the 2026 ACE Award winning production show 'Can't Stop the Music'. Lucky door and Best Dressed prizes, then the big race live on screen. No TAB facilities on site.", links: [['Tickets', 'https://events.humanitix.com/melbourne-cup-you-cant-stop-the-music']] },
+    { from: '2026-12-25', to: '2026-12-25', when: 'Friday · 11.30am – 2.30pm', n: 'Christmas Seafood Buffet Lunch', p: 'Prawns and oysters, roast turkey and honey glazed ham, sides and desserts at M Brasserie. $98 Members, $118 non-members, $45 for 3 to 12 year olds, under 3 eat free.', links: [['Menu & tickets', 'https://events.humanitix.com/christmas-buffet-at-mbrasserie'], ['M Brasserie', '../m-brasserie/', 1]] },
+    { from: '2026-10-01', to: '2026-12-19', when: 'Every day · 9am – 7pm', n: 'Rally into Summer', p: 'For a limited time, book a tennis or pickleball court for an hour for only $20. No membership needed.', links: [['Ask Member Services', 'tel:0298223555']] },
+    { from: '2026-08-28', to: '2026-11-26', when: 'Wed & Thu · 7pm – 9pm', n: 'Mystery Money Cases', p: 'Pick a case for your chance to win a share of $10,000 cash every Wednesday and Thursday. One entry each day you swipe your card at a rewards kiosk, and one for every $20 spent on food and beverage. Conditions apply, authorised under NTP-17856.', links: [['Join to play', '../membership/#join', 1]] },
+    { from: '2026-09-01', to: '2026-11-30', when: 'Opulence 254', n: '$65 Spring Refresh', p: 'A wash, single process colour, cut and blow-dry for all lengths at Opulence 254. Member pricing, conditions apply.', links: [['Call 9823 4966', 'tel:0298234966']] },
+  ].map((e) => ({ ...e, a: at(e.from), b: at(e.to) })).filter((e) => e.b >= d0);
+  // single dates first (soonest first), then the ones that run for a while
+  EVENTS.sort((x, y) => (x.from !== x.to) - (y.from !== y.to) || x.a - y.a);
+  EVENTS.forEach((e, i) => {
+    const single = e.from === e.to;
+    const n = daysTo(e.a);
+    const badge = single ? (n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : `In ${n} days`) : (e.a <= d0 ? 'On now' : `From ${e.a.getDate()} ${MON[e.a.getMonth()]}`);
+    const big = single ? `${e.a.getDate()}<small>${MON[e.a.getMonth()]}</small>` : `${e.b.getDate()}<small>until ${MON[e.b.getMonth()]}</small>`;
+    const card = el('article', 'ev', `<div class="ev__when"><span>${e.when}</span><span class="tag${n <= 7 && single ? ' tag--amber' : ''}">${badge}</span></div><div class="ev__d">${big}</div><h3>${e.n}</h3><p>${e.p}</p><div class="ev__go">${e.links.map(([t, h, internal]) => `<a href="${h}"${internal || h.startsWith('tel:') ? '' : ' target="_blank" rel="noopener"'}>${t} <span class="arrow">→</span></a>`).join('')}</div>`);
+    card.style.setProperty('--i', i);
+    upRail.append(card);
+  });
+  if (!EVENTS.length) upRail.append(el('article', 'ev', '<div class="ev__when"><span>Events</span></div><div class="ev__d">Soon</div><h3>New dates are on the way</h3><p>Ask Member Services what is coming up.</p>'));
+  // dated notes elsewhere on the page
+  document.querySelectorAll('[data-until]').forEach((n) => { if (at(n.dataset.until) < d0) n.remove(); });
+})();
+</script>
+</body>
+</html>

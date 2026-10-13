@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Sports Bar — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="The Sports Bar at Mounties, Mount Pritchard: live sport on a giant 110-inch screen and over 40 TVs, cold beer on tap, plus Send It! Social Club and its snack bar. Hours and prices.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/sports-bar.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+.sb .bn__img img{object-position:50% 40%}
+/* Numbers */
+.nums .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(18px,3vw,48px)}
+.num{padding-top:22px;border-top:1px solid var(--line)}
+.num b{display:block;font:400 clamp(64px,9vw,150px)/.95 var(--display);letter-spacing:-.04em}
+.num b i{font-style:italic;font-size:.42em;letter-spacing:-.01em;margin-left:.12em;color:var(--muted)}
+.num p{margin-top:16px;max-width:30ch;color:var(--muted)}
+/* On tap */
+.tap{padding-top:0}
+.tap .lbl{display:block;padding:0 var(--pad) 18px}
+.tap__grid{margin-top:clamp(48px,6vw,90px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr) minmax(0,.9fr);gap:clamp(16px,3vw,56px);align-items:end}
+.tap__a{aspect-ratio:3/2}
+.tap__b{aspect-ratio:2/3}
+.tap__copy p{color:var(--muted);max-width:40ch}
+.tap__copy p+p{margin-top:1em}
+.tap__copy .btn{margin-top:26px}
+/* Send It! */
+.si__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,100px);align-items:start}
+.si__tabs{border-top:1px solid var(--line-d)}
+.si__tab{position:relative;display:grid;grid-template-columns:44px 1fr;align-items:baseline;width:100%;text-align:left;padding:clamp(12px,1.3vw,18px) 0;border-bottom:1px solid var(--line-d)}
+.si__tab small{font:500 12px/1 var(--body);letter-spacing:.14em;color:var(--muted-d)}
+.si__tab b{font:400 clamp(28px,3.2vw,48px)/1.08 var(--display);letter-spacing:-.02em;opacity:.42;transition:opacity .5s,transform .6s var(--ease),color .5s}
+.si__tab:hover b{opacity:.8}
+.si__tab.is-on b{opacity:1;color:var(--sand);font-style:italic;transform:translateX(10px)}
+.si__tab.is-on small{color:var(--sand)}
+.si__stage{position:sticky;top:96px}
+.si__pics{position:relative;aspect-ratio:4/3.3;border-radius:var(--r);overflow:hidden;background:var(--night)}
+.si__pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 100% 0 0);transform:scale(1.1);transition:clip-path 0s .9s,transform 0s .9s}
+.si__pics img.is-on{z-index:1;clip-path:inset(0);transform:none;transition:clip-path .9s var(--ease-io),transform 1.6s var(--ease)}
+.si__info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(18px,2.4vw,36px);margin-top:20px}
+.si__info div{padding:16px 0;border-bottom:1px solid var(--line-d)}
+.si__info dt{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted-d)}
+.si__info dd{margin:10px 0 0;font:400 clamp(22px,2.2vw,32px)/1.15 var(--display)}
+.si__info dd small{display:block;margin-top:6px;font:400 13.5px/1.4 var(--body);color:var(--muted-d)}
+.si__info>*{transition:opacity .3s var(--ease)}
+.si__info.is-swap dd{opacity:0}
+.si__note{margin-top:14px;font-size:14.5px;color:var(--muted-d);min-height:22px}
+.si__more{margin-top:clamp(56px,7vw,100px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,100px);align-items:start}
+.si__more h3{font-size:clamp(28px,3vw,44px);margin-top:16px}
+.si__more h3 em{font-style:italic;color:var(--sand)}
+.si__more>div>p{margin-top:18px;color:var(--muted-d);max-width:44ch}
+.si__more .mlinks{margin-top:26px}
+
+@media (max-width:1000px){
+  .tap__grid{grid-template-columns:1fr 1fr}
+  .tap__copy{grid-column:1/-1}
+  .si__grid,.si__more{grid-template-columns:1fr}
+  .si__stage{position:static;order:-1}
+  .si__tabs{display:flex;flex-wrap:wrap;gap:6px;border:0}
+  .si__tab{display:block;width:auto;padding:12px 16px;border:1px solid var(--line-d);border-radius:999px}
+  .si__tab small{display:none}
+  .si__tab b{font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;opacity:1}
+  .si__tab.is-on{background:var(--paper);border-color:var(--paper)}
+  .si__tab.is-on b{color:var(--ink);font-style:normal;transform:none}
+}
+@media (max-width:560px){
+  .nums .wrap{grid-template-columns:1fr;gap:28px}
+  .num b{font-size:clamp(64px,22vw,96px)}
+  .tap__grid{grid-template-columns:1fr .66fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="./" aria-current="page">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="./" aria-current="page">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="bn sb">
+    <div class="bn__frame">
+      <div class="bn__img" data-vt-hero style="view-transition-name:v4-sports-bar"><img src="../../assets/mo/sports-bar.jpg" alt="Screens, booths and the bar inside The Sports Bar at Mounties" fetchpriority="high"></div>
+      <div class="bn__top"><nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; Bars</a><i>/</i>
+        <span aria-current="page">The Sports Bar</span>
+      </nav></div>
+      <div class="bn__body">
+        <div>
+          <p class="eyebrow rise" style="--d:1">Live sport &amp; cold beer</p>
+          <h1 data-split="load">Your favourite sports, <em>live and free.</em></h1>
+          <p class="bn__lede rise" style="--d:4">Watch the NRL, EPL or the UFC live and free on a giant 110-inch screen, along with over 40 LCD TVs.</p>
+          <div class="cta rise" style="--d:5">
+            <a class="btn btn--amber" href="../whats-on/#live-sport">What's on the screens <span class="arrow">→</span></a>
+            <a class="btn btn--ghost" href="#send-it">Send It! Social Club</a>
+          </div>
+        </div>
+        <aside class="glass rise" style="--d:6">
+          <p class="lbl">Today · <span data-today>today</span></p>
+          <p class="status" data-status="sports"><i></i><span>See hours below</span></p>
+          <dl>
+            <div><dt>Bar service</dt><dd data-today-hours="sports">See hours below</dd></div>
+            <div><dt>TVs on</dt><dd>9am until close</dd></div>
+            <div><dt>Club</dt><dd><a href="tel:0298223555">(02) 9822 3555</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="nums">
+    <div class="wrap">
+      <div class="num reveal"><b><span data-count="110">110</span><i>inch</i></b><p>One giant screen for the big games.</p></div>
+      <div class="num reveal" style="--d:1"><b><span data-count="40">40</span><i>plus</i></b><p>LCD TVs, so there is always a seat with a view.</p></div>
+      <div class="num reveal" style="--d:2"><b><span data-count="3">3</span><i>litres</i></b><p>Self-cooling, self-serve beer towers to share.</p></div>
+    </div>
+  </section>
+
+  <section class="tap">
+    <span class="lbl reveal">Icy cold, on tap</span>
+    <div class="band" aria-label="On tap: Balter, Stone and Wood, VB and much more">
+      <div class="band__in" aria-hidden="true">
+        <span>Balter</span><span>Stone &amp; Wood</span><span>VB</span><span>&amp; much more</span><span>Balter</span><span>Stone &amp; Wood</span><span>VB</span><span>&amp; much more</span>
+        <span>Balter</span><span>Stone &amp; Wood</span><span>VB</span><span>&amp; much more</span><span>Balter</span><span>Stone &amp; Wood</span><span>VB</span><span>&amp; much more</span>
+      </div>
+    </div>
+    <div class="wrap tap__grid">
+      <div class="ph tap__a wipe"><img src="../../assets/mo/ve-beers.jpg" alt="Friends raising glasses of beer" loading="lazy"></div>
+      <div class="ph tap__b wipe" style="--d:1"><img src="../../assets/mo/ve-sports-host.jpg" alt="A host standing in The Sports Bar" loading="lazy"></div>
+      <div class="tap__copy reveal">
+        <p>Enjoy icy cold beers on tap, or share one of the 3-litre, self-cooling, self-serve beer towers with your mates. Proper No. Twelve whiskey is behind the bar too.</p>
+        <p>Mounties practises the responsible service of alcohol.</p>
+        <a class="btn btn--ink" href="../dining/#specials">This month's drinks specials <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="si sec--ink" id="send-it">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Send It! Social Club</p><h2 data-split>Bring the crew. <em>Make a scene.</em></h2></div>
+        <p class="reveal">Seven games under one roof, plus a pool table and the Send It! Snack Bar. Pick a game to see who it suits and what it costs today.</p>
+      </div>
+      <div class="si__grid">
+        <div class="si__tabs reveal" role="tablist" aria-label="Games at Send It!">
+            <button type="button" role="tab" class="si__tab is-on" aria-selected="true" data-i="0" data-size="1 to 8 people" data-rate="std" data-note=""><small>01</small><b>Shuffleboard</b></button>
+            <button type="button" role="tab" class="si__tab" aria-selected="false" data-i="1" data-size="1 to 6 people" data-rate="std" data-note="Cricket, baseball, lacrosse and tennis"><small>02</small><b>Batting</b></button>
+            <button type="button" role="tab" class="si__tab" aria-selected="false" data-i="2" data-size="1 to 6 people" data-rate="std" data-note=""><small>03</small><b>Golf</b></button>
+            <button type="button" role="tab" class="si__tab" aria-selected="false" data-i="3" data-size="1 to 6 people" data-rate="std" data-note=""><small>04</small><b>AR Darts</b></button>
+            <button type="button" role="tab" class="si__tab" aria-selected="false" data-i="4" data-size="1 to 4 people" data-rate="std" data-note=""><small>05</small><b>Racing</b></button>
+            <button type="button" role="tab" class="si__tab" aria-selected="false" data-i="5" data-size="1 to 6 people" data-rate="std" data-note=""><small>06</small><b>Shooting</b></button>
+            <button type="button" role="tab" class="si__tab" aria-selected="false" data-i="6" data-size="1 to 6 people" data-rate="three" data-note=""><small>07</small><b>Basketball</b></button>
+        </div>
+        <div class="si__stage reveal">
+          <div class="si__pics">
+            <img class="is-on" src="../../assets/mo/ve-sendit-shuffle.jpg" alt="A shuffleboard table at Send It! Social Club" loading="lazy">
+            <img src="../../assets/mo/ve-sendit-batting.jpg" alt="A guest in the batting bay at Send It!" loading="lazy">
+            <img src="../../assets/mo/ve-sendit-golf.jpg" alt="A golfer mid-swing in a simulator bay at Send It!" loading="lazy">
+            <img src="../../assets/mo/ve-sendit-darts.jpg" alt="A guest celebrating at the darts lane at Send It!" loading="lazy">
+            <img src="../../assets/mo/ve-sendit-racing.jpg" alt="Racing simulators at Send It!" loading="lazy">
+            <img src="../../assets/mo/ve-sendit-shooting.jpg" alt="A guest at the shooting game at Send It!" loading="lazy">
+            <img src="../../assets/mo/ve-sendit-hoops.jpg" alt="Basketball hoop machines at Send It!" loading="lazy">
+          </div>
+          <dl class="si__info" aria-live="polite">
+            <div><dt>Group size</dt><dd id="si-size">1 to 8 people</dd></div>
+            <div><dt id="si-when">Per game</dt><dd id="si-price">From $5</dd></div>
+          </dl>
+          <p class="si__note" id="si-note"></p>
+        </div>
+      </div>
+      <div class="si__more">
+        <article class="deal reveal" style="--d:0" data-days="0,1,2,3,4,5,6" data-until="2026-11-30">
+          <div class="deal__top"><span class="lbl">Send It! Snack Bar</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$15</p>
+          <h3>Burger &amp; Beer</h3>
+          <ul><li>Beef Burger</li><li>or Southern Fried Chicken Burger</li></ul>
+          <p class="deal__when">Available all day, only at Send It! Mounties</p>
+          <p class="deal__fine">Members only. Dine in only. Valid until 30 November. Mounties practises the responsible service of alcohol.</p>
+        </article>
+        <div>
+          <p class="lbl reveal">Good to know</p>
+          <h3 class="reveal">Menus, packages <em>and bookings.</em></h3>
+          <p class="reveal">Basketball and the pool table are $3 a game every day. Every other game is $5 on Monday and Tuesday, and $10 from Wednesday to Sunday. For Send It! opening hours, ask at reception.</p>
+          <div class="mlinks reveal">
+          <a href="https://mounties.com.au/sendit#booknow" target="_blank" rel="noopener"><span><b>Book a game</b><small>Online with Send It! at Mounties</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/SI-SnackBarMenu-A5.pdf" target="_blank" rel="noopener"><span><b>Snack bar menu</b><small>Opens as a PDF from Mounties</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Packages%20Web.pdf" target="_blank" rel="noopener"><span><b>Group packages</b><small>Opens as a PDF from Mounties</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--card" id="hours">
+    <div class="wrap plan">
+      <div>
+        <p class="eyebrow reveal">Bar service hours</p>
+        <h2 data-split>Kick-off <em>to close.</em></h2>
+        <table class="hrs reveal">
+          <tbody>
+          <tr data-d="1,2,3"><th scope="row">Monday to Wednesday</th><td>2pm – 8.30pm</td></tr>
+          <tr data-d="4,5"><th scope="row">Thursday &amp; Friday</th><td>11.30am – 11pm</td></tr>
+          <tr data-d="6"><th scope="row">Saturday</th><td>9am – 12am</td></tr>
+          <tr data-d="0"><th scope="row">Sunday</th><td>9am – 9pm</td></tr>
+          </tbody>
+          </table>
+        <p class="fine reveal">TVs are on from 9am until close. Timings are listed for bar service only.</p>
+        <div class="dayline reveal" data-dayline="sports" data-from="9" data-to="24">
+          <div class="dayline__head"><p class="lbl">Bar service · <span data-today>today</span></p><span class="status" data-status="sports"><i></i><span>See hours</span></span></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal">While you're here</p>
+        <h2 data-split>Make a <em>day of it.</em></h2>
+        <div class="mlinks reveal">
+          <a href="../whats-on/#live-sport"><span><b>Live sport</b><small>See what's coming up on the screens</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a href="../murphys/"><span><b>Murphy's</b><small>Ice cold drinks and free darts</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a href="../terrace-bar-cafe/"><span><b>Terrace Bar &amp; Cafe</b><small>Diner classics and an outdoor terrace</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a href="../visit/#courtesy-bus"><span><b>Courtesy bus</b><small>Leave the car at home</small></span><span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Another <em>round?</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../murphys/"><img src="../../assets/mo/murphys.jpg" alt="" loading="lazy" style="view-transition-name:v4-murphys"><span class="tile__body"><span><small>Murphy's</small><b>Ice cold drinks &amp; free darts</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../terrace-bar-cafe/"><img src="../../assets/mo/terrace-shakes.jpg" alt="" loading="lazy" style="view-transition-name:v4-terrace-bar-cafe"><span class="tile__body"><span><small>Terrace Bar &amp; Cafe</small><b>Outdoor dining &amp; entertainment</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../dining/"><img src="../../assets/mo/brasserie-tall.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>All seven venues</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" in Sydney; override with ?now=YYYY-MM-DD or ?now=YYYY-MM-DDTHH:MM
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+  const dow = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const D3 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = (m) => { m %= 1440; const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? '.' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm'); };
+  // Published trading hours: [label, days (0 = Sunday), open, close] in minutes
+  const H = {
+    jumbo: [['Yum cha', [1, 2, 3, 4, 5], 660, 900], ['Yum cha', [0, 6], 600, 900], ['Dinner', [0, 1, 2, 3, 4], 1050, 1290], ['Dinner', [5, 6], 1050, 1350]],
+    brasserie: [['Lunch', [0, 1, 2, 3, 4, 5, 6], 690, 870], ['Dinner', [0, 1, 2, 3, 4], 1020, 1260], ['Dinner', [5, 6], 1020, 1290]],
+    bau: [['Open', [1, 2, 3, 4], 660, 1260], ['Open', [5, 6, 0], 660, 1320]],
+    fresh: [['Open', [1, 2, 3, 4, 5], 420, 840], ['Open', [6], 480, 840]],
+    sports: [['Bar service', [1, 2, 3], 840, 1230], ['Bar service', [4, 5], 690, 1380], ['Bar service', [6], 540, 1440], ['Bar service', [0], 540, 1260]],
+    terrace: [['Open', [0, 1, 2, 3], 540, 1320], ['Open', [4], 540, 1380], ['Open', [5, 6], 540, 1440]],
+    murphys: [['Bar service', [1, 2, 3, 4, 5], 930, 1320], ['Bar service', [6, 0], 540, 1320]],
+  };
+  const UNK = { fresh: [0] }; // days with no published hours
+  const unk = (k, d = dow) => (UNK[k] || []).includes(d);
+  const sessions = (k, d = dow) => H[k].filter((s) => s[1].includes(d)).sort((a, b) => a[2] - b[2]);
+  const state = (k) => {
+    const t = sessions(k);
+    const cur = t.find((s) => mins >= s[2] && mins < s[3]);
+    if (cur) return { open: true, soon: cur[3] - mins <= 45, s: cur };
+    const next = t.find((s) => s[2] > mins);
+    if (next) return { open: false, s: next, day: 0 };
+    for (let i = 1; i <= 7; i++) { const n = sessions(k, (dow + i) % 7); if (n.length) return { open: false, s: n[0], day: i, dn: (dow + i) % 7 }; }
+    return { open: false };
+  };
+  const say = (k, short) => {
+    const st = state(k);
+    const lab = (s) => (s[0] === 'Open' || s[0] === 'Bar service' || short ? '' : s[0].toLowerCase() + ' ');
+    if (st.open) return (st.soon ? 'Closing soon · ' : 'Open now · ') + lab(st.s) + 'until ' + fmt(st.s[3]);
+    if (unk(k)) return DAYS[dow] + ' hours: ask at reception';
+    if (!st.s) return 'Closed';
+    return 'Closed · ' + (st.day === 0 && lab(st.s) ? lab(st.s) + 'from ' : 'opens ') + (st.day === 1 ? 'tomorrow ' : st.day > 1 ? D3[st.dn] + ' ' : '') + fmt(st.s[2]);
+  };
+  const hoursToday = (k, d = dow) => { const t = sessions(k, d); return t.length ? t.map((s) => (s[0] === 'Open' || s[0] === 'Bar service' ? '' : s[0] + ' ') + fmt(s[2]) + ' – ' + fmt(s[3])).join(' · ') : unk(k, d) ? 'Ask at reception' : 'Closed'; };
+  $$('[data-status]').forEach((el) => {
+    const st = state(el.dataset.status);
+    el.classList.add(st.open ? (st.soon ? 'is-soon' : 'is-open') : 'is-closed');
+    el.lastElementChild.textContent = say(el.dataset.status, el.hasAttribute('data-short'));
+  });
+  $$('[data-today-hours]').forEach((el) => { el.textContent = hoursToday(el.dataset.todayHours); });
+  $$('[data-today]').forEach((el) => { el.textContent = DAYS[dow]; });
+  $$('.hrs tr[data-d]').forEach((tr) => tr.classList.toggle('is-today', tr.dataset.d.split(',').map(Number).includes(dow)));
+  // Offers: lit when they run today, retired once their end date has passed
+  const ymd = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const ended = (el) => !!el.dataset.until && ymd > el.dataset.until;
+  $$('.deal[data-days]').forEach((el) => {
+    const flag = $('.deal__flag', el);
+    if (ended(el)) { el.classList.add('is-ended'); if (flag) flag.textContent = 'Offer ended'; return; }
+    if (!el.closest('[data-daypick]')) el.classList.toggle('is-today', el.dataset.days.split(',').map(Number).includes(dow));
+  });
+  // Today's service drawn on a timeline with a "now" marker
+  $$('[data-dayline]').forEach((el) => {
+    const k = el.dataset.dayline, a = +(el.dataset.from || 7) * 60, b = +(el.dataset.to || 24) * 60;
+    const pos = (m) => ((Math.min(Math.max(m, a), b) - a) / (b - a) * 100).toFixed(2) + '%';
+    const t = sessions(k);
+    const p = (mins - a) / (b - a);
+    let ticks = '';
+    for (let m = a; m <= b; m += 180) ticks += `<span style="left:${pos(m)}">${fmt(m)}</span>`;
+    el.insertAdjacentHTML('beforeend',
+      `<div class="dayline__track" role="img" aria-label="${DAYS[dow]}: ${hoursToday(k)}">` +
+      t.map((s) => `<span class="dayline__blk${mins >= s[2] && mins < s[3] ? ' is-live' : ''}" style="left:${pos(s[2])};width:${((s[3] - s[2]) / (b - a) * 100).toFixed(2)}%"></span>`).join('') +
+      (p >= 0 && p <= 1 ? `<i class="dayline__now${p < .1 ? ' is-l' : p > .9 ? ' is-r' : ''}" style="left:${pos(mins)}"><em>Now ${fmt(mins)}</em></i>` : '') +
+      `</div><div class="dayline__ticks" aria-hidden="true">${ticks}</div>` +
+      `<p class="dayline__key">${t.length ? t.map((s) => `<span><b>${s[0]}</b> ${fmt(s[2])} – ${fmt(s[3])}</span>`).join('') : `<span>${unk(k) ? DAYS[dow] + ' hours are not published. Ask at reception.' : 'Closed today.'}</span>`}</p>`);
+  });
+  // Send It!: choose a game
+  const tabs = $$('.si__tab'), pics = $$('.si__pics img'), info = $('.si__info');
+  const cheap = dow === 1 || dow === 2;
+  const fill = (t) => {
+    $('#si-size').textContent = t.dataset.size;
+    $('#si-when').textContent = 'Per game · ' + (t.dataset.rate === 'three' ? 'every day' : 'today, ' + DAYS[dow]);
+    $('#si-price').innerHTML = t.dataset.rate === 'three' ? '$3' : (cheap ? '$5<small>$10 from Wednesday to Sunday</small>' : '$10<small>$5 on Mondays and Tuesdays</small>');
+    $('#si-note').textContent = t.dataset.note;
+  };
+  const pick = (t, instant) => {
+    tabs.forEach((b) => { b.classList.toggle('is-on', b === t); b.setAttribute('aria-selected', b === t); });
+    pics.forEach((p, i) => p.classList.toggle('is-on', i === +t.dataset.i));
+    if (instant) return fill(t);
+    info.classList.add('is-swap');
+    setTimeout(() => { fill(t); info.classList.remove('is-swap'); }, 260);
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pick(t));
+    t.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      const n = tabs[(i + step + tabs.length) % tabs.length];
+      n.focus(); pick(n);
+    });
+  });
+  pick(tabs[0], true);
+})();
+</script>
+</body>
+</html>

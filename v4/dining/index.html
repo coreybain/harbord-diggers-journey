@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dining &amp; Bars — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Seven places to eat and drink at Mounties, Mount Pritchard: yum cha, Vietnamese, casual dining, a cafe, a terrace and two bars. See what is open now and this week's member meal specials.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/brasserie-tall.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: words on the left, two columns of photos drifting in opposite directions */
+.hb{padding:0;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:minmax(0,50fr) minmax(0,50fr);grid-template-rows:100%;height:clamp(660px,100svh,900px);overflow:hidden}
+.hb__text{display:flex;flex-direction:column;justify-content:flex-end;padding:112px clamp(24px,4vw,64px) clamp(32px,5vh,60px) var(--pad)}
+.hb .crumb{margin-bottom:auto}
+.hb .eyebrow{color:var(--sand);margin-top:40px}
+.hb h1{font-size:clamp(46px,6vw,104px);margin-top:24px;--base:300ms}
+.hb h1 em{color:var(--sand)}
+.hb__lede{max-width:40ch;margin-top:24px;color:var(--muted-d);font-size:17px}
+.hb .cta{margin-top:30px}
+.hb__live{margin-top:clamp(28px,5vh,56px);padding-top:18px;border-top:1px solid var(--line-d);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:14px;color:var(--muted-d)}
+.hb__live .status{color:var(--paper)}
+.hb__cols{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-right:12px}
+.hb__cols::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,var(--ink) 0,rgba(22,24,37,.55) 12%,rgba(22,24,37,0) 28%,rgba(22,24,37,0) 82%,rgba(22,24,37,.85))}
+.hb__col{display:flex;flex-direction:column;gap:14px}
+.hb__col:first-child{transform:translate3d(0,calc(-70px + var(--sy,0) * -.14px),0)}
+.hb__col:last-child{transform:translate3d(0,calc(-300px + var(--sy,0) * .12px),0)}
+.hb__col figure{flex:none;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--night)}
+.hb__col img{width:100%;height:100%;object-fit:cover}
+.js .hb__col figure{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io) calc(var(--i) * 130ms + .1s)}
+.js .is-loaded .hb__col figure{clip-path:inset(0 round var(--r))}
+.js .hb__col img{transform:scale(1.16);transition:transform 2.6s var(--ease) calc(var(--i) * 130ms + .1s)}
+.js .is-loaded .hb__col img{transform:none}
+
+/* Venue index: a list of names with live status; the photo follows whichever row you are on */
+.idx__tools{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.idx__count{font-size:14.5px;color:var(--muted)}
+.idx__count b{color:var(--ink);font-weight:600}
+.idx__grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,6vw,110px);align-items:start}
+.vlist{border-top:1px solid var(--line)}
+.vlist li[hidden]{display:none}
+.vrow{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr) auto 24px;align-items:center;gap:16px;padding:clamp(18px,1.9vw,26px) 0;border-bottom:1px solid var(--line);transition:opacity .45s var(--ease)}
+.vrow::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.vrow.is-active::after{transform:scaleX(1)}
+.vrow__th{display:none}
+.vrow__n{font:500 12px/1 var(--body);letter-spacing:.14em;color:var(--muted)}
+.vrow__t{transition:transform .55s var(--ease)}
+.vrow__t b{display:block;font:400 clamp(26px,2.9vw,44px)/1.1 var(--display);letter-spacing:-.02em}
+.vrow__t small{display:block;margin-top:5px;font-size:14.5px;color:var(--muted)}
+.vrow .status{color:var(--muted);white-space:nowrap}
+.vrow .status.is-open,.vrow .status.is-soon{color:var(--ink)}
+.vrow .arrow{opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .5s var(--ease)}
+.vrow.is-active .arrow{opacity:1;transform:none}
+.vrow.is-active .vrow__t{transform:translateX(10px)}
+.vlist.is-hot .vrow:not(.is-active){opacity:.42}
+.idx__also{margin-top:22px;font-size:14.5px;color:var(--muted)}
+.idx__none{display:none;padding:26px 0;font-size:16px;color:var(--muted)}
+.idx__none.is-on{display:block}
+.idx__photo{position:sticky;top:96px;aspect-ratio:4/4.7;border-radius:var(--r);overflow:hidden;background:var(--night);color:var(--paper)}
+.vp{position:absolute;inset:0;z-index:1;clip-path:inset(0 0 0 100%);transition:clip-path 0s 1.1s}
+.vp.is-active{z-index:2;clip-path:inset(0);transition:clip-path 1.1s var(--ease-io)}
+.vp img{width:100%;height:100%;object-fit:cover;transform:scale(1.14) translateX(3%);transition:transform 0s 1.1s}
+.vp.is-active img{transform:scale(1.02);transition:transform 6s cubic-bezier(.2,.6,.2,1)}
+.vp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,23,0) 50%,rgba(13,14,23,.82))}
+.vp figcaption{position:absolute;z-index:2;left:clamp(20px,2.2vw,32px);right:clamp(20px,2.2vw,32px);bottom:clamp(20px,2.2vw,30px)}
+.vp figcaption b{display:block;font:400 clamp(24px,2.3vw,36px)/1.1 var(--display);letter-spacing:-.015em}
+.vp figcaption i{display:block;font-style:normal;font-size:14px;opacity:.85;margin-top:8px}
+.vp figcaption>span{display:block;opacity:0;transform:translateY(14px);transition:opacity .3s,transform 0s .4s}
+.vp.is-active figcaption>span{opacity:1;transform:none;transition:opacity .8s var(--ease) .5s,transform .8s var(--ease) .5s}
+
+/* Member meal specials */
+.sp__head p{max-width:40ch}
+.sp__bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 32px;margin-bottom:clamp(24px,3vw,40px)}
+.sp__count{font-size:14.5px;color:var(--muted-d)}
+.sp__count b{color:var(--paper);font-weight:600}
+.sp .deals{grid-template-columns:repeat(4,minmax(0,1fr))}
+.sp .deal__price{font-size:clamp(40px,3.6vw,58px)}
+.drinks{margin-top:clamp(40px,5vw,72px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line-d);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:24px clamp(32px,6vw,110px);align-items:start}
+.drinks h3{font-size:clamp(26px,2.6vw,38px);margin-top:16px}
+.drinks ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.drinks li b{display:block;font:400 clamp(34px,3.4vw,52px)/1 var(--display);color:var(--sand);letter-spacing:-.03em}
+.drinks li span{display:block;margin-top:10px;font-size:15px;color:var(--muted-d)}
+.drinks .fine{grid-column:2;margin-top:0}
+
+@media (max-width:1280px){
+  .sp .deals{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:1000px){
+  .hb{grid-template-columns:1fr;grid-template-rows:auto;height:auto}
+  .hb__text{padding:104px var(--pad) 32px}
+  .hb .crumb{margin-bottom:0}
+  .hb__cols{height:min(74vw,460px);overflow:hidden;padding:0 12px;grid-template-columns:repeat(2,1fr);margin-bottom:12px;border-radius:var(--r)}
+  .hb__cols::after{background:none}
+  .hb__col:first-child{transform:translate3d(0,calc(-40px + var(--sy,0) * -.1px),0)}
+  .hb__col:last-child{transform:translate3d(0,calc(-190px + var(--sy,0) * .08px),0)}
+  .idx__tools{align-items:flex-start}
+  .idx__grid{grid-template-columns:1fr}
+  .idx__photo{display:none}
+  .vrow{grid-template-columns:64px minmax(0,1fr) 20px;gap:6px 16px}
+  .vrow__th{display:block;grid-row:1/3;width:64px;height:64px;border-radius:50%;object-fit:cover}
+  .vrow__n{display:none}
+  .vrow .status{grid-column:2;grid-row:2;font-size:13px}
+  .vrow .arrow{grid-column:3;grid-row:1/3;opacity:1;transform:none}
+  .vlist.is-hot .vrow:not(.is-active){opacity:1}
+  .vrow.is-active .vrow__t{transform:none}
+  .vrow.is-active::after{transform:scaleX(0)}
+  .drinks{grid-template-columns:1fr}
+  .drinks .fine{grid-column:1}
+}
+@media (max-width:560px){
+  .hb h1{font-size:clamp(42px,12.5vw,60px)}
+  .hb__text{padding-top:92px}
+  .vrow{grid-template-columns:54px minmax(0,1fr) 18px;gap:4px 14px}
+  .vrow__th{width:54px;height:54px}
+  .sp .deals{grid-template-columns:1fr}
+  .drinks ul{grid-template-columns:1fr;gap:18px}
+  .drinks li{display:flex;align-items:baseline;gap:16px}
+  .drinks li span{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .hb__col:nth-child(n){transform:translate3d(0,-120px,0)}
+  .js .hb__col figure{clip-path:none}
+  .js .hb__col img{transform:none}
+}
+.idx__tools .days button{flex:0 0 auto;padding:0 16px;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="./" aria-current="page" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="./" aria-current="page">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="hb">
+    <div class="hb__text">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <span aria-current="page">Dining &amp; Bars</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">Dining &amp; Bars · Mount Pritchard</p>
+      <h1 data-split="load">Every craving, <em>one address.</em></h1>
+      <p class="hb__lede rise" style="--d:4">From daily yum cha to live sport and a cold beer: seven places to eat and drink under one roof.</p>
+      <div class="cta rise" style="--d:5">
+        <a class="btn btn--amber" href="#venues">Find a table <span class="arrow">→</span></a>
+        <a class="btn btn--ghost" href="#specials">Member meal specials</a>
+      </div>
+      <p class="hb__live rise" style="--d:6"><span class="status" id="openline"><i></i><span>Seven venues, one address</span></span><span>Bookings <a class="ulink" href="tel:0298223555">(02) 9822 3555</a></span></p>
+    </div>
+    <div class="hb__cols" aria-hidden="true">
+      <div class="hb__col">
+        <figure style="--i:0"><img src="../../assets/mo/dumplings.jpg" alt=""></figure>
+        <figure style="--i:1;view-transition-name:v4-dining" data-vt-hero><img src="../../assets/mo/brasserie-tall.jpg" alt="" fetchpriority="high"></figure>
+        <figure style="--i:2"><img src="../../assets/mo/ve-fresh-bowl.jpg" alt=""></figure>
+      </div>
+      <div class="hb__col">
+        <figure style="--i:1"><img src="../../assets/mo/terrace-shakes.jpg" alt=""></figure>
+        <figure style="--i:2"><img src="../../assets/mo/bau-bowls.jpg" alt=""></figure>
+        <figure style="--i:3"><img src="../../assets/mo/sports-bar.jpg" alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="idx sec--card" id="venues">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Seven venues</p><h2 data-split>Pull up <em>a chair.</em></h2></div>
+        <div class="idx__tools reveal">
+          <div class="days" role="group" aria-label="Filter venues">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="open" aria-pressed="false">Open now</button>
+            <button type="button" data-filter="eat" aria-pressed="false">Restaurants</button>
+            <button type="button" data-filter="drink" aria-pressed="false">Cafes &amp; bars</button>
+          </div>
+          <p class="idx__count" aria-live="polite"><span data-today>Today</span>: <b id="opencount">see each venue</b></p>
+        </div>
+      </div>
+      <div class="idx__grid">
+        <div>
+          <ul class="vlist">
+          <li class="reveal" style="--d:0" data-k="jumbo" data-type="eat"><a class="vrow" href="../jumbo-seafood/">
+            <img class="vrow__th" src="../../assets/mo/yumcha-spread.jpg" alt="" loading="lazy">
+            <span class="vrow__n">01</span>
+            <span class="vrow__t"><b>Jumbo Seafood</b><small>Chinese restaurant &amp; daily yum cha</small></span>
+            <span class="status" data-status="jumbo" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          <li class="reveal" style="--d:1" data-k="brasserie" data-type="eat"><a class="vrow" href="../m-brasserie/">
+            <img class="vrow__th" src="../../assets/mo/brasserie.jpg" alt="" loading="lazy">
+            <span class="vrow__n">02</span>
+            <span class="vrow__t"><b>M Brasserie</b><small>Casual dining</small></span>
+            <span class="status" data-status="brasserie" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          <li class="reveal" style="--d:2" data-k="bau" data-type="eat"><a class="vrow" href="../bau-truong/">
+            <img class="vrow__th" src="../../assets/mo/bau-guest.jpg" alt="" loading="lazy" style="object-position:50% 30%">
+            <span class="vrow__n">03</span>
+            <span class="vrow__t"><b>Bau Truong</b><small>Vietnamese restaurant</small></span>
+            <span class="status" data-status="bau" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          <li class="reveal" style="--d:3" data-k="fresh" data-type="drink"><a class="vrow" href="../fresh-cafe/">
+            <img class="vrow__th" src="../../assets/mo/ve-fresh-bowl.jpg" alt="" loading="lazy">
+            <span class="vrow__n">04</span>
+            <span class="vrow__t"><b>Fresh Cafe</b><small>Healthy meals &amp; shakes</small></span>
+            <span class="status" data-status="fresh" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          <li class="reveal" style="--d:0" data-k="sports" data-type="drink"><a class="vrow" href="../sports-bar/">
+            <img class="vrow__th" src="../../assets/mo/sports-bar.jpg" alt="" loading="lazy">
+            <span class="vrow__n">05</span>
+            <span class="vrow__t"><b>The Sports Bar</b><small>Live sport &amp; cold beer</small></span>
+            <span class="status" data-status="sports" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          <li class="reveal" style="--d:1" data-k="terrace" data-type="drink"><a class="vrow" href="../terrace-bar-cafe/">
+            <img class="vrow__th" src="../../assets/mo/terrace-shakes.jpg" alt="" loading="lazy">
+            <span class="vrow__n">06</span>
+            <span class="vrow__t"><b>Terrace Bar &amp; Cafe</b><small>Outdoor dining &amp; entertainment</small></span>
+            <span class="status" data-status="terrace" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          <li class="reveal" style="--d:2" data-k="murphys" data-type="drink"><a class="vrow" href="../murphys/">
+            <img class="vrow__th" src="../../assets/mo/murphys.jpg" alt="" loading="lazy">
+            <span class="vrow__n">07</span>
+            <span class="vrow__t"><b>Murphy's</b><small>Ice cold drinks &amp; free darts</small></span>
+            <span class="status" data-status="murphys" data-short><i></i><span>See hours</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a></li>
+          </ul>
+          <p class="idx__none" id="none">Nothing is open right now. The club itself trades 9am to 4am, every day.</p>
+          <p class="idx__also reveal">Also at Mounties: the <a class="ulink" href="../sports-bar/#send-it">Send It! Snack Bar</a>, inside Send It! Social Club.</p>
+        </div>
+        <div class="idx__photo reveal-fade" aria-hidden="true">
+          <figure class="vp is-active" data-k="jumbo" data-slug="jumbo-seafood">
+            <img src="../../assets/mo/yumcha-spread.jpg" alt="Yum cha baskets and plates at Jumbo Seafood">
+            <figcaption><span><b>Jumbo Seafood</b><i data-today-hours="jumbo">Chinese restaurant &amp; daily yum cha</i></span></figcaption>
+          </figure>
+          <figure class="vp" data-k="brasserie" data-slug="m-brasserie">
+            <img src="../../assets/mo/brasserie.jpg" alt="A table of shared plates at M Brasserie" loading="lazy">
+            <figcaption><span><b>M Brasserie</b><i data-today-hours="brasserie">Casual dining</i></span></figcaption>
+          </figure>
+          <figure class="vp" data-k="bau" data-slug="bau-truong">
+            <img src="../../assets/mo/bau-guest.jpg" alt="Friends sharing a meal at Bau Truong" style="object-position:50% 30%" loading="lazy">
+            <figcaption><span><b>Bau Truong</b><i data-today-hours="bau">Vietnamese restaurant</i></span></figcaption>
+          </figure>
+          <figure class="vp" data-k="fresh" data-slug="fresh-cafe">
+            <img src="../../assets/mo/ve-fresh-bowl.jpg" alt="A grain bowl with egg and avocado from Fresh Cafe" loading="lazy">
+            <figcaption><span><b>Fresh Cafe</b><i data-today-hours="fresh">Healthy meals &amp; shakes</i></span></figcaption>
+          </figure>
+          <figure class="vp" data-k="sports" data-slug="sports-bar">
+            <img src="../../assets/mo/sports-bar.jpg" alt="Screens and booths in The Sports Bar" loading="lazy">
+            <figcaption><span><b>The Sports Bar</b><i data-today-hours="sports">Live sport &amp; cold beer</i></span></figcaption>
+          </figure>
+          <figure class="vp" data-k="terrace" data-slug="terrace-bar-cafe">
+            <img src="../../assets/mo/terrace-shakes.jpg" alt="Milkshakes, cake and coffee at the Terrace Bar and Cafe" loading="lazy">
+            <figcaption><span><b>Terrace Bar &amp; Cafe</b><i data-today-hours="terrace">Outdoor dining &amp; entertainment</i></span></figcaption>
+          </figure>
+          <figure class="vp" data-k="murphys" data-slug="murphys">
+            <img src="../../assets/mo/murphys.jpg" alt="Lounge seating inside Murphy's" loading="lazy">
+            <figcaption><span><b>Murphy's</b><i data-today-hours="murphys">Ice cold drinks &amp; free darts</i></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sp sec--ink" id="specials">
+    <div class="wrap">
+      <div class="sec-head sp__head">
+        <div><p class="eyebrow reveal">Member meal specials</p><h2 data-split>Dining deals that <em>won't break the bank.</em></h2></div>
+        <p class="reveal">Show your membership card when you order. Pick a day to see what is on.</p>
+      </div>
+      <div data-daypick>
+        <div class="sp__bar reveal">
+          <div class="days" role="group" aria-label="Choose a day">
+            <button type="button" data-day="1">Mon</button><button type="button" data-day="2">Tue</button><button type="button" data-day="3">Wed</button><button type="button" data-day="4">Thu</button><button type="button" data-day="5">Fri</button><button type="button" data-day="6">Sat</button><button type="button" data-day="0">Sun</button>
+          </div>
+          <p class="sp__count" aria-live="polite" id="spcount"></p>
+        </div>
+        <div class="deals">
+        <article class="deal reveal" style="--d:0" data-days="1,2,3,4,5,6">
+          <div class="deal__top"><span class="lbl">Jumbo Seafood</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$32 <small>members</small></p>
+          <h3>All you can eat yum cha</h3>
+          <ul><li>$42 for non-members</li><li>30 menu items to choose from</li></ul>
+          <p class="deal__when">Monday to Saturday, lunch service only</p>
+          <p class="deal__fine">Excluding public holidays. Members only. Dine in only.</p>
+          <a class="deal__go" href="../jumbo-seafood/">Jumbo Seafood <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:1" data-days="0,1,2,3,4,5,6" data-seafood>
+          <div class="deal__top"><span class="lbl">Jumbo Seafood</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price"><span data-pct>50%</span> <small>off</small></p>
+          <h3>Live seafood</h3>
+          <ul><li>50% off Monday to Friday</li><li>25% off Saturday</li><li>35% off Sunday</li></ul>
+          <p class="deal__when">Every day, during dinner service</p>
+          <p class="deal__fine">Excluding public holidays. Members only. Dine in only.</p>
+          <a class="deal__go" href="../jumbo-seafood/">Jumbo Seafood <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:2" data-days="1,2,3" data-until="2026-10-28">
+          <div class="deal__top"><span class="lbl">M Brasserie</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$12</p>
+          <h3>Director Deals</h3>
+          <ul><li>Chicken Schnitzel or Fish &amp; Chips</li></ul>
+          <p class="deal__when">Monday to Wednesday, dinner service</p>
+          <p class="deal__fine">One per member, per day. Dine in only. Excludes public holidays. See staff for full terms and conditions. Valid Tuesday 1 September to Wednesday 28 October.</p>
+          <a class="deal__go" href="../m-brasserie/">M Brasserie <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:3" data-days="1,2,3,4" data-until="2026-10-29">
+          <div class="deal__top"><span class="lbl">M Brasserie</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$15</p>
+          <h3>Member Dining Deals</h3>
+          <ul><li>250g New York Steak with Chips &amp; Salad</li><li>Chicken Linguine</li><li>Fish &amp; Chips with Salad</li></ul>
+          <p class="deal__when">Monday to Thursday lunch, and Thursday dinner</p>
+          <p class="deal__fine">One per member, per day. Dine in only. Excludes public holidays. See staff for full terms and conditions. Valid Tuesday 1 September to Thursday 29 October.</p>
+          <a class="deal__go" href="../m-brasserie/">M Brasserie <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:0" data-days="1,2,3,4">
+          <div class="deal__top"><span class="lbl">Bau Truong</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$12</p>
+          <h3>Lunch specials</h3>
+          <ul><li>Vermicelli with Vegetarian Spring Rolls</li><li>Chicken Fried Rice</li></ul>
+          <p class="deal__when">Monday to Thursday, lunch service only</p>
+          <p class="deal__fine">Excluding public holidays. Members only. Dine in only.</p>
+          <a class="deal__go" href="../bau-truong/">Bau Truong <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:1" data-days="1,2,3" data-until="2026-10-28">
+          <div class="deal__top"><span class="lbl">Terrace Bar &amp; Cafe</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$12</p>
+          <h3>Director Deals</h3>
+          <ul><li>Chicken Schnitzel or Fish &amp; Chips</li></ul>
+          <p class="deal__when">Monday to Wednesday, dinner service</p>
+          <p class="deal__fine">One per member, per day. Dine in only. Excludes public holidays. See staff for full terms and conditions. Valid Tuesday 1 September to Wednesday 28 October.</p>
+          <a class="deal__go" href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:2" data-days="1,2,3,4,5" data-until="2026-10-30">
+          <div class="deal__top"><span class="lbl">Terrace Bar &amp; Cafe</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$12.50</p>
+          <h3>Meal deal</h3>
+          <ul><li>Fish Burger with Chips &amp; Drink</li></ul>
+          <p class="deal__when">Monday to Friday, lunch and dinner</p>
+          <p class="deal__fine">One per member, per day. Dine in only. Excludes public holidays. See staff for full terms and conditions. Valid Tuesday 1 September to Friday 30 October.</p>
+          <a class="deal__go" href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe <span class="arrow">→</span></a>
+        </article>
+        <article class="deal reveal" style="--d:3" data-days="0,1,2,3,4,5,6" data-until="2026-11-30">
+          <div class="deal__top"><span class="lbl">Send It! Snack Bar</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$15</p>
+          <h3>Burger &amp; Beer</h3>
+          <ul><li>Beef Burger or Southern Fried Chicken Burger</li></ul>
+          <p class="deal__when">Available all day, only at Send It! Mounties</p>
+          <p class="deal__fine">Members only. Dine in only. Valid until 30 November. Mounties practises the responsible service of alcohol.</p>
+          <a class="deal__go" href="../sports-bar/#send-it">Send It! Snack Bar <span class="arrow">→</span></a>
+        </article>
+        </div>
+      </div>
+      <div class="drinks reveal" data-until="2026-10-31">
+        <div><p class="lbl">Drinks specials · October</p><h3>Member pricing at the bar.</h3></div>
+        <ul>
+          <li><b>$6.20</b><span>VB Schooners</span></li>
+          <li><b>$9.50</b><span>Hard Rated Schooners</span></li>
+          <li><b>$5.50</b><span>House Red Wine Glasses (small)</span></li>
+        </ul>
+        <p class="fine">Member pricing. Dine in only. Excludes public holidays. Selected bars only. See staff for full terms and conditions. Mounties practises the responsible service of alcohol. Drink responsibly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="next" style="padding-top:clamp(72px,10vw,150px)">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>After <em>dinner?</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../whats-on/"><img src="../../assets/mo/live-singer.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>What's On</small><b>Live music, sport &amp; events</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../membership/"><img src="../../assets/mo/members-bar.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Membership</small><b>Member pricing, every visit</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../visit/"><img src="../../assets/mo/lobby.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Visit</small><b>Hours &amp; getting here</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" in Sydney; override with ?now=YYYY-MM-DD or ?now=YYYY-MM-DDTHH:MM
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+  const dow = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const D3 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = (m) => { m %= 1440; const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? '.' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm'); };
+  // Published trading hours: [label, days (0 = Sunday), open, close] in minutes
+  const H = {
+    jumbo: [['Yum cha', [1, 2, 3, 4, 5], 660, 900], ['Yum cha', [0, 6], 600, 900], ['Dinner', [0, 1, 2, 3, 4], 1050, 1290], ['Dinner', [5, 6], 1050, 1350]],
+    brasserie: [['Lunch', [0, 1, 2, 3, 4, 5, 6], 690, 870], ['Dinner', [0, 1, 2, 3, 4], 1020, 1260], ['Dinner', [5, 6], 1020, 1290]],
+    bau: [['Open', [1, 2, 3, 4], 660, 1260], ['Open', [5, 6, 0], 660, 1320]],
+    fresh: [['Open', [1, 2, 3, 4, 5], 420, 840], ['Open', [6], 480, 840]],
+    sports: [['Bar service', [1, 2, 3], 840, 1230], ['Bar service', [4, 5], 690, 1380], ['Bar service', [6], 540, 1440], ['Bar service', [0], 540, 1260]],
+    terrace: [['Open', [0, 1, 2, 3], 540, 1320], ['Open', [4], 540, 1380], ['Open', [5, 6], 540, 1440]],
+    murphys: [['Bar service', [1, 2, 3, 4, 5], 930, 1320], ['Bar service', [6, 0], 540, 1320]],
+  };
+  const UNK = { fresh: [0] }; // days with no published hours
+  const unk = (k, d = dow) => (UNK[k] || []).includes(d);
+  const sessions = (k, d = dow) => H[k].filter((s) => s[1].includes(d)).sort((a, b) => a[2] - b[2]);
+  const state = (k) => {
+    const t = sessions(k);
+    const cur = t.find((s) => mins >= s[2] && mins < s[3]);
+    if (cur) return { open: true, soon: cur[3] - mins <= 45, s: cur };
+    const next = t.find((s) => s[2] > mins);
+    if (next) return { open: false, s: next, day: 0 };
+    for (let i = 1; i <= 7; i++) { const n = sessions(k, (dow + i) % 7); if (n.length) return { open: false, s: n[0], day: i, dn: (dow + i) % 7 }; }
+    return { open: false };
+  };
+  const say = (k, short) => {
+    const st = state(k);
+    const lab = (s) => (s[0] === 'Open' || s[0] === 'Bar service' || short ? '' : s[0].toLowerCase() + ' ');
+    if (st.open) return (st.soon ? 'Closing soon · ' : 'Open now · ') + lab(st.s) + 'until ' + fmt(st.s[3]);
+    if (unk(k)) return DAYS[dow] + ' hours: ask at reception';
+    if (!st.s) return 'Closed';
+    return 'Closed · ' + (st.day === 0 && lab(st.s) ? lab(st.s) + 'from ' : 'opens ') + (st.day === 1 ? 'tomorrow ' : st.day > 1 ? D3[st.dn] + ' ' : '') + fmt(st.s[2]);
+  };
+  const hoursToday = (k, d = dow) => { const t = sessions(k, d); return t.length ? t.map((s) => (s[0] === 'Open' || s[0] === 'Bar service' ? '' : s[0] + ' ') + fmt(s[2]) + ' – ' + fmt(s[3])).join(' · ') : unk(k, d) ? 'Ask at reception' : 'Closed'; };
+  $$('[data-status]').forEach((el) => {
+    const st = state(el.dataset.status);
+    el.classList.add(st.open ? (st.soon ? 'is-soon' : 'is-open') : 'is-closed');
+    el.lastElementChild.textContent = say(el.dataset.status, el.hasAttribute('data-short'));
+  });
+  $$('[data-today-hours]').forEach((el) => { el.textContent = hoursToday(el.dataset.todayHours); });
+  $$('[data-today]').forEach((el) => { el.textContent = DAYS[dow]; });
+  $$('.hrs tr[data-d]').forEach((tr) => tr.classList.toggle('is-today', tr.dataset.d.split(',').map(Number).includes(dow)));
+  // Offers: lit when they run today, retired once their end date has passed
+  const ymd = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const ended = (el) => !!el.dataset.until && ymd > el.dataset.until;
+  $$('.deal[data-days]').forEach((el) => {
+    const flag = $('.deal__flag', el);
+    if (ended(el)) { el.classList.add('is-ended'); if (flag) flag.textContent = 'Offer ended'; return; }
+    if (!el.closest('[data-daypick]')) el.classList.toggle('is-today', el.dataset.days.split(',').map(Number).includes(dow));
+  });
+  // Today's service drawn on a timeline with a "now" marker
+  $$('[data-dayline]').forEach((el) => {
+    const k = el.dataset.dayline, a = +(el.dataset.from || 7) * 60, b = +(el.dataset.to || 24) * 60;
+    const pos = (m) => ((Math.min(Math.max(m, a), b) - a) / (b - a) * 100).toFixed(2) + '%';
+    const t = sessions(k);
+    const p = (mins - a) / (b - a);
+    let ticks = '';
+    for (let m = a; m <= b; m += 180) ticks += `<span style="left:${pos(m)}">${fmt(m)}</span>`;
+    el.insertAdjacentHTML('beforeend',
+      `<div class="dayline__track" role="img" aria-label="${DAYS[dow]}: ${hoursToday(k)}">` +
+      t.map((s) => `<span class="dayline__blk${mins >= s[2] && mins < s[3] ? ' is-live' : ''}" style="left:${pos(s[2])};width:${((s[3] - s[2]) / (b - a) * 100).toFixed(2)}%"></span>`).join('') +
+      (p >= 0 && p <= 1 ? `<i class="dayline__now${p < .1 ? ' is-l' : p > .9 ? ' is-r' : ''}" style="left:${pos(mins)}"><em>Now ${fmt(mins)}</em></i>` : '') +
+      `</div><div class="dayline__ticks" aria-hidden="true">${ticks}</div>` +
+      `<p class="dayline__key">${t.length ? t.map((s) => `<span><b>${s[0]}</b> ${fmt(s[2])} – ${fmt(s[3])}</span>`).join('') : `<span>${unk(k) ? DAYS[dow] + ' hours are not published. Ask at reception.' : 'Closed today.'}</span>`}</p>`);
+  });
+  // How many venues are open right now
+  const keys = Object.keys(H);
+  const open = keys.filter((k) => state(k).open);
+  const nums = ['None', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'All seven'];
+  const line = $('#openline');
+  line.classList.add(open.length ? 'is-open' : 'is-closed');
+  line.lastElementChild.textContent = open.length === 7 ? 'All seven venues are open right now' : open.length ? `${nums[open.length]} of seven venues open right now` : 'The kitchens are resting. See hours below';
+  $('#opencount').textContent = open.length ? `${open.length} of 7 open right now` : 'all closed right now';
+
+  // Venue index: the photo follows the row you are on
+  const list = $('.vlist'), rowsEl = $$('.vlist li'), pics = $$('.vp');
+  const show = (k) => {
+    pics.forEach((p) => p.classList.toggle('is-active', p.dataset.k === k));
+    rowsEl.forEach((li) => li.firstElementChild.classList.toggle('is-active', li.dataset.k === k));
+  };
+  rowsEl.forEach((li) => {
+    const a = li.firstElementChild;
+    const on = () => { show(li.dataset.k); list.classList.add('is-hot'); };
+    a.addEventListener('pointerenter', on);
+    a.addEventListener('focus', on);
+    // the photo on show grows into the venue's banner
+    a.addEventListener('click', () => { pics.forEach((p) => { p.style.viewTransitionName = p.dataset.k === li.dataset.k ? 'v4-' + p.dataset.slug : ''; }); });
+  });
+  list.addEventListener('pointerleave', () => list.classList.remove('is-hot'));
+  list.addEventListener('focusout', (e) => { if (!list.contains(e.relatedTarget)) list.classList.remove('is-hot'); });
+  show(open[0] || 'jumbo');
+
+  // Filters
+  $$('[data-filter]').forEach((btn) => btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    $$('[data-filter]').forEach((b) => b.setAttribute('aria-pressed', b === btn));
+    let first;
+    rowsEl.forEach((li) => {
+      const keep = f === 'all' || (f === 'open' ? open.includes(li.dataset.k) : li.dataset.type === f);
+      li.hidden = !keep;
+      li.classList.add('in');
+      if (keep && !first) first = li.dataset.k;
+    });
+    $('#none').classList.toggle('is-on', !first);
+    if (first) show(first);
+  }));
+
+  // Specials by day
+  const cards = $$('[data-daypick] .deal'), dayBtns = $$('[data-day]');
+  const pct = { 0: '35%', 1: '50%', 2: '50%', 3: '50%', 4: '50%', 5: '50%', 6: '25%' };
+  const pick = (d) => {
+    let n = 0;
+    dayBtns.forEach((b) => b.setAttribute('aria-pressed', +b.dataset.day === d));
+    cards.forEach((c) => {
+      if (c.classList.contains('is-ended')) return;
+      const on = c.dataset.days.split(',').map(Number).includes(d);
+      c.classList.toggle('is-today', on);
+      c.classList.toggle('is-dim', !on);
+      $('.deal__flag', c).textContent = d === dow ? 'On today' : 'On ' + DAYS[d];
+      if (c.hasAttribute('data-seafood')) $('[data-pct]', c).textContent = pct[d];
+      if (on) n++;
+    });
+    $('#spcount').innerHTML = `<b>${n} special${n === 1 ? '' : 's'}</b> on ${d === dow ? 'today, ' + DAYS[d] : DAYS[d]}`;
+  };
+  dayBtns.forEach((b) => { b.classList.toggle('is-today', +b.dataset.day === dow); b.addEventListener('click', () => pick(+b.dataset.day)); });
+  pick(dow);
+  $$('.drinks[data-until]').forEach((el) => { if (ended(el)) el.hidden = true; });
+})();
+</script>
+</body>
+</html>

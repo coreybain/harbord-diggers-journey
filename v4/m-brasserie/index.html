@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M Brasserie — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="M Brasserie at Mounties, Mount Pritchard: modern Australian casual dining with pizza, pasta, steaks, fish and more. Lunch and dinner hours, the menu and member dining deals.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/brasserie.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: words left, two overlapping photos right */
+.mb{padding:0;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);min-height:min(100svh,820px);overflow:hidden}
+.mb__text{display:flex;flex-direction:column;justify-content:flex-end;padding:112px clamp(24px,4vw,64px) clamp(32px,5vh,60px) var(--pad)}
+.mb .crumb{margin-bottom:auto}
+.mb .eyebrow{color:var(--sand);margin-top:40px}
+.mb h1{font-size:clamp(44px,5.6vw,96px);margin-top:24px;--base:300ms}
+.mb h1 em{color:var(--sand)}
+.mb__lede{max-width:42ch;margin-top:24px;color:var(--muted-d);font-size:17px}
+.mb .cta{margin-top:30px}
+.mb__status{margin-top:26px}
+.mb__duo{position:relative;margin:12px 12px 12px 0}
+.mb__a{position:absolute;inset:0 0 0 14%;border-radius:var(--r);overflow:hidden;background:var(--night)}
+.mb__a::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,23,.78),rgba(13,14,23,.2) 16%,rgba(13,14,23,0) 32%)}
+.mb__a img{width:100%;height:100%;object-fit:cover}
+.mb__b{position:absolute;left:0;bottom:9%;width:36%;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff;border:6px solid var(--ink);transform:translate3d(0,calc(var(--sy,0) * -.1px),0)}
+.mb__b img{width:100%;height:100%;object-fit:cover;transform:scale(1.5)}
+.js .mb__a{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io) .15s}
+.js .is-loaded .mb__a{clip-path:inset(0 round var(--r))}
+.js .mb__a img{transform:scale(1.14);transition:transform 2.6s var(--ease) .15s}
+.js .is-loaded .mb__a img{transform:none}
+.js .mb__b{opacity:0;scale:.8;transition:opacity 1s var(--ease) .9s,scale 1.4s var(--ease) .9s}
+.js .is-loaded .mb__b{opacity:1;scale:1}
+.vt .mb__a,.vt .mb__a img,.vt .mb__b{transition:none}
+
+/* On the menu: big words */
+.om__grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,110px);align-items:center}
+.om__words li{position:relative;display:flex;align-items:baseline;gap:20px;padding:clamp(10px,1.2vw,18px) 0;font:400 clamp(48px,7vw,112px)/1.02 var(--display);letter-spacing:-.03em}
+.om__words li::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform 1.3s var(--ease-io);transition-delay:calc(var(--d,0) * 90ms)}
+.om__words li.in::after{transform:scaleX(1)}
+.om__words li span{font:500 12px/1 var(--body);letter-spacing:.14em;color:var(--amber)}
+.om__words li:last-child{font-style:italic;color:var(--muted)}
+.om__photo{aspect-ratio:548/617}
+.om__side p{margin-top:24px;color:var(--muted);max-width:42ch}
+.om__side .btn{margin-top:24px}
+
+/* Lunch / dinner */
+.sv__tabs{display:inline-flex;padding:5px;border-radius:999px;border:1px solid var(--line-d);position:relative}
+.sv__tabs button{position:relative;z-index:1;height:46px;padding:0 28px;border-radius:999px;font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;transition:color .4s}
+.sv__tabs button[aria-selected="true"]{color:var(--ink)}
+.sv__pill{position:absolute;top:5px;bottom:5px;left:5px;border-radius:999px;background:var(--paper);transition:transform .6s var(--ease),width .6s var(--ease)}
+.sv__week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:clamp(28px,3vw,44px)}
+.sv__day{padding:18px 14px 16px;border-radius:14px;border:1px solid var(--line-d);min-height:150px;display:flex;flex-direction:column;transition:border-color .5s,background .5s}
+.sv__day.is-today{border-color:var(--amber);background:rgba(230,164,92,.08)}
+.sv__day b{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d)}
+.sv__day.is-today b{color:var(--sand)}
+.sv__day time{display:block;margin-top:12px;font:400 clamp(17px,1.55vw,22px)/1.2 var(--display)}
+.sv__day i{margin-top:auto;padding-top:14px;font-style:normal;font-size:13px;color:var(--sand);min-height:34px}
+.sv__day>*{transition:opacity .3s var(--ease),transform .45s var(--ease)}
+.sv__week.is-swap .sv__day time,.sv__week.is-swap .sv__day i{opacity:0;transform:translateY(8px)}
+.sv .deals{margin-top:clamp(28px,3vw,44px)}
+.sv__key{margin-top:16px;font-size:13.5px;color:var(--muted-d)}
+
+@media (max-width:1000px){
+  .mb{grid-template-columns:1fr;min-height:0}
+  .mb__text{padding:104px var(--pad) 32px}
+  .mb .crumb{margin-bottom:0}
+  .mb__duo{margin:0 12px 12px;height:56svh;min-height:340px}
+  .mb__a{inset:0}
+  .mb__b{left:auto;right:5%;bottom:-6%;width:34%}
+  .om__grid{grid-template-columns:1fr}
+  .sv__week{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .mb h1{font-size:clamp(40px,11.5vw,56px)}
+  .mb__text{padding-top:92px}
+  .mb__b{bottom:5%;border-width:4px}
+  .sv__tabs{display:flex}
+  .sv__tabs button{flex:1;padding:0 10px}
+  .sv__week{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line-d)}
+  .sv__day{flex-direction:row;align-items:baseline;gap:12px;min-height:0;padding:14px 0;border:0;border-bottom:1px solid var(--line-d);border-radius:0;background:none}
+  .sv__day.is-today{background:none}
+  .sv__day b{width:44px}
+  .sv__day time{margin-top:0;font-size:17px}
+  .sv__day i{margin:0 0 0 auto;padding:0;min-height:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .mb__a{clip-path:none}.js .mb__a img{transform:none}.js .mb__b{opacity:1;scale:1}.mb__b{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="./" aria-current="page">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="./" aria-current="page">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="mb">
+    <div class="mb__text">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; Bars</a><i>/</i>
+        <span aria-current="page">M Brasserie</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">Casual dining · Modern Australian</p>
+      <h1 data-split="load">All your favourites, <em>back on the table.</em></h1>
+      <p class="mb__lede rise" style="--d:4">M Brasserie is open again after a number of behind-the-scenes improvements and exciting menu changes.</p>
+      <div class="cta rise" style="--d:5">
+        <a class="btn btn--amber" href="tel:0298223594">Book on 02 9822 3594</a>
+        <a class="btn btn--ghost" href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/MOU-236-MBrasserieMenuJun26-PRINT.pdf" target="_blank" rel="noopener">View the menu <span class="arrow">↗</span></a>
+      </div>
+      <p class="status mb__status rise" style="--d:6" data-status="brasserie"><i></i><span>Lunch and dinner, seven days</span></p>
+    </div>
+    <div class="mb__duo">
+      <div class="mb__a" data-vt-hero style="view-transition-name:v4-m-brasserie"><img src="../../assets/mo/brasserie.jpg" alt="A table of shared plates at M Brasserie" fetchpriority="high"></div>
+      <div class="mb__b" aria-hidden="true"><img src="../../assets/mo/ve-brasserie-steak.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <section class="om">
+    <div class="wrap om__grid">
+      <div>
+        <p class="eyebrow reveal">On the menu</p>
+        <ul class="om__words">
+          <li class="reveal"><span>01</span>Pizza</li>
+          <li class="reveal" style="--d:1"><span>02</span>Pasta</li>
+          <li class="reveal" style="--d:2"><span>03</span>Steaks</li>
+          <li class="reveal" style="--d:3"><span>04</span>Fish</li>
+          <li class="reveal" style="--d:4"><span>05</span>and more</li>
+        </ul>
+      </div>
+      <div class="om__side">
+        <div class="ph om__photo wipe"><img src="../../assets/mo/oven.jpg" alt="Pizza, pasta and steak dishes from M Brasserie, seen from above" loading="lazy"></div>
+        <p class="reveal">Enjoy all your favourite modern Australian dishes that M Brasserie has to offer. Choose from a variety of pizza, pasta, steaks, fish, and more.</p>
+        <a class="btn btn--ink reveal" href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/MOU-236-MBrasserieMenuJun26-PRINT.pdf" target="_blank" rel="noopener">Read the full menu <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv sec--ink" id="specials">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Your week at M Brasserie</p><h2 data-split>Lunch or <em>dinner?</em></h2></div>
+        <div class="sv__tabs reveal" role="tablist" aria-label="Service">
+          <span class="sv__pill" aria-hidden="true"></span>
+          <button type="button" role="tab" data-sv="Lunch" aria-selected="true">Lunch</button>
+          <button type="button" role="tab" data-sv="Dinner" aria-selected="false">Dinner</button>
+        </div>
+      </div>
+      <div class="sv__week reveal" aria-live="polite"></div>
+      <p class="sv__key reveal">Prices shown are member dining deals for that service. Details below.</p>
+      <div class="deals deals--2">
+        <article class="deal reveal" style="--d:0" data-days="1,2,3" data-until="2026-10-28" data-svc="Dinner">
+          <div class="deal__top"><span class="lbl">Director Deals</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$12</p>
+          <h3>Chicken Schnitzel or Fish &amp; Chips</h3>
+          
+          <p class="deal__when">Monday to Wednesday, dinner service</p>
+          <p class="deal__fine">One per member, per day. Dine in only. Excludes public holidays. See staff for full terms and conditions. Valid Tuesday 1 September to Wednesday 28 October.</p>
+        </article>
+        <article class="deal reveal" style="--d:1" data-days="1,2,3,4" data-until="2026-10-29" data-svc="Lunch,Dinner">
+          <div class="deal__top"><span class="lbl">Member Dining Deals</span><span class="deal__flag">On today</span></div>
+          <p class="deal__price">$15</p>
+          <h3>Three to choose from</h3>
+          <ul><li>250g New York Steak with Chips &amp; Salad</li><li>Chicken Linguine</li><li>Fish &amp; Chips with Salad</li></ul>
+          <p class="deal__when">Monday to Thursday lunch, and Thursday dinner</p>
+          <p class="deal__fine">One per member, per day. Dine in only. Excludes public holidays. See staff for full terms and conditions. Valid Tuesday 1 September to Thursday 29 October.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--card" id="hours">
+    <div class="wrap plan">
+      <div>
+        <p class="eyebrow reveal">Opening hours</p>
+        <h2 data-split>Open <em>seven days.</em></h2>
+        <table class="hrs reveal">
+          <tbody>
+          <tr class="hrs__cap"><th colspan="2"><span class="lbl">Lunch</span></th></tr>
+          <tr data-d="0,1,2,3,4,5,6"><th scope="row">Monday to Sunday</th><td>11.30am – 2.30pm</td></tr>
+          </tbody>
+          <tbody>
+          <tr class="hrs__cap"><th colspan="2"><span class="lbl">Dinner</span></th></tr>
+          <tr data-d="0,1,2,3,4"><th scope="row">Sunday to Thursday</th><td>5pm – 9pm</td></tr>
+          <tr data-d="5,6"><th scope="row">Friday &amp; Saturday</th><td>5pm – 9.30pm</td></tr>
+          </tbody>
+          </table>
+        <div class="dayline reveal" data-dayline="brasserie" data-from="9" data-to="24">
+          <div class="dayline__head"><p class="lbl">Today · <span data-today>today</span></p><span class="status" data-status="brasserie"><i></i><span>See hours</span></span></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal">Menu &amp; bookings</p>
+        <h2 data-split>Save yourself <em>a seat.</em></h2>
+        <div class="mlinks reveal">
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Seafood%20Labels%20Jul%202026/MOU-236-MBrasserieMenuJun26-PRINT.pdf" target="_blank" rel="noopener"><span><b>M Brasserie menu</b><small>Pizza, pasta, steaks, fish and more</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="tel:0298223594"><span><b>Book a table</b><small>Call 02 9822 3594</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a href="../dining/#specials"><span><b>All member meal specials</b><small>Across every Mounties venue</small></span><span class="arrow" aria-hidden="true">→</span></a>
+          <a href="../functions/"><span><b>Planning something bigger?</b><small>Functions and events at Mounties</small></span><span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <p class="fine reveal">The menu opens as a PDF from Mounties. Bookings are taken by phone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Something <em>different?</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../jumbo-seafood/"><img src="../../assets/mo/yumcha-spread.jpg" alt="" loading="lazy" style="view-transition-name:v4-jumbo-seafood"><span class="tile__body"><span><small>Jumbo Seafood</small><b>Cantonese &amp; daily yum cha</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../terrace-bar-cafe/"><img src="../../assets/mo/terrace-shakes.jpg" alt="" loading="lazy" style="view-transition-name:v4-terrace-bar-cafe"><span class="tile__body"><span><small>Terrace Bar &amp; Cafe</small><b>American diner classics</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../dining/"><img src="../../assets/mo/bau-bowls.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>All seven venues</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" in Sydney; override with ?now=YYYY-MM-DD or ?now=YYYY-MM-DDTHH:MM
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+  const dow = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const D3 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = (m) => { m %= 1440; const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? '.' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm'); };
+  // Published trading hours: [label, days (0 = Sunday), open, close] in minutes
+  const H = {
+    jumbo: [['Yum cha', [1, 2, 3, 4, 5], 660, 900], ['Yum cha', [0, 6], 600, 900], ['Dinner', [0, 1, 2, 3, 4], 1050, 1290], ['Dinner', [5, 6], 1050, 1350]],
+    brasserie: [['Lunch', [0, 1, 2, 3, 4, 5, 6], 690, 870], ['Dinner', [0, 1, 2, 3, 4], 1020, 1260], ['Dinner', [5, 6], 1020, 1290]],
+    bau: [['Open', [1, 2, 3, 4], 660, 1260], ['Open', [5, 6, 0], 660, 1320]],
+    fresh: [['Open', [1, 2, 3, 4, 5], 420, 840], ['Open', [6], 480, 840]],
+    sports: [['Bar service', [1, 2, 3], 840, 1230], ['Bar service', [4, 5], 690, 1380], ['Bar service', [6], 540, 1440], ['Bar service', [0], 540, 1260]],
+    terrace: [['Open', [0, 1, 2, 3], 540, 1320], ['Open', [4], 540, 1380], ['Open', [5, 6], 540, 1440]],
+    murphys: [['Bar service', [1, 2, 3, 4, 5], 930, 1320], ['Bar service', [6, 0], 540, 1320]],
+  };
+  const UNK = { fresh: [0] }; // days with no published hours
+  const unk = (k, d = dow) => (UNK[k] || []).includes(d);
+  const sessions = (k, d = dow) => H[k].filter((s) => s[1].includes(d)).sort((a, b) => a[2] - b[2]);
+  const state = (k) => {
+    const t = sessions(k);
+    const cur = t.find((s) => mins >= s[2] && mins < s[3]);
+    if (cur) return { open: true, soon: cur[3] - mins <= 45, s: cur };
+    const next = t.find((s) => s[2] > mins);
+    if (next) return { open: false, s: next, day: 0 };
+    for (let i = 1; i <= 7; i++) { const n = sessions(k, (dow + i) % 7); if (n.length) return { open: false, s: n[0], day: i, dn: (dow + i) % 7 }; }
+    return { open: false };
+  };
+  const say = (k, short) => {
+    const st = state(k);
+    const lab = (s) => (s[0] === 'Open' || s[0] === 'Bar service' || short ? '' : s[0].toLowerCase() + ' ');
+    if (st.open) return (st.soon ? 'Closing soon · ' : 'Open now · ') + lab(st.s) + 'until ' + fmt(st.s[3]);
+    if (unk(k)) return DAYS[dow] + ' hours: ask at reception';
+    if (!st.s) return 'Closed';
+    return 'Closed · ' + (st.day === 0 && lab(st.s) ? lab(st.s) + 'from ' : 'opens ') + (st.day === 1 ? 'tomorrow ' : st.day > 1 ? D3[st.dn] + ' ' : '') + fmt(st.s[2]);
+  };
+  const hoursToday = (k, d = dow) => { const t = sessions(k, d); return t.length ? t.map((s) => (s[0] === 'Open' || s[0] === 'Bar service' ? '' : s[0] + ' ') + fmt(s[2]) + ' – ' + fmt(s[3])).join(' · ') : unk(k, d) ? 'Ask at reception' : 'Closed'; };
+  $$('[data-status]').forEach((el) => {
+    const st = state(el.dataset.status);
+    el.classList.add(st.open ? (st.soon ? 'is-soon' : 'is-open') : 'is-closed');
+    el.lastElementChild.textContent = say(el.dataset.status, el.hasAttribute('data-short'));
+  });
+  $$('[data-today-hours]').forEach((el) => { el.textContent = hoursToday(el.dataset.todayHours); });
+  $$('[data-today]').forEach((el) => { el.textContent = DAYS[dow]; });
+  $$('.hrs tr[data-d]').forEach((tr) => tr.classList.toggle('is-today', tr.dataset.d.split(',').map(Number).includes(dow)));
+  // Offers: lit when they run today, retired once their end date has passed
+  const ymd = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const ended = (el) => !!el.dataset.until && ymd > el.dataset.until;
+  $$('.deal[data-days]').forEach((el) => {
+    const flag = $('.deal__flag', el);
+    if (ended(el)) { el.classList.add('is-ended'); if (flag) flag.textContent = 'Offer ended'; return; }
+    if (!el.closest('[data-daypick]')) el.classList.toggle('is-today', el.dataset.days.split(',').map(Number).includes(dow));
+  });
+  // Today's service drawn on a timeline with a "now" marker
+  $$('[data-dayline]').forEach((el) => {
+    const k = el.dataset.dayline, a = +(el.dataset.from || 7) * 60, b = +(el.dataset.to || 24) * 60;
+    const pos = (m) => ((Math.min(Math.max(m, a), b) - a) / (b - a) * 100).toFixed(2) + '%';
+    const t = sessions(k);
+    const p = (mins - a) / (b - a);
+    let ticks = '';
+    for (let m = a; m <= b; m += 180) ticks += `<span style="left:${pos(m)}">${fmt(m)}</span>`;
+    el.insertAdjacentHTML('beforeend',
+      `<div class="dayline__track" role="img" aria-label="${DAYS[dow]}: ${hoursToday(k)}">` +
+      t.map((s) => `<span class="dayline__blk${mins >= s[2] && mins < s[3] ? ' is-live' : ''}" style="left:${pos(s[2])};width:${((s[3] - s[2]) / (b - a) * 100).toFixed(2)}%"></span>`).join('') +
+      (p >= 0 && p <= 1 ? `<i class="dayline__now${p < .1 ? ' is-l' : p > .9 ? ' is-r' : ''}" style="left:${pos(mins)}"><em>Now ${fmt(mins)}</em></i>` : '') +
+      `</div><div class="dayline__ticks" aria-hidden="true">${ticks}</div>` +
+      `<p class="dayline__key">${t.length ? t.map((s) => `<span><b>${s[0]}</b> ${fmt(s[2])} – ${fmt(s[3])}</span>`).join('') : `<span>${unk(k) ? DAYS[dow] + ' hours are not published. Ask at reception.' : 'Closed today.'}</span>`}</p>`);
+  });
+  // Lunch / dinner: the week redraws for the chosen service
+  const week = $('.sv__week'), tabs = $$('[data-sv]'), pill = $('.sv__pill');
+  const order = [1, 2, 3, 4, 5, 6, 0];
+  const live = (sel) => !ended($(sel));
+  const dealFor = (svc, d) => {
+    const out = [];
+    if (svc === 'Dinner' && [1, 2, 3].includes(d) && live('.deal[data-svc="Dinner"]')) out.push('$12 Director Deals');
+    if (((svc === 'Lunch' && [1, 2, 3, 4].includes(d)) || (svc === 'Dinner' && d === 4)) && live('.deal[data-svc="Lunch,Dinner"]')) out.push('$15 Member Dining');
+    return out.join(' · ');
+  };
+  const draw = (svc) => {
+    week.innerHTML = order.map((d) => {
+      const s = sessions('brasserie', d).find((x) => x[0] === svc);
+      return `<div class="sv__day${d === dow ? ' is-today' : ''}"><b>${D3[d]}</b><time>${fmt(s[2])} – ${fmt(s[3])}</time><i>${dealFor(svc, d)}</i></div>`;
+    }).join('');
+    $$('.sv .deal').forEach((c) => { if (!c.classList.contains('is-ended')) c.classList.toggle('is-dim', !c.dataset.svc.split(',').includes(svc)); });
+  };
+  const movePill = (btn) => { pill.style.width = btn.offsetWidth + 'px'; pill.style.transform = `translateX(${btn.offsetLeft - 5}px)`; };
+  const choose = (btn, instant) => {
+    tabs.forEach((b) => b.setAttribute('aria-selected', b === btn));
+    movePill(btn);
+    if (instant) return draw(btn.dataset.sv);
+    week.classList.add('is-swap');
+    setTimeout(() => { draw(btn.dataset.sv); week.classList.remove('is-swap'); }, 280);
+  };
+  tabs.forEach((b) => b.addEventListener('click', () => choose(b)));
+  // open on whichever service is next
+  const st = state('brasserie');
+  const start = tabs.find((b) => st.s && b.dataset.sv === st.s[0] && st.day === 0 || (st.open && b.dataset.sv === st.s[0])) || tabs[0];
+  choose(start, true);
+  addEventListener('resize', () => movePill(tabs.find((b) => b.getAttribute('aria-selected') === 'true')));
+  document.fonts && document.fonts.ready.then(() => movePill(tabs.find((b) => b.getAttribute('aria-selected') === 'true')));
+})();
+</script>
+</body>
+</html>

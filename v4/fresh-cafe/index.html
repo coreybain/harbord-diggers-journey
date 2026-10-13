@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fresh Cafe — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="Fresh Cafe at Mounties, Mount Pritchard: healthy meals made to order, all-day breakfast and lunch, barista-made coffee, juices, smoothies and protein shakes. Hours and menu.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/ve-fresh-bowl.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: a plate that turns as you scroll */
+.fc{padding:0;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:minmax(0,50fr) minmax(0,50fr);min-height:min(100svh,800px);overflow:hidden}
+.fc__text{display:flex;flex-direction:column;justify-content:flex-end;padding:112px clamp(24px,4vw,64px) clamp(32px,5vh,60px) var(--pad)}
+.fc .crumb{margin-bottom:auto}
+.fc .eyebrow{color:var(--sand);margin-top:40px}
+.fc h1{font-size:clamp(44px,5.8vw,100px);margin-top:24px;--base:300ms}
+.fc h1 em{color:var(--sand)}
+.fc__lede{max-width:42ch;margin-top:24px;color:var(--muted-d);font-size:17px}
+.fc .cta{margin-top:30px}
+.fc__status{margin-top:26px}
+.fc__plate{position:relative;display:grid;place-items:center;padding:96px 12px 24px}
+.fc__ring{position:absolute;width:min(46vw,92vh,760px);aspect-ratio:1;border-radius:50%;border:1px solid var(--line-d)}
+.fc__ring+.fc__ring{width:min(52vw,104vh,860px);opacity:.5}
+.fc__disc{position:relative;width:min(40vw,80vh,660px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--night);box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.fc__disc img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:rotate(calc(var(--sy,0) * .05deg)) scale(1.32)}
+.js .fc__disc{clip-path:circle(0 at 50% 50%);transition:clip-path 1.5s var(--ease-io) .15s}
+.js .is-loaded .fc__disc{clip-path:circle(50.5% at 50% 50%)}
+.js .fc__ring{opacity:0;scale:.86;transition:opacity 1.2s var(--ease) .7s,scale 1.6s var(--ease) .7s}
+.js .is-loaded .fc__ring{opacity:1;scale:1}
+.js .is-loaded .fc__ring+.fc__ring{opacity:.5}
+.vt .fc__disc,.vt .fc__ring{transition:none}
+
+/* Eat / drink */
+.ed__grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,6vw,110px);align-items:center}
+.ed__tabs{display:flex;gap:clamp(18px,2.4vw,36px);margin-top:20px}
+.ed__tabs button{position:relative;font:400 clamp(40px,5.4vw,84px)/1.05 var(--display);letter-spacing:-.025em;color:var(--muted);opacity:.5;transition:opacity .5s,color .5s}
+.ed__tabs button[aria-selected="true"]{opacity:1;color:var(--ink);font-style:italic}
+.ed__tabs button::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.ed__tabs button[aria-selected="true"]::after{transform:scaleX(1)}
+.ed__panel{margin-top:clamp(28px,3.4vw,48px);min-height:300px}
+.ed__panel[hidden]{display:none}
+.ed__panel li{padding:16px 0;border-bottom:1px solid var(--line);font:400 clamp(22px,2.2vw,32px)/1.2 var(--display);opacity:0;transform:translateY(16px)}
+.ed__panel.is-on li{opacity:1;transform:none;transition:opacity .7s var(--ease) calc(var(--i) * 80ms),transform .8s var(--ease) calc(var(--i) * 80ms)}
+.ed__panel p{margin-top:22px;color:var(--muted);max-width:48ch;font-size:16px}
+.ed__photos{position:relative;aspect-ratio:4/4.8;border-radius:var(--r);overflow:hidden;background:#ddd4c5}
+.ed__photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 100% 0);transition:clip-path 0s 1s}
+.ed__photos img.is-on{z-index:1;clip-path:inset(0);transition:clip-path 1s var(--ease-io)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(28px,3vw,40px)}
+.chips li{padding:11px 16px;border-radius:999px;border:1px solid var(--line);font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase}
+
+/* Fuel band */
+.fuel__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(32px,6vw,110px);align-items:end}
+.fuel h2{margin-top:20px}
+.fuel__side p{color:var(--muted-d);max-width:44ch}
+.fuel__side .btn{margin-top:24px}
+.fuel .rows{margin-top:clamp(36px,4vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(18px,3vw,48px)}
+
+@media (max-width:1000px){
+  .fc{grid-template-columns:1fr;min-height:0}
+  .fc__text{padding:104px var(--pad) 12px}
+  .fc .crumb{margin-bottom:0}
+  .fc__plate{padding:40px 12px 56px}
+  .fc__disc{width:min(74vw,460px)}
+  .fc__ring{width:min(84vw,520px)}
+  .fc__ring+.fc__ring{width:min(96vw,590px)}
+  .ed__grid,.fuel__grid{grid-template-columns:1fr}
+  .ed__photos{aspect-ratio:4/3}
+  .ed__panel{min-height:0}
+  .fuel .rows{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .fc h1{font-size:clamp(40px,11.5vw,56px)}
+  .fc__text{padding-top:92px}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .fc__disc{clip-path:circle(50.5% at 50% 50%)}.fc__disc img{transform:scale(1.32)}.js .fc__ring{opacity:1;scale:1}
+  .ed__panel li{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="./" aria-current="page">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="../community/" data-t="Community"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="./" aria-current="page">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="fc">
+    <div class="fc__text">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; Bars</a><i>/</i>
+        <span aria-current="page">Fresh Cafe</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">Healthy meals &amp; shakes</p>
+      <h1 data-split="load">Freshly made <em>to order.</em></h1>
+      <p class="fc__lede rise" style="--d:4">On a health kick and need a coffee fix? Choose from a wide range of healthy, low-carb and vegetarian options, with all-day breakfast and lunch.</p>
+      <div class="cta rise" style="--d:5">
+        <a class="btn btn--amber" href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Fresh%20Cafe%20Menu%20June%202026.pdf" target="_blank" rel="noopener">View the menu <span class="arrow">↗</span></a>
+        <a class="btn btn--ghost" href="#hours">Opening hours</a>
+      </div>
+      <p class="status fc__status rise" style="--d:6" data-status="fresh"><i></i><span>Breakfast and lunch, Monday to Saturday</span></p>
+    </div>
+    <div class="fc__plate">
+      <span class="fc__ring" aria-hidden="true"></span><span class="fc__ring" aria-hidden="true"></span>
+      <div class="fc__disc" data-vt-hero style="view-transition-name:v4-fresh-cafe"><img src="../../assets/mo/ve-fresh-bowl.jpg" alt="A grain bowl with egg, avocado and chickpeas, seen from above" fetchpriority="high"></div>
+    </div>
+  </section>
+
+  <section class="ed">
+    <div class="wrap ed__grid">
+      <div>
+        <p class="eyebrow reveal">What are you after?</p>
+        <div class="ed__tabs reveal" role="tablist" aria-label="Eat or drink">
+          <button type="button" role="tab" id="t-eat" aria-controls="p-eat" aria-selected="true">Eat</button>
+          <button type="button" role="tab" id="t-drink" aria-controls="p-drink" aria-selected="false">Drink</button>
+        </div>
+        <div class="ed__panel is-on reveal" id="p-eat" role="tabpanel" aria-labelledby="t-eat">
+          <ul>
+            <li style="--i:0">Wraps</li>
+            <li style="--i:1">Salads</li>
+            <li style="--i:2">Bowls</li>
+            <li style="--i:3">All-day breakfast and lunch</li>
+          </ul>
+          <p>Freshly made to order. The team at Fresh can tailor any of their meals to suit your specific dietary needs.</p>
+        </div>
+        <div class="ed__panel" id="p-drink" role="tabpanel" aria-labelledby="t-drink" hidden>
+          <ul>
+            <li style="--i:0">Barista-made coffee</li>
+            <li style="--i:1">Custom juices</li>
+            <li style="--i:2">Smoothies</li>
+            <li style="--i:3">Protein shakes</li>
+          </ul>
+          <p>Stay a while: Fresh has free Wi-Fi. Don't forget to present your membership for a discount.</p>
+        </div>
+        <ul class="chips reveal" aria-label="Dietary options">
+          <li>Healthy</li><li>Low-carb</li><li>Vegetarian</li><li>Keto-friendly</li><li>Gluten free</li>
+        </ul>
+      </div>
+      <div class="ed__photos wipe" aria-hidden="true">
+        <img class="is-on" data-for="p-eat" src="../../assets/mo/fresh.jpg" alt="" loading="lazy">
+        <img data-for="p-drink" src="../../assets/mo/ve-fresh-plate.jpg" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="fuel sec--ink">
+    <div class="wrap">
+      <div class="fuel__grid">
+        <div><p class="eyebrow reveal">After the gym</p><h2 data-split>Need fuel after <em>your workout?</em></h2></div>
+        <div class="fuel__side reveal">
+          <p>Fresh is located just outside Mounties Health and Fitness, so it is the first stop on the way out.</p>
+          <a class="btn btn--ghost" href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Mounties Health &amp; Fitness <span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <ul class="rows">
+        <li class="reveal"><span>01</span><div>Meals tailored to you<small>Any meal can be adjusted to suit your dietary needs</small></div></li>
+        <li class="reveal" style="--d:1"><span>02</span><div>Free Wi-Fi<small>Settle in with a coffee</small></div></li>
+        <li class="reveal" style="--d:2"><span>03</span><div>Member discount<small>Present your membership when you order</small></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec--card" id="hours">
+    <div class="wrap plan">
+      <div>
+        <p class="eyebrow reveal">Opening hours</p>
+        <h2 data-split>Early starts, <em>easy lunches.</em></h2>
+        <table class="hrs reveal">
+          <tbody>
+          <tr data-d="1,2,3,4,5"><th scope="row">Monday to Friday</th><td>7am – 2pm</td></tr>
+          <tr data-d="6"><th scope="row">Saturday</th><td>8am – 2pm</td></tr>
+          </tbody>
+          </table>
+        <p class="fine reveal">Sunday hours are not published. Ask at reception on <a class="ulink" href="tel:0298223555">(02) 9822 3555</a>.</p>
+        <div class="dayline reveal" data-dayline="fresh" data-from="6" data-to="18">
+          <div class="dayline__head"><p class="lbl">Today · <span data-today>today</span></p><span class="status" data-status="fresh"><i></i><span>See hours</span></span></div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal">Menu &amp; more</p>
+        <h2 data-split>Read the <em>menu.</em></h2>
+        <div class="mlinks reveal">
+          <a href="https://wds.webdirector.net/mountiesvenue/stores/Menus/Fresh%20Cafe%20Menu%20June%202026.pdf" target="_blank" rel="noopener"><span><b>Fresh Cafe menu</b><small>Opens as a PDF from Mounties</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener"><span><b>Mounties Health &amp; Fitness</b><small>Right next door to the cafe</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="../membership/#benefits"><span><b>Member benefits</b><small>Show your card for a discount</small></span><span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Later <em>in the day?</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../terrace-bar-cafe/"><img src="../../assets/mo/terrace-shakes.jpg" alt="" loading="lazy" style="view-transition-name:v4-terrace-bar-cafe"><span class="tile__body"><span><small>Terrace Bar &amp; Cafe</small><b>Open from 9am daily</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../m-brasserie/"><img src="../../assets/mo/brasserie.jpg" alt="" loading="lazy" style="view-transition-name:v4-m-brasserie"><span class="tile__body"><span><small>M Brasserie</small><b>Lunch &amp; dinner, seven days</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../dining/"><img src="../../assets/mo/dumplings.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Dining &amp; Bars</small><b>All seven venues</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" in Sydney; override with ?now=YYYY-MM-DD or ?now=YYYY-MM-DDTHH:MM
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date(new Date().toLocaleString('en-US', { timeZone: 'Australia/Sydney' }));
+  const dow = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const D3 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const fmt = (m) => { m %= 1440; const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? '.' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm'); };
+  // Published trading hours: [label, days (0 = Sunday), open, close] in minutes
+  const H = {
+    jumbo: [['Yum cha', [1, 2, 3, 4, 5], 660, 900], ['Yum cha', [0, 6], 600, 900], ['Dinner', [0, 1, 2, 3, 4], 1050, 1290], ['Dinner', [5, 6], 1050, 1350]],
+    brasserie: [['Lunch', [0, 1, 2, 3, 4, 5, 6], 690, 870], ['Dinner', [0, 1, 2, 3, 4], 1020, 1260], ['Dinner', [5, 6], 1020, 1290]],
+    bau: [['Open', [1, 2, 3, 4], 660, 1260], ['Open', [5, 6, 0], 660, 1320]],
+    fresh: [['Open', [1, 2, 3, 4, 5], 420, 840], ['Open', [6], 480, 840]],
+    sports: [['Bar service', [1, 2, 3], 840, 1230], ['Bar service', [4, 5], 690, 1380], ['Bar service', [6], 540, 1440], ['Bar service', [0], 540, 1260]],
+    terrace: [['Open', [0, 1, 2, 3], 540, 1320], ['Open', [4], 540, 1380], ['Open', [5, 6], 540, 1440]],
+    murphys: [['Bar service', [1, 2, 3, 4, 5], 930, 1320], ['Bar service', [6, 0], 540, 1320]],
+  };
+  const UNK = { fresh: [0] }; // days with no published hours
+  const unk = (k, d = dow) => (UNK[k] || []).includes(d);
+  const sessions = (k, d = dow) => H[k].filter((s) => s[1].includes(d)).sort((a, b) => a[2] - b[2]);
+  const state = (k) => {
+    const t = sessions(k);
+    const cur = t.find((s) => mins >= s[2] && mins < s[3]);
+    if (cur) return { open: true, soon: cur[3] - mins <= 45, s: cur };
+    const next = t.find((s) => s[2] > mins);
+    if (next) return { open: false, s: next, day: 0 };
+    for (let i = 1; i <= 7; i++) { const n = sessions(k, (dow + i) % 7); if (n.length) return { open: false, s: n[0], day: i, dn: (dow + i) % 7 }; }
+    return { open: false };
+  };
+  const say = (k, short) => {
+    const st = state(k);
+    const lab = (s) => (s[0] === 'Open' || s[0] === 'Bar service' || short ? '' : s[0].toLowerCase() + ' ');
+    if (st.open) return (st.soon ? 'Closing soon · ' : 'Open now · ') + lab(st.s) + 'until ' + fmt(st.s[3]);
+    if (unk(k)) return DAYS[dow] + ' hours: ask at reception';
+    if (!st.s) return 'Closed';
+    return 'Closed · ' + (st.day === 0 && lab(st.s) ? lab(st.s) + 'from ' : 'opens ') + (st.day === 1 ? 'tomorrow ' : st.day > 1 ? D3[st.dn] + ' ' : '') + fmt(st.s[2]);
+  };
+  const hoursToday = (k, d = dow) => { const t = sessions(k, d); return t.length ? t.map((s) => (s[0] === 'Open' || s[0] === 'Bar service' ? '' : s[0] + ' ') + fmt(s[2]) + ' – ' + fmt(s[3])).join(' · ') : unk(k, d) ? 'Ask at reception' : 'Closed'; };
+  $$('[data-status]').forEach((el) => {
+    const st = state(el.dataset.status);
+    el.classList.add(st.open ? (st.soon ? 'is-soon' : 'is-open') : 'is-closed');
+    el.lastElementChild.textContent = say(el.dataset.status, el.hasAttribute('data-short'));
+  });
+  $$('[data-today-hours]').forEach((el) => { el.textContent = hoursToday(el.dataset.todayHours); });
+  $$('[data-today]').forEach((el) => { el.textContent = DAYS[dow]; });
+  $$('.hrs tr[data-d]').forEach((tr) => tr.classList.toggle('is-today', tr.dataset.d.split(',').map(Number).includes(dow)));
+  // Offers: lit when they run today, retired once their end date has passed
+  const ymd = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  const ended = (el) => !!el.dataset.until && ymd > el.dataset.until;
+  $$('.deal[data-days]').forEach((el) => {
+    const flag = $('.deal__flag', el);
+    if (ended(el)) { el.classList.add('is-ended'); if (flag) flag.textContent = 'Offer ended'; return; }
+    if (!el.closest('[data-daypick]')) el.classList.toggle('is-today', el.dataset.days.split(',').map(Number).includes(dow));
+  });
+  // Today's service drawn on a timeline with a "now" marker
+  $$('[data-dayline]').forEach((el) => {
+    const k = el.dataset.dayline, a = +(el.dataset.from || 7) * 60, b = +(el.dataset.to || 24) * 60;
+    const pos = (m) => ((Math.min(Math.max(m, a), b) - a) / (b - a) * 100).toFixed(2) + '%';
+    const t = sessions(k);
+    const p = (mins - a) / (b - a);
+    let ticks = '';
+    for (let m = a; m <= b; m += 180) ticks += `<span style="left:${pos(m)}">${fmt(m)}</span>`;
+    el.insertAdjacentHTML('beforeend',
+      `<div class="dayline__track" role="img" aria-label="${DAYS[dow]}: ${hoursToday(k)}">` +
+      t.map((s) => `<span class="dayline__blk${mins >= s[2] && mins < s[3] ? ' is-live' : ''}" style="left:${pos(s[2])};width:${((s[3] - s[2]) / (b - a) * 100).toFixed(2)}%"></span>`).join('') +
+      (p >= 0 && p <= 1 ? `<i class="dayline__now${p < .1 ? ' is-l' : p > .9 ? ' is-r' : ''}" style="left:${pos(mins)}"><em>Now ${fmt(mins)}</em></i>` : '') +
+      `</div><div class="dayline__ticks" aria-hidden="true">${ticks}</div>` +
+      `<p class="dayline__key">${t.length ? t.map((s) => `<span><b>${s[0]}</b> ${fmt(s[2])} – ${fmt(s[3])}</span>`).join('') : `<span>${unk(k) ? DAYS[dow] + ' hours are not published. Ask at reception.' : 'Closed today.'}</span>`}</p>`);
+  });
+  // Eat / drink
+  const tabs = $$('.ed__tabs button'), panels = $$('.ed__panel'), pics = $$('.ed__photos img');
+  tabs.forEach((t) => t.addEventListener('click', () => {
+    tabs.forEach((b) => b.setAttribute('aria-selected', b === t));
+    panels.forEach((p) => {
+      const on = p.id === t.getAttribute('aria-controls');
+      p.hidden = !on;
+      p.classList.remove('is-on');
+      p.classList.add('in');
+      if (on) requestAnimationFrame(() => requestAnimationFrame(() => p.classList.add('is-on')));
+    });
+    pics.forEach((i) => i.classList.toggle('is-on', i.dataset.for === t.getAttribute('aria-controls')));
+  }));
+  tabs.forEach((t, i) => t.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+    n.focus(); n.click();
+  }));
+})();
+</script>
+</body>
+</html>

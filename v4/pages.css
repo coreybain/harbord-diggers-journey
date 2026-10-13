@@ -1,0 +1,136 @@
+/* The Long Table: shared pieces for the info pages (what's on, membership, visit, functions, community, privacy).
+   Loaded after long-table.css. Page-specific banners live in each page's own <style>. */
+
+/* Small shared pieces */
+@keyframes ping{to{transform:scale(3.4);opacity:0}}
+@keyframes rowin{from{opacity:0;transform:translateY(18px)}}
+@keyframes slide{to{transform:translateX(-50%)}}
+.lede{color:var(--muted);font-size:clamp(16px,1.25vw,18px);max-width:46ch}
+.sec--ink .lede{color:var(--muted-d)}
+.lede+.lede{margin-top:1em}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.tlink{font-weight:600;border-bottom:1px solid var(--amber);transition:color .3s}
+.tlink:hover{color:#b9772f}
+.sec--ink .tlink:hover{color:var(--sand)}
+.note{font-size:13px;line-height:1.55;color:var(--muted);max-width:70ch}
+.sec--ink .note{color:rgba(246,239,228,.55)}
+.tag{display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:999px;border:1px solid var(--line);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.sec--ink .tag{border-color:var(--line-d)}
+.tag--amber{background:var(--amber);border-color:var(--amber)!important;color:var(--ink)}
+.status{display:inline-flex;align-items:center;gap:10px;font:500 14px/1.3 var(--body)}
+.status i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--amber);position:relative}
+.status.is-on i{background:#4fa37c}
+.status.is-on i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#4fa37c;animation:ping 2.2s var(--ease) infinite}
+.h3{font:400 clamp(24px,2.4vw,36px)/1.12 var(--display);letter-spacing:-.015em}
+
+/* Banner extras shared by the info pages: a row of jump links, built like the homepage hero tabs */
+.jump{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(32px,6vh,64px)}
+.jump a{position:relative;padding-top:14px;font:500 13px/1.3 var(--body);opacity:.62;transition:opacity .4s}
+.jump a span{display:block;font-size:11px;letter-spacing:.14em;opacity:.7;margin-bottom:6px}
+.jump a::before,.jump a::after{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:rgba(246,239,228,.25)}
+.jump a::after{background:var(--amber);height:2px;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.jump a:hover{opacity:1}
+.jump a:hover::after{transform:scaleX(1)}
+
+/* Two columns: copy beside something */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,6vw,110px);align-items:center}
+.cols--top{align-items:start}
+.cols--flip>:first-child{order:2}
+.cols h2{margin:20px 0 22px}
+.pic{position:relative;border-radius:var(--r);overflow:hidden;background:#ddd4c5;aspect-ratio:5/4.4}
+.sec--ink .pic{background:var(--night)}
+.pic img{width:100%;height:100%;object-fit:cover}
+.pic--tall{aspect-ratio:4/4.7}
+.pic--drift img{height:116%;transform:translateY(calc(var(--p,.5) * -12%))}
+.js .pic--drift.wipe.in>img{transform:translateY(calc(var(--p,.5) * -12%))}
+.pic figcaption{position:absolute;left:12px;bottom:12px;padding:7px 11px;border-radius:999px;background:rgba(246,239,228,.92);color:var(--ink);font:500 11.5px/1 var(--body);clip-path:none!important}
+/* a second, smaller photo tucked over the corner of the first */
+.pair{position:relative;padding:0 0 12% 0}
+.pair .pic:last-child{position:absolute;right:0;bottom:0;width:44%;aspect-ratio:1/1.1;border:8px solid var(--paper);box-shadow:0 40px 70px -46px rgba(22,24,37,.6)}
+.pair .pic:first-child{margin-right:16%}
+.sec--card .pair .pic:last-child{border-color:var(--card)}
+.sec--ink .pair .pic:last-child{border-color:var(--ink)}
+
+/* Hairline rows: label and value */
+.rows{margin:0;border-top:1px solid var(--line)}
+.rows>div,.rows>li{display:grid;grid-template-columns:minmax(120px,.5fr) 1fr;gap:4px 20px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.rows dt,.rows .k{font:600 11px/1.8 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.rows dd{margin:0}
+.sec--ink .rows,.sec--ink .rows>div,.sec--ink .rows>li{border-color:var(--line-d)}
+.sec--ink .rows dt,.sec--ink .rows .k{color:var(--sand)}
+
+/* Numbered list with lines that draw in (the homepage's perks list, for either background) */
+.perks li{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:baseline;padding:20px 0;position:relative;font-size:clamp(17px,1.5vw,21px);line-height:1.4}
+.perks li::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform 1.3s var(--ease-io);transition-delay:calc(var(--d,0) * 90ms)}
+.perks li.in::after{transform:scaleX(1)}
+.perks li>span{font:500 12px/1 var(--body);letter-spacing:.14em;color:#b9772f}
+.perks small{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.sec--ink .perks li::after{background:rgba(246,239,228,.2)}
+.sec--ink .perks li>span{color:var(--amber)}
+.sec--ink .perks small{color:rgba(246,239,228,.62)}
+
+/* Big numbers */
+.stats{display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px)}
+.stat b{display:block;font:400 clamp(52px,6vw,96px)/1 var(--display);letter-spacing:-.03em;white-space:nowrap}
+.stat b small{font-size:.34em;letter-spacing:0;margin-left:.2em}
+.sec--ink .stat b{color:var(--sand)}
+.stat>span{display:block;font-size:13.5px;color:var(--muted);margin-top:10px;max-width:22ch}
+.sec--ink .stat>span{color:rgba(246,239,228,.7)}
+
+/* Day picker: seven days from today, an amber pill slides to the chosen one */
+.days{position:relative;display:grid;grid-template-columns:repeat(7,1fr);padding:6px;border-radius:20px;border:1px solid var(--line)}
+.sec--ink .days{border-color:var(--line-d);background:rgba(246,239,228,.04)}
+.days__ind{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px) / 7);border-radius:14px;background:var(--amber);transform:translateX(calc(var(--i,0) * 100%));transition:transform .7s var(--ease)}
+.days button{position:relative;display:grid;justify-items:center;gap:8px;padding:15px 0 13px;border-radius:14px;transition:color .45s}
+.days button[aria-selected="true"]{color:var(--ink)}
+.days button span{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+.days button b{font:400 clamp(20px,2.2vw,32px)/1 var(--display);letter-spacing:-.02em}
+.days button.is-today:not([aria-selected="true"]) span{color:var(--amber);opacity:1}
+
+/* Mock forms (nothing is sent) */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:22px clamp(16px,2vw,28px);padding:clamp(22px,3vw,44px);border-radius:var(--r);background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.sec--card .form{background:var(--paper)}
+.form h3{grid-column:1/-1;font-size:clamp(26px,2.6vw,38px)}
+.field{display:grid;gap:6px;min-width:0}
+.field--full{grid-column:1/-1}
+.field label{font:600 10.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;min-width:0;height:46px;padding:0;border:0;border-bottom:1px solid rgba(22,24,37,.3);border-radius:0;background:none;color:var(--ink);font:400 17px/1.4 var(--body);transition:border-color .4s,box-shadow .4s;-webkit-appearance:none;appearance:none}
+.field textarea{height:auto;min-height:104px;padding:10px 0;resize:vertical}
+.field select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23161825' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 4px center;padding-right:24px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--ink);box-shadow:0 1px 0 var(--ink)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(22,24,37,.38)}
+.form__end{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:6px}
+.form__note{display:flex;align-items:center;gap:10px;font:500 14px/1.4 var(--body)}
+.form__note::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.form__note[hidden]{display:none}
+.form__note.in{animation:rowin .8s var(--ease) both}
+
+/* Quiet disclosure rows */
+.fold{border-top:1px solid var(--line)}
+.fold details{border-bottom:1px solid var(--line)}
+.fold summary{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;list-style:none;font:400 clamp(20px,1.9vw,27px)/1.2 var(--display);letter-spacing:-.01em}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::after{content:"";flex:none;width:11px;height:11px;border-right:1.5px solid;border-bottom:1.5px solid;transform:translateY(-3px) rotate(45deg);transition:transform .5s var(--ease)}
+.fold details[open] summary::after{transform:translateY(3px) rotate(225deg)}
+.fold details>div{padding:0 0 24px;color:var(--muted);max-width:68ch}
+.fold details[open]>div{animation:rowin .7s var(--ease) both}
+.fold details>div p+p,.fold details>div ul{margin-top:.8em}
+.fold details>div li{position:relative;padding-left:18px}
+.fold details>div li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:1px;background:currentColor}
+
+@media (max-width:1000px){
+  .cols{grid-template-columns:1fr}
+  .cols--flip>:first-child{order:0}
+  .jump{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .rows>div,.rows>li{grid-template-columns:1fr}
+  .days{padding:4px;border-radius:16px}
+  .days__ind{top:4px;bottom:4px;left:4px;width:calc((100% - 8px) / 7);border-radius:12px}
+  .days button span{font-size:9px;letter-spacing:.08em}
+  .form{grid-template-columns:1fr}
+  .stats{gap:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pic--drift img{transform:none!important}
+}

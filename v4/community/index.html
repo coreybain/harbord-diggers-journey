@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Community & History — Mounties (Concept 4: Long Table)</title>
+<meta name="description" content="How Mounties began in two ex-government huts, and how every dollar of profit goes back to members and the community.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/mo/pg-founders.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../long-table.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: a centred headline standing on the founders' photograph */
+.cb{position:relative;background:var(--ink);color:var(--paper);padding:150px 0 0;text-align:center;overflow:hidden}
+.cb .crumb{justify-content:center}
+.cb .eyebrow{justify-content:center;margin-top:clamp(28px,5vh,56px)}
+.cb h1{font-size:clamp(46px,7.4vw,124px);line-height:1;letter-spacing:-.025em;margin:22px auto 24px;max-width:13ch}
+.cb h1 em{font-style:italic;color:var(--sand)}
+.cb .ib__lede{margin-inline:auto;max-width:52ch}
+.cb .ib__cta{justify-content:center}
+.cb__pic{position:relative;margin:clamp(40px,6vh,70px) 12px 0;height:min(56vh,520px);border-radius:var(--r) var(--r) 0 0;overflow:hidden;background:var(--night)}
+.cb__pic img{width:100%;height:124%;object-fit:cover;object-position:50% 30%;transform:translateY(calc(var(--p,0) * -16%))}
+.cb__pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,24,37,.5),rgba(22,24,37,0) 40%)}
+.js .cb__pic{clip-path:inset(100% 0 0 0 round var(--r) var(--r) 0 0);transition:clip-path 1.5s var(--ease-io) .5s}
+.js .is-loaded .cb__pic{clip-path:inset(0 round var(--r) var(--r) 0 0)}
+.cb__pic figcaption{position:absolute;z-index:1;left:16px;bottom:16px;padding:8px 13px;border-radius:999px;background:rgba(246,239,228,.92);color:var(--ink);font:500 12px/1 var(--body)}
+
+/* History: a line that draws itself as you read down */
+.tl{position:relative;max-width:1080px;margin:clamp(20px,3vw,50px) auto 0;padding:10px 0 30px}
+.tl::before,.tl__fill{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
+.tl__fill{width:2px;margin-left:-.5px;background:var(--amber);transform-origin:top;transform:scaleY(clamp(0,calc(var(--p,0) * 1.5 - .12),1))}
+.tl__i{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(40px,8vw,120px);padding:clamp(22px,3.4vw,46px) 0;align-items:center}
+.tl__i::before{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;margin:-6.5px;border-radius:50%;background:var(--paper);border:2px solid var(--amber);transition:background .6s .3s,transform .8s var(--ease) .2s;transform:scale(.4)}
+.tl__i.in::before{background:var(--amber);transform:none}
+.tl__y{text-align:right;font:400 clamp(52px,7vw,112px)/1 var(--display);letter-spacing:-.04em}
+.tl__y small{display:block;font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:#b9772f;margin-bottom:12px}
+.tl__y.is-word{font-style:italic;font-size:clamp(38px,4.6vw,72px);letter-spacing:-.02em}
+.tl__t h3{font-size:clamp(23px,2.1vw,30px);margin-bottom:8px}
+.tl__t p{color:var(--muted);max-width:42ch}
+.tl__i:nth-child(odd) .tl__y{order:2;text-align:left}
+.tl__i:nth-child(odd) .tl__t{text-align:right;justify-self:end}
+.tl__pic{margin:14px 0 0;border-radius:14px;overflow:hidden;aspect-ratio:5/3.2;max-width:420px;background:#ddd4c5}
+.tl__i:nth-child(odd) .tl__pic{margin-left:auto}
+.tl__pic img{width:100%;height:100%;object-fit:cover}
+
+/* Profit for purpose */
+.p4 .stats{justify-content:space-between;margin-top:clamp(36px,5vw,70px);padding-top:clamp(28px,3vw,44px);border-top:1px solid var(--line-d)}
+.bars{display:grid;gap:22px;margin-top:30px}
+.bar small{display:flex;justify-content:space-between;gap:12px;font:600 11px/1.4 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d);margin-bottom:10px}
+.bar small b{color:var(--paper);font-weight:600}
+.bar i{display:block;height:14px;border-radius:999px;background:var(--amber);width:calc(var(--w) * 1%);transform:scaleX(0);transform-origin:left;transition:transform 1.8s var(--ease-io) .2s}
+.bar:first-child i{background:rgba(246,239,228,.4)}
+.bars.in .bar i{transform:none}
+.pt{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,90px);margin-top:clamp(60px,8vw,120px);align-items:start}
+.pt__list{border-top:1px solid var(--line-d)}
+.pt__list button{display:flex;justify-content:space-between;align-items:baseline;gap:14px;width:100%;text-align:left;padding:17px 0;border-bottom:1px solid var(--line-d);font:400 clamp(21px,2vw,29px)/1.15 var(--display);letter-spacing:-.01em;color:rgba(246,239,228,.5);transition:color .4s,padding .6s var(--ease)}
+.pt__list button span{font:500 12px/1 var(--body);letter-spacing:.14em;color:var(--amber);opacity:0;transition:opacity .4s}
+.pt__list button:hover{color:var(--paper)}
+.pt__list button[aria-selected="true"]{color:var(--paper);padding-left:12px;font-style:italic}
+.pt__list button[aria-selected="true"] span{opacity:1}
+.pt__pane{padding:clamp(24px,3vw,44px);border-radius:var(--r);background:rgba(246,239,228,.05);border:1px solid var(--line-d);min-height:300px;display:flex;flex-direction:column}
+.pt__pane>*{animation:rowin .8s var(--ease) both}
+.pt__pane h3{font-size:clamp(28px,2.8vw,42px);margin:16px 0 14px}
+.pt__pane p{color:var(--muted-d);font-size:clamp(16px,1.25vw,18px);max-width:50ch}
+.pt__pane b.big{display:block;margin-top:auto;padding-top:26px;font:400 clamp(40px,4.4vw,68px)/1 var(--display);letter-spacing:-.03em;color:var(--sand)}
+.pt__pane b.big small{display:block;font:600 11px/1.4 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d);margin-top:10px}
+.clubs{overflow:hidden;margin-top:clamp(60px,8vw,120px);border-block:1px solid var(--line-d);padding:16px 0}
+.clubs div{display:flex;width:max-content;animation:slide 60s linear infinite}
+.clubs span{font:italic 400 clamp(26px,3vw,46px)/1.2 var(--display);white-space:nowrap;padding-right:.5em}
+.clubs span::after{content:"·";padding-left:.5em;color:var(--amber);font-style:normal}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,20px);margin-top:clamp(40px,5vw,70px)}
+.facts div{padding:clamp(20px,2.2vw,30px);border-radius:var(--r);border:1px solid var(--line)}
+.facts b{display:block;font:400 clamp(34px,3.4vw,52px)/1 var(--display);letter-spacing:-.03em;margin-bottom:12px}
+.facts span{color:var(--muted);font-size:14.5px}
+
+@media (max-width:1000px){.pt{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .cb{padding-top:120px}
+  .cb__pic{height:44vh}
+  .tl::before,.tl__fill,.tl__i::before{left:6px}
+  .tl__i{grid-template-columns:1fr;padding-left:34px;gap:10px}
+  .tl__i::before{top:42px}
+  .tl__y,.tl__i:nth-child(odd) .tl__y{text-align:left;order:0}
+  .tl__i:nth-child(odd) .tl__t{text-align:left;justify-self:start}
+  .tl__i:nth-child(odd) .tl__pic{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .clubs div{animation:none}
+  .cb__pic img{transform:none!important}
+  .tl__fill{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__in">
+    <a class="hd__logo" href="../" aria-label="Mounties home"><img src="../../assets/mo/logo.svg" alt="Mounties" width="294" height="87"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <div class="hd__dd">
+        <a href="../dining/" data-t="Dining &amp; Bars"><span>Dining &amp; Bars</span></a>
+        <div class="hd__sub"><div>
+          <a href="../jumbo-seafood/">Jumbo Seafood</a>
+          <a href="../m-brasserie/">M Brasserie</a>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../fresh-cafe/">Fresh Cafe</a>
+          <a href="../sports-bar/">The Sports Bar</a>
+          <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+          <a href="../murphys/">Murphy's</a>
+        </div></div>
+      </div>
+      <a href="../whats-on/" data-t="What's On"><span>What's On</span></a>
+      <a href="../membership/" data-t="Membership"><span>Membership</span></a>
+      <a href="./" data-t="Community" aria-current="page"><span>Community</span></a>
+      <a href="../visit/" data-t="Visit"><span>Visit</span></a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn btn--ghost" href="../membership/#renew">Renew</a>
+      <a class="btn btn--amber" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Menu">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../jumbo-seafood/">Jumbo Seafood</a>
+      <a href="../m-brasserie/">M Brasserie</a>
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../fresh-cafe/">Fresh Cafe</a>
+      <a href="../sports-bar/">The Sports Bar</a>
+      <a href="../terrace-bar-cafe/">Terrace Bar &amp; Cafe</a>
+      <a href="../murphys/">Murphy's</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="./" aria-current="page">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><span>254 Humphries Road, Mount Pritchard NSW 2170</span><a href="tel:0298223555">(02) 9822 3555</a><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <section class="cb">
+    <div class="wrap">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <span aria-current="page">Community</span>
+      </nav>
+      <p class="eyebrow rise" style="--d:1">Community &amp; history</p>
+      <h1 data-split="load">Built by locals, <em>for locals.</em></h1>
+      <p class="ib__lede rise" style="--d:4">Mounties started as an idea shared over a beer. Today all of the profit we generate goes back into our members and the community around us.</p>
+      <div class="ib__cta rise" style="--d:5">
+        <a class="btn btn--amber" href="#history">Our history <span class="arrow">↓</span></a>
+        <a class="btn btn--ghost" href="#profit-for-purpose">Profit for Purpose</a>
+      </div>
+    </div>
+    <figure class="cb__pic" data-vt-hero data-progress="view" style="view-transition-name:v4-community">
+      <img src="../../assets/mo/pg-founders.jpg" alt="Founding members standing outside the original Mounties clubhouse" fetchpriority="high">
+      <figcaption>The original clubhouse, Meadows Road</figcaption>
+    </figure>
+  </section>
+
+  <section id="history">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow reveal">Our history</p><h2 data-split>Two huts and <em>a big idea.</em></h2></div>
+        <p class="reveal">From the first rugby league and cricket teams to a club with dozens of sub clubs of its own.</p>
+      </div>
+      <div class="tl" data-progress="view">
+        <i class="tl__fill" aria-hidden="true"></i>
+        <article class="tl__i reveal"><div class="tl__y"><small>It starts with sport</small>1927</div><div class="tl__t"><h3>The first clubs form</h3><p>Mount Pritchard's first sporting clubs, rugby league and cricket, are formed.</p></div></article>
+        <article class="tl__i reveal"><div class="tl__y is-word"><small>The idea</small>Over a beer</div><div class="tl__t"><h3>A workers-style club</h3><p>A couple of blokes in a Cabramatta hotel have the idea of a club of their own. The first meetings are held in members' homes.</p></div></article>
+        <article class="tl__i reveal"><div class="tl__y"><small>The money</small>£300</div><div class="tl__t"><h3>Raised in debentures</h3><p>Around $600. Tom McAuliffe offers land in Meadows Road in exchange for debentures.</p></div></article>
+        <article class="tl__i reveal"><div class="tl__y is-word"><small>The clubhouse</small>Two huts</div><div class="tl__t"><h3>Hauled by road from Herne Bay</h3><p>Two ex-government huts are brought from Herne Bay, now Riverwood, onto 1.2 hectares to become the original clubhouse.</p><figure class="tl__pic"><img src="../../assets/mo/pg-hut.jpg" alt="One of the ex-government huts that became the first clubhouse" loading="lazy"></figure></div></article>
+        <article class="tl__i reveal"><div class="tl__y is-word"><small>The setback</small>Knocked back</div><div class="tl__t"><h3>The first application is rejected</h3><p>An application as 'Mt Pritchard Workers Club Limited' is refused, with opposition from hotels, sporting clubs and the authorities.</p></div></article>
+        <article class="tl__i reveal"><div class="tl__y"><small>May</small>1964</div><div class="tl__t"><h3>Incorporated</h3><p>Mt Pritchard &amp; District Community Club is incorporated, with members of the original cricket team on its first committee.</p></div></article>
+        <article class="tl__i reveal"><div class="tl__y"><small>Four more years</small>1968</div><div class="tl__t"><h3>The liquor licence arrives</h3><p>It takes four more years of persistence before the club is granted its licence.</p></div></article>
+        <article class="tl__i reveal"><div class="tl__y is-word"><small>Now</small>Today</div><div class="tl__t"><h3>Home to 30-plus sub clubs</h3><p>An award-winning venue with six dining and restaurant options, thirteen bar outlets and a full-service health and fitness centre.</p><figure class="tl__pic"><img src="../../assets/mo/pg-entrance.jpg" alt="The entrance to Mounties today" loading="lazy"></figure></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--ink p4" id="profit-for-purpose">
+    <div class="wrap">
+      <div class="cols cols--top">
+        <div>
+          <p class="eyebrow reveal">Profit for Purpose</p>
+          <h2 data-split>Every dollar <em>goes back.</em></h2>
+          <p class="lede reveal">All of the profit we generate is used to improve services or facilities for our members and to improve the lives of our members and the community.</p>
+          <div class="cta reveal">
+            <a class="btn btn--amber" href="https://wds.webdirector.net/mountiesgroup-ve/stores/_sharedfiles/MG-UrbisReport-A4-March25-Group-FINAL%201.pdf" target="_blank" rel="noopener">Read the Profit4Purpose report <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div>
+          <p class="lede reveal">Under ClubGRANTS, Mounties Group was required to contribute $3.6 million. It delivered more than $26.8 million: a record for the Australian club industry, for the second year in a row.</p>
+          <div class="bars reveal" id="bars">
+            <div class="bar" style="--w:13.4"><small><span>Required</span><b>$3.6 million</b></small><i></i></div>
+            <div class="bar" style="--w:100"><small><span>Delivered</span><b>$26.8 million</b></small><i></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><b>$<span data-num="26.8" data-dp="1">26.8</span><small>M</small></b><span>total community contribution</span></div>
+        <div class="stat reveal" style="--d:1"><b>$<span data-num="276.9" data-dp="1">276.9</span><small>M</small></b><span>estimated contribution to the NSW economy</span></div>
+        <div class="stat reveal" style="--d:2"><b><span data-num="54">54</span></b><span>sub clubs across the group</span></div>
+        <div class="stat reveal" style="--d:3"><b><span data-num="10000">10,000</span></b><span>weekly participants</span></div>
+      </div>
+
+      <div class="pt">
+        <div>
+          <p class="eyebrow reveal">Community partners</p>
+          <div class="pt__list reveal" role="tablist" aria-label="Community partners" id="ptList" style="margin-top:24px"></div>
+        </div>
+        <div class="pt__pane reveal" style="--d:1" id="ptPane" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="clubs" aria-hidden="true"><div id="clubs"></div></div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cols">
+        <figure class="pic pic--drift wipe" data-progress="view"><img src="../../assets/mo/pg-team.jpg" alt="A Mounties sub club team photographed after a game" loading="lazy"></figure>
+        <div>
+          <p class="eyebrow reveal">Sub clubs</p>
+          <h2 data-split>Find <em>your team.</em></h2>
+          <p class="lede reveal">From darts, cricket and rugby league to toastmasters, table tennis and physical culture and dance, Mounties is home to sub clubs for every age. Ask Member Services how to get involved.</p>
+          <div class="cta reveal">
+            <a class="btn btn--ink" href="../visit/#contact">Ask Member Services <span class="arrow">→</span></a>
+            <a class="btn" href="../membership/#join">Become a member</a>
+          </div>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="reveal"><b>90%</b><span>Over 90% of members live within 10km of our venues.</span></div>
+        <div class="reveal" style="--d:1"><b>4%</b><span>One of only 4% of registered clubs created for the community.</span></div>
+        <div class="reveal" style="--d:2"><b>18th</b><span>Ranked the 18th most giving company in Australia.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow reveal">Keep exploring</p><h2 data-split>Be part <em>of it.</em></h2></div></div>
+      <div class="next__grid">
+        <a class="tile wipe" href="../membership/"><img src="../../assets/mo/members-bar.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Membership</small><b>Join Mounties</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:1" href="../whats-on/"><img src="../../assets/mo/live-singer.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>What's On</small><b>This week</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+        <a class="tile wipe" style="--d:2" href="../functions/"><img src="../../assets/mo/pg-fn-lilac.jpg" alt="" loading="lazy"><span class="tile__body"><span><small>Functions</small><b>Rooms for community groups</b></span><span class="tile__go" aria-hidden="true">→</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../" aria-label="Mounties home"><img src="../../assets/mo/logo-ink.svg" alt="Mounties" width="294" height="87"></a>
+    <nav aria-label="Footer">
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="./">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#hours">Opening hours</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact us</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex</a>
+      <a href="https://www.mountieshealthandfitness.com.au/" target="_blank" rel="noopener">Health &amp; Fitness</a>
+    </nav>
+    <span>Design concept · not the live site</span>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // "Today" for date-aware bits; override with ?now=YYYY-MM-DD (or ?now=YYYY-MM-DDTHH:MM)
+  const q = new URLSearchParams(location.search).get('now');
+  const now = q ? new Date(q.includes('T') ? q : q + 'T12:00') : new Date();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Mock forms: nothing is sent
+  document.querySelectorAll('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = f.querySelector('.form__note');
+    n.hidden = false; n.classList.remove('in'); void n.offsetWidth; n.classList.add('in');
+  }));
+
+  // Numbers count up once, keeping their decimals and thousands separators
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target);
+    const el = e.target, to = +el.dataset.num, dp = +(el.dataset.dp || 0), t0 = performance.now();
+    const put = (v) => { el.textContent = v.toLocaleString('en-AU', { minimumFractionDigits: dp, maximumFractionDigits: dp }); };
+    if (reduced) return put(to);
+    const step = (t) => { const k = Math.min(1, (t - t0) / 1800); put(to * (1 - Math.pow(1 - k, 4))); if (k < 1) requestAnimationFrame(step); else put(to); };
+    requestAnimationFrame(step);
+  }), { threshold: .6 });
+  document.querySelectorAll('[data-num]').forEach((n) => io.observe(n));
+
+  // Community partners, as described by Mounties Group
+  const PARTNERS = [
+    ['Autism Advisory and Support Service', 'A partner since 2007', 'Mounties has stood beside the Autism Advisory and Support Service and its founder, Grace Fava, since 2007.', '2007', 'the year the partnership began'],
+    ['Little Wings', 'Flights for sick children', 'Little Wings provides free flight and ground transport for sick children. Mounties support helps the service reach an additional 100 families.', '100', 'additional families'],
+    ['Gotcha4Life', 'Mental fitness', 'Funding for the Mentally Fit Schools program, and 100 Mounties staff taken through the Mental Fitness Fundamentals Workshop.', '$50,000', 'towards Mentally Fit Schools'],
+    ['KARI Foundation', 'Essential Backpacks', 'Support for the KARI Foundation two years running, helping to deliver 500 Essential Backpacks.', '$75,000', 'for two consecutive years'],
+    ['Dreams2Live4', 'Dreams come true', 'Dreams2Live4 makes dreams come true for adults aged 17 and over who are living with advanced cancer.', '17+', 'adults living with advanced cancer'],
+    ['Escabags', 'Escape bags', 'Escabags provides free escape bags. Mounties is a sponsor, a supporter and a stockist.', 'Free', 'escape bags, stocked at Mounties'],
+  ];
+  const ptList = document.getElementById('ptList'), ptPane = document.getElementById('ptPane');
+  const ptBtns = PARTNERS.map((p, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('role', 'tab');
+    b.innerHTML = `${p[0]}<span>0${i + 1}</span>`;
+    b.addEventListener('click', () => showP(i));
+    ptList.append(b);
+    return b;
+  });
+  const showP = (i) => {
+    const p = PARTNERS[i];
+    ptBtns.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+    ptPane.innerHTML = `<span class="tag tag--amber" style="align-self:flex-start">${p[1]}</span><h3>${p[0]}</h3><p>${p[2]}</p><b class="big">${p[3]}<small>${p[4]}</small></b>`;
+  };
+  showP(0);
+
+  // Sub clubs drift past
+  const CLUBS = ['Darts', 'Senior Athletics', 'Cricket', 'Fifties Plus', 'Fishing', 'Golf', 'Physical Culture & Dance', 'Indoor Bowls', 'Joggers', 'Rugby League', 'Netball', 'Junior Soccer', 'Wanderers FC', 'Snooker', 'Swimming', 'Softball', 'Toastmasters', 'Table Tennis', 'Hockey'];
+  document.getElementById('clubs').innerHTML = [...CLUBS, ...CLUBS].map((c) => `<span>${c.replace('&', '&amp;')}</span>`).join('');
+})();
+</script>
+</body>
+</html>
