@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Harbord Diggers — Concept 1: Shoreline</title>
+<meta name="description" content="Homepage concept for Harbord Diggers, Freshwater's community club on Sydney's Northern Beaches.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/img/terrace-aerial.jpg">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/base.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+:root{
+  --ink:#260d3c; --cream:#f9f4ec; --sand:#f3ebe0; --line:rgba(38,13,60,.14); --muted:rgba(38,13,60,.66); --gold:#c9963f;
+  --display:Newsreader,'Iowan Old Style',Georgia,serif; --body:Inter,system-ui,sans-serif;
+  --pad:clamp(20px,4.4vw,72px); --gap:12px; --r:22px;
+  --menu-bg:var(--ink); --menu-fg:var(--cream); --menu-accent:#e9c98f;
+}
+body{background:var(--cream);color:var(--ink);font:400 16px/1.6 var(--body)}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.022em;line-height:1.04}
+.eyebrow{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.wrap{padding-inline:var(--pad)}
+
+/* Buttons */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line);font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate;transition:color .45s var(--ease),border-color .45s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);border-radius:inherit;transition:transform .55s var(--ease)}
+.btn:hover{color:var(--cream);border-color:var(--ink)}
+.btn:hover::before{transform:none}
+.btn--solid{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn--solid::before{background:var(--gold)}
+.btn--solid:hover{color:var(--ink);border-color:var(--gold)}
+.btn--light{border-color:rgba(249,244,236,.4);color:var(--cream)}
+.btn--light::before{background:var(--cream)}
+.btn--light:hover{color:var(--ink);border-color:var(--cream)}
+.arrow{display:inline-block;transition:transform .5s var(--ease)}
+a:hover>.arrow,.btn:hover .arrow{transform:translateX(5px)}
+
+/* Header: full-width bar that condenses into a floating pill */
+.hd{position:fixed;inset:0 0 auto;z-index:100;padding:10px var(--gap);pointer-events:none;transition:transform .6s var(--ease)}
+.hd__bar{pointer-events:auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:60px;padding:0 10px 0 16px;margin-inline:auto;max-width:100%;border-radius:999px;border:1px solid transparent;transition:max-width .8s var(--ease),background .5s,border-color .5s,box-shadow .5s,height .6s var(--ease)}
+.hd.is-scrolled .hd__bar{max-width:1080px;height:54px;background:rgba(249,244,236,.82);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-color:var(--line);box-shadow:0 12px 40px -18px rgba(38,13,60,.35)}
+.hd__logo img{height:40px;width:auto;transition:height .6s var(--ease)}
+.hd.is-scrolled .hd__logo img{height:34px}
+.hd__nav{display:flex;gap:clamp(14px,2vw,30px);font:500 13px/1 var(--body);white-space:nowrap}
+.hd__nav a{position:relative;padding:8px 0}
+.hd__nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.hd__nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.hd__actions{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.hd__actions .btn{height:38px;padding:0 16px;font-size:11px}
+.menu-open .hd__bar{background:transparent!important;border-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;color:var(--cream)}
+.menu-open .hd__logo,.menu-open .hd__nav,.menu-open .hd__actions .btn{opacity:0;pointer-events:none}
+.burger{display:none}
+
+/* Hero banner */
+.hero{padding:80px var(--gap) 0}
+.hero__frame{position:relative;height:calc(100svh - 92px);min-height:520px;border-radius:var(--r);overflow:hidden;background:#1c0b2c;color:#fff;clip-path:inset(6% 4% round var(--r));transition:clip-path 1.5s var(--ease-io)}
+.is-loaded .hero__frame{clip-path:inset(0 round var(--r))}
+.hero__media{position:absolute;inset:-8% 0;transform:translate3d(0,calc(var(--sy,0) * .14px),0)}
+.hero__slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s var(--ease-io)}
+.hero__slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.14);transition:transform 9s linear}
+.hero__slide.is-active{opacity:1}
+.hero__slide.is-active img{transform:scale(1)}
+.hero__frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,8,32,.2) 0%,rgba(20,8,32,0) 26%,rgba(20,8,32,0) 46%,rgba(20,8,32,.72) 100%),linear-gradient(75deg,rgba(20,8,32,.5),rgba(20,8,32,0) 55%);pointer-events:none}
+.hero__content{position:absolute;z-index:2;inset:auto 0 0;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;padding:clamp(22px,3.6vw,52px)}
+.hero h1{font-size:clamp(40px,6.3vw,104px);font-weight:300;max-width:13ch;--base:500ms}
+.hero h1 em{font-style:italic;font-weight:300}
+.hero__sub{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease) 1.3s,transform 1s var(--ease) 1.3s}
+.is-loaded .hero__sub{opacity:1;transform:none}
+.hero__tabs{display:grid;gap:2px;min-width:230px;opacity:0;transition:opacity 1s 1.5s}
+.is-loaded .hero__tabs{opacity:1}
+.hero__tab{position:relative;display:flex;gap:14px;align-items:baseline;padding:11px 0;text-align:left;font:500 13px/1.2 var(--body);opacity:.6;transition:opacity .4s}
+.hero__tab span{font-variant-numeric:tabular-nums;font-size:11px;opacity:.75}
+.hero__tab::before,.hero__tab::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:rgba(255,255,255,.28)}
+.hero__tab::after{background:#fff;transform:scaleX(0);transform-origin:left}
+.hero__tab.is-active,.hero__tab:hover{opacity:1}
+.hero__tab.is-active::after{animation:fill var(--interval,6000ms) linear forwards}
+@keyframes fill{to{transform:scaleX(1)}}
+
+/* Quick links under the banner */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:0 28px;padding:18px var(--pad) 0}
+.quick a{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 0;font-family:var(--display);font-size:clamp(19px,1.7vw,25px);letter-spacing:-.01em}
+.quick a::before,.quick a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
+.quick a::after{background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.quick a:hover::after{transform:scaleX(1)}
+.quick small{display:block;font:500 12px/1.3 var(--body);color:var(--muted);letter-spacing:0;margin-top:4px}
+
+section{padding-block:clamp(72px,10vw,160px)}
+
+/* About: statement lights up word by word as it scrolls */
+.about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(32px,6vw,110px);align-items:end}
+.about__statement{font-family:var(--display);font-size:clamp(28px,3.7vw,60px);line-height:1.12;letter-spacing:-.022em;margin-top:26px}
+.about__statement .sw{opacity:clamp(.16,calc((var(--p,0) - .12) * 2.6 * var(--n) - var(--i)),1);transition:opacity .5s linear}
+.about__side p{color:var(--muted);max-width:42ch}
+.about__side p+p{margin-top:1em}
+.about__side .btn{margin-top:28px}
+.about__img{margin-top:clamp(40px,6vw,90px);display:grid;grid-template-columns:1.6fr 1fr;gap:var(--gap)}
+.about__img figure{border-radius:var(--r);overflow:hidden;aspect-ratio:16/10}
+.about__img figure:last-child{aspect-ratio:auto}
+.about__img img{width:100%;height:100%;object-fit:cover}
+
+/* Dining rail */
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:clamp(28px,4vw,56px)}
+.head h2{font-size:clamp(36px,5.2vw,84px);margin-top:18px}
+.head h2 em{font-style:italic}
+.rail-ctrl{display:flex;gap:8px}
+.rail-ctrl button{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);transition:background .4s,color .4s,transform .4s var(--ease)}
+.rail-ctrl button:hover{background:var(--ink);color:var(--cream)}
+.rail-ctrl button:active{transform:scale(.92)}
+.rail{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x proximity;padding-inline:var(--pad);scrollbar-width:none;cursor:grab}
+.rail::-webkit-scrollbar{display:none}
+.rail.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.rail.is-dragging a{pointer-events:none}
+.card{flex:0 0 clamp(260px,29vw,430px);scroll-snap-align:start}
+.card__img{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;position:relative}
+.card__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);-webkit-user-drag:none}
+.card:hover .card__img img{transform:scale(1.06)}
+.card__tag{position:absolute;left:14px;top:14px;padding:7px 12px;border-radius:999px;background:rgba(249,244,236,.9);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.card h3{font-size:clamp(24px,2.1vw,32px);margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card h3 .arrow{font-family:var(--body);font-size:16px;opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .5s var(--ease)}
+.card:hover h3 .arrow{opacity:1;transform:none}
+.card p{color:var(--muted);font-size:14.5px;margin-top:8px;max-width:38ch}
+
+/* What's on */
+.on{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--gap)}
+.on__col{display:grid;gap:var(--gap)}
+.tile{position:relative;display:block;border-radius:var(--r);overflow:hidden;color:#fff;min-height:300px}
+.tile--tall{min-height:clamp(520px,58vw,820px)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile.in:hover img{transform:scale(1.05)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,8,32,0) 40%,rgba(20,8,32,.78))}
+.tile__body{position:absolute;z-index:1;inset:auto 0 0;padding:clamp(20px,2.4vw,34px);display:flex;justify-content:space-between;align-items:end;gap:16px}
+.tile .eyebrow{color:rgba(255,255,255,.8)}
+.tile h3{font-size:clamp(26px,2.8vw,44px);margin-top:10px}
+.tile__go{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:background .4s,color .4s,transform .6s var(--ease)}
+.tile:hover .tile__go{background:#fff;color:var(--ink);transform:rotate(-45deg)}
+
+/* Membership */
+.member{margin-inline:var(--gap);padding:clamp(48px,7vw,110px) calc(var(--pad) - var(--gap));border-radius:var(--r);background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.member::before{content:"";position:absolute;width:70vw;height:70vw;right:-25vw;top:-35vw;border-radius:50%;background:radial-gradient(closest-side,rgba(201,150,63,.34),transparent);animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-12vw,10vw) scale(1.15)}}
+.member>*{position:relative}
+.member .eyebrow{color:rgba(249,244,236,.7)}
+.member h2{font-size:clamp(36px,5.4vw,88px);max-width:14ch;margin-top:20px}
+.member h2 em{font-style:italic;color:#e9c98f}
+.member__row{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-top:28px}
+.member__row p{max-width:52ch;color:rgba(249,244,236,.76)}
+.member__cta{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(44px,6vw,88px);border-top:1px solid rgba(249,244,236,.2)}
+.stat{padding:26px 24px 0 0}
+.stat+.stat{padding-left:24px;border-left:1px solid rgba(249,244,236,.2)}
+.stat b{display:block;font:300 clamp(48px,6.4vw,104px)/1 var(--display);letter-spacing:-.03em}
+.stat>span{display:block;margin-top:10px;font-size:14px;color:rgba(249,244,236,.72)}
+
+/* Visit + footer */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+.visit figure{border-radius:var(--r);overflow:hidden;aspect-ratio:5/4}
+.visit img{width:100%;height:100%;object-fit:cover}
+.visit h2{font-size:clamp(34px,4.6vw,72px);margin:18px 0 26px}
+.visit dl{margin:0;border-top:1px solid var(--line)}
+.visit dl div{display:grid;grid-template-columns:120px 1fr;padding:16px 0;border-bottom:1px solid var(--line)}
+.visit dt{font:600 11px/1.8 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.visit dd{margin:0}
+.visit .btn{margin-top:28px}
+footer{padding:0 var(--pad) 96px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;padding-top:26px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.foot a:hover{color:var(--ink)}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+
+@media (max-width:1000px){
+  .hd__nav,.hd__actions .btn:not(.btn--solid){display:none}
+  .hd__bar{grid-template-columns:1fr auto}
+  .burger{display:grid}
+  .about,.visit,.on{grid-template-columns:1fr}
+  .quick{grid-template-columns:1fr 1fr}
+  .member__row{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .hero__content{grid-template-columns:1fr}
+  .hero__tabs{grid-template-columns:repeat(3,1fr);gap:10px;min-width:0}
+  .hero__tab{font-size:0;padding:8px 0}.hero__tab span{font-size:11px}
+  .quick{grid-template-columns:1fr}
+  .about__img{grid-template-columns:1fr}
+  .about__img figure:last-child{aspect-ratio:4/3}
+  .rail-ctrl{display:none}
+  .stats{grid-template-columns:1fr;border-top:0}
+  .stat,.stat+.stat{padding:22px 0;border-left:0;border-top:1px solid rgba(249,244,236,.2)}
+  .visit dl div{grid-template-columns:1fr}
+}
+
+/* Header: Dining & Bars dropdown */
+.hd__dd{position:relative;display:flex}
+.hd__dd>a{display:inline-flex;align-items:center;gap:7px}
+.hd__dd>a i{width:6px;height:6px;border-right:1.5px solid;border-bottom:1.5px solid;transform:translateY(-2px) rotate(45deg);transition:transform .5s var(--ease)}
+.hd__dd:hover>a i,.hd__dd:focus-within>a i{transform:translateY(1px) rotate(225deg)}
+.hd__sub{position:absolute;left:50%;top:100%;padding-top:16px;transform:translate(-50%,10px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),transform .55s var(--ease),visibility 0s .35s}
+.hd__dd:hover .hd__sub,.hd__dd:focus-within .hd__sub{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.hd__sub div{display:grid;min-width:236px;padding:8px;border-radius:20px;background:var(--cream);color:var(--ink);border:1px solid var(--line);box-shadow:0 26px 50px -26px rgba(38,13,60,.5)}
+.hd__nav .hd__sub a{display:flex;justify-content:space-between;align-items:baseline;gap:22px;padding:10px 14px;border-radius:13px;font:400 19px/1.15 var(--display);letter-spacing:-.01em;transition:background .35s}
+.hd__nav .hd__sub a::after{content:"→";position:static;height:auto;background:none;font:400 13px/1 var(--body);opacity:0;transform:translateX(-8px);transition:opacity .35s,transform .5s var(--ease)}
+.hd__nav .hd__sub a:hover,.hd__nav .hd__sub a:focus-visible{background:var(--sand)}
+.hd__nav .hd__sub a:hover::after,.hd__nav .hd__sub a:focus-visible::after{opacity:1;transform:none}
+.hd__nav .hd__sub a[aria-current]{font-style:italic}
+.hd__nav .hd__sub a[aria-current]::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:1;transform:none;align-self:center}
+
+/* Mobile menu: venue links under Dining & Bars */
+.menu__sub{display:flex;flex-wrap:wrap;gap:0 20px;padding:4px 0 12px}
+.menu__links .menu__sub a{display:inline-block;font:500 15px/2 var(--body);letter-spacing:0}
+.rail-ctrl{align-items:center}
+.rail-ctrl .btn{margin-right:8px}
+.visit .btn+.btn{margin-left:6px}
+@media (max-width:640px){
+  .rail-ctrl{display:flex}
+  .rail-ctrl button{display:none}
+  .rail-ctrl .btn{margin:0}
+  .head{flex-direction:column;align-items:start}
+  .visit .btn+.btn{margin:10px 0 0}
+}
+
+/* Page-to-page transitions with the Shoreline inner pages (see shoreline.css) */
+@view-transition{navigation:auto}
+.hd{view-transition-name:hd}
+.switcher{view-transition-name:switcher}
+.hero__frame{view-transition-name:home-hero}
+.card:first-child .card__img{view-transition-name:bt-hero}
+::view-transition-group(*){animation-duration:.7s;animation-timing-function:var(--ease-io)}
+::view-transition-old(*),::view-transition-new(*){height:100%;object-fit:cover}
+::view-transition-old(hd),::view-transition-new(hd),::view-transition-old(switcher),::view-transition-new(switcher){height:auto;object-fit:none}
+.vt .hero__frame{clip-path:inset(0 round var(--r));transition:none}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="#top" aria-label="Harbord Diggers home"><img src="../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="whats-on/">What's On</a>
+      <div class="hd__dd">
+        <a href="dining/">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="bau-truong/">Bau Truong</a>
+          <a href="teddy-larkins/">Teddy Larkin's</a>
+          <a href="dd-collective/">DD Collective</a>
+          <a href="ocean-terrace/">Ocean Terrace</a>
+          <a href="main-bar/">Main Bar</a>
+          <a href="sports-bar/">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="membership/">Membership</a>
+      <a href="community/">Community</a>
+      <a href="visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="whats-on/">What's On</a>
+    <a href="dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="bau-truong/">Bau Truong</a>
+      <a href="teddy-larkins/">Teddy Larkin's</a>
+      <a href="dd-collective/">DD Collective</a>
+      <a href="ocean-terrace/">Ocean Terrace</a>
+      <a href="main-bar/">Main Bar</a>
+      <a href="sports-bar/">Sports Bar</a>
+    </div>
+    <a href="membership/">Membership</a>
+    <a href="community/">Community</a>
+    <a href="visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="membership/#renew">Renew membership</a><a href="functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="hero">
+    <div class="hero__frame">
+      <div class="hero__media" data-slides="hero" data-interval="6500">
+        <div class="hero__slide" data-slide><img src="../assets/img/terrace-aerial.jpg" alt="Umbrellas on the Ocean Terrace above Freshwater Beach" fetchpriority="high"></div>
+        <div class="hero__slide" data-slide><img src="../assets/img/terrace-dusk.jpg" alt="Harbord Diggers lit up at dusk" loading="lazy"></div>
+        <div class="hero__slide" data-slide><img src="../assets/img/ocean-terrace.jpg" alt="Evening tables on the Ocean Terrace" loading="lazy"></div>
+      </div>
+      <div class="hero__content">
+        <div>
+          <h1 data-split="load">Welcome to Harbord Diggers. <em>Freshwater's community club.</em></h1>
+          <div class="hero__sub">
+            <a class="btn btn--light" href="#dining">Explore dining <span class="arrow">→</span></a>
+            <a class="btn btn--light" href="#visit">Plan your visit</a>
+          </div>
+        </div>
+        <div class="hero__tabs" role="tablist" aria-label="Banner images">
+          <button class="hero__tab" data-slide-tab="hero"><span>01</span>Above the beach</button>
+          <button class="hero__tab" data-slide-tab="hero"><span>02</span>Golden hour</button>
+          <button class="hero__tab" data-slide-tab="hero"><span>03</span>Ocean Terrace</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="quick" aria-label="Quick links">
+    <a class="reveal" style="--d:0" href="membership/#join"><span>Become a member<small>Eight venues, one membership</small></span><span class="arrow">→</span></a>
+    <a class="reveal" style="--d:1" href="visit/"><span>Visit us<small>88 Evans St, Freshwater</small></span><span class="arrow">→</span></a>
+    <a class="reveal" style="--d:2" href="whats-on/"><span>What's on<small>Live music, events &amp; kids</small></span><span class="arrow">→</span></a>
+    <a class="reveal" style="--d:3" href="visit/#contact"><span>Contact us<small>(02) 9105 4888</small></span><span class="arrow">→</span></a>
+  </nav>
+
+  <section class="wrap" id="about" data-progress="view">
+    <div class="about">
+      <div>
+        <p class="eyebrow reveal">About us</p>
+        <p class="about__statement" data-words>Supporting the Northern Beaches community since 1930 — with bars, restaurants, live entertainment and an Ocean Terrace with sweeping views of Freshwater Beach.</p>
+      </div>
+      <div class="about__side reveal">
+        <p>Harbord Diggers is a community-centred club, using our success to help improve members' lives and the Northern Beaches community.</p>
+        <p>Members also access health and wellness services across the precinct — fitness, aquatic centres, kids' play at Major Fun, and more.</p>
+        <a class="btn" href="community/#story">Our story <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="about__img">
+      <figure class="wipe"><img src="../assets/img/dd-interior.jpg" alt="Inside DD Collective at Harbord Diggers" loading="lazy"></figure>
+      <figure class="wipe" style="--d:2"><img src="../assets/img/bau-truong-room.jpg" alt="Bau Truong dining room" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section id="dining" style="padding-top:0">
+    <div class="wrap head">
+      <div>
+        <p class="eyebrow reveal">Dining &amp; bars</p>
+        <h2 data-split>Six places to <em>pull up a chair.</em></h2>
+      </div>
+      <div class="rail-ctrl reveal">
+        <a class="btn" href="dining/">All dining &amp; bars <span class="arrow">→</span></a>
+        <button data-rail-prev="dining" aria-label="Previous">←</button>
+        <button data-rail-next="dining" aria-label="Next">→</button>
+      </div>
+    </div>
+    <div class="rail" data-rail="dining">
+      <a class="card reveal" style="--d:0" href="bau-truong/">
+        <div class="card__img"><img src="../assets/img/bau-truong-food.jpg" alt="Vietnamese noodle bowls at Bau Truong" loading="lazy"><span class="card__tag">Vietnamese</span></div>
+        <h3>Bau Truong <span class="arrow">→</span></h3>
+        <p>Direct from its humble roots in Cabramatta — authentic modern Vietnamese, from traditional pho to fresh paper rolls.</p>
+      </a>
+      <a class="card reveal" style="--d:1" href="teddy-larkins/">
+        <div class="card__img" style="view-transition-name:tl-hero"><img src="../assets/img/teddy-ribs.jpg" alt="Ribs and a beer at Teddy Larkin's" loading="lazy"><span class="card__tag">Seafood &amp; steak</span></div>
+        <h3>Teddy Larkin's <span class="arrow">→</span></h3>
+        <p>A perfectly cooked steak, fresh snapper or a grilled burger at our seafood and steakhouse.</p>
+      </a>
+      <a class="card reveal" style="--d:2" href="dd-collective/">
+        <div class="card__img" style="view-transition-name:dd-hero"><img src="../assets/img/dd-brunch.jpg" alt="Brunch and coffee at DD Collective" loading="lazy"><span class="card__tag">Café</span></div>
+        <h3>DD Collective <span class="arrow">→</span></h3>
+        <p>A family-friendly café serving great coffee, healthy options and pub favourites.</p>
+      </a>
+      <a class="card reveal" style="--d:3" href="main-bar/">
+        <div class="card__img" style="view-transition-name:mb-hero"><img src="../assets/img/cocktails.jpg" alt="Cocktails at the Main Bar" loading="lazy"><span class="card__tag">Bar</span></div>
+        <h3>Main Bar <span class="arrow">→</span></h3>
+        <p>Beers on tap, cocktails such as espresso martinis, and live music with Northern Beaches views.</p>
+      </a>
+      <a class="card reveal" style="--d:4" href="ocean-terrace/">
+        <div class="card__img" style="view-transition-name:ot-hero"><img src="../assets/img/ocean-terrace.jpg" alt="The Ocean Terrace in the evening" loading="lazy"><span class="card__tag">Outdoors</span></div>
+        <h3>Ocean Terrace <span class="arrow">→</span></h3>
+        <p>Waterside views of the Northern Beaches — the perfect place to catch up.</p>
+      </a>
+      <a class="card reveal" style="--d:5" href="sports-bar/">
+        <div class="card__img" style="view-transition-name:sb-hero"><img src="../assets/img/wo-sportsbar.jpg" alt="The Sports Bar at Harbord Diggers" loading="lazy"><span class="card__tag">Sport &amp; games</span></div>
+        <h3>Sports Bar <span class="arrow">→</span></h3>
+        <p>Huge screens and live sport, plus Send It — augmented darts, racing simulators and basketball games.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap" id="whats-on" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">What's on</p>
+        <h2 data-split>Live music, events <em>&amp; a little fun.</em></h2>
+      </div>
+      <a class="btn reveal" href="whats-on/">All events &amp; weekly activities <span class="arrow">→</span></a>
+    </div>
+    <div class="on">
+      <a class="tile tile--tall wipe" href="whats-on/#live-music">
+        <img src="../assets/img/live-music.jpg" alt="A musician playing guitar at Harbord Diggers" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Live &amp; local</p><h3>Live entertainment</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <div class="on__col">
+        <a class="tile wipe" style="--d:1" href="whats-on/#kids">
+          <img src="../assets/img/major-fun.jpg" alt="Children playing at Major Fun" loading="lazy">
+          <div class="tile__body"><div><p class="eyebrow">Kids</p><h3>Major Fun</h3></div><span class="tile__go">→</span></div>
+        </a>
+        <a class="tile wipe" style="--d:2" href="membership/#holidays">
+          <img src="../assets/img/sussex.jpg" alt="Beach near Mounties at Sussex resort" loading="lazy">
+          <div class="tile__body"><div><p class="eyebrow">Member holidays</p><h3>Mounties @ Sussex</h3></div><span class="tile__go">→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="member" id="membership">
+    <p class="eyebrow reveal">Membership</p>
+    <h2 data-split>Join the Mounties Group <em>family.</em></h2>
+    <div class="member__row">
+      <p class="reveal">Unlock access to our eight venues, member discounts, special promotions, member services and discounted holidays. It's our way of saying thank you.</p>
+      <div class="member__cta reveal" style="--d:1">
+        <a class="btn btn--light" href="membership/#join">Join now <span class="arrow">→</span></a>
+        <a class="btn btn--light" href="membership/#renew">Renew</a>
+        <a class="btn btn--light" href="membership/#benefits">Member benefits</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="8">8</b><span>Venues on one membership</span></div>
+      <div class="stat reveal" style="--d:1"><b><span data-count="100">100</span>+</b><span>Community groups supported</span></div>
+      <div class="stat reveal" style="--d:2"><b data-count="1930" data-from="1900">1930</b><span>Part of Freshwater since</span></div>
+    </div>
+  </div>
+
+  <section class="wrap visit" id="visit">
+    <figure class="wipe"><img src="../assets/img/terrace-dusk.jpg" alt="Harbord Diggers from the terrace at dusk" loading="lazy"></figure>
+    <div>
+      <p class="eyebrow reveal">Plan your visit</p>
+      <h2 data-split>See you by the water.</h2>
+      <dl class="reveal">
+        <div><dt>Address</dt><dd>88 Evans St, Freshwater NSW 2096</dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:0291054888">(02) 9105 4888</a></dd></div>
+        <div><dt>Getting here</dt><dd><a href="visit/#courtesy-bus">Courtesy bus</a> and on-site parking</dd></div>
+      </dl>
+      <a class="btn btn--solid reveal" href="https://www.google.com/maps/dir/?api=1&destination=Harbord+Diggers+88+Evans+St+Freshwater+NSW+2096" target="_blank" rel="noopener">Get directions <span class="arrow">→</span></a>
+      <a class="btn reveal" style="--d:1" href="visit/">Hours &amp; getting here</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="dining/">Dining</a>
+      <a href="whats-on/">What's On</a>
+      <a href="community/">Community</a>
+      <a href="functions/">Functions</a>
+      <a href="visit/#courtesy-bus">Courtesy bus</a>
+      <a href="visit/#contact">Contact</a>
+      <a href="privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/common.js"></script>
+</body>
+</html>

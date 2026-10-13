@@ -1,0 +1,158 @@
+/* Freshwater: shared styles for the inner pages (copied from the homepage's inline CSS, which stays the source of truth) */
+:root{
+  --deep:#17323f; --teal:#2e546f; --aqua:#ceebea; --mist:#eaf6f5; --white:#fdfcf9; --sun:#ffd200; --sand:#f3e3cd; --line:rgba(23,50,63,.14); --muted:rgba(23,50,63,.68);
+  --display:'Instrument Serif',Georgia,serif; --body:'DM Sans',system-ui,sans-serif;
+  --pad:clamp(20px,5vw,84px); --arch:999px 999px 18px 18px;
+  --menu-bg:var(--deep); --menu-fg:var(--white); --menu-accent:var(--sun);
+}
+body{background:var(--white);color:var(--deep);font:400 16.5px/1.6 var(--body)}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em;line-height:1}
+em{font-style:italic;color:var(--teal)}
+.split em .w{padding-right:.08em;margin-right:-.08em}
+.eyebrow{font:600 11.5px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+main{overflow-x:clip}
+.wrap{padding-inline:var(--pad)}
+section{padding-block:clamp(72px,10vw,150px)}
+[id]{scroll-margin-top:92px}
+
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;border:1.5px solid var(--deep);font:600 14px/1 var(--body);transition:background .4s var(--ease),color .4s,border-color .4s,transform .4s var(--ease),box-shadow .4s}
+.btn:hover{background:var(--deep);color:var(--white);transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(23,50,63,.6)}
+.btn--fill{background:var(--deep);color:var(--white)}
+.btn--fill:hover{background:var(--teal);border-color:var(--teal)}
+.btn--sun{background:var(--sun);border-color:var(--sun);color:var(--deep)}
+.btn--sun:hover{background:var(--white);border-color:var(--white);color:var(--deep)}
+.btn--light{border-color:rgba(255,255,255,.55);color:var(--white)}
+.btn--light:hover{background:var(--white);border-color:var(--white);color:var(--deep)}
+.btn--sm{height:42px;padding:0 20px;font-size:13.5px}
+.arrow{display:inline-block;transition:transform .4s var(--ease)}
+.btn:hover .arrow,a:hover>.arrow{transform:translateX(4px)}
+.link{position:relative;font-weight:600;font-size:14px}
+.link::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:currentColor;transform-origin:right;transition:transform .5s var(--ease)}
+.link:hover::after{transform:scaleX(0)}
+.tag{display:inline-block;padding:7px 12px;border-radius:999px;border:1.5px solid var(--line);font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.tag--sun{background:var(--sun);border-color:var(--sun);color:var(--deep)}
+
+/* Header: slim info bar that scrolls away, centred-logo bar that stays */
+.top{background:var(--deep);color:var(--white);font-size:13px;display:flex;justify-content:space-between;gap:20px;padding:10px var(--pad)}
+.top a:hover{color:var(--sun)}
+.top div{display:flex;gap:22px}
+.hd{position:sticky;top:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px var(--pad);background:rgba(253,252,249,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:padding .5s var(--ease),border-color .5s,box-shadow .5s}
+.hd.is-scrolled{padding-block:8px;border-color:var(--line);box-shadow:0 14px 30px -24px rgba(23,50,63,.5)}
+.hd__nav{display:flex;gap:clamp(16px,2.4vw,36px);font:500 14.5px/1 var(--body)}
+.hd__nav a{position:relative;padding:8px 0}
+.hd__nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;border-radius:2px;background:var(--sun);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.hd__nav a:hover::after,.hd__nav>a[aria-current]::after,.hd__dd.is-current>a::after{transform:scaleX(1)}
+.hd__logo img{height:54px;width:auto;transition:height .5s var(--ease)}
+.hd.is-scrolled .hd__logo img{height:42px}
+.hd__actions{display:flex;justify-content:flex-end;align-items:center;gap:20px}
+.hd__actions .btn{height:42px;padding:0 20px;font-size:13.5px}
+.burger{display:none}
+.menu-open .hd{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:transparent;box-shadow:none;color:var(--white)}
+.menu-open .hd__nav,.menu-open .hd__actions>a,.menu-open .hd__logo{opacity:0;pointer-events:none}
+.menu__links a[aria-current]{color:var(--sun);font-style:italic}
+
+/* Dining dropdown: opens on hover or keyboard focus; the full-screen menu covers touch */
+.hd__dd{position:relative}
+.hd__dd>a{display:inline-flex;align-items:center;gap:7px}
+.hd__dd>a svg{width:9px;height:9px;fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .45s var(--ease)}
+.hd__dd:hover>a svg,.hd__dd:focus-within>a svg{transform:rotate(180deg)}
+.hd__sub{position:absolute;left:-16px;top:100%;width:296px;padding-top:14px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s var(--ease),transform .5s var(--ease),visibility 0s .35s}
+.hd__dd:hover .hd__sub,.hd__dd:focus-within .hd__sub{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.hd__sub div{padding:8px;border-radius:22px;background:var(--white);box-shadow:0 26px 50px -26px rgba(23,50,63,.5),0 0 0 1px var(--line)}
+.hd__sub a{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:1px 14px;padding:8px;border-radius:16px;line-height:1.3;transition:background .3s}
+.hd__sub a::after{content:none}
+.hd__sub a:hover,.hd__sub a[aria-current]{background:var(--mist)}
+.hd__sub img{grid-row:1/3;width:48px;height:56px;border-radius:999px 999px 8px 8px;object-fit:cover}
+.hd__sub b{font-weight:600;align-self:end}
+.hd__sub small{font-size:12.5px;color:var(--muted);align-self:start}
+
+/* Breadcrumb */
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font:500 13px/1.2 var(--body);color:var(--muted)}
+.crumb a{display:inline-flex;gap:8px;padding:8px 0;transition:color .3s}
+.crumb a:hover{color:var(--deep)}
+.crumb a:hover .arrow{transform:translateX(-4px)}
+.crumb i{font-style:normal;opacity:.5}
+.crumb [aria-current]{color:var(--deep);font-weight:600}
+
+/* Load-in stagger for banner pieces (word-rise headlines come from common.js) */
+.js .rise{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--d,0) * 120ms + .5s)}
+.js .is-loaded .rise{opacity:1;transform:none}
+
+/* Spinning text ring, as on the homepage badge */
+.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.ring text{font:600 6.4px var(--body);letter-spacing:.2em;fill:var(--deep);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Wave line */
+.wave{height:34px;overflow:hidden;color:var(--teal);opacity:.55}
+.wave svg{width:200%;max-width:none;height:100%;animation:wave 18s linear infinite}
+@keyframes wave{to{transform:translateX(-50%)}}
+
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,56px)}
+.head h2{font-size:clamp(40px,5.6vw,92px);margin-top:20px}
+
+/* Open / closed status */
+.status{display:inline-flex;align-items:center;gap:10px;font:600 14px/1.3 var(--body)}
+.status i{flex:none;position:relative;width:10px;height:10px;border-radius:50%;background:var(--sun)}
+.status.is-open i{background:#2fa66f}
+.status.is-open i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2fa66f;animation:ping 2.2s var(--ease) infinite}
+@keyframes ping{to{transform:scale(3.4);opacity:0}}
+
+/* Photo tiles (the homepage's dining cards) */
+.bt{position:relative;display:block;border-radius:22px;overflow:hidden;color:#fff}
+.bt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bt.in:hover img{transform:scale(1.06)}
+.bt::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,50,63,0) 35%,rgba(23,50,63,.82))}
+.js .bt.wipe::after{opacity:0;clip-path:none;transition:opacity 1.2s var(--ease) .3s}
+.js .bt.wipe.in::after{opacity:1}
+.bt__body{position:absolute;z-index:1;inset:auto 0 0;padding:clamp(18px,2vw,28px)}
+.bt__tag{display:inline-block;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.bt h3{font-size:clamp(28px,3vw,46px);margin-top:12px}
+.bt p{font-size:14.5px;max-width:44ch;display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .6s var(--ease),opacity .5s,margin .6s var(--ease)}
+.bt p>span{overflow:hidden}
+.bt:hover p,.bt:focus-visible p{grid-template-rows:1fr;opacity:.92;margin-top:8px}
+
+/* Keep exploring: closes every inner page */
+.next__grid{display:grid;grid-template-columns:1.4fr 1fr;grid-auto-rows:clamp(280px,32vw,460px);gap:clamp(10px,1.2vw,18px)}
+
+/* Footer */
+footer{background:var(--deep);color:var(--white);padding:clamp(40px,5vw,70px) var(--pad) 100px;display:grid;grid-template-columns:auto 1fr;gap:28px 60px;align-items:center}
+footer img{height:64px;width:auto}
+footer nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px 26px;font-size:14px}
+footer nav a{opacity:.82;transition:opacity .3s,color .3s}
+footer nav a:hover{opacity:1;color:var(--sun)}
+footer small{grid-column:1/-1;padding-top:22px;border-top:1px solid rgba(255,255,255,.16);font-size:13px;opacity:.7;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 30px}
+
+/* Page-to-page transitions. Each page's banner image has a name (home-hero, bt-hero, wo-hero); a link that
+   leads to that page puts the same name on itself, so its photo grows into the banner. The header stays put. */
+@view-transition{navigation:auto}
+.hd{view-transition-name:hd}
+.switcher{view-transition-name:switcher}
+::view-transition-group(*){animation-duration:.7s;animation-timing-function:var(--ease-io)}
+::view-transition-old(*),::view-transition-new(*){height:100%;object-fit:cover}
+::view-transition-old(hd),::view-transition-new(hd),::view-transition-old(switcher),::view-transition-new(switcher){height:auto;object-fit:none}
+/* Arriving through a transition: the banner image is already on its way, so skip its own load-in */
+.vt [data-vt-hero]{clip-path:none!important;transition:none!important}
+.vt [data-vt-hero] img{transform:none!important;transition:none!important}
+
+@media (max-width:1000px){
+  .top div:first-child span{display:none}
+  .hd{grid-template-columns:1fr auto}
+  .hd__nav{display:none}
+  .hd__logo{grid-column:1;grid-row:1;justify-self:start}
+  .hd__actions>a:not(.btn){display:none}
+  .burger{display:grid}
+  .bt p{grid-template-rows:1fr;opacity:.92;margin-top:8px}
+}
+@media (max-width:640px){
+  .top{justify-content:center}.top div:last-child{display:none}.top div:first-child span{display:inline}
+  .hd__actions .btn{display:none}
+  .next__grid{grid-template-columns:1fr;grid-auto-rows:clamp(240px,70vw,320px)}
+  footer{grid-template-columns:1fr}
+  footer nav{justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .wave svg,.ring{animation:none}
+  .js .rise{opacity:1;transform:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}

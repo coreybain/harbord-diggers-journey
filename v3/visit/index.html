@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visit — Harbord Diggers (Concept 3: Freshwater)</title>
+<meta name="description" content="Visit Harbord Diggers at 88 Evans Street, Freshwater: getting here, venue hours, the members' courtesy bus and contact details.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/vi-grounds.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../freshwater.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: headline above one wide window onto the grounds, with the address card tucked into its corner */
+.vh{position:relative;padding:clamp(10px,1.4vw,20px) var(--pad) clamp(40px,5vw,70px)}
+.vh__top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(20px,4vw,70px);align-items:end;margin-top:clamp(18px,2.6vw,40px)}
+.vh h1{font-size:clamp(46px,6.6vw,112px);margin-top:18px;--base:300ms}
+.vh__lede{color:var(--muted);font-size:clamp(16px,1.25vw,18px);max-width:40ch}
+.vh .status{margin-top:16px}
+.vh__frame{position:relative;margin-top:clamp(24px,3vw,44px);height:calc(100svh - 450px);min-height:340px;max-height:560px;--r:26px 26px 26px clamp(110px,14vw,200px)}
+.vh__img{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;background:var(--aqua);view-transition-name:vi-hero}
+.js .vh__img{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.6s var(--ease-io) .15s}
+.js .is-loaded .vh__img{clip-path:inset(0 round var(--r))}
+.vh__img img{position:absolute;inset:-8% 0;width:100%;height:116%;max-width:none;object-fit:cover;object-position:50% 60%;translate:0 calc(var(--sy,0) * .08px)}
+.js .vh__img img{transform:scale(1.14);transition:transform 2.8s var(--ease) .15s}
+.js .is-loaded .vh__img img{transform:none}
+.pin{position:absolute;z-index:2;right:clamp(12px,1.6vw,22px);bottom:clamp(12px,1.6vw,22px);width:min(350px,calc(100% - 24px));padding:22px;border-radius:22px;background:var(--white);box-shadow:0 24px 50px -28px rgba(0,0,0,.6)}
+.pin .eyebrow{display:flex;align-items:center;gap:9px}
+.pin .eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sun)}
+.pin p{margin-top:12px;font:400 clamp(24px,2.1vw,30px)/1.1 var(--display)}
+.pin small{display:block;margin-top:8px;color:var(--muted);font-size:14px}
+.pin .btn{margin-top:16px}
+
+/* Getting here */
+.gh{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:clamp(30px,6vw,110px);align-items:center}
+.gh__media{position:relative;max-width:480px;justify-self:center;width:100%}
+.gh__media .arch{aspect-ratio:3/4}
+.gh__media .seal{right:-8%;bottom:8%;scale:1!important}
+.gh h2{font-size:clamp(40px,5.4vw,88px);margin-top:20px}
+
+/* Venue hours, day by day */
+.hp__days{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(4px,.8vw,12px);align-items:end;height:clamp(92px,9vw,128px)}
+.hp__days button{display:grid;place-content:center;justify-items:center;gap:6px;height:80%;border-radius:999px 999px 14px 14px;background:var(--mist);font:600 clamp(10px,1vw,12.5px)/1 var(--body);letter-spacing:.14em;text-transform:uppercase;transition:height .7s var(--ease),background .5s,color .5s}
+.hp__days button:hover{background:var(--aqua)}
+.hp__days button[aria-selected="true"]{height:100%;background:var(--deep);color:var(--white)}
+.hp__days button i{width:6px;height:6px;border-radius:50%;background:transparent}
+.hp__days button.is-today i{background:var(--sun)}
+.hp__list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.hv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:start;padding:22px 24px;border-radius:22px;background:var(--mist);animation:hvin .8s var(--ease) both;animation-delay:calc(var(--i) * 70ms);transition:background .5s}
+.hv:hover{background:var(--aqua)}
+@keyframes hvin{from{opacity:0;transform:translateY(16px)}}
+.hv h3{font-size:clamp(28px,2.6vw,40px)}
+.hv h3 .arrow{font:500 15px var(--body);opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .5s var(--ease)}
+.hv:hover h3 .arrow{opacity:1;transform:none}
+.hv small{display:block;margin-top:6px;color:var(--muted);font-size:13.5px}
+.hv ul{text-align:right;font-size:15.5px;line-height:1.5}
+.hv li b{font-weight:600}
+.hv li span{color:var(--muted);font-size:13.5px;margin-right:8px}
+.hv .status{grid-column:1/-1;margin-top:8px;font-size:13.5px}
+.hv.is-shut ul{color:var(--muted)}
+.hp__notes{margin-top:22px}
+
+/* Courtesy bus */
+.bus .frame{aspect-ratio:5/4}
+.bus .frame img{inset:-10% 0;height:120%;max-width:none;translate:0 calc((var(--p,.5) - .5) * -10%)}
+.bus .status{margin-top:22px}
+.runs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+.runs li{padding:22px 10px 16px;border-radius:999px 999px 14px 14px;background:var(--white);text-align:center;transition:background .5s,color .5s}
+.runs b{display:block;font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.runs span{display:block;margin-top:12px;font:400 clamp(17px,1.6vw,22px)/1.15 var(--display)}
+.runs span i{display:block;font:500 10px/1.6 var(--body);opacity:.6}
+.runs li.is-today{background:var(--deep);color:var(--white)}
+.bus .fine{margin-top:20px;max-width:56ch}
+
+/* Contact */
+.ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px);align-items:start}
+.ct h2{font-size:clamp(40px,5.4vw,88px);margin-top:20px}
+.soc{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+
+@media (max-width:1000px){
+  .vh__top,.gh,.ct{grid-template-columns:1fr}
+  .vh__frame{height:auto;min-height:0;max-height:none;aspect-ratio:4/3}
+  .gh__media{max-width:380px}
+  .hp__list{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .vh{padding-inline:12px}
+  .vh .crumb,.vh__top{padding-inline:8px}
+  .vh__frame{aspect-ratio:auto;--r:22px 22px 22px 110px}
+  .vh__img{position:relative;inset:auto;aspect-ratio:4/3}
+  .pin{position:static;width:auto;margin-top:12px;background:var(--mist);box-shadow:none}
+  .gh__media .seal{right:-4px}
+  .hp__days button{letter-spacing:.06em}
+  .hv{grid-template-columns:1fr;padding:20px}
+  .hv ul{text-align:left;margin-top:6px}
+  .hv .status{margin-top:4px}
+  .runs{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div><span>88 Evans St, Freshwater NSW 2096</span></div>
+  <div><a href="tel:0291054888">(02) 9105 4888</a><a href="#courtesy-bus">Courtesy bus</a><a href="../functions/">Functions</a></div>
+</div>
+<header class="hd" data-header>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__dd">
+      <a href="../dining/">Dining &amp; Bars <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4"/></svg></a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/"><img src="../../assets/img/bau-truong-food.jpg" alt="" width="48" height="56" loading="lazy"><b>Bau Truong</b><small>Modern Vietnamese</small></a>
+        <a href="../teddy-larkins/"><img src="../../assets/img/teddy-ribs.jpg" alt="" width="48" height="56" loading="lazy"><b>Teddy Larkin's</b><small>Seafood &amp; steakhouse</small></a>
+        <a href="../dd-collective/"><img src="../../assets/img/dd-brunch.jpg" alt="" width="48" height="56" loading="lazy"><b>DD Collective</b><small>Café</small></a>
+        <a href="../ocean-terrace/"><img src="../../assets/img/ocean-terrace.jpg" alt="" width="48" height="56" loading="lazy"><b>Ocean Terrace</b><small>Alfresco dining</small></a>
+        <a href="../main-bar/"><img src="../../assets/img/cocktails.jpg" alt="" width="48" height="56" loading="lazy"><b>Main Bar</b><small>Cocktails &amp; live music</small></a>
+        <a href="../sports-bar/"><img src="../../assets/img/wo-sportsbar.jpg" alt="" width="48" height="56" loading="lazy"><b>Sports Bar</b><small>Live sport &amp; Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="./" aria-current="page">Visit</a>
+  </nav>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-teal.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <div class="hd__actions">
+    <a class="link" href="../membership/#renew">Renew</a>
+    <a class="btn btn--fill" href="../membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="./" aria-current="page">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="../membership/#join">Join now</a><a href="../membership/#renew">Renew</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="vh">
+    <nav class="crumb rise" aria-label="Breadcrumb">
+      <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+      <span aria-current="page">Visit</span>
+    </nav>
+    <div class="vh__top">
+      <div>
+        <p class="eyebrow rise">Plan your visit</p>
+        <h1 data-split="load">Find us above <em>Freshwater Beach.</em></h1>
+      </div>
+      <div>
+        <p class="vh__lede rise" style="--d:4">Six venues under one roof, on-site parking, and a courtesy bus to get members home again.</p>
+        <p class="status rise" style="--d:5" data-bus-status><i></i><span>Courtesy bus runs Thursday to Sunday</span></p>
+      </div>
+    </div>
+    <div class="vh__frame">
+      <div class="vh__img" data-vt-hero><img src="../../assets/img/vi-grounds.jpg" alt="The club's terraced grounds and lawn, looking out to the ocean" fetchpriority="high"></div>
+      <div class="pin rise" style="--d:8">
+        <span class="eyebrow">You'll find us at</span>
+        <p>88 Evans Street, Freshwater</p>
+        <small>NSW 2096 · On-site parking</small>
+        <a class="btn btn--fill btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=Harbord+Diggers+88+Evans+St+Freshwater+NSW+2096" target="_blank" rel="noopener">Get directions <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 2400 34" preserveAspectRatio="none"><path d="M0 17 Q 50 2 100 17 T 200 17 T 300 17 T 400 17 T 500 17 T 600 17 T 700 17 T 800 17 T 900 17 T 1000 17 T 1100 17 T 1200 17 T 1300 17 T 1400 17 T 1500 17 T 1600 17 T 1700 17 T 1800 17 T 1900 17 T 2000 17 T 2100 17 T 2200 17 T 2300 17 T 2400 17" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+
+  <nav class="jump" aria-label="On this page">
+    <span class="eyebrow">On this page</span>
+    <a href="#getting-here">Getting here</a><a href="#hours">Venue hours</a><a href="#courtesy-bus">Courtesy bus</a><a href="#contact">Contact</a>
+  </nav>
+
+  <section class="wrap gh" id="getting-here">
+    <div class="gh__media">
+      <figure class="arch wipe"><img src="../../assets/img/terrace-aerial.jpg" alt="Umbrellas on the Ocean Terrace above Freshwater Beach" loading="lazy"></figure>
+      <div class="seal" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0"/></defs><text><textPath href="#circ" textLength="240">88 Evans Street · Freshwater ·</textPath></text></svg>
+        <i></i>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">Getting here</p>
+      <h2 data-split>Up on the headland, <em>easy to find.</em></h2>
+      <dl class="rows reveal">
+        <div><dt>Address</dt><dd>88 Evans St, Freshwater NSW 2096</dd></div>
+        <div><dt>Parking</dt><dd>On-site parking</dd></div>
+        <div><dt>Courtesy bus</dt><dd>Free for members within 5 kilometres of the club. <a class="u" href="#courtesy-bus">See the times</a></dd></div>
+        <div><dt>Phone</dt><dd><a class="u" href="tel:0291054888">(02) 9105 4888</a></dd></div>
+      </dl>
+      <div class="band__cta reveal" style="--d:1">
+        <a class="btn btn--fill" href="https://www.google.com/maps/dir/?api=1&destination=Harbord+Diggers+88+Evans+St+Freshwater+NSW+2096" target="_blank" rel="noopener">Get directions <span class="arrow">→</span></a>
+        <a class="link" href="#contact">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="hours" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Venue hours</p>
+        <h2 data-split>What's cooking, <em>day by day.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span class="arrow">→</span></a>
+    </div>
+    <div class="hp reveal" data-hours>
+      <div class="hp__days" role="tablist" aria-label="Day of the week"></div>
+      <div class="hp__list" role="tabpanel" aria-live="polite"></div>
+    </div>
+    <p class="fine hp__notes reveal">Hours and operations of restaurants may vary daily. After a drink instead? See the <a class="u" href="../main-bar/">Main Bar</a> and the <a class="u" href="../sports-bar/">Sports Bar + Send It</a>.</p>
+  </section>
+
+  <div class="band band--2 bus" id="courtesy-bus">
+    <figure class="frame wipe" data-progress="view"><img src="../../assets/img/vi-bus.jpg" alt="Inside the Harbord Diggers courtesy coach" loading="lazy"></figure>
+    <div>
+      <p class="eyebrow reveal">Courtesy bus</p>
+      <h2 data-split>Door to door, <em>on us.</em></h2>
+      <p class="lead reveal">A free door-to-door service for members, within a 5 kilometre radius of the club.</p>
+      <p class="status reveal" data-bus-status><i></i><span>Runs Thursday to Sunday</span></p>
+      <ul class="runs" data-runs aria-label="Courtesy bus times">
+        <li class="reveal" data-day="3" aria-label="Thursday, 5pm to 2am"><b>Thu</b><span>5pm<i>to</i>2am</span></li>
+        <li class="reveal" style="--d:1" data-day="4" aria-label="Friday, 5pm to 2am"><b>Fri</b><span>5pm<i>to</i>2am</span></li>
+        <li class="reveal" style="--d:2" data-day="5" aria-label="Saturday, noon to 2am"><b>Sat</b><span>Noon<i>to</i>2am</span></li>
+        <li class="reveal" style="--d:3" data-day="6" aria-label="Sunday, 12pm to 8pm"><b>Sun</b><span>12pm<i>to</i>8pm</span></li>
+      </ul>
+      <p class="fine reveal">Subject to driver availability and may change with minimal notice. Not running on 25 December. Children must be 7 or older to ride, as the buses aren't fitted with child restraints.</p>
+      <div class="band__cta reveal">
+        <a class="btn" href="tel:0291054888">Member Services (02) 9105 4888</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap ct" id="contact">
+    <div>
+      <p class="eyebrow reveal">Contact</p>
+      <h2 data-split>Say <em>hello.</em></h2>
+      <dl class="rows reveal">
+        <div><dt>Phone</dt><dd><a class="u" href="tel:0291054888">(02) 9105 4888</a></dd></div>
+        <div><dt>Email</dt><dd><a class="u" href="mailto:harbordinfo@mountiesgroup.com.au">harbordinfo@mountiesgroup.com.au</a></dd></div>
+        <div><dt>Address</dt><dd>88 Evans St, Freshwater NSW 2096</dd></div>
+        <div><dt>Functions</dt><dd>Planning an event? <a class="u" href="../functions/#enquire">Send an enquiry</a></dd></div>
+      </dl>
+      <div class="soc reveal" style="--d:1">
+        <a class="btn btn--sm" href="https://www.facebook.com/HarbordDiggers/" target="_blank" rel="noopener">Facebook <span class="arrow">→</span></a>
+        <a class="btn btn--sm" href="https://www.instagram.com/harborddiggers/" target="_blank" rel="noopener">Instagram <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="card reveal" style="--d:1;background:var(--mist);box-shadow:none">
+      <h3>Send us your feedback</h3>
+      <p>Tell us what we got right, or what we could do better.</p>
+      <form class="form" data-mock>
+        <label class="field">Name<input type="text" name="name" autocomplete="name" required></label>
+        <label class="field">Email<input type="email" name="email" autocomplete="email" required></label>
+        <label class="field field--full">Message<textarea name="message" required></textarea></label>
+        <button class="btn btn--fill" type="submit">Send feedback <span class="arrow">→</span></button>
+        <p class="form__note" role="status"><span>This is a design mock-up, nothing was sent.</span></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Now you know the way. <em>What for?</em></h2>
+      </div>
+    </div>
+    <div class="next__grid">
+      <a class="bt wipe" href="../dining/">
+        <img src="../../assets/img/dining-share.jpg" alt="Sharing Vietnamese bowls at the table" loading="lazy">
+        <div class="bt__body"><span class="bt__tag">Six venues</span><h3>Dining &amp; bars</h3><p><span>Vietnamese, steaks, café classics, the terrace and two bars.</span></p></div>
+      </a>
+      <a class="bt wipe" style="--d:1;view-transition-name:fn-hero" href="../functions/">
+        <img src="../../assets/img/fn-terrace.jpg" alt="Umbrellas and high tables on Duke's Terrace" loading="lazy">
+        <div class="bt__body"><span class="bt__tag">Venue hire</span><h3>Functions</h3><p><span>Event spaces and community rooms, with catering from our kitchens.</span></p></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98">
+  <nav>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining</a>
+    <a href="../functions/">Functions</a>
+    <a href="../community/">Community</a>
+    <a href="#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+  </nav>
+  <small><span>Harbord Diggers © 2026. Part of Mounties Group.</span><a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a></small>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Right now in Sydney. ?now=2026-10-16T18:00+11:00 previews another moment.
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const LONG = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const today = SHORT.indexOf(p.weekday);
+  const mins = +p.hour * 60 + +p.minute;
+  const clock = (m) => { const h = Math.floor(m / 60) % 24, mm = m % 60; return `${h % 12 || 12}${mm ? '.' + String(mm).padStart(2, '0') : ''}${h < 12 ? 'am' : 'pm'}`; };
+
+  // Courtesy bus: [day, start, end] in minutes, where an end past 1440 runs into the next morning
+  const RUNS = [[3, 1020, 1560], [4, 1020, 1560], [5, 720, 1560], [6, 720, 1200]];
+  const week = today * 1440 + mins;
+  const xmas = +p.month === 12 && +p.day === 25;
+  let bus = { on: false, text: '' };
+  const live = RUNS.find(([d, s, e]) => [0, 10080].some((o) => week + o >= d * 1440 + s && week + o < d * 1440 + e));
+  if (xmas) bus.text = 'Not running on 25 December';
+  else if (live) bus = { on: true, text: `Courtesy bus running now, until ${clock(live[2])}` };
+  else {
+    const next = RUNS.map(([d, s]) => [(d * 1440 + s - week + 10080) % 10080, d, s]).sort((a, b) => a[0] - b[0])[0];
+    bus.text = `Courtesy bus next runs ${next[1] === today ? 'today' : next[1] === (today + 1) % 7 ? 'tomorrow' : LONG[next[1]]} from ${clock(next[2])}`;
+  }
+  document.querySelectorAll('[data-bus-status]').forEach((el) => {
+    el.classList.toggle('is-open', bus.on);
+    el.lastElementChild.textContent = bus.text;
+  });
+  document.querySelectorAll('[data-runs] li').forEach((li) => {
+    if (+li.dataset.day !== today) return;
+    li.classList.add('is-today');
+    li.firstElementChild.textContent = 'Today';
+  });
+
+  // Venue hours by day (Monday = 0): sessions are [open, close, label]; a string is a note with no times
+  const BF = [480, 690, 'Breakfast'], LD = [690, 1260, 'Lunch & dinner'], BT = [720, 1260, ''];
+  const TL = [[690, 900, 'Lunch'], [1020, 1260, 'Dinner']];
+  const VENUES = [
+    { name: 'Bau Truong', kind: 'Modern Vietnamese', href: '../bau-truong/', days: ['Closed Mondays', [BT], [BT], [BT], [BT], [BT], [BT]] },
+    { name: "Teddy Larkin's", kind: 'Seafood & steakhouse', href: '../teddy-larkins/', days: ['Express menu only', 'Express menu only', TL, TL, TL, TL, TL] },
+    { name: 'DD Collective', kind: 'Café', href: '../dd-collective/', days: [[LD], [BF, LD], [BF, LD], [BF, LD], [BF, LD], [BF, LD], [BF, LD]] },
+    { name: 'Ocean Terrace', kind: 'Alfresco dining', href: '../ocean-terrace/', days: [[LD], [BF, LD], [BF, LD], [BF, LD], [BF, LD], [BF, LD], [BF, LD]] },
+  ];
+  const root = document.querySelector('[data-hours]');
+  const tabsEl = root.querySelector('.hp__days');
+  const list = root.querySelector('.hp__list');
+  let sel = today;
+  tabsEl.innerHTML = SHORT.map((d, i) => `<button role="tab" aria-label="${LONG[i]}"${i === today ? ' class="is-today"' : ''}>${i === today ? 'Today' : d}<i></i></button>`).join('');
+  const tabs = [...tabsEl.children];
+  const statusFor = (s) => {
+    if (typeof s === 'string') return '';
+    const now = s.find(([a, b]) => mins >= a && mins < b);
+    const later = s.find(([a]) => mins < a);
+    return now ? `<p class="status is-open"><i></i><span>Open now until ${clock(now[1])}</span></p>`
+      : `<p class="status"><i></i><span>${later ? `Opens at ${clock(later[0])}` : 'Closed for today'}</span></p>`;
+  };
+  const render = () => {
+    tabs.forEach((t, i) => { t.setAttribute('aria-selected', i === sel); t.tabIndex = i === sel ? 0 : -1; });
+    list.innerHTML = VENUES.map((v, i) => {
+      const s = v.days[sel];
+      const rows = typeof s === 'string' ? `<li>${s}</li>` : s.map(([a, b, l]) => `<li>${l ? `<span>${l}</span>` : ''}<b>${clock(a)} – ${clock(b)}</b></li>`).join('');
+      return `<a class="hv${typeof s === 'string' ? ' is-shut' : ''}" href="${v.href}" style="--i:${i}">
+        <div><h3>${v.name} <span class="arrow">→</span></h3><small>${v.kind}</small></div>
+        <ul>${rows}</ul>${sel === today ? statusFor(s) : ''}
+      </a>`;
+    }).join('');
+  };
+  tabs.forEach((t, i) => t.addEventListener('click', () => { sel = i; render(); }));
+  tabsEl.addEventListener('keydown', (e) => {
+    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!step) return;
+    e.preventDefault();
+    sel = (sel + step + 7) % 7;
+    render();
+    tabs[sel].focus();
+  });
+  render();
+
+  // The feedback form is for show
+  document.querySelectorAll('form[data-mock]').forEach((f) => f.addEventListener('submit', (e) => { e.preventDefault(); f.classList.add('is-sent'); }));
+})();
+</script>
+</body>
+</html>

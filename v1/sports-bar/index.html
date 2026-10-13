@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sports Bar + Send It — Harbord Diggers (Concept 1: Shoreline)</title>
+<meta name="description" content="The Harbord Diggers Sports Bar: huge screens, live sports and Send It games. Over-18s.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/wo-sportsbar-dusk.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../shoreline.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: an ink panel, the bar at dusk fading in from the right, and a ticker of what's on the screens */
+.sh{padding:80px var(--gap) 0}
+.sh__panel{position:relative;display:flex;flex-direction:column;min-height:min(calc(100svh - 92px),880px);border-radius:var(--r);overflow:hidden;background:#190a29;color:var(--cream);view-transition-name:sb-hero}
+.js .sh__panel{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.5s var(--ease-io) .1s}
+.js .is-loaded .sh__panel{clip-path:inset(0 round var(--r))}
+.sh__img{position:absolute;inset:0 0 0 34%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 46%);mask-image:linear-gradient(90deg,transparent,#000 46%)}
+.sh__img img{width:100%;height:100%;object-fit:cover;opacity:.9;transform:translate3d(0,calc(var(--sy,0) * .05px),0) scale(1.08)}
+.sh__panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,10,41,.35),rgba(25,10,41,0) 30%,rgba(25,10,41,.75));pointer-events:none}
+.sh__in{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(18px,2.4vw,36px) calc(var(--pad) - var(--gap)) clamp(24px,3vw,44px)}
+.sh .crumb{color:rgba(249,244,236,.72)}
+.sh .crumb a:hover,.sh .crumb [aria-current]{color:var(--cream)}
+.sh__top{display:flex;justify-content:space-between;align-items:start;gap:20px}
+.sh__chip{flex:none;display:block;width:clamp(112px,11vw,164px);padding:10px 12px;border-radius:16px;background:#fff;transform:rotate(4deg);box-shadow:0 24px 50px -24px rgba(0,0,0,.8);transition:transform .8s var(--ease)}
+.sh__chip:hover{transform:rotate(-2deg) scale(1.05)}
+.sh__chip img{width:100%}
+.sh .eyebrow{color:rgba(249,244,236,.76)}
+.sh .eyebrow b{display:inline-block;margin-right:10px;padding:6px 9px;border-radius:999px;border:1px solid var(--gold-soft);color:var(--gold-soft);font-weight:600;letter-spacing:.12em}
+.sh h1{font-size:clamp(46px,7.4vw,118px);font-weight:300;max-width:10ch;margin-top:20px;--base:450ms}
+.sh h1 em{font-weight:300;color:var(--gold-soft)}
+.sh__lede{max-width:44ch;margin-top:22px;color:rgba(249,244,236,.84);font-size:clamp(16px,1.25vw,18px)}
+.sh .cta{margin-top:26px}
+.sh .btn--solid{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.tk{position:relative;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;border-top:1px solid rgba(249,244,236,.2);background:rgba(25,10,41,.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.tk__label{display:flex;align-items:center;gap:10px;padding:0 22px 0 calc(var(--pad) - var(--gap));height:58px;border-right:1px solid rgba(249,244,236,.2);font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.tk__label i{width:8px;height:8px;border-radius:50%;background:#e2574c;animation:ping2 1.8s ease-in-out infinite}
+@keyframes ping2{50%{opacity:.3}}
+.tk__run{overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 60px,#000 calc(100% - 60px),transparent);mask-image:linear-gradient(90deg,transparent,#000 60px,#000 calc(100% - 60px),transparent)}
+.tk__track{display:inline-flex;animation:mq 30s linear infinite}
+.tk__track span{display:inline-flex;align-items:center;font:italic 300 clamp(20px,2vw,28px)/1 var(--display);letter-spacing:-.01em}
+.tk__track span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold-soft);margin-inline:clamp(18px,2vw,32px)}
+
+/* Send It */
+.si__head{display:flex;justify-content:space-between;align-items:end;gap:24px}
+.si__logo{flex:none;width:clamp(110px,12vw,180px);padding:12px 14px;border-radius:18px;background:#fff;transform:rotate(-3deg)}
+.si .pick{align-items:center}
+.si .pick__stage{box-shadow:0 40px 80px -46px rgba(38,13,60,.6)}
+
+/* On the big screens */
+.scr{display:grid;grid-template-columns:repeat(5,1fr);margin-top:clamp(28px,4vw,56px);border-top:1px solid var(--line)}
+.scr li{position:relative;padding:22px 0 4px;font:300 clamp(30px,4.4vw,72px)/1 var(--display);letter-spacing:-.03em;overflow:hidden}
+.scr li+li{padding-left:clamp(12px,1.6vw,26px);border-left:1px solid var(--line)}
+.scr li span{display:block;transition:transform .8s var(--ease),font-style 0s}
+.scr li:hover span{font-style:italic;transform:translateX(6px)}
+.scr li small{display:block;margin-top:14px;font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+@media (max-width:1000px){
+  .sh__img{inset:0}
+  .sh__img{-webkit-mask-image:none;mask-image:none}
+  .sh__img img{opacity:.5}
+  .scr{grid-template-columns:repeat(3,1fr)}
+  .scr li:nth-child(4){padding-left:0;border-left:0}
+  .scr li:nth-child(n+4){border-top:1px solid var(--line)}
+}
+@media (max-width:640px){
+  .sh__chip{width:84px;padding:7px 9px;border-radius:12px}
+  .sh .crumb{max-width:calc(100% - 100px)}
+  .tk__label span{display:none}
+  .tk__label{padding-right:16px}
+  .si__head{flex-direction:column-reverse;align-items:start}
+  .scr{grid-template-columns:1fr 1fr}
+  .scr li{padding-left:0!important;border-left:0!important;border-top:1px solid var(--line)}
+  .scr li:nth-child(-n+2){border-top:0}
+  .scr li:nth-child(even){padding-left:14px!important;border-left:1px solid var(--line)!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="../whats-on/">What's On</a>
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../teddy-larkins/">Teddy Larkin's</a>
+          <a href="../dd-collective/">DD Collective</a>
+          <a href="../ocean-terrace/">Ocean Terrace</a>
+          <a href="../main-bar/">Main Bar</a>
+          <a href="./" aria-current="page">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="../membership/">Membership</a>
+      <a href="../community/">Community</a>
+      <a href="../visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="../membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="./" aria-current="page">Sports Bar</a>
+    </div>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="sh">
+    <div class="sh__panel" data-vt-hero>
+      <div class="sh__img"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A busy evening in the outdoor Sports Bar" fetchpriority="high"></div>
+      <div class="sh__in">
+        <div class="sh__top">
+          <nav class="crumb rise" aria-label="Breadcrumb">
+            <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+            <a href="../dining/">Dining &amp; bars</a><i>/</i>
+            <span aria-current="page">Sports Bar</span>
+          </nav>
+          <a class="sh__chip rise" style="--d:8" href="#send-it" aria-label="Send It: jump to the games"><img src="../../assets/img/sb-sendit.jpg" alt="Send It!" width="1500" height="904"></a>
+        </div>
+        <div>
+          <p class="eyebrow rise"><b>18+</b>Sports Bar + Send It</p>
+          <h1 data-split="load">Your game-day <em>headquarters.</em></h1>
+          <p class="sh__lede rise" style="--d:5">Huge screens, live sports, great food and drinks, plus Send It: darts, racing sims and basketball. Watching the action meets playing it, all under one roof.</p>
+          <div class="cta rise" style="--d:6">
+            <a class="btn btn--solid" href="https://bookings.obeeapp.com/harborddiggers" target="_blank" rel="noopener">Table bookings <span class="arrow">↗</span></a>
+            <a class="btn btn--light" href="#send-it">Play Send It <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="tk" aria-label="On the big screens: NRL, AFL, cricket, UFC and racing">
+        <p class="tk__label"><i></i><span>On the big screens</span></p>
+        <div class="tk__run" aria-hidden="true"><div class="tk__track">
+          <span>NRL</span><span>AFL</span><span>Cricket</span><span>UFC</span><span>Racing</span><span>NRL</span><span>AFL</span><span>Cricket</span><span>UFC</span><span>Racing</span>
+          <span>NRL</span><span>AFL</span><span>Cricket</span><span>UFC</span><span>Racing</span><span>NRL</span><span>AFL</span><span>Cricket</span><span>UFC</span><span>Racing</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="story" data-progress="view">
+    <div class="wrap story">
+      <div>
+        <p class="eyebrow reveal">The idea</p>
+        <p class="story__statement" data-words>A new kind of sports hangout, where watching the action meets playing it, all under one roof.</p>
+      </div>
+      <div class="story__side reveal">
+        <p>Harbord Diggers' bold, interactive Sports Bar brings sports fans and social groups together.</p>
+        <p>It is an over-18s space, and table bookings are for guests aged 18 and over.</p>
+        <a class="btn" href="https://bookings.obeeapp.com/harborddiggers" target="_blank" rel="noopener">Table bookings <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="send-it" class="si" style="padding-top:0">
+    <div class="panel">
+      <div class="pick" data-pick>
+        <div>
+          <div class="si__head">
+            <div>
+              <p class="eyebrow reveal">Send It</p>
+              <h2 data-split>Pick your <em>game.</em></h2>
+            </div>
+            <img class="si__logo reveal" src="../../assets/img/sb-sendit.jpg" alt="Send It!" width="1500" height="904" loading="lazy">
+          </div>
+          <ul class="pick__list reveal">
+            <li class="is-active"><button aria-expanded="true"><span class="pick__n">01</span><span class="pick__t">Basketball</span><span class="pick__tag is-on">From $3 per player</span></button><div class="pick__d"><p>Arcade basketball built around pressure, precision and bragging rights. Digital backboards, interactive visuals and multiple game modes, with shot sensors that track exactly how you score.</p></div></li>
+            <li><button aria-expanded="false"><span class="pick__n">02</span><span class="pick__t">AR Darts</span><span class="pick__tag is-on">From $5 per player</span></button><div class="pick__d"><p>A classic club favourite with a high-tech twist: automatic scoring, instant replays and interactive game modes.</p></div></li>
+            <li><button aria-expanded="false"><span class="pick__n">03</span><span class="pick__t">Race Sim</span><span class="pick__tag is-on">From $5 per player</span></button><div class="pick__d"><p>Professional-grade racing simulators with immersive motion technology, surround sound and ultra-realistic graphics. Race iconic circuits and challenge your mates head-to-head.</p></div></li>
+          </ul>
+          <p class="fine reveal">Perfect for catching up with mates, celebrations or a great night out.</p>
+        </div>
+        <div class="pick__stage reveal" style="--ar:1">
+          <img class="is-active" src="../../assets/img/sb-basketball.jpg" alt="Two people playing arcade basketball under purple neon light" loading="lazy">
+          <img src="../../assets/img/sb-darts.jpg" alt="Players at an augmented-reality darts lane" loading="lazy">
+          <img src="../../assets/img/sb-race.jpg" alt="A man in a racing simulator rig" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" style="padding-top:0">
+    <div class="wrap head">
+      <div>
+        <p class="eyebrow reveal">On the big screens</p>
+        <h2 data-split>Live sport, <em>larger than life.</em></h2>
+      </div>
+      <a class="btn reveal" href="https://bookings.obeeapp.com/harborddiggers" target="_blank" rel="noopener">Book a table <span class="arrow">↗</span></a>
+    </div>
+    <figure class="wide wipe" data-progress="view" style="margin-top:0">
+      <div class="wide__in"><img src="../../assets/img/ot-screen.jpg" alt="The giant outdoor screen under a blue sky" loading="lazy"></div>
+      <figcaption><p class="eyebrow">Huge screens</p><p>Inside, and out in the open air.</p></figcaption>
+    </figure>
+    <div class="wrap">
+      <ul class="scr reveal">
+        <li><span>NRL</span></li><li><span>AFL</span></li><li><span>Cricket</span></li><li><span>UFC</span></li><li><span>Racing</span></li>
+      </ul>
+      <p class="fine reveal">Ask at the bar for what's showing today.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="on" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">In the Sports Bar</p>
+        <h2 data-split>Nights worth <em>turning up for.</em></h2>
+      </div>
+      <a class="btn reveal" href="../whats-on/">All of what's on <span class="arrow">→</span></a>
+    </div>
+    <div class="lk reveal">
+      <a href="../whats-on/"><span><b>Weekly Trivia</b><small>Every Wednesday, 7.30pm · Hosted in the Sports Bar</small></span><span class="arrow">→</span></a>
+      <a href="../whats-on/" data-until="2026-10-30"><span><b>Date My Mate</b><small>Friday 30 October, 6pm · Outdoor Sports Bar</small></span><span class="arrow">→</span></a>
+      <a href="../whats-on/" data-until="2026-11-03"><span><b>Melbourne Cup in the Sports Bar</b><small>Tuesday 3 November, 12pm – 3pm</small></span><span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <section class="wrap" id="groups" style="padding-top:0">
+    <div class="split2">
+      <a class="promo wipe" href="../functions/#enquire"><img src="../../assets/img/sb-functions.jpg" alt="Sports Bar functions: book your next group event" width="1500" height="894" loading="lazy"></a>
+      <div class="reveal">
+        <p class="eyebrow">Functions &amp; groups</p>
+        <h2>Bring the <em>whole team.</em></h2>
+        <p>Celebrations, catch-ups and big nights out all work better with a game in the middle. Send us a group enquiry and we'll take it from there.</p>
+        <div class="cta">
+          <a class="btn btn--solid" href="../functions/#enquire">Enquire about a function <span class="arrow">→</span></a>
+          <a class="btn" href="tel:0291054888">(02) 9105 4888</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="more" style="padding-top:0">
+    <div class="wrap head">
+      <div>
+        <p class="eyebrow reveal">Also at the Diggers</p>
+        <h2 data-split>Five more places to <em>pull up a chair.</em></h2>
+      </div>
+      <div class="rail-ctrl reveal">
+        <button data-rail-prev="more" aria-label="Previous">←</button>
+        <button data-rail-next="more" aria-label="Next">→</button>
+      </div>
+    </div>
+    <div class="rail" data-rail="more">
+      <a class="card reveal" style="--d:0" href="../bau-truong/">
+        <div class="card__img" style="view-transition-name:bt-hero"><img src="../../assets/img/bt-bowls.jpg" alt="Vermicelli noodle bowls at Bau Truong" loading="lazy"><span class="card__tag">Vietnamese</span></div>
+        <h3>Bau Truong <span class="arrow">→</span></h3>
+        <p>Family-run modern Vietnamese, from traditional pho to fresh paper rolls.</p>
+      </a>
+      <a class="card reveal" style="--d:1" href="../teddy-larkins/">
+        <div class="card__img" style="view-transition-name:tl-hero"><img src="../../assets/img/teddy-ribs.jpg" alt="Ribs and a beer at Teddy Larkin's" loading="lazy"><span class="card__tag">Seafood &amp; steak</span></div>
+        <h3>Teddy Larkin's <span class="arrow">→</span></h3>
+        <p>Succulent steaks, slow-cooked ribs and fresh, locally sourced seafood.</p>
+      </a>
+      <a class="card reveal" style="--d:2" href="../dd-collective/">
+        <div class="card__img" style="view-transition-name:dd-hero"><img src="../../assets/img/dd-brunch.jpg" alt="Brunch and coffee at DD Collective" loading="lazy"><span class="card__tag">Café</span></div>
+        <h3>DD Collective <span class="arrow">→</span></h3>
+        <p>Barista-made coffee all day, breakfast classics and pub favourites.</p>
+      </a>
+      <a class="card reveal" style="--d:3" href="../ocean-terrace/">
+        <div class="card__img" style="view-transition-name:ot-hero"><img src="../../assets/img/ocean-terrace.jpg" alt="The Ocean Terrace in the evening" loading="lazy"><span class="card__tag">Alfresco</span></div>
+        <h3>Ocean Terrace <span class="arrow">→</span></h3>
+        <p>Open-air tables above the coastline, with a little bit of everything.</p>
+      </a>
+      <a class="card reveal" style="--d:4" href="../main-bar/">
+        <div class="card__img" style="view-transition-name:mb-hero"><img src="../../assets/img/cocktails.jpg" alt="Cocktails at the Main Bar" loading="lazy"><span class="card__tag">Bar</span></div>
+        <h3>Main Bar <span class="arrow">→</span></h3>
+        <p>Handcrafted cocktails, refreshing beers and live acts Friday through Sunday.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap next">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Game over. <em>Now, what's on?</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/"><span class="arrow">←</span> All dining &amp; bars</a>
+    </div>
+    <div class="next__grid">
+      <a class="tile wipe" href="../whats-on/" style="view-transition-name:wo-hero">
+        <img src="../../assets/img/wo-mates.jpg" alt="Mates sharing beers on the terrace" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Events &amp; weekly activities</p><h3>What's on</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1" href="../membership/#benefits">
+        <img src="../../assets/img/mb-bar.jpg" alt="A bartender shaking a cocktail at the Main Bar" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Mates Rates &amp; more</p><h3>Membership</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Right now in Sydney. ?now=2026-10-16T18:30+11:00 previews another moment.
+  const NOW = (() => {
+    const q = new URLSearchParams(location.search).get('now');
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+    return { day: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(p.weekday), mins: +p.hour * 60 + +p.minute, date: Date.UTC(+p.year, p.month - 1, +p.day) };
+  })();
+  // Venue status lines from the published hours: [open?, text]. Monday = 0.
+  const STATUS = {
+    bt: ({ day, mins }) => day !== 0 && mins >= 720 && mins < 1260 ? [1, 'Open now until 9pm']
+      : day !== 0 && mins < 720 ? [0, 'Opens today at 12pm'] : [0, `Opens ${day === 6 ? 'Tuesday' : 'tomorrow'} at 12pm`],
+    tl: ({ day, mins }) => day < 2 ? [0, 'Express Menu only today']
+      : mins < 690 ? [0, 'Opens today at 11.30am'] : mins < 900 ? [1, 'Open now until 3pm']
+      : mins < 1020 ? [0, 'Back for dinner at 5pm'] : mins < 1260 ? [1, 'Open now until 9pm']
+      : day === 6 ? [0, 'Closed now. Express Menu only Monday and Tuesday'] : [0, 'Closed now, opens tomorrow at 11.30am'],
+    dd: ({ day, mins }) => day !== 0 && mins >= 480 && mins < 690 ? [1, 'Serving breakfast until 11.30am']
+      : mins >= 690 && mins < 1020 ? [1, 'Serving lunch now, open until 9pm'] : mins >= 1020 && mins < 1260 ? [1, 'Serving dinner until 9pm']
+      : mins < 690 ? [0, day === 0 ? 'Opens today at 11.30am' : 'Opens today at 8am'] : [0, `Closed now, opens tomorrow at ${day === 6 ? '11.30am' : '8am'}`],
+  };
+  STATUS.ot = STATUS.dd;
+  document.querySelectorAll('[data-status]').forEach((el) => {
+    const [open, text] = STATUS[el.dataset.status](NOW);
+    el.classList.add(open ? 'is-open' : 'is-closed');
+    el.lastElementChild.textContent = text;
+  });
+  document.querySelectorAll('[data-hours]').forEach((ul) => ul.children[NOW.day].classList.add('is-today'));
+  // Pick lists: one item open at a time, with its image shown on the stage
+  document.querySelectorAll('[data-pick]').forEach((root) => {
+    const items = [...root.querySelectorAll('.pick__list li')];
+    const imgs = [...root.querySelectorAll('.pick__stage img')];
+    const pick = (n) => {
+      items.forEach((li, i) => { li.classList.toggle('is-active', i === n); li.firstElementChild.setAttribute('aria-expanded', i === n); });
+      imgs.forEach((im, i) => im.classList.toggle('is-active', i === n));
+    };
+    items.forEach((li, i) => {
+      li.firstElementChild.addEventListener('click', () => pick(i));
+      li.firstElementChild.addEventListener('focus', () => pick(i));
+      if (matchMedia('(hover:hover)').matches) li.addEventListener('mouseenter', () => pick(i));
+    });
+  });
+
+  // Hide dated events once they have passed
+  document.querySelectorAll('[data-until]').forEach((a) => { a.hidden = Date.parse(a.dataset.until) < NOW.date; });
+})();
+</script>
+</body>
+</html>

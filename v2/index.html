@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Harbord Diggers — Concept 2: Golden Hour</title>
+<meta name="description" content="Homepage concept for Harbord Diggers, Freshwater's community club on Sydney's Northern Beaches.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/img/terrace-dusk.jpg">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/base.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+:root{
+  --ink:#0d1b24; --ink2:#132a37; --paper:#f4ecdf; --sand:#edc494; --teal:#2e546f; --line:rgba(244,236,223,.16); --muted:rgba(244,236,223,.66);
+  --display:Fraunces,Georgia,serif; --body:Manrope,system-ui,sans-serif;
+  --pad:clamp(20px,5vw,88px);
+  --menu-bg:#0a151c; --menu-fg:var(--paper); --menu-accent:var(--sand);
+}
+body{background:var(--ink);color:var(--paper);font:400 16px/1.65 var(--body)}
+h1,h2,h3{font-family:var(--display);font-weight:300;letter-spacing:-.025em;line-height:1.02;font-variation-settings:"opsz" 144}
+em{font-style:italic;color:var(--sand)}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font:600 11px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--sand)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.wrap{padding-inline:var(--pad)}
+section{padding-block:clamp(80px,11vw,170px)}
+
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 24px;border-radius:999px;border:1px solid var(--line);font:600 13px/1 var(--body);letter-spacing:.02em;transition:background .45s var(--ease),color .45s,border-color .45s,gap .45s var(--ease)}
+.btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper);gap:18px}
+.btn--sand{background:var(--sand);color:var(--ink);border-color:var(--sand)}
+.btn--dark{border-color:rgba(13,27,36,.25);color:var(--ink)}
+.btn--dark:hover,.btn--ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn--ink:hover{background:var(--teal);border-color:var(--teal);color:var(--paper)}
+
+/* Header: clear over the banner, hides on the way down and returns on the way up */
+.hd{position:fixed;inset:0 0 auto;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px var(--pad);transition:transform .7s var(--ease),background .5s,padding .5s var(--ease)}
+.hd::after{content:"";position:absolute;left:var(--pad);right:var(--pad);bottom:0;height:1px;background:var(--line);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease-io) .4s}
+.is-loaded .hd::after{transform:scaleX(1)}
+.hd.is-scrolled{background:rgba(13,27,36,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-block:10px}
+.hd.is-hidden{transform:translateY(-100%)}
+.hd__logo img{height:46px;width:auto;transition:height .5s var(--ease)}
+.hd.is-scrolled .hd__logo img{height:38px}
+.hd__nav{display:flex;gap:clamp(18px,2.6vw,40px);font:500 13.5px/1 var(--body)}
+.hd__nav a{position:relative;padding:10px 0;opacity:.85;transition:opacity .3s}
+.hd__nav a::before{content:"";position:absolute;left:50%;bottom:0;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--sand);transform:scale(0);transition:transform .4s var(--ease)}
+.hd__nav a:hover{opacity:1}
+.hd__nav a:hover::before{transform:scale(1)}
+.hd__actions{display:flex;justify-content:flex-end;align-items:center;gap:18px;font:500 13.5px/1 var(--body)}
+.hd__actions .btn{height:42px;padding:0 20px}
+.burger{display:none}
+.menu-open .hd{transform:none;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.menu-open .hd__nav,.menu-open .hd__actions>a{opacity:0;pointer-events:none}
+
+/* Hero: full-bleed banner that settles into a framed picture as you scroll */
+.hero{height:190vh;position:relative}
+.hero__stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.hero__frame{position:absolute;inset:0;clip-path:inset(calc(var(--p,0) * 13vh) calc(var(--p,0) * 9vw) calc(var(--p,0) * 15vh) round calc(var(--p,0) * 26px));will-change:clip-path}
+.hero__frame img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1.22 - var(--p,0) * .16));opacity:0;transition:opacity 1.8s var(--ease)}
+.is-loaded .hero__frame img{opacity:1}
+.hero__frame::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 62% 52% at 50% 50%,rgba(13,27,36,.62),rgba(13,27,36,0)),linear-gradient(180deg,rgba(13,27,36,.7),rgba(13,27,36,.3) 34%,rgba(13,27,36,.36) 62%,rgba(13,27,36,.86));opacity:calc(1 - var(--p,0) * 1.1)}
+.hero__text{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px var(--pad) 90px;opacity:calc(1 - var(--p,0) * 2.1);transform:translateY(calc(var(--p,0) * -90px))}
+.hero__kicker{font:600 11px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--sand);opacity:0;transition:opacity 1.2s .3s}
+.is-loaded .hero__kicker{opacity:1}
+.hero h1{font-size:clamp(46px,8.6vw,150px);margin-top:26px;--base:350ms;max-width:12ch}
+.hero__lede{max-width:46ch;margin-top:26px;color:rgba(244,236,223,.86);opacity:0;transform:translateY(14px);transition:opacity 1s var(--ease) 1.2s,transform 1s var(--ease) 1.2s}
+.hero__cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px;opacity:0;transform:translateY(14px);transition:opacity 1s var(--ease) 1.4s,transform 1s var(--ease) 1.4s}
+.is-loaded .hero__lede,.is-loaded .hero__cta{opacity:1;transform:none}
+.hero__caption{position:absolute;z-index:2;left:0;right:0;bottom:calc(15vh - 46px);display:flex;justify-content:space-between;padding-inline:9vw;font:500 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:calc(var(--p,0) * 3 - 2)}
+.hero__scroll{position:absolute;z-index:2;left:50%;bottom:26px;width:1px;height:54px;background:var(--line);overflow:hidden;opacity:calc(1 - var(--p,0) * 5)}
+.hero__scroll::after{content:"";position:absolute;inset:0;background:var(--sand);animation:drip 2.2s var(--ease-io) infinite}
+@keyframes drip{0%{transform:translateY(-100%)}55%,100%{transform:translateY(100%)}}
+
+/* Ticker */
+.ticker{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;white-space:nowrap}
+.ticker__track{display:inline-flex;animation:tick 46s linear infinite}
+.ticker:hover .ticker__track{animation-play-state:paused}
+.ticker span{font:italic 300 clamp(22px,2.6vw,38px)/1 var(--display);padding-inline:clamp(18px,2.4vw,40px);display:inline-flex;align-items:center;gap:clamp(36px,4.8vw,80px)}
+.ticker span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--sand)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Intro */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,7vw,130px);align-items:start}
+.intro h2{font-size:clamp(34px,4.8vw,78px);margin-top:26px}
+.intro__body p{color:var(--muted);font-size:17px;max-width:46ch}
+.intro__body p+p{margin-top:1.1em}
+.intro__body .btn{margin-top:32px}
+
+/* Dining: a list that swaps the picture beside it */
+.dining{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,6vw,110px);align-items:start;margin-top:clamp(36px,5vw,70px)}
+.dlist{border-top:1px solid var(--line)}
+.ditem{position:relative;display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:8px;padding:clamp(18px,2.1vw,30px) 0;border-bottom:1px solid var(--line);transition:padding .6s var(--ease)}
+.ditem__n{font:500 12px/1 var(--body);letter-spacing:.1em;color:var(--muted)}
+.ditem h3{font-size:clamp(30px,4.2vw,68px);opacity:.42;transition:opacity .5s,transform .7s var(--ease),color .5s}
+.ditem__meta{font:500 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ditem p{grid-column:2/-1;max-width:50ch;color:var(--muted);display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease),margin .7s var(--ease),opacity .5s;opacity:0}
+.ditem p>span{overflow:hidden}
+.ditem.is-active h3{opacity:1;transform:translateX(10px);color:var(--sand)}
+.ditem.is-active p{grid-template-rows:1fr;margin-top:10px;opacity:1}
+.ditem::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--sand);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.ditem.is-active::after{transform:scaleX(1)}
+.ditem img{display:none}
+.dstage{position:sticky;top:96px;aspect-ratio:4/5;max-height:calc(100vh - 130px);width:100%;border-radius:22px;overflow:hidden;background:var(--ink2)}
+.dstage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 100% 0);transform:scale(1.12);transition:clip-path 1s var(--ease-io),transform 1.6s var(--ease);z-index:0}
+.dstage img.is-prev{clip-path:inset(0);transform:none;z-index:1;transition:none}
+.dstage img.is-active{clip-path:inset(0);transform:none;z-index:2}
+.dstage__label{position:absolute;z-index:3;left:18px;bottom:18px;padding:9px 14px;border-radius:999px;background:rgba(13,27,36,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.head h2{font-size:clamp(38px,6vw,100px);margin-top:24px}
+
+/* What's on */
+.on{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px);margin-top:clamp(36px,5vw,70px)}
+.on a:nth-child(2){margin-top:clamp(0px,6vw,90px)}
+.on__img{border-radius:22px;overflow:hidden;aspect-ratio:3/4}
+.on__img img{width:100%;height:100%;object-fit:cover}
+.on a.in:hover img{transform:scale(1.05)}
+.on__cap{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.on__cap small{display:block;font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:8px}
+.on__cap h3{font-size:clamp(24px,2.4vw,36px)}
+.go{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .4s,color .4s,transform .6s var(--ease),border-color .4s}
+a:hover .go{background:var(--sand);border-color:var(--sand);color:var(--ink);transform:rotate(-45deg)}
+
+/* Membership */
+.member{margin-inline:clamp(12px,2vw,28px);border-radius:28px;background:var(--paper);color:var(--ink);padding:clamp(48px,7vw,110px) clamp(22px,5vw,88px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,100px);align-items:end}
+.member .eyebrow{color:var(--teal)}
+.member h2{font-size:clamp(38px,5.6vw,92px);margin-top:24px}
+.member em{color:var(--teal)}
+.member p{color:rgba(13,27,36,.72);max-width:46ch;margin-top:24px}
+.member__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.stats{display:grid;gap:0}
+.stat{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-top:1px solid rgba(13,27,36,.16)}
+.stat:last-child{border-bottom:1px solid rgba(13,27,36,.16)}
+.stat b{font:300 clamp(46px,5.4vw,84px)/1 var(--display);letter-spacing:-.03em;color:var(--teal)}
+.stat>span{text-align:right;font-size:14px;color:rgba(13,27,36,.7);max-width:18ch}
+
+/* Visit */
+.visit{position:relative;margin-top:clamp(80px,11vw,170px);min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.visit__bg{position:absolute;inset:-12% 0}
+.visit__bg img{width:100%;height:100%;object-fit:cover;transform:translate3d(0,calc((var(--p,0) - .5) * 14%),0) scale(1.05)}
+.visit::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--ink),rgba(13,27,36,.1) 28%,rgba(13,27,36,.2) 55%,rgba(13,27,36,.92))}
+.visit__in{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;padding:0 var(--pad) clamp(40px,6vw,80px)}
+.visit h2{font-size:clamp(40px,7vw,120px);margin-top:22px}
+.visit__info{display:grid;gap:6px;font-size:15px;min-width:260px}
+.visit__info a:hover{color:var(--sand)}
+.visit__info .btn{margin-top:16px;justify-self:start}
+footer{padding:28px var(--pad) 96px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 40px;font-size:13px;color:var(--muted)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+footer a:hover{color:var(--paper)}
+
+@media (max-width:1000px){
+  .hd{grid-template-columns:1fr auto}
+  .hd__nav,.hd__actions>a:not(.btn){display:none}
+  .burger{display:grid}
+  .intro,.member,.visit__in{grid-template-columns:1fr}
+  .dining{grid-template-columns:1fr}
+  .dstage{display:none}
+  .ditem{grid-template-columns:34px 1fr}
+  .ditem__meta{display:none}
+  .ditem img{display:block;grid-column:1/-1;width:100%;border-radius:16px;margin-top:0;height:0;object-fit:cover;opacity:0;transition:height .8s var(--ease),margin .8s var(--ease),opacity .6s}
+  .ditem.is-active img{height:min(62vw,340px);margin-top:16px;opacity:1}
+}
+@media (max-width:640px){
+  .hero{height:160vh}
+  .hero__frame{clip-path:inset(calc(var(--p,0) * 12vh) calc(var(--p,0) * 16px) calc(var(--p,0) * 14vh) round calc(var(--p,0) * 20px))}
+  .hero__caption{padding-inline:16px;bottom:calc(14vh - 34px);font-size:10px}
+  .on{grid-template-columns:1fr}
+  .on a:nth-child(2){margin-top:0}
+  .on__img{aspect-ratio:4/3}
+  .hd__actions .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){.ticker__track{animation:none}}
+
+/* Dining dropdown in the header, and its line in the full-screen menu */
+.hd__drop{position:relative}
+.hd__drop>a{display:inline-flex;align-items:center;gap:8px}
+.hd__drop>a::after{content:"";width:5px;height:5px;margin-top:-3px;border:solid currentColor;border-width:0 1px 1px 0;transform:rotate(45deg);transition:transform .5s var(--ease),margin .5s var(--ease)}
+.hd__drop:hover>a::after,.hd__drop:focus-within>a::after{transform:rotate(225deg);margin-top:3px}
+.hd__sub{position:absolute;left:50%;top:100%;width:310px;margin-left:-155px;padding-top:14px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .35s var(--ease),transform .5s var(--ease),visibility 0s .35s}
+.hd__drop:hover .hd__sub,.hd__drop:focus-within .hd__sub{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.hd__sub div{padding:8px;border-radius:20px;background:#0a151c;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.hd__sub a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 14px;border-radius:13px;opacity:1;font:300 21px/1.1 var(--display);letter-spacing:-.02em;transition:background .3s,color .3s}
+.hd__sub a::before{content:none}
+.hd__sub a small{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hd__sub a:hover,.hd__sub a[aria-current]{background:rgba(244,236,223,.07);color:var(--sand)}
+.hd__sub a[aria-current]{font-style:italic}
+.menu__links a.menu__sub{font-size:clamp(20px,3.2vw,32px);font-style:italic;padding:2px 0 12px}
+.menu__links a.menu__sub::before{content:"";display:inline-block;vertical-align:middle;width:28px;height:1px;margin-right:14px;background:var(--sand)}
+
+/* Page-to-page transitions. The header stays put; a picture that leads to an inner page grows into that page's banner. */
+@view-transition{navigation:auto}
+.hd{view-transition-name:hd}
+.switcher{view-transition-name:switcher}
+.hero__frame{view-transition-name:home-hero}
+.dstage[data-on="Bau Truong"]{view-transition-name:bt-hero}
+.dstage[data-on="Ocean Terrace"]{view-transition-name:ot-hero}
+.dstage[data-on="Teddy Larkin's"]{view-transition-name:tl-hero}
+.dstage[data-on="DD Collective"]{view-transition-name:dd-hero}
+.dstage[data-on="Main Bar"]{view-transition-name:mb-hero}
+.dstage[data-on="Sports Bar"]{view-transition-name:sb-hero}
+.on a[href="whats-on/"] .on__img{view-transition-name:wo-hero}
+::view-transition-group(*){animation-duration:.75s;animation-timing-function:var(--ease-io)}
+::view-transition-old(*),::view-transition-new(*){height:100%;object-fit:cover}
+::view-transition-old(root){animation:vt-out .35s var(--ease-io) both}
+::view-transition-new(root){animation:vt-in .6s var(--ease) both}
+::view-transition-old(hd),::view-transition-new(hd),::view-transition-old(switcher),::view-transition-new(switcher){height:auto;object-fit:none}
+.vt .hero__frame img{opacity:1;transition:none}
+@media (max-width:1000px){
+  .ditem.is-active[href="bau-truong/"] img{view-transition-name:bt-hero}
+  .ditem.is-active[href="ocean-terrace/"] img{view-transition-name:ot-hero}
+  .ditem.is-active[href="teddy-larkins/"] img{view-transition-name:tl-hero}
+  .ditem.is-active[href="dd-collective/"] img{view-transition-name:dd-hero}
+  .ditem.is-active[href="main-bar/"] img{view-transition-name:mb-hero}
+  .ditem.is-active[href="sports-bar/"] img{view-transition-name:sb-hero}
+}
+.head__cta{display:flex;flex-wrap:wrap;gap:10px}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="#top" aria-label="Harbord Diggers home"><img src="../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop">
+      <a href="dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="dd-collective/">DD Collective <small>Café</small></a>
+        <a href="ocean-terrace/">Ocean Terrace <small>Outdoors</small></a>
+        <a href="main-bar/">Main Bar <small>Bar</small></a>
+        <a href="sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="whats-on/">What's On</a>
+    <a href="membership/">Membership</a>
+    <a href="community/">Community</a>
+    <a href="visit/">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="membership/#renew">Renew</a>
+    <a class="btn btn--sand" href="membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="ocean-terrace/">Ocean Terrace</a>
+    <a class="menu__sub" href="main-bar/">Main Bar</a>
+    <a class="menu__sub" href="sports-bar/">Sports Bar</a>
+    <a href="whats-on/">What's On</a>
+    <a href="membership/">Membership</a>
+    <a href="community/">Community</a>
+    <a href="visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="membership/#join">Join now</a><a href="membership/#renew">Renew</a><a href="functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="hero" data-progress>
+    <div class="hero__stick">
+      <div class="hero__frame"><img src="../assets/img/terrace-dusk.jpg" alt="Harbord Diggers and its terrace lit up at dusk" fetchpriority="high"></div>
+      <div class="hero__text">
+        <p class="hero__kicker">Welcome to Harbord Diggers</p>
+        <h1 data-split="load">Freshwater's <em>community</em> club.</h1>
+        <p class="hero__lede">Bars, restaurants, live entertainment and an Ocean Terrace with sweeping views of Freshwater Beach.</p>
+        <div class="hero__cta">
+          <a class="btn btn--sand" href="#dining">Explore dining <span>→</span></a>
+          <a class="btn" href="#visit">Plan your visit</a>
+        </div>
+      </div>
+      <div class="hero__caption"><span>88 Evans St, Freshwater</span><span>Northern Beaches, since 1930</span></div>
+      <span class="hero__scroll" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Ocean Terrace</span><span>Live &amp; local music</span><span>Bau Truong</span><span>Teddy Larkin's</span><span>DD Collective</span><span>Main Bar</span><span>Major Fun</span>
+      <span>Ocean Terrace</span><span>Live &amp; local music</span><span>Bau Truong</span><span>Teddy Larkin's</span><span>DD Collective</span><span>Main Bar</span><span>Major Fun</span>
+    </div>
+  </div>
+
+  <section class="wrap intro" id="about">
+    <div>
+      <p class="eyebrow reveal">About us</p>
+      <h2 data-split>Supporting the Northern Beaches community <em>since 1930.</em></h2>
+    </div>
+    <div class="intro__body reveal" style="--d:2">
+      <p>Harbord Diggers is a community-centred club, using our success to help improve members' lives and the Northern Beaches community.</p>
+      <p>Our award-winning Freshwater venue features bars, restaurants, entertainment and a spectacular Ocean Terrace — plus fitness, aquatic centres and kids' play at Major Fun across the precinct.</p>
+      <a class="btn" href="community/#profit-for-purpose">Profit for purpose <span>→</span></a>
+    </div>
+  </section>
+
+  <section class="wrap" id="dining" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Dining &amp; bars</p>
+        <h2 data-split>Find your <em>table.</em></h2>
+      </div>
+      <div class="head__cta reveal">
+        <a class="btn" href="dining/#deals">Dining deals</a>
+        <a class="btn" href="dining/">All dining &amp; bars <span>→</span></a>
+      </div>
+    </div>
+    <div class="dining">
+      <div class="dlist" data-dlist>
+        <a class="ditem reveal is-active" href="ocean-terrace/" data-label="Ocean Terrace">
+          <span class="ditem__n">01</span><h3>Ocean Terrace</h3><span class="ditem__meta">Outdoors</span>
+          <img src="../assets/img/ocean-terrace.jpg" alt="" loading="lazy">
+          <p><span>Waterside views of the Northern Beaches — the perfect place to catch up over a drink.</span></p>
+        </a>
+        <a class="ditem reveal" style="--d:1" href="bau-truong/" data-label="Bau Truong">
+          <span class="ditem__n">02</span><h3>Bau Truong</h3><span class="ditem__meta">Vietnamese</span>
+          <img src="../assets/img/bau-truong-food.jpg" alt="" loading="lazy">
+          <p><span>Direct from its humble roots in Cabramatta — authentic modern Vietnamese, from traditional pho to fresh paper rolls.</span></p>
+        </a>
+        <a class="ditem reveal" style="--d:2" href="teddy-larkins/" data-label="Teddy Larkin's">
+          <span class="ditem__n">03</span><h3>Teddy Larkin's</h3><span class="ditem__meta">Seafood &amp; steak</span>
+          <img src="../assets/img/teddy-table.jpg" alt="" loading="lazy">
+          <p><span>A perfectly cooked steak, fresh snapper or a grilled burger at our seafood and steakhouse.</span></p>
+        </a>
+        <a class="ditem reveal" style="--d:3" href="dd-collective/" data-label="DD Collective">
+          <span class="ditem__n">04</span><h3>DD Collective</h3><span class="ditem__meta">Café</span>
+          <img src="../assets/img/dd-interior.jpg" alt="" loading="lazy">
+          <p><span>A family-friendly café serving great coffee, healthy options and pub favourites.</span></p>
+        </a>
+        <a class="ditem reveal" style="--d:4" href="main-bar/" data-label="Main Bar">
+          <span class="ditem__n">05</span><h3>Main Bar</h3><span class="ditem__meta">Bar</span>
+          <img src="../assets/img/cocktails.jpg" alt="" loading="lazy">
+          <p><span>Beers on tap, cocktails such as espresso martinis, and live music with Northern Beaches views.</span></p>
+        </a>
+        <a class="ditem reveal" style="--d:5" href="sports-bar/" data-label="Sports Bar">
+          <span class="ditem__n">06</span><h3>Sports Bar</h3><span class="ditem__meta">Send It</span>
+          <img src="../assets/img/wo-sportsbar.jpg" alt="" loading="lazy">
+          <p><span>Huge screens, live sports, great food and drinks, plus Send It: an immersive simulator for darts, racing sims and basketball.</span></p>
+        </a>
+      </div>
+      <div class="dstage reveal-fade" data-dstage data-on="Ocean Terrace" aria-hidden="true"><span class="dstage__label">Ocean Terrace</span></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="whats-on" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">What's on</p>
+        <h2 data-split>Nights worth <em>staying for.</em></h2>
+      </div>
+      <a class="btn reveal" href="whats-on/">Events &amp; weekly activities <span>→</span></a>
+    </div>
+    <div class="on">
+      <a href="whats-on/#live-music" class="wipe-host">
+        <div class="on__img wipe"><img src="../assets/img/live-music.jpg" alt="A musician playing guitar at Harbord Diggers" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Live &amp; local</small><h3>Live entertainment</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="whats-on/#kids">
+        <div class="on__img wipe" style="--d:1"><img src="../assets/img/major-fun.jpg" alt="Children playing at Major Fun" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Kids</small><h3>Major Fun</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="whats-on/">
+        <div class="on__img wipe" style="--d:2"><img src="../assets/img/cocktails.jpg" alt="Cocktails on the bar" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Entertainment</small><h3>Weekly events</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="member" id="membership">
+    <div>
+      <p class="eyebrow reveal">Membership</p>
+      <h2 data-split>Join the Mounties Group <em>family.</em></h2>
+      <p class="reveal">Unlock access to our eight venues, member discounts, special promotions, member services and discounted holidays. It's our way of saying thank you.</p>
+      <div class="member__cta reveal">
+        <a class="btn btn--ink" href="membership/#join">Join now <span>→</span></a>
+        <a class="btn btn--dark" href="membership/#renew">Renew</a>
+        <a class="btn btn--dark" href="membership/">Member benefits</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="8">8</b><span>venues on one membership</span></div>
+      <div class="stat reveal" style="--d:1"><b><i data-count="100" style="font-style:normal">100</i>+</b><span>community groups supported</span></div>
+      <div class="stat reveal" style="--d:2"><b>$<i data-count="15" style="font-style:normal">15</i></b><span>birthday bonus points</span></div>
+    </div>
+  </div>
+
+  <div class="visit" id="visit" data-progress="view">
+    <div class="visit__bg"><img src="../assets/img/terrace-aerial.jpg" alt="The Ocean Terrace above Freshwater Beach" loading="lazy"></div>
+    <div class="visit__in">
+      <div>
+        <p class="eyebrow reveal">Plan your visit</p>
+        <h2 data-split>See you <em>by the water.</em></h2>
+      </div>
+      <div class="visit__info reveal">
+        <span>88 Evans St, Freshwater NSW 2096</span>
+        <a href="tel:0291054888">(02) 9105 4888</a>
+        <a href="visit/#courtesy-bus">Courtesy bus →</a>
+        <a href="visit/">Hours, parking &amp; contact →</a>
+        <a class="btn btn--sand" href="https://www.google.com/maps/dir/?api=1&destination=Harbord+Diggers+88+Evans+St+Freshwater+NSW+2096">Get directions <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="dining/">Dining</a>
+    <a href="whats-on/">What's On</a>
+    <a href="community/">Community</a>
+    <a href="functions/">Functions</a>
+    <a href="visit/#courtesy-bus">Courtesy bus</a>
+    <a href="visit/#contact">Contact</a>
+    <a href="privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../assets/common.js"></script>
+<script>
+// Dining list drives the picture beside it
+(() => {
+  const items = [...document.querySelectorAll('[data-dlist] .ditem')];
+  const stage = document.querySelector('[data-dstage]');
+  const label = stage.querySelector('.dstage__label');
+  const imgs = items.map((item, i) => {
+    const img = new Image();
+    img.src = item.querySelector('img').getAttribute('src');
+    img.alt = '';
+    if (i === 0) img.className = 'is-active';
+    stage.prepend(img);
+    return img;
+  });
+  let current = 0;
+  const activate = (i) => {
+    if (i === current) return;
+    imgs.forEach((img) => img.classList.remove('is-prev'));
+    imgs[current].classList.remove('is-active');
+    imgs[current].classList.add('is-prev');
+    void imgs[i].offsetWidth;
+    imgs[i].classList.add('is-active');
+    items[current].classList.remove('is-active');
+    items[i].classList.add('is-active');
+    label.textContent = stage.dataset.on = items[i].dataset.label;
+    current = i;
+  };
+  const touch = matchMedia('(hover: none)').matches;
+  items.forEach((item, i) => {
+    item.addEventListener('mouseenter', () => activate(i));
+    item.addEventListener('focus', () => activate(i));
+    // On touch, first tap opens the row; second tap follows the link
+    item.addEventListener('click', (e) => { if (touch && i !== current) { e.preventDefault(); activate(i); } });
+  });
+})();
+</script>
+</body>
+</html>

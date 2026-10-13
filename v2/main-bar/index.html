@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Main Bar — Harbord Diggers (Concept 2: Golden Hour)</title>
+<meta name="description" content="The Main Bar at Harbord Diggers: handcrafted cocktails, cold beers, live acts every Friday to Sunday and the heart of the Northern Beaches.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/cocktails.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../golden-hour.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the bar opens out from a tall glass-shaped window; this week's live sets sit in the card on the right */
+.mb{--from:inset(14% 40% 14% 40% round 22px 22px 999px 999px);--shade:linear-gradient(90deg,rgba(13,27,36,.9),rgba(13,27,36,.55) 50%,rgba(13,27,36,.2)),linear-gradient(180deg,rgba(13,27,36,.7),rgba(13,27,36,0) 30%,rgba(13,27,36,0) 55%,rgba(13,27,36,.8))}
+.mb .bn__frame{view-transition-name:mb-hero}
+.mb h1{max-width:10ch}
+.live{min-width:340px}
+.live>p:first-child{justify-content:flex-start;gap:12px}
+.live b{font:300 21px/1.1 var(--display);letter-spacing:-.02em}
+.live .is-next b{color:var(--sand);font-style:italic}
+
+/* Specials: four rows; the one you're on brings its poster up beside it, shown whole */
+.sp{position:relative;margin-top:clamp(36px,5vw,70px);padding-right:54%;min-height:clamp(400px,32.5vw,560px);border-top:1px solid var(--line)}
+.sp>li{border-bottom:1px solid var(--line)}
+.sp__row{position:relative;display:grid;grid-template-columns:54px 1fr auto;align-items:baseline;gap:8px;width:100%;padding:clamp(14px,1.5vw,22px) 0;text-align:left}
+.sp__row::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--sand);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.is-active>.sp__row::after{transform:scaleX(1)}
+.sp__n{font:500 12px/1 var(--body);letter-spacing:.1em;color:var(--muted)}
+.sp__name{font:300 clamp(26px,3vw,48px)/1.05 var(--display);letter-spacing:-.025em;opacity:.45;transition:opacity .5s,transform .7s var(--ease),color .5s}
+.sp__row:hover .sp__name{opacity:.8}
+.is-active .sp__name{opacity:1;transform:translateX(10px);color:var(--sand);font-style:italic}
+.sp__more{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .8s var(--ease),opacity .4s}
+.is-active>.sp__more{grid-template-rows:1fr;opacity:1;transition:grid-template-rows .8s var(--ease),opacity .7s .2s}
+.sp__more>div{overflow:hidden;min-height:0;padding-left:62px}
+.sp__more p{max-width:44ch;padding-bottom:24px;color:var(--muted)}
+.sp__art{position:absolute;right:0;top:0;width:50%;aspect-ratio:16/9;margin-top:clamp(14px,1.5vw,22px);border-radius:22px;overflow:hidden;background:var(--ink2);opacity:0;visibility:hidden;clip-path:inset(0 0 100% 0 round 22px);transition:opacity .5s,clip-path 0s .6s,visibility 0s .6s}
+.is-active>.sp__art{opacity:1;visibility:visible;clip-path:inset(0 round 22px);transition:opacity .5s,clip-path 1s var(--ease-io)}
+.sp__art img{display:block;width:100%;height:100%;object-fit:contain}
+
+/* Live music on paper */
+.lm{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(28px,6vw,110px);align-items:center}
+.lm__pic{aspect-ratio:4/5;border-radius:999px 999px 22px 22px;overflow:hidden;background:var(--ink2)}
+.lm__pic img{width:100%;height:100%;object-fit:cover}
+.lm h2{font-size:clamp(36px,5.2vw,86px);margin:24px 0 28px}
+.lm>div>p{color:rgba(13,27,36,.72);max-width:46ch}
+.sets{margin-top:clamp(24px,3vw,40px);border-top:1px solid rgba(13,27,36,.16)}
+.sets li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:clamp(12px,1.4vw,18px) 0;border-bottom:1px solid rgba(13,27,36,.16)}
+.sets b{font:300 clamp(24px,2.6vw,40px)/1.05 var(--display);letter-spacing:-.025em}
+.sets span{font-size:15px;color:rgba(13,27,36,.72);text-align:right}
+.sets .is-next b{font-style:italic;color:var(--teal)}
+.sets .pill{margin-left:12px;font-size:10px;text-align:center;border-color:rgba(46,84,111,.5);color:var(--teal)}
+.lm .btn{margin-top:30px}
+
+@media (max-width:1000px){
+  .live{min-width:0}
+  .sp{padding-right:0;min-height:0}
+  .sp__art{position:relative;width:auto;margin:0 0 22px;opacity:1;visibility:visible;clip-path:none;display:none}
+  .is-active>.sp__art{display:block;clip-path:none;animation:sp-in .8s var(--ease)}
+  .lm{grid-template-columns:1fr}
+  .lm__pic{max-width:420px;aspect-ratio:1}
+}
+@media (max-width:760px){
+  .mb{--from:inset(16% 24% 16% 24% round 22px 22px 999px 999px)}
+  .mb .bn__par img{object-position:38% 50%}
+  .sp__row{grid-template-columns:34px 1fr auto}
+  .sp__more>div{padding-left:0}
+  .sp__art{border-radius:14px}
+  .sets li{flex-direction:column;gap:6px}
+  .sets span{text-align:left}
+}
+@keyframes sp-in{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){
+  .is-active>.sp__art{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop is-here">
+      <a href="../dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="../teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="../dd-collective/">DD Collective <small>Café</small></a>
+        <a href="../ocean-terrace/">Ocean Terrace <small>Outdoors</small></a>
+        <a href="./" aria-current="page">Main Bar <small>Bar</small></a>
+        <a href="../sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="../membership/#renew">Renew</a>
+    <a class="btn btn--sand" href="../membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="../bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="../teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="../dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="../ocean-terrace/">Ocean Terrace</a>
+    <a class="menu__sub" href="./" aria-current="page">Main Bar</a>
+    <a class="menu__sub" href="../sports-bar/">Sports Bar</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="../membership/#join">Join now</a><a href="../membership/#renew">Renew</a><a href="../functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="bn vh mb" data-progress="view">
+    <div class="bn__frame"><div class="bn__open"><div class="bn__par"><img src="../../assets/img/cocktails.jpg" alt="Cocktails lined up on the Main Bar" fetchpriority="high"></div></div></div>
+    <div class="bn__in">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span>←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; bars</a><i>/</i>
+        <span aria-current="page">Main Bar</span>
+      </nav>
+      <div>
+        <p class="eyebrow rise" style="--d:1">Harbord Diggers Main Bar</p>
+        <h1 data-split="load">The heart of the <em>Northern Beaches.</em></h1>
+        <p class="vh__lede rise" style="--d:5">The perfect spot for friends, families and post-beach drinks.</p>
+        <div class="vh__cta rise" style="--d:6">
+          <a class="btn btn--sand" href="#specials">See the specials <span>↓</span></a>
+          <a class="btn" href="../whats-on/#live-music">Live music line-up</a>
+        </div>
+      </div>
+      <aside class="vcard live rise" style="--d:8" aria-label="Live music at the Main Bar">
+        <p><span class="status is-open"><i></i><span>Live every weekend</span></span></p>
+        <p data-set="4"><b>Friday</b><span>6pm – 9pm</span></p>
+        <p data-set="5" class="m-hide"><b>Saturday</b><span>2pm – 5pm &amp; 6pm – 9pm</span></p>
+        <p data-set="6" class="m-hide"><b>Sunday</b><span>1.30pm – 4.30pm</span></p>
+      </aside>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Handcrafted cocktails</span><span>A curated wine list</span><span>Refreshing beers</span><span>Beer of the Month</span><span>Live acts Friday to Sunday</span><span>Post-beach drinks</span>
+      <span>Handcrafted cocktails</span><span>A curated wine list</span><span>Refreshing beers</span><span>Beer of the Month</span><span>Live acts Friday to Sunday</span><span>Post-beach drinks</span>
+    </div>
+  </div>
+
+  <section class="wrap story" id="story">
+    <figure class="story__pic wipe" data-progress="view"><div><img src="../../assets/img/mb-room.jpg" alt="The curved, timber-ribbed ceiling over the Main Bar and lounge" loading="lazy"></div></figure>
+    <div>
+      <p class="eyebrow reveal">The bar</p>
+      <h2 data-split>A true hub <em>for the locals.</em></h2>
+      <div class="story__body reveal">
+        <p>Handcrafted cocktails, a curated wine list, refreshing beers and delicious food, all in a relaxed coastal setting.</p>
+        <p>Add live acts every Friday through Sunday and rotating Beer of the Month specials, and it's easy to stay a while.</p>
+      </div>
+      <p class="story__quote reveal">Your go-to for great drinks, great music and great company.</p>
+      <figure class="story__wide wipe" data-progress="view">
+        <div><img src="../../assets/img/mb-bar.jpg" alt="A bartender shaking a cocktail behind the timber and sandstone bar" loading="lazy"></div>
+        <figcaption><span>Open daily with the club</span><span>88 Evans Street, Freshwater</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap" id="specials" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">At the bar</p>
+        <h2 data-split>Four good reasons <em>to stay for another.</em></h2>
+      </div>
+    </div>
+    <ul class="sp reveal" data-specials>
+      <li class="is-active">
+        <button class="sp__row" aria-expanded="true"><span class="sp__n">01</span><span class="sp__name">Sunset Sips</span><span class="pill" data-sips hidden>On today</span></button>
+        <div class="sp__more"><div><p>Happy hour, with $12 cocktails: Margarita, Aperol Spritz and Espresso Martini. Monday to Friday. Not available 22 December to 5 January.</p></div></div>
+        <figure class="sp__art"><img src="../../assets/img/mb-happy.jpg" alt="Sunset Sips happy hour poster: $12 cocktails, Monday to Friday" loading="lazy"></figure>
+      </li>
+      <li>
+        <button class="sp__row" aria-expanded="false"><span class="sp__n">02</span><span class="sp__name">Grab a Bucket</span></button>
+        <div class="sp__more"><div><p>Four drinks to share for $32.</p></div></div>
+        <figure class="sp__art"><img src="../../assets/img/mb-buckets.jpg" alt="Grab a Bucket poster: 4 drinks to share for $32" loading="lazy"></figure>
+      </li>
+      <li>
+        <button class="sp__row" aria-expanded="false"><span class="sp__n">03</span><span class="sp__name">Mates Rates</span><span class="pill">Members</span></button>
+        <div class="sp__more"><div><p>For members: $1 off Great Northern schooners, $1 off Balter XPA schooners and $1 off house red wines.</p></div></div>
+        <figure class="sp__art"><img src="../../assets/img/mb-mates.jpg" alt="Mates Rates poster: $1 off selected schooners and house red wines for members" loading="lazy"></figure>
+      </li>
+      <li>
+        <button class="sp__row" aria-expanded="false"><span class="sp__n">04</span><span class="sp__name">Squealini</span></button>
+        <div class="sp__more"><div><p>Squealing Pig's Squealini, in zesty lemon or fuzzy peach.</p></div></div>
+        <figure class="sp__art"><img src="../../assets/img/mb-squealini.jpg" alt="Squealing Pig Squealini poster: zesty lemon and fuzzy peach" loading="lazy"></figure>
+      </li>
+    </ul>
+  </section>
+
+  <div class="panel lm" id="live">
+    <figure class="lm__pic wipe"><img src="../../assets/img/live-music.jpg" alt="A musician playing live at Harbord Diggers" loading="lazy"></figure>
+    <div>
+      <p class="eyebrow reveal">Live &amp; Local</p>
+      <h2 data-split>Live acts, <em>every weekend.</em></h2>
+      <p class="reveal">A showcase dedicated to local live performers and original music, supporting local Northern Beaches artists.</p>
+      <ul class="sets reveal">
+        <li data-set="4"><b>Fridays</b><span>6pm – 9pm</span></li>
+        <li data-set="5"><b>Saturdays</b><span>2pm – 5pm and 6pm – 9pm</span></li>
+        <li data-set="6"><b>Sundays</b><span>1.30pm – 4.30pm</span></li>
+      </ul>
+      <a class="btn btn--ink reveal" href="../whats-on/#live-music">See who's playing <span>→</span></a>
+    </div>
+  </div>
+
+  <section class="wrap duo duo--flip" id="find">
+    <figure class="duo__pic wipe"><img src="../../assets/img/wo-mates.jpg" alt="Mates sharing a laugh over a drink at the Diggers" loading="lazy"></figure>
+    <div>
+      <p class="eyebrow reveal">Drop in</p>
+      <h2 data-split>Open daily <em>with the club.</em></h2>
+      <p class="reveal">The perfect spot for friends, families and post-beach drinks. For anything you need, call the club or see how to get here.</p>
+      <div class="duo__cta reveal">
+        <a class="btn btn--sand" href="tel:0291054888">Call (02) 9105 4888</a>
+        <a class="btn" href="../visit/#getting-here">Getting here <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="more" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Also at the Diggers</p>
+        <h2 data-split>Hungry after <em>that first round?</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span>→</span></a>
+    </div>
+    <div class="also">
+      <a href="../bau-truong/">
+        <div class="on__img wipe" style="view-transition-name:bt-hero"><img src="../../assets/img/bt-booth.jpg" alt="Blue banquette booths and set tables at Bau Truong" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Modern Vietnamese</small><h3>Bau Truong</h3></div><span class="go">→</span></div>
+        <p class="reveal">Family-run modern Vietnamese, from traditional pho to fresh paper rolls.</p>
+      </a>
+      <a href="../teddy-larkins/">
+        <div class="on__img wipe" style="--d:1;view-transition-name:tl-hero"><img src="../../assets/img/teddy-ribs.jpg" alt="Ribs and a beer at Teddy Larkin's" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Seafood &amp; steak</small><h3>Teddy Larkin's</h3></div><span class="go">→</span></div>
+        <p class="reveal">Rangers Valley steaks, slow-cooked ribs and locally sourced seafood.</p>
+      </a>
+      <a href="../dd-collective/">
+        <div class="on__img wipe" style="--d:2;view-transition-name:dd-hero"><img src="../../assets/img/dd-cafe.jpg" alt="The DD Collective café counter under a woven pendant light" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Café</small><h3>DD Collective</h3></div><span class="go">→</span></div>
+        <p class="reveal">Barista-made coffee all day, breakfast classics and pub favourites.</p>
+      </a>
+      <a href="../ocean-terrace/">
+        <div class="on__img wipe" style="--d:3;view-transition-name:ot-hero"><img src="../../assets/img/ot-dusk.jpg" alt="The Ocean Terrace full of people at dusk" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Outdoors</small><h3>Ocean Terrace</h3></div><span class="go">→</span></div>
+        <p class="reveal">Relaxed open-air dining, perched above the coastline.</p>
+      </a>
+      <a href="../sports-bar/">
+        <div class="on__img wipe" style="--d:4;view-transition-name:sb-hero"><img src="../../assets/img/wo-sportsbar.jpg" alt="Mates laughing over a beer in the Sports Bar" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Sports Bar + Send It</small><h3>Sports Bar</h3></div><span class="go">→</span></div>
+        <p class="reveal">Huge screens, live sport and Send It's darts, racing sims and basketball.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Drink in hand. <em>Now, what's on?</em></h2>
+      </div>
+    </div>
+    <div class="next__grid">
+      <a href="../whats-on/">
+        <div class="on__img wipe" style="view-transition-name:wo-hero"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A full outdoor Sports Bar at dusk, festoon lights on" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Events &amp; weekly activities</small><h3>What's on</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="../">
+        <div class="on__img wipe" style="--d:1;view-transition-name:home-hero"><img src="../../assets/img/terrace-dusk.jpg" alt="Harbord Diggers lit up at dusk" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Harbord Diggers</small><h3>Back to home</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="../dining/">Dining</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../community/">Community</a>
+    <a href="../functions/">Functions</a>
+    <a href="../visit/#courtesy-bus">Courtesy bus</a>
+    <a href="../visit/#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // The time in Sydney right now. ?now=2026-10-16T18:30+11:00 previews another moment.
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const day = DAYS.findIndex((d) => d.startsWith(p.weekday));
+  const mins = +p.hour * 60 + +p.minute;
+  const clock = (m) => `${(Math.floor(m / 60) + 11) % 12 + 1}${m % 60 ? '.' + String(m % 60).padStart(2, '0') : ''}${m < 720 ? 'am' : 'pm'}`;
+
+  // Service times as minutes from midnight, Monday first
+  const V = [[720, 1260]], T = [[690, 900], [1020, 1260]], L = [[690, 1260]], B = [[480, 690], [690, 1260]];
+  const HOURS = { 'bau-truong': [[], V, V, V, V, V, V], 'teddy-larkins': [[], [], T, T, T, T, T], 'dd-collective': [L, B, B, B, B, B, B], 'ocean-terrace': [L, B, B, B, B, B, B] };
+  const statusOf = (week) => {
+    const at = week[day].findIndex(([a, b]) => mins >= a && mins < b);
+    if (at > -1) {
+      let end = week[day][at][1];
+      week[day].slice(at + 1).forEach(([a, b]) => { if (a === end) end = b; }); // breakfast runs straight into lunch
+      return { open: true, short: `Open until ${clock(end)}`, text: end - mins <= 60 ? `Open now, last hour before the ${clock(end)} close` : `Open now until ${clock(end)}` };
+    }
+    const later = week[day].find(([a]) => a > mins);
+    if (later) return { open: false, short: `Opens ${clock(later[0])}`, text: `Opens today at ${clock(later[0])}` };
+    for (let i = 1; i < 8; i++) {
+      const d = (day + i) % 7;
+      if (week[d].length) return { open: false, short: `Opens ${i === 1 ? 'tomorrow' : DAYS[d]}`, text: `Closed now, opens ${i === 1 ? 'tomorrow' : DAYS[d]} at ${clock(week[d][0][0])}` };
+    }
+  };
+  const setStatus = (el, s) => { el.classList.add(s.open ? 'is-open' : 'is-closed'); el.lastElementChild.textContent = s.text; };
+
+  // Live sets run Friday to Sunday: mark the next one (today's, if it hasn't finished)
+  const ends = { 4: 1260, 5: 1260, 6: 990 };
+  let next = day;
+  while (!ends[next] || (next === day && mins >= ends[next])) next = (next + 1) % 7;
+  document.querySelectorAll(`[data-set="${next}"]`).forEach((el) => {
+    el.classList.add('is-next');
+    el.querySelector('b').insertAdjacentHTML('beforeend', el.closest('.sets') ? `<span class="pill">${next === day ? 'Today' : 'Next up'}</span>` : '');
+  });
+
+  // Sunset Sips: Monday to Friday, but not from 22 December to 5 January
+  const md = +p.month * 100 + +p.day;
+  document.querySelector('[data-sips]').hidden = day > 4 || md >= 1222 || md <= 105;
+
+  // Specials: one row open at a time
+  const rows = [...document.querySelectorAll('[data-specials] > li')];
+  const pick = (li) => rows.forEach((r) => {
+    r.classList.toggle('is-active', r === li);
+    r.firstElementChild.setAttribute('aria-expanded', r === li);
+  });
+  rows.forEach((li) => {
+    li.firstElementChild.addEventListener('click', () => pick(li));
+    li.firstElementChild.addEventListener('focus', () => pick(li));
+    if (matchMedia('(hover:hover) and (min-width:1001px)').matches) li.firstElementChild.addEventListener('mouseenter', () => pick(li));
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teddy Larkin's — Harbord Diggers (Concept 1: Shoreline)</title>
+<meta name="description" content="Teddy Larkin's Seafood &amp; Steakhouse at Harbord Diggers: succulent steaks and fresh seafood.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/tl-board.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../shoreline.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: headline over a staggered triptych that drifts at three speeds */
+.th{padding:80px var(--pad) 0}
+.th__row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,90px);align-items:end;padding-block:clamp(10px,1.6vw,22px) clamp(26px,3.4vw,50px)}
+.th h1{font-size:clamp(46px,7.2vw,116px);font-weight:300;--base:300ms}
+.th h1 em{font-weight:300}
+.th__lede{color:var(--muted);max-width:44ch;font-size:clamp(16px,1.25vw,18px)}
+.th .cta{margin-top:22px}
+.th .status{margin-top:22px}
+.th__trip{position:relative;display:grid;grid-template-columns:1.32fr .72fr .86fr;gap:var(--gap);align-items:start;margin-inline:calc(var(--gap) - var(--pad))}
+.th__f{border-radius:var(--r);overflow:hidden;background:#1c0b2c}
+.th__f img{width:100%;height:100%;object-fit:cover}
+.th__f:nth-child(1){aspect-ratio:3/2;view-transition-name:tl-hero}
+.th__f:nth-child(2){aspect-ratio:3/4;margin-top:clamp(28px,5vw,80px);transform:translate3d(0,calc(var(--sy,0) * -.09px),0)}
+.th__f:nth-child(3){aspect-ratio:1;transform:translate3d(0,calc(var(--sy,0) * .05px),0)}
+.js .th__f{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io) calc(var(--i) * 160ms + .15s)}
+.js .is-loaded .th__f{clip-path:inset(0 round var(--r))}
+.js .th__f img{transform:scale(1.18);transition:transform 2.4s var(--ease) calc(var(--i) * 160ms + .15s)}
+.js .is-loaded .th__f img{transform:none}
+.th .seal{left:calc(1.32 / 2.9 * 100% - 150px);top:22px}
+
+.grp{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px 40px;margin-top:var(--gap);padding:clamp(20px,2.4vw,34px);border-radius:var(--r);border:1px solid var(--line)}
+.grp h3{font-size:clamp(24px,2.4vw,36px)}
+.grp p{color:var(--muted);max-width:60ch;margin-top:8px;font-size:15px}
+
+@media (max-width:1000px){
+  .th__row{grid-template-columns:1fr}
+  .th__trip{grid-template-columns:1fr 1fr}
+  .th__f:nth-child(1){grid-column:1/-1}
+  .th__f:nth-child(2){margin-top:0;aspect-ratio:1}
+  .th__f:nth-child(n){transform:none}
+  .th .seal{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="../whats-on/">What's On</a>
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="./" aria-current="page">Teddy Larkin's</a>
+          <a href="../dd-collective/">DD Collective</a>
+          <a href="../ocean-terrace/">Ocean Terrace</a>
+          <a href="../main-bar/">Main Bar</a>
+          <a href="../sports-bar/">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="../membership/">Membership</a>
+      <a href="../community/">Community</a>
+      <a href="../visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="../membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="./" aria-current="page">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="th">
+    <nav class="crumb rise" aria-label="Breadcrumb">
+      <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+      <a href="../dining/">Dining &amp; bars</a><i>/</i>
+      <span aria-current="page">Teddy Larkin's</span>
+    </nav>
+    <div class="th__row">
+      <div>
+        <p class="eyebrow rise" style="margin-bottom:18px">Seafood &amp; steakhouse</p>
+        <h1 data-split="load">Succulent steaks <em>&amp; fresh seafood.</em></h1>
+      </div>
+      <div class="rise" style="--d:4">
+        <p class="th__lede">A succulent rib-eye or a tender rack of ribs from the fields of country New South Wales: Teddy Larkin's has something to satisfy those carnivorous cravings.</p>
+        <div class="cta">
+          <a class="btn btn--solid" href="https://www.teddylarkins.com.au/" target="_blank" rel="noopener">Book your table <span class="arrow">↗</span></a>
+          <a class="btn" href="https://wds.webdirector.net/harbord-ve/stores/Menus/Final%20Dine%20In%20Menu%202026.pdf" target="_blank" rel="noopener">Menu <span class="arrow">↗</span></a>
+        </div>
+        <p class="status" data-status="tl"><i></i><span>Wednesday to Sunday, lunch and dinner</span></p>
+      </div>
+    </div>
+    <div class="th__trip">
+      <figure class="th__f" style="--i:0" data-vt-hero><img src="../../assets/img/teddy-ribs.jpg" alt="A rack of ribs with a cold beer at Teddy Larkin's" fetchpriority="high"></figure>
+      <figure class="th__f" style="--i:1"><img src="../../assets/img/tl-spread.jpg" alt="Steak, sides and sauces spread across a table, seen from above"></figure>
+      <figure class="th__f" style="--i:2"><img src="../../assets/img/tl-board.jpg" alt="A share board of ribs and steak being carved"></figure>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><defs><path id="seal" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#seal" textLength="276">Rangers Valley beef · Fresh seafood ·</textPath></text></svg>
+        <b>tl</b>
+      </div>
+    </div>
+  </div>
+
+  <section id="story" data-progress="view">
+    <div class="wrap story">
+      <div>
+        <p class="eyebrow reveal">The idea</p>
+        <p class="story__statement" data-words>Sourcing the highest quality ingredients from Aussie paddocks and the coast is at the heart of the menu.</p>
+      </div>
+      <div class="story__side reveal">
+        <p>Filled with familiar favourites, it was designed to bring everyone around the table together.</p>
+        <p>Slow-cooked, BBQ-based ribs and tasty burgers. Locally sourced fresh seafood. Signature cuts including eye fillet, rib eye and rump.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="trail" data-progress="view">
+        <p class="eyebrow" style="margin-bottom:26px">Paddock to plate</p>
+        <div class="trail__line"><i></i></div>
+        <ol>
+          <li style="--at:0"><b>01</b><h3>New England Tablelands</h3><p>It starts in paddocks on the pristine tablelands of country New South Wales.</p></li>
+          <li style="--at:.33"><b>02</b><h3>Rangers Valley</h3><p>Teddy Larkin's source their beef from these world-class producers.</p></li>
+          <li style="--at:.66"><b>03</b><h3>The Northern Beaches</h3><p>All the way to your plate at Harbord Diggers, above Freshwater Beach.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" style="padding-top:0">
+    <div class="ink ink--flush">
+      <div class="pick" data-pick>
+        <div>
+          <p class="eyebrow reveal">On the menu</p>
+          <h2 data-split>Familiar favourites, <em>done properly.</em></h2>
+          <ul class="pick__list reveal">
+            <li class="is-active"><button aria-expanded="true"><span class="pick__n">01</span><span class="pick__t">Signature cuts</span></button><div class="pick__d"><p>Eye fillet, rib eye and rump, from world-class producers Rangers Valley.</p></div></li>
+            <li><button aria-expanded="false"><span class="pick__n">02</span><span class="pick__t">Ribs &amp; burgers</span></button><div class="pick__d"><p>Slow-cooked, BBQ-based ribs and tasty burgers.</p></div></li>
+            <li><button aria-expanded="false"><span class="pick__n">03</span><span class="pick__t">Fresh seafood</span></button><div class="pick__d"><p>Locally sourced and fresh from the coast.</p></div></li>
+            <li><button aria-expanded="false"><span class="pick__n">04</span><span class="pick__t">Share boards</span><span class="pick__tag">Groups of 8+</span></button><div class="pick__d"><p>Teddy's signature share boards let your group enjoy the most popular dishes together.</p></div></li>
+          </ul>
+          <div class="pick__foot reveal">
+            <a class="btn btn--light" href="https://wds.webdirector.net/harbord-ve/stores/Menus/Final%20Dine%20In%20Menu%202026.pdf" target="_blank" rel="noopener">See the full menu <span class="arrow">↗</span></a>
+          </div>
+        </div>
+        <div class="pick__stage reveal" style="--ar:4/5">
+          <img class="is-active" src="../../assets/img/tl-spread.jpg" alt="Steak, sides and sauces seen from above" loading="lazy">
+          <img src="../../assets/img/teddy-ribs.jpg" alt="A rack of ribs with a cold beer" loading="lazy">
+          <img src="../../assets/img/tl-plates.jpg" alt="Dark plates and a menu on the table, seen from above" loading="lazy">
+          <img src="../../assets/img/tl-board.jpg" alt="A share board of ribs and steak being carved" loading="lazy">
+        </div>
+      </div>
+      <div class="mq" aria-hidden="true"><div class="mq__track">
+        <span>Eye fillet</span><span>Rib eye</span><span>Rump</span><span>Slow-cooked ribs</span><span>Tasty burgers</span><span>Fresh seafood</span><span>Share boards</span>
+        <span>Eye fillet</span><span>Rib eye</span><span>Rump</span><span>Slow-cooked ribs</span><span>Tasty burgers</span><span>Fresh seafood</span><span>Share boards</span>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="mates-rates" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Mates Rates for members</p>
+        <h2 data-split>Three reasons to come <em>midweek.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/#deals">All dining deals <span class="arrow">→</span></a>
+    </div>
+    <div class="mr">
+      <article class="mr__c reveal" data-day="1"><p class="mr__day">Tuesday</p><b>$16</b><h3>Trio of tacos</h3><p>Pork, fish and beef. Lunch &amp; dinner.</p></article>
+      <article class="mr__c reveal" style="--d:1" data-day="2"><p class="mr__day">Wednesday</p><b>$20</b><h3>250g rump steak</h3><p>With chips &amp; salad. Lunch &amp; dinner.</p></article>
+      <article class="mr__c reveal" style="--d:2" data-day="3"><p class="mr__day">Thursday</p><b>$29</b><h3>Half rack of ribs</h3><p>With slaw &amp; fries, plus a schooner of Newtowner. Lunch &amp; dinner.</p></article>
+    </div>
+    <p class="fine reveal">Members only. One per member card. Dine in only. Not available on public holidays.</p>
+  </section>
+
+  <section class="wrap" id="hours" style="padding-top:0">
+    <div class="hrs">
+      <div class="reveal">
+        <p class="eyebrow">Hours &amp; bookings</p>
+        <h2>Lunch and dinner, <em>Wednesday to Sunday.</em></h2>
+        <p class="status" data-status="tl"><i></i><span>Wednesday to Sunday, lunch and dinner</span></p>
+        <p class="hrs__note">On Monday and Tuesday it's the Express Menu only. To book by phone, call <a href="tel:0280680770">(02) 8068 0770</a>.</p>
+        <div class="cta">
+          <a class="btn btn--solid" href="https://www.teddylarkins.com.au/" target="_blank" rel="noopener">Book your table <span class="arrow">↗</span></a>
+          <a class="btn" href="tel:0280680770">(02) 8068 0770</a>
+        </div>
+      </div>
+      <ul class="reveal" data-hours>
+        <li class="is-shut"><span>Monday</span><span>Express Menu only</span></li>
+        <li class="is-shut"><span>Tuesday</span><span>Express Menu only</span></li>
+        <li><span>Wednesday</span><span>11.30am – 3pm · 5pm – 9pm</span></li>
+        <li><span>Thursday</span><span>11.30am – 3pm · 5pm – 9pm</span></li>
+        <li><span>Friday</span><span>11.30am – 3pm · 5pm – 9pm</span></li>
+        <li><span>Saturday</span><span>11.30am – 3pm · 5pm – 9pm</span></li>
+        <li><span>Sunday</span><span>11.30am – 3pm · 5pm – 9pm</span></li>
+      </ul>
+    </div>
+    <div class="grp reveal" style="margin-top:clamp(36px,5vw,72px)">
+      <div>
+        <h3>Coming as a group of eight or more?</h3>
+        <p>Teddy's signature share boards let everyone enjoy the most popular dishes. Dine-in only. A credit card deposit is required, and final numbers are requested 48 hours in advance.</p>
+      </div>
+      <a class="btn" href="tel:0280680770">Call (02) 8068 0770</a>
+    </div>
+  </section>
+
+  <section id="more" style="padding-top:0">
+    <div class="wrap head">
+      <div>
+        <p class="eyebrow reveal">Also at the Diggers</p>
+        <h2 data-split>Five more places to <em>pull up a chair.</em></h2>
+      </div>
+      <div class="rail-ctrl reveal">
+        <button data-rail-prev="more" aria-label="Previous">←</button>
+        <button data-rail-next="more" aria-label="Next">→</button>
+      </div>
+    </div>
+    <div class="rail" data-rail="more">
+      <a class="card reveal" style="--d:0" href="../bau-truong/">
+        <div class="card__img" style="view-transition-name:bt-hero"><img src="../../assets/img/bt-bowls.jpg" alt="Vermicelli noodle bowls at Bau Truong" loading="lazy"><span class="card__tag">Vietnamese</span></div>
+        <h3>Bau Truong <span class="arrow">→</span></h3>
+        <p>Family-run modern Vietnamese, from traditional pho to fresh paper rolls.</p>
+      </a>
+      <a class="card reveal" style="--d:1" href="../dd-collective/">
+        <div class="card__img" style="view-transition-name:dd-hero"><img src="../../assets/img/dd-brunch.jpg" alt="Brunch and coffee at DD Collective" loading="lazy"><span class="card__tag">Café</span></div>
+        <h3>DD Collective <span class="arrow">→</span></h3>
+        <p>Barista-made coffee all day, breakfast classics and pub favourites.</p>
+      </a>
+      <a class="card reveal" style="--d:2" href="../ocean-terrace/">
+        <div class="card__img" style="view-transition-name:ot-hero"><img src="../../assets/img/ocean-terrace.jpg" alt="The Ocean Terrace in the evening" loading="lazy"><span class="card__tag">Alfresco</span></div>
+        <h3>Ocean Terrace <span class="arrow">→</span></h3>
+        <p>Open-air tables above the coastline, with a little bit of everything.</p>
+      </a>
+      <a class="card reveal" style="--d:3" href="../main-bar/">
+        <div class="card__img" style="view-transition-name:mb-hero"><img src="../../assets/img/cocktails.jpg" alt="Cocktails at the Main Bar" loading="lazy"><span class="card__tag">Bar</span></div>
+        <h3>Main Bar <span class="arrow">→</span></h3>
+        <p>Handcrafted cocktails, refreshing beers and live acts Friday through Sunday.</p>
+      </a>
+      <a class="card reveal" style="--d:4" href="../sports-bar/">
+        <div class="card__img" style="view-transition-name:sb-hero"><img src="../../assets/img/wo-sportsbar.jpg" alt="Mates laughing over a beer in the Sports Bar" loading="lazy"><span class="card__tag">Sport &amp; Send It</span></div>
+        <h3>Sports Bar <span class="arrow">→</span></h3>
+        <p>Huge screens, live sports and Send It: darts, race sims and basketball.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap next">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Dinner sorted. <em>Now, what's on?</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/"><span class="arrow">←</span> All dining &amp; bars</a>
+    </div>
+    <div class="next__grid">
+      <a class="tile wipe" href="../whats-on/" style="view-transition-name:wo-hero">
+        <img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A busy evening in the outdoor Sports Bar" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Events &amp; weekly activities</p><h3>What's on</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1" href="../dining/#deals">
+        <img src="../../assets/img/dining-share.jpg" alt="Hands with chopsticks reaching over shared bowls" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Mates Rates</p><h3>Dining deals</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Right now in Sydney. ?now=2026-10-16T18:30+11:00 previews another moment.
+  const NOW = (() => {
+    const q = new URLSearchParams(location.search).get('now');
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+    return { day: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(p.weekday), mins: +p.hour * 60 + +p.minute, date: Date.UTC(+p.year, p.month - 1, +p.day) };
+  })();
+  // Venue status lines from the published hours: [open?, text]. Monday = 0.
+  const STATUS = {
+    bt: ({ day, mins }) => day !== 0 && mins >= 720 && mins < 1260 ? [1, 'Open now until 9pm']
+      : day !== 0 && mins < 720 ? [0, 'Opens today at 12pm'] : [0, `Opens ${day === 6 ? 'Tuesday' : 'tomorrow'} at 12pm`],
+    tl: ({ day, mins }) => day < 2 ? [0, 'Express Menu only today']
+      : mins < 690 ? [0, 'Opens today at 11.30am'] : mins < 900 ? [1, 'Open now until 3pm']
+      : mins < 1020 ? [0, 'Back for dinner at 5pm'] : mins < 1260 ? [1, 'Open now until 9pm']
+      : day === 6 ? [0, 'Closed now. Express Menu only Monday and Tuesday'] : [0, 'Closed now, opens tomorrow at 11.30am'],
+    dd: ({ day, mins }) => day !== 0 && mins >= 480 && mins < 690 ? [1, 'Serving breakfast until 11.30am']
+      : mins >= 690 && mins < 1020 ? [1, 'Serving lunch now, open until 9pm'] : mins >= 1020 && mins < 1260 ? [1, 'Serving dinner until 9pm']
+      : mins < 690 ? [0, day === 0 ? 'Opens today at 11.30am' : 'Opens today at 8am'] : [0, `Closed now, opens tomorrow at ${day === 6 ? '11.30am' : '8am'}`],
+  };
+  STATUS.ot = STATUS.dd;
+  document.querySelectorAll('[data-status]').forEach((el) => {
+    const [open, text] = STATUS[el.dataset.status](NOW);
+    el.classList.add(open ? 'is-open' : 'is-closed');
+    el.lastElementChild.textContent = text;
+  });
+  document.querySelectorAll('[data-hours]').forEach((ul) => ul.children[NOW.day].classList.add('is-today'));
+  // Pick lists: one item open at a time, with its image shown on the stage
+  document.querySelectorAll('[data-pick]').forEach((root) => {
+    const items = [...root.querySelectorAll('.pick__list li')];
+    const imgs = [...root.querySelectorAll('.pick__stage img')];
+    const pick = (n) => {
+      items.forEach((li, i) => { li.classList.toggle('is-active', i === n); li.firstElementChild.setAttribute('aria-expanded', i === n); });
+      imgs.forEach((im, i) => im.classList.toggle('is-active', i === n));
+    };
+    items.forEach((li, i) => {
+      li.firstElementChild.addEventListener('click', () => pick(i));
+      li.firstElementChild.addEventListener('focus', () => pick(i));
+      if (matchMedia('(hover:hover)').matches) li.addEventListener('mouseenter', () => pick(i));
+    });
+  });
+
+  // Today's Mates Rates card
+  document.querySelectorAll('.mr__c').forEach((c) => c.classList.toggle('is-today', +c.dataset.day === NOW.day));
+})();
+</script>
+</body>
+</html>

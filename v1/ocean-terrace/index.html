@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ocean Terrace — Harbord Diggers (Concept 1: Shoreline)</title>
+<meta name="description" content="The Ocean Terrace at Harbord Diggers: alfresco dining with a spectacular view.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/ot-aerial.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../shoreline.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: one full-bleed view of the terrace that can be switched between day and dusk */
+.oh{padding:80px var(--gap) 0}
+.oh__frame{position:relative;display:flex;flex-direction:column;justify-content:space-between;height:calc(100svh - 92px);min-height:600px;max-height:900px;padding:clamp(18px,2.4vw,36px) calc(var(--pad) - var(--gap));border-radius:var(--r);overflow:hidden;background:#1c0b2c;color:#fff;view-transition-name:ot-hero}
+.js .oh__frame{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.5s var(--ease-io) .1s}
+.js .is-loaded .oh__frame{clip-path:inset(0 round var(--r))}
+.oh__par{position:absolute;inset:-7% 0;transform:translate3d(0,calc(var(--sy,0) * .1px),0)}
+.oh__par img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.6s var(--ease),transform 2.6s var(--ease)}
+.oh__par img+img{opacity:0}
+.is-dusk .oh__par img+img{opacity:1}
+.js .oh__par img{transform:scale(1.16)}
+.js .is-loaded .oh__par img{transform:none}
+.oh__frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,8,32,.5) 0%,rgba(20,8,32,0) 26%,rgba(20,8,32,.08) 46%,rgba(20,8,32,.84) 100%);pointer-events:none}
+.oh__frame>*:not(.oh__par){position:relative;z-index:1}
+.oh .crumb{color:rgba(255,255,255,.78)}
+.oh .crumb a:hover,.oh .crumb [aria-current]{color:#fff}
+.oh__foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px clamp(24px,4vw,64px);align-items:end}
+.oh .eyebrow{color:rgba(255,255,255,.84)}
+.oh h1{font-size:clamp(44px,7vw,112px);font-weight:300;max-width:13ch;margin-top:18px;--base:450ms}
+.oh h1 em{font-weight:300}
+.oh__lede{max-width:46ch;margin-top:20px;color:rgba(255,255,255,.88);font-size:clamp(16px,1.25vw,18px)}
+.oh .cta{margin-top:24px}
+.oh .btn--solid{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.oh__side{display:grid;justify-items:end;gap:16px}
+.sky{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:5px;border-radius:999px;background:rgba(20,8,32,.42);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.sky__ind{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:var(--cream);transition:transform .7s var(--ease)}
+.is-dusk .sky__ind{transform:translateX(100%)}
+.sky button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:104px;height:40px;padding:0 18px;border-radius:999px;font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;transition:color .45s}
+.sky button[aria-pressed="true"]{color:var(--ink)}
+.sky svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+
+/* Three kitchens */
+.kt{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.kt .tile{min-height:clamp(340px,36vw,520px)}
+
+/* Ordering: three steps beside a photo */
+.ord{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(32px,6vw,100px);align-items:center}
+.ord ol{list-style:none;margin:clamp(28px,4vw,52px) 0 0;padding:0;border-top:1px solid rgba(249,244,236,.2)}
+.ord li{display:grid;grid-template-columns:52px 1fr;gap:8px;padding:22px 0;border-bottom:1px solid rgba(249,244,236,.2)}
+.ord li b{font:500 11px/2.6 var(--body);letter-spacing:.14em;color:var(--gold-soft)}
+.ord li h3{font-size:clamp(22px,2.3vw,34px)}
+.ord li p{margin-top:6px;color:rgba(249,244,236,.78);max-width:44ch}
+.ord figure{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5}
+.ord figure img{width:100%;height:100%;object-fit:cover}
+
+.rs{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,110px);align-items:start}
+.rs h2{font-size:clamp(34px,4.6vw,72px);margin:18px 0 22px}
+.rs__note{color:var(--muted);max-width:44ch}
+.rs__note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.rs dl{margin:28px 0 0;border-top:1px solid var(--line)}
+.rs dl div{display:grid;grid-template-columns:1fr auto;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
+.rs dt{font-family:var(--display);font-size:clamp(20px,1.8vw,26px);letter-spacing:-.01em}
+.rs dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.rs dd small{display:block;font-size:12.5px;color:var(--muted)}
+.rs .cta{margin-top:26px}
+
+@media (max-width:1000px){
+  .oh__foot{grid-template-columns:1fr}
+  .oh__side{justify-items:start}
+  .kt{grid-template-columns:1fr}
+  .kt .tile{min-height:280px}
+  .ord,.rs{grid-template-columns:1fr}
+  .ord figure{aspect-ratio:4/3}
+}
+@media (max-width:640px){
+  .oh__frame{height:auto;min-height:calc(100svh - 92px);gap:120px;padding-bottom:64px}
+  .oh__frame::after{background:linear-gradient(180deg,rgba(20,8,32,.55) 0%,rgba(20,8,32,.1) 22%,rgba(20,8,32,.5) 44%,rgba(20,8,32,.88) 100%)}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="../whats-on/">What's On</a>
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../teddy-larkins/">Teddy Larkin's</a>
+          <a href="../dd-collective/">DD Collective</a>
+          <a href="./" aria-current="page">Ocean Terrace</a>
+          <a href="../main-bar/">Main Bar</a>
+          <a href="../sports-bar/">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="../membership/">Membership</a>
+      <a href="../community/">Community</a>
+      <a href="../visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="../membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="./" aria-current="page">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="oh">
+    <div class="oh__frame" data-vt-hero data-sky>
+      <div class="oh__par">
+        <img src="../../assets/img/ot-aerial.jpg" alt="Umbrellas and coastal grasses on the Ocean Terrace, with the beach beyond" fetchpriority="high">
+        <img src="../../assets/img/ot-dusk.jpg" alt="The whole terrace full of people at dusk">
+      </div>
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; bars</a><i>/</i>
+        <span aria-current="page">Ocean Terrace</span>
+      </nav>
+      <div class="oh__foot">
+        <div>
+          <p class="eyebrow rise">Perched above the coastline</p>
+          <h1 data-split="load">Alfresco dining <em>with a spectacular view.</em></h1>
+          <p class="oh__lede rise" style="--d:5">The perfect place to gather, unwind and enjoy great food in a shared, open-air setting.</p>
+          <div class="cta rise" style="--d:6">
+            <a class="btn btn--solid" href="#reserve">Reserve a table <span aria-hidden="true">↓</span></a>
+            <a class="btn btn--light" href="https://wds.webdirector.net/harbord-ve/stores/Menus/Terrace-Express-Menu-2026.pdf" target="_blank" rel="noopener">View the full menu <span class="arrow">↗</span></a>
+          </div>
+        </div>
+        <div class="oh__side rise" style="--d:7">
+          <p class="status" data-status="ot"><i></i><span>Lunch and dinner daily, 11.30am to 9pm</span></p>
+          <div class="sky" role="group" aria-label="See the terrace by day or at dusk">
+            <span class="sky__ind"></span>
+            <button aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.2 1.2M11.8 11.8 13 13M3 13l1.2-1.2M11.8 4.2 13 3"/></svg>Day</button>
+            <button aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z"/></svg>Dusk</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="story" data-progress="view">
+    <div class="wrap story">
+      <div>
+        <p class="eyebrow reveal">The setting</p>
+        <p class="story__statement" data-words>Perched above the coastline, the Ocean Terrace is designed for relaxed dining with stunning views and a laid-back coastal atmosphere.</p>
+      </div>
+      <div class="story__side reveal">
+        <p>It brings together a selection from DD Collective, Teddy Larkin's Seafood &amp; Steakhouse and Bau Truong, so there's something for everyone.</p>
+        <p>Ideal for grazing, sharing, or simply enjoying a little bit of everything.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="kitchens" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">On the table</p>
+        <h2 data-split>Three kitchens, <em>one view.</em></h2>
+      </div>
+      <a class="btn reveal" href="https://wds.webdirector.net/harbord-ve/stores/Menus/Terrace-Express-Menu-2026.pdf" target="_blank" rel="noopener">View the full menu <span class="arrow">↗</span></a>
+    </div>
+    <div class="kt">
+      <a class="tile wipe" href="../dd-collective/" style="view-transition-name:dd-hero">
+        <img src="../../assets/img/dd-brunch.jpg" alt="Brunch plates and coffee from DD Collective" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Café classics</p><h3>DD Collective</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1;view-transition-name:tl-hero" href="../teddy-larkins/">
+        <img src="../../assets/img/teddy-ribs.jpg" alt="A rack of ribs with a cold beer from Teddy Larkin's" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Seafood &amp; steak</p><h3>Teddy Larkin's</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:2;view-transition-name:bt-hero" href="../bau-truong/">
+        <img src="../../assets/img/bt-bowls.jpg" alt="Vermicelli noodle bowls from Bau Truong" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Modern Vietnamese</p><h3>Bau Truong</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="ordering" style="padding-top:0">
+    <div class="ink">
+      <div class="ord">
+        <div>
+          <p class="eyebrow reveal">Ordering is simple</p>
+          <h2 data-split>Order, sit back, <em>breathe in the sea air.</em></h2>
+          <ol class="reveal">
+            <li><b>01</b><div><h3>Place your order</h3><p>Order at DD Collective café, or scan the QR code at your table.</p></div></li>
+            <li><b>02</b><div><h3>Sit back</h3><p>Breathe in the sea air and enjoy the view.</p></div></li>
+            <li><b>03</b><div><h3>We'll bring it over</h3><p>Your food is delivered straight to you.</p></div></li>
+          </ol>
+        </div>
+        <figure class="wipe"><img src="../../assets/img/ot-table.jpg" alt="Three friends sharing a big table of food and drinks on the terrace" loading="lazy"></figure>
+      </div>
+    </div>
+    <figure class="wide wipe" data-progress="view" style="margin-top:var(--gap)">
+      <div class="wide__in"><img src="../../assets/img/ot-screen.jpg" alt="The Ocean Terrace under a blue sky, with the big outdoor screen" loading="lazy"></div>
+      <figcaption><p class="eyebrow">Open-air</p><p>Gather, unwind and stay for the view.</p></figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap" id="reserve" style="padding-top:0">
+    <div class="rs">
+      <div class="reveal">
+        <p class="eyebrow">Reservations &amp; hours</p>
+        <h2>A table for <em>twelve o'clock.</em></h2>
+        <p class="rs__note">Book your table for 12.00pm, Thursday to Sunday. Outside those times, tables are first come, first served.</p>
+        <dl>
+          <div><dt>Breakfast</dt><dd>8am – 11.30am<small>Tuesday to Sunday</small></dd></div>
+          <div><dt>Lunch &amp; dinner</dt><dd>11.30am – 9pm<small>Open 7 days</small></dd></div>
+        </dl>
+        <p class="fine">Hours and operations of restaurants may vary daily.</p>
+        <div class="cta">
+          <a class="btn" href="tel:0291054888">(02) 9105 4888</a>
+          <a class="btn" href="mailto:harbordinfo@mountiesgroup.com.au">Email us</a>
+        </div>
+      </div>
+      <form class="fm reveal" data-reserve>
+        <div class="fm__f"><label for="rs-name">Name</label><input id="rs-name" type="text" name="name" autocomplete="name" required></div>
+        <div class="fm__f"><label for="rs-guests">Guests</label><select id="rs-guests" name="guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option>7 guests</option><option>8 guests</option></select></div>
+        <fieldset class="fm__f--full"><legend>Date · Thursday to Sunday</legend><div class="chips" data-dates></div></fieldset>
+        <div class="fm__f"><label>Time</label><div class="fm__fixed">12.00pm <small>Reservations are for midday</small></div></div>
+        <div class="fm__f"><label for="rs-phone">Phone</label><input id="rs-phone" type="tel" name="phone" autocomplete="tel" required></div>
+        <div class="fm__go"><button class="btn btn--solid" type="submit">Request a table <span class="arrow">→</span></button><span class="fine" style="margin:0">Other times are walk-in only.</span></div>
+        <div class="fm__note" role="status"><div><p><b>This is a design mock-up, nothing was sent.</b><span data-summary>On the live site, this is where your booking would be confirmed.</span></p></div></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="more" style="padding-top:0">
+    <div class="wrap head">
+      <div>
+        <p class="eyebrow reveal">Also at the Diggers</p>
+        <h2 data-split>Five more places to <em>pull up a chair.</em></h2>
+      </div>
+      <div class="rail-ctrl reveal">
+        <button data-rail-prev="more" aria-label="Previous">←</button>
+        <button data-rail-next="more" aria-label="Next">→</button>
+      </div>
+    </div>
+    <div class="rail" data-rail="more">
+      <a class="card reveal" style="--d:0" href="../bau-truong/">
+        <div class="card__img"><img src="../../assets/img/bt-bowls.jpg" alt="Vermicelli noodle bowls at Bau Truong" loading="lazy"><span class="card__tag">Vietnamese</span></div>
+        <h3>Bau Truong <span class="arrow">→</span></h3>
+        <p>Family-run modern Vietnamese, from traditional pho to fresh paper rolls.</p>
+      </a>
+      <a class="card reveal" style="--d:1" href="../teddy-larkins/">
+        <div class="card__img"><img src="../../assets/img/teddy-ribs.jpg" alt="Ribs and a beer at Teddy Larkin's" loading="lazy"><span class="card__tag">Seafood &amp; steak</span></div>
+        <h3>Teddy Larkin's <span class="arrow">→</span></h3>
+        <p>Succulent steaks, slow-cooked ribs and fresh, locally sourced seafood.</p>
+      </a>
+      <a class="card reveal" style="--d:2" href="../dd-collective/">
+        <div class="card__img"><img src="../../assets/img/dd-brunch.jpg" alt="Brunch and coffee at DD Collective" loading="lazy"><span class="card__tag">Café</span></div>
+        <h3>DD Collective <span class="arrow">→</span></h3>
+        <p>Barista-made coffee all day, breakfast classics and pub favourites.</p>
+      </a>
+      <a class="card reveal" style="--d:3" href="../main-bar/">
+        <div class="card__img" style="view-transition-name:mb-hero"><img src="../../assets/img/cocktails.jpg" alt="Cocktails at the Main Bar" loading="lazy"><span class="card__tag">Bar</span></div>
+        <h3>Main Bar <span class="arrow">→</span></h3>
+        <p>Handcrafted cocktails, refreshing beers and live acts Friday through Sunday.</p>
+      </a>
+      <a class="card reveal" style="--d:4" href="../sports-bar/">
+        <div class="card__img" style="view-transition-name:sb-hero"><img src="../../assets/img/wo-sportsbar.jpg" alt="Mates laughing over a beer in the Sports Bar" loading="lazy"><span class="card__tag">Sport &amp; Send It</span></div>
+        <h3>Sports Bar <span class="arrow">→</span></h3>
+        <p>Huge screens, live sports and Send It: darts, race sims and basketball.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap next">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>View sorted. <em>Now, what's on?</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/"><span class="arrow">←</span> All dining &amp; bars</a>
+    </div>
+    <div class="next__grid">
+      <a class="tile wipe" href="../whats-on/" style="view-transition-name:wo-hero">
+        <img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A busy evening in the outdoor Sports Bar" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Events &amp; weekly activities</p><h3>What's on</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1" href="../functions/#spaces">
+        <img src="../../assets/img/fn-terrace.jpg" alt="Duke's Terrace set up for a function" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Bigger group?</p><h3>Function spaces</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Right now in Sydney. ?now=2026-10-16T18:30+11:00 previews another moment.
+  const NOW = (() => {
+    const q = new URLSearchParams(location.search).get('now');
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+    return { day: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(p.weekday), mins: +p.hour * 60 + +p.minute, date: Date.UTC(+p.year, p.month - 1, +p.day) };
+  })();
+  // Venue status lines from the published hours: [open?, text]. Monday = 0.
+  const STATUS = {
+    bt: ({ day, mins }) => day !== 0 && mins >= 720 && mins < 1260 ? [1, 'Open now until 9pm']
+      : day !== 0 && mins < 720 ? [0, 'Opens today at 12pm'] : [0, `Opens ${day === 6 ? 'Tuesday' : 'tomorrow'} at 12pm`],
+    tl: ({ day, mins }) => day < 2 ? [0, 'Express Menu only today']
+      : mins < 690 ? [0, 'Opens today at 11.30am'] : mins < 900 ? [1, 'Open now until 3pm']
+      : mins < 1020 ? [0, 'Back for dinner at 5pm'] : mins < 1260 ? [1, 'Open now until 9pm']
+      : day === 6 ? [0, 'Closed now. Express Menu only Monday and Tuesday'] : [0, 'Closed now, opens tomorrow at 11.30am'],
+    dd: ({ day, mins }) => day !== 0 && mins >= 480 && mins < 690 ? [1, 'Serving breakfast until 11.30am']
+      : mins >= 690 && mins < 1020 ? [1, 'Serving lunch now, open until 9pm'] : mins >= 1020 && mins < 1260 ? [1, 'Serving dinner until 9pm']
+      : mins < 690 ? [0, day === 0 ? 'Opens today at 11.30am' : 'Opens today at 8am'] : [0, `Closed now, opens tomorrow at ${day === 6 ? '11.30am' : '8am'}`],
+  };
+  STATUS.ot = STATUS.dd;
+  document.querySelectorAll('[data-status]').forEach((el) => {
+    const [open, text] = STATUS[el.dataset.status](NOW);
+    el.classList.add(open ? 'is-open' : 'is-closed');
+    el.lastElementChild.textContent = text;
+  });
+  document.querySelectorAll('[data-hours]').forEach((ul) => ul.children[NOW.day].classList.add('is-today'));
+  // Pick lists: one item open at a time, with its image shown on the stage
+  document.querySelectorAll('[data-pick]').forEach((root) => {
+    const items = [...root.querySelectorAll('.pick__list li')];
+    const imgs = [...root.querySelectorAll('.pick__stage img')];
+    const pick = (n) => {
+      items.forEach((li, i) => { li.classList.toggle('is-active', i === n); li.firstElementChild.setAttribute('aria-expanded', i === n); });
+      imgs.forEach((im, i) => im.classList.toggle('is-active', i === n));
+    };
+    items.forEach((li, i) => {
+      li.firstElementChild.addEventListener('click', () => pick(i));
+      li.firstElementChild.addEventListener('focus', () => pick(i));
+      if (matchMedia('(hover:hover)').matches) li.addEventListener('mouseenter', () => pick(i));
+    });
+  });
+
+  // Day / dusk: starts on whichever it is in Sydney right now
+  const frame = document.querySelector('[data-sky]');
+  const sky = [...frame.querySelectorAll('.sky button')];
+  const setSky = (dusk) => {
+    frame.classList.toggle('is-dusk', dusk);
+    sky.forEach((b, i) => b.setAttribute('aria-pressed', (i === 1) === dusk));
+  };
+  sky.forEach((b, i) => b.addEventListener('click', () => setSky(i === 1)));
+  setSky(NOW.mins >= 1080 || NOW.mins < 330);
+
+  // Reservation mock: the next four bookable days (Thursday to Sunday), and a form that never sends
+  const form = document.querySelector('[data-reserve]');
+  const chips = form.querySelector('[data-dates]');
+  const fmt = (t, o) => new Intl.DateTimeFormat('en-AU', { timeZone: 'UTC', ...o }).format(t);
+  let t = NOW.date + (NOW.mins < 720 ? 0 : 864e5);
+  for (let n = 0; n < 4; t += 864e5) {
+    if ((new Date(t).getUTCDay() + 6) % 7 < 3) continue;
+    chips.insertAdjacentHTML('beforeend', `<label class="chip"><input type="radio" name="date" value="${fmt(t, { weekday: 'long', day: 'numeric', month: 'long' })}"${n ? '' : ' checked'}><span>${fmt(t, { weekday: 'short' })}<b>${fmt(t, { day: 'numeric' })}</b>${fmt(t, { month: 'short' })}</span></label>`);
+    n += 1;
+  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    form.querySelector('[data-summary]').textContent = `On the live site, this would request a table for ${d.get('guests')} at 12.00pm on ${d.get('date')}.`;
+    form.querySelector('.fm__note').classList.add('is-on');
+  });
+})();
+</script>
+</body>
+</html>

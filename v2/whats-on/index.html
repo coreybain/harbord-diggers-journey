@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What's On — Harbord Diggers (Concept 2: Golden Hour)</title>
+<meta name="description" content="What's on at Harbord Diggers: upcoming events, plus weekly bingo, trivia, poker and meat raffles.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/wo-sportsbar-dusk.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../golden-hour.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the terrace opens along the horizon, headline in the middle, today's line-up along the bottom edge */
+.wh{--from:inset(41% 0 41% 0 round 0px);--shade:radial-gradient(ellipse 60% 46% at 50% 46%,rgba(13,27,36,.6),rgba(13,27,36,0)),linear-gradient(180deg,rgba(13,27,36,.8),rgba(13,27,36,.34) 36%,rgba(13,27,36,.4) 60%,rgba(13,27,36,.9))}
+.wh .bn__frame{view-transition-name:wo-hero}
+.wh .bn__in{display:grid;grid-template-rows:auto 1fr auto;padding:clamp(96px,13vh,124px) var(--pad) 82px}
+.wh__text{align-self:center;display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:20px}
+.wh__kicker{font:600 11px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+.wh h1{font-size:clamp(50px,min(9vw,15vh),150px);margin-top:24px;--base:450ms}
+.wh__lede{max-width:46ch;margin-top:24px;color:rgba(244,236,223,.86)}
+.today{justify-self:center;width:min(100%,900px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:6px clamp(16px,2.4vw,32px);padding:12px 12px 12px 24px;border-radius:999px;border:1px solid var(--line);background:rgba(13,27,36,.52);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:border-color .5s,background .5s,opacity 1s var(--ease),transform 1s var(--ease)}
+.today:hover{border-color:rgba(237,196,148,.6);background:rgba(13,27,36,.7)}
+.today small{font:600 11px/1.3 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+.today b{font:300 clamp(18px,1.7vw,24px)/1.2 var(--display);letter-spacing:-.015em}
+.today:hover .go{transform:rotate(90deg)}
+
+/* Day by day: seven rows, the open one shows its line-up and drives the picture beside it */
+.wk{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,6vw,110px);align-items:start;margin-top:clamp(36px,5vw,70px)}
+.wk__nav{display:flex;align-items:center;gap:10px}
+.wk__range{margin-right:10px;font:italic 300 clamp(20px,2vw,30px)/1 var(--display);letter-spacing:-.02em}
+.wk__days{border-top:1px solid var(--line)}
+.wk__day{position:relative;border-bottom:1px solid var(--line)}
+.wk__day::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--sand);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.wk__day.is-active::after{transform:scaleX(1)}
+.wk__btn{display:grid;grid-template-columns:54px 1fr auto;align-items:baseline;gap:8px;width:100%;padding:clamp(13px,1.4vw,20px) 0;text-align:left}
+.wk__n{font:500 12px/1 var(--body);letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted)}
+.is-today .wk__n{color:var(--sand)}
+.wk__name{display:flex;align-items:center;gap:14px;font-size:clamp(28px,3.5vw,56px);opacity:.42;transition:opacity .5s,transform .7s var(--ease),color .5s}
+.wk__btn:hover .wk__name{opacity:.8}
+.is-active .wk__name{opacity:1;transform:translateX(10px);color:var(--sand)}
+.wk__meta{max-width:30ch;font:500 12px/1.5 var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--muted);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;transition:opacity .4s}
+.is-active .wk__meta{opacity:0}
+.wk__panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .8s var(--ease),opacity .5s}
+.is-active .wk__panel{grid-template-rows:1fr;opacity:1;transition:grid-template-rows .8s var(--ease),opacity .7s .15s}
+.wk__panel ul{overflow:hidden;min-height:0;padding-left:62px}
+.wk__item{display:grid;grid-template-columns:clamp(84px,8vw,116px) 1fr auto;align-items:center;gap:6px 16px;padding:14px 0;border-top:1px solid var(--line)}
+.wk__item:last-child{padding-bottom:26px}
+.wk__thumb{display:none}
+.wk__time{font:300 clamp(24px,2.3vw,34px)/1 var(--display);letter-spacing:-.02em;transition:transform .6s var(--ease),color .5s}
+.wk__item.is-on .wk__time{font-style:italic;color:var(--sand);transform:translateX(4px)}
+.wk__what b{display:block;font:600 15.5px/1.3 var(--body)}
+.wk__what small{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.wk__item .btn{height:40px;padding:0 18px;font-size:12px}
+.wk__item.is-paused .wk__time,.wk__item.is-paused b{opacity:.45;text-decoration:line-through;text-decoration-thickness:1px}
+.wk__empty{padding:4px 0 26px;color:var(--muted);max-width:52ch}
+.wk__empty a{color:var(--paper);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.wk__side{position:sticky;top:96px}
+.wk__stage{position:relative;aspect-ratio:4/3;max-height:calc(100vh - 190px);width:100%;border-radius:22px;overflow:hidden;background:var(--ink2)}
+.wk__slide{position:absolute;inset:0;z-index:2;opacity:0;transform:scale(1.06);transition:opacity .8s var(--ease),transform 1.5s var(--ease)}
+.wk__slide.is-active{opacity:1;transform:none}
+.wk__slide.is-old{z-index:1}
+.wk__slide img{position:relative;width:100%;height:100%;object-fit:cover}
+/* Promo artwork has words in it, so it sits whole on a soft-focus copy of itself */
+.wk__slide.is-art{background:var(--ink2)}
+.wk__slide.is-art::before{content:"";position:absolute;inset:-12%;background:var(--bg) center/cover;filter:blur(34px) brightness(.55) saturate(1.1)}
+.wk__slide.is-art img{object-fit:contain;padding:clamp(14px,1.8vw,26px);filter:drop-shadow(0 26px 34px rgba(0,0,0,.45))}
+.wk__label{position:absolute;z-index:3;left:18px;bottom:18px;padding:9px 14px;border-radius:999px;background:rgba(13,27,36,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.wk__notes{margin-top:16px;font-size:13px;color:var(--muted)}
+
+/* Coming up: dates down a line that fills as you scroll */
+.tl{position:relative;margin-top:clamp(36px,5vw,70px)}
+.tl__line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line)}
+.tl__line::after{content:"";position:absolute;inset:0;background:var(--sand);transform-origin:top;transform:scaleY(clamp(0,var(--p,0) * 1.9 - .42,1))}
+.ev{position:relative;display:grid;grid-template-columns:minmax(0,1fr) clamp(120px,13vw,190px) minmax(0,1fr);align-items:center;padding-block:clamp(22px,3vw,44px)}
+.ev.is-past{display:none}
+.ev__img{display:block;aspect-ratio:var(--ar,16/9);border-radius:22px;overflow:hidden;background:var(--ink2)}
+.ev__img img{width:100%;height:100%;object-fit:cover}
+.ev:hover .ev__img.in img{transform:scale(1.05)}
+.ev__date{justify-self:center;padding:16px 0;background:var(--ink);text-align:center}
+.ev__date b{display:block;font:300 clamp(50px,5.6vw,92px)/.9 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;font-variation-settings:"opsz" 144;transition:color .5s}
+.ev:hover .ev__date b{color:var(--sand)}
+.ev__date span{display:block;margin-top:12px;font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+.ev__meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font:500 12px/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ev h3{font-size:clamp(28px,3vw,48px);margin:14px 0}
+.ev__body>p:nth-of-type(2){color:var(--muted);max-width:50ch}
+.ev__body .btn{margin-top:24px}
+.ev.is-flip .ev__img{order:3}
+.ev.is-flip .ev__body{order:1;text-align:right}
+.ev.is-flip .ev__date{order:2}
+.ev.is-flip .ev__meta{justify-content:flex-end}
+.ev.is-flip .ev__body>p:nth-of-type(2){margin-left:auto}
+.ev-none{padding:28px 0;border-block:1px solid var(--line);color:var(--muted)}
+
+/* Every week */
+.reg .head h2{font-size:clamp(38px,5.6vw,92px)}
+.reg__list{margin-top:clamp(32px,4.4vw,60px)}
+.reg__row{display:grid;grid-template-columns:clamp(170px,21vw,310px) minmax(0,1fr) minmax(0,.9fr);align-items:center;gap:clamp(18px,3.4vw,60px);padding:clamp(18px,2vw,28px) 0;border-top:1px solid rgba(13,27,36,.16)}
+.reg__row:last-child{border-bottom:1px solid rgba(13,27,36,.16)}
+.reg__row figure{aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:rgba(13,27,36,.08)}
+.reg__row img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.reg__row:hover img{transform:scale(1.04)}
+.reg__row h3{font-size:clamp(28px,3.2vw,50px);color:var(--teal)}
+.reg__row p{margin-top:10px;color:rgba(13,27,36,.72);max-width:44ch}
+.reg__row p.note{font:italic 300 16px/1.4 var(--display);color:rgba(13,27,36,.6)}
+.reg__row dl{margin:0}
+.reg__row dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:11px 0;font-size:14.5px;line-height:1.45}
+.reg__row dl div+div{border-top:1px solid rgba(13,27,36,.16)}
+.reg__row dt{font:600 11px/1.9 var(--body);letter-spacing:.14em;text-transform:uppercase;color:rgba(13,27,36,.6)}
+.reg__row dd{margin:0}
+
+/* Live & Local: the next sessions, counted from today */
+.lm__grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,110px);align-items:start;margin-top:clamp(36px,5vw,70px)}
+.lm__side{position:sticky;top:96px}
+.lm__img{position:relative;margin:0;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:var(--ink2)}
+.lm__img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.lm__lede{margin-top:24px;max-width:26ch;font:300 clamp(20px,1.9vw,27px)/1.3 var(--display);letter-spacing:-.015em}
+.lm__when{margin:22px 0 0;border-bottom:1px solid var(--line)}
+.lm__when div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.45}
+.lm__when dt{font:600 11px/1.9 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lm__when dd{margin:0}
+.lm__bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-bottom:18px}
+.lm__bar p{font:italic 300 clamp(20px,2vw,30px)/1 var(--display);letter-spacing:-.02em}
+.lm__chips{display:flex;gap:6px}
+.lm__chips button{height:38px;padding:0 15px;border-radius:999px;border:1px solid var(--line);font:600 12px/1 var(--body);letter-spacing:.04em;transition:background .4s var(--ease),color .4s,border-color .4s}
+.lm__chips button:hover{border-color:rgba(237,196,148,.6)}
+.lm__chips button[aria-pressed="true"]{background:var(--sand);border-color:var(--sand);color:var(--ink)}
+.lm__rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.lm__row{display:grid;grid-template-columns:clamp(104px,11vw,168px) minmax(0,1fr) auto;align-items:center;gap:6px 16px;padding:clamp(13px,1.4vw,19px) 0;border-bottom:1px solid var(--line);animation:lm-in .7s var(--ease) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes lm-in{from{opacity:0;transform:translateY(12px)}}
+.lm__date{display:flex;align-items:baseline;gap:10px}
+.lm__date b{min-width:1.2em;font:300 clamp(30px,3vw,46px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;font-variation-settings:"opsz" 144}
+.lm__date small{font:600 11px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.lm__act{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font:300 clamp(22px,2.3vw,34px)/1.1 var(--display);letter-spacing:-.02em}
+.lm__time{font:500 12px/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--muted);white-space:nowrap}
+.lm__row.is-next .lm__date b,.lm__row.is-next .lm__act{color:var(--sand)}
+.lm__row.is-next .lm__act{font-style:italic}
+.lm__none{padding:22px 0;border-bottom:1px solid var(--line);color:var(--muted);max-width:52ch}
+.lm__more{margin-top:22px}
+
+/* Kids: one wide card */
+.kd{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border-radius:28px;overflow:hidden;border:1px solid var(--line);background:var(--ink2)}
+.kd__img{min-height:clamp(280px,34vw,520px)}
+.kd__img img{width:100%;height:100%;object-fit:cover}
+.kd__body{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(28px,5vw,80px)}
+.kd__body h2{font-size:clamp(44px,6vw,100px);margin-top:24px}
+.kd__body p:not(.eyebrow){margin-top:18px;max-width:30ch;color:var(--muted)}
+.kd__body .btn{margin-top:28px}
+@media (max-width:1000px){
+  .lm__grid{grid-template-columns:1fr}
+  .lm__side{position:static}
+}
+@media (max-width:760px){
+  .lm__row{grid-template-columns:92px minmax(0,1fr)}
+  .lm__date{flex-direction:column;gap:4px}
+  .lm__time{grid-column:2;text-align:left}
+  .kd{grid-template-columns:1fr}
+  .kd__img{min-height:0;aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion:reduce){.lm__row{animation:none}}
+
+@media (max-width:1000px){
+  .wk{grid-template-columns:1fr}
+  .wk__side{position:static}
+  .wk__stage{display:none}
+  .wk__notes{margin-top:0}
+  .wk__thumb{display:block;grid-row:1/3;width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:8px;background:var(--ink2)}
+  .wk__panel ul{padding-left:0}
+  .wk__item{grid-template-columns:clamp(96px,22vw,170px) auto 1fr;align-items:start}
+  .wk__time{grid-column:2;font-size:22px}
+  .wk__what{grid-column:3}
+  .wk__item>.btn,.wk__item>.pill{grid-column:2/-1;justify-self:start;margin-top:4px}
+  .wk__item.is-on .wk__time{font-style:normal;color:inherit;transform:none}
+  .reg__row{grid-template-columns:clamp(150px,30vw,260px) minmax(0,1fr)}
+  .reg__row dl,.reg__row>.btn{grid-column:2}
+  .reg__row>.btn{justify-self:start}
+}
+@media (max-width:760px){
+  .today{grid-template-columns:minmax(0,1fr) auto;border-radius:24px;padding:14px 14px 14px 20px}
+  .today small{grid-column:1}
+  .today b{grid-column:1;font-size:17px}
+  .today .go{grid-column:2;grid-row:1/3}
+  .wk__nav{width:100%;justify-content:space-between}
+  .wk__range{margin-right:auto}
+  .wk__btn{grid-template-columns:38px 1fr auto}
+  .wk__meta{font-size:10px;letter-spacing:.1em;max-width:36vw}
+  .wk__name .pill{display:none}
+  .tl__line{left:27px}
+  .ev,.ev.is-flip{grid-template-columns:54px minmax(0,1fr);align-items:start;gap:16px 14px}
+  .tl .ev .ev__date{order:0;grid-row:1/3;padding:10px 0;justify-self:stretch}
+  .tl .ev .ev__img,.tl .ev .ev__body{order:0;grid-column:2;text-align:left}
+  .ev.is-flip .ev__meta{justify-content:flex-start}
+  .ev.is-flip .ev__body>p:nth-of-type(2){margin-left:0}
+  .ev__date b{font-size:38px}
+  .ev__date span{font-size:9px;letter-spacing:.12em;line-height:1.5}
+  .ev__date span i{display:block;font-style:normal}
+  .reg__row{grid-template-columns:1fr}
+  .reg__row dl,.reg__row>.btn{grid-column:1}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop">
+      <a href="../dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="../teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="../dd-collective/">DD Collective <small>Café</small></a>
+        <a href="../ocean-terrace/">Ocean Terrace <small>Outdoors</small></a>
+        <a href="../main-bar/">Main Bar <small>Bar</small></a>
+        <a href="../sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="./" aria-current="page">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="../membership/#renew">Renew</a>
+    <a class="btn btn--sand" href="../membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="../bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="../teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="../dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="../ocean-terrace/">Ocean Terrace</a>
+    <a class="menu__sub" href="../main-bar/">Main Bar</a>
+    <a class="menu__sub" href="../sports-bar/">Sports Bar</a>
+    <a href="./" aria-current="page">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="../membership/#join">Join now</a><a href="../membership/#renew">Renew</a><a href="../functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="bn wh" data-progress="view">
+    <div class="bn__frame"><div class="bn__open"><div class="bn__par"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A full outdoor Sports Bar at dusk, festoon lights on" fetchpriority="high"></div></div></div>
+    <div class="bn__in">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span>←</span> Home</a><i>/</i>
+        <span aria-current="page">What's on</span>
+      </nav>
+      <div class="wh__text">
+        <p class="wh__kicker rise" style="--d:1">Events &amp; weekly activities</p>
+        <h1 data-split="load">What's on <em>at the Diggers.</em></h1>
+        <p class="wh__lede rise" style="--d:5">Bingo mornings, trivia nights, meat raffles and a few big days on the calendar. Here's the week ahead and what's coming up.</p>
+      </div>
+      <a class="today rise" style="--d:7" href="#week">
+        <small data-today-label>This week</small>
+        <b data-today-line>See what's on, day by day</b>
+        <span class="go" aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Weekly Bingo</span><span>NPL Poker</span><span>Trivia in the Sports Bar</span><span>Meat raffles</span><span>Live &amp; local music</span><span>Melbourne Cup</span><span>Christmas Day buffet</span>
+      <span>Weekly Bingo</span><span>NPL Poker</span><span>Trivia in the Sports Bar</span><span>Meat raffles</span><span>Live &amp; local music</span><span>Melbourne Cup</span><span>Christmas Day buffet</span>
+    </div>
+  </div>
+
+  <section class="wrap" id="week">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Day by day</p>
+        <h2 data-split>Pick <em>your day.</em></h2>
+      </div>
+      <div class="wk__nav reveal" hidden>
+        <p class="wk__range" aria-live="polite"></p>
+        <button class="go" data-wk-prev aria-label="Previous week">←</button>
+        <button class="go" data-wk-next aria-label="Next week">→</button>
+      </div>
+    </div>
+    <div class="wk" hidden>
+      <ul class="wk__days reveal"></ul>
+      <div class="wk__side reveal-fade">
+        <div class="wk__stage" aria-hidden="true"><span class="wk__label"></span></div>
+        <p class="wk__notes">Summer breaks: no trivia 27 November to 6 January, no poker 14 December to 4 January, no bingo 21 December to 4 January, and no raffle on 27 December.</p>
+      </div>
+    </div>
+    <noscript><p class="wk__notes">Bingo Tuesdays and Thursdays at 10am, poker Tuesdays at 6.30pm and Sundays at 3pm, trivia Wednesdays at 7.30pm, meat raffles Thursdays at 6pm and Sundays at 3pm.</p></noscript>
+  </section>
+
+  <section class="wrap" id="events" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Coming up</p>
+        <h2 data-split>Dates worth <em>writing down.</em></h2>
+      </div>
+      <a class="btn reveal" href="tel:0291054888">Member services (02) 9105 4888</a>
+    </div>
+    <div class="tl" data-progress="view">
+      <span class="tl__line" aria-hidden="true"></span>
+
+      <article class="ev reveal" data-date="2026-10-30" data-start="18:00" data-time="6pm">
+        <a class="ev__img wipe" style="--ar:2/1" href="https://datemymate.au/events/harborddiggers" tabindex="-1"><img src="../../assets/img/wo-terrace-wide.jpg" alt="Harbord Diggers and its terrace at dusk, umbrellas out on the lawn" loading="lazy"></a>
+        <div class="ev__date"><b>30</b><span>Oct <i>Fri</i></span></div>
+        <div class="ev__body">
+          <p class="ev__meta">Friday, 6pm · Outdoor Sports Bar <span class="pill" data-in hidden></span></p>
+          <h3>Date My Mate</h3>
+          <p>Mates pitch their friends in the outdoor Sports Bar, with ocean views and a drink on arrival. No pressure, just an easy night out.</p>
+          <a class="btn btn--sand" href="https://datemymate.au/events/harborddiggers">Tickets <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="ev reveal" data-date="2026-11-03" data-start="12:00" data-time="12pm">
+        <a class="ev__img wipe" href="https://events.humanitix.com/melbourne-cup-sports-bar" tabindex="-1"><img src="../../assets/img/wo-mates.jpg" alt="Mates in suits sharing beers on the terrace" loading="lazy"></a>
+        <div class="ev__date"><b>03</b><span>Nov <i>Tue</i></span></div>
+        <div class="ev__body">
+          <p class="ev__meta">Tuesday, 12pm – 3pm · Sports Bar <span class="pill" data-in hidden></span></p>
+          <h3>Melbourne Cup in the Sports Bar</h3>
+          <p>Grab a Neigh Sayers table for $89 and bring up to five mates. That's a schooner each, buffalo wings to share, sweepstakes entry and a free game of Send It!</p>
+          <a class="btn btn--sand" href="https://events.humanitix.com/melbourne-cup-sports-bar">Book a table <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="ev reveal" data-date="2026-11-03" data-start="12:30" data-time="12.30pm" data-art>
+        <a class="ev__img wipe" style="--ar:2/1" href="https://events.humanitix.com/melbourne-cup-harbord-diggers-2026" tabindex="-1"><img src="../../assets/img/wo-cup.jpg" alt="Melbourne Cup at Harbord Diggers" loading="lazy"></a>
+        <div class="ev__date"><b>03</b><span>Nov <i>Tue</i></span></div>
+        <div class="ev__body">
+          <p class="ev__meta">Tuesday, 12.30pm – 3pm <span class="pill" data-in hidden></span></p>
+          <h3>Melbourne Cup: Race Day Royalty</h3>
+          <p>Race day meets seaside style. The $89 Race Day Royalty package includes prawns and oysters.</p>
+          <a class="btn btn--sand" href="https://events.humanitix.com/melbourne-cup-harbord-diggers-2026">Tickets <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="ev reveal" data-date="2026-11-14" data-start="23:00" data-time="Evening" data-art>
+        <a class="ev__img wipe" style="--ar:2/1" href="https://www.eventbrite.com.au/e/alicia-bickett-psychic-medium-event-sydney-northern-beaches-nsw-tickets-1996456429925" tabindex="-1"><img src="../../assets/img/wo-psychic.jpg" alt="Alicia Bickett, psychic medium" loading="lazy"></a>
+        <div class="ev__date"><b>14</b><span>Nov <i>Sat</i></span></div>
+        <div class="ev__body">
+          <p class="ev__meta">Saturday · One night only <span class="pill" data-in hidden></span></p>
+          <h3>Psychic medium Alicia Bickett</h3>
+          <p>A live mediumship event: an evening of connection, insight, laughter and healing. Tickets are limited.</p>
+          <a class="btn btn--sand" href="https://www.eventbrite.com.au/e/alicia-bickett-psychic-medium-event-sydney-northern-beaches-nsw-tickets-1996456429925">Tickets <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="ev reveal" data-date="2026-12-25" data-start="12:00" data-time="12pm" data-art>
+        <a class="ev__img wipe" href="https://events.humanitix.com/harbord-diggers-christmas-day-lunch-2026" tabindex="-1"><img src="../../assets/img/wo-xmas.jpg" alt="Christmas Day buffet menu at Harbord Diggers" loading="lazy"></a>
+        <div class="ev__date"><b>25</b><span>Dec <i>Fri</i></span></div>
+        <div class="ev__body">
+          <p class="ev__meta">Friday, 12pm – 3pm <span class="pill" data-in hidden></span></p>
+          <h3>Christmas Day buffet</h3>
+          <p>An all-you-can-eat Christmas buffet for families and friends, with none of the washing up. Table reservations are for 10 or more people.</p>
+          <a class="btn btn--sand" href="https://events.humanitix.com/harbord-diggers-christmas-day-lunch-2026">Tickets <span>→</span></a>
+        </div>
+      </article>
+    </div>
+    <p class="ev-none" hidden>Nothing new on the calendar just yet. Call member services on (02) 9105 4888 to hear what's planned.</p>
+  </section>
+
+  <div class="panel reg" id="weekly">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Every week</p>
+        <h2 data-split>The regulars, <em>and their rituals.</em></h2>
+      </div>
+    </div>
+    <div class="reg__list">
+      <article class="reg__row reveal">
+        <figure><img src="../../assets/img/wo-bingo.jpg" alt="Weekly Bingo at Harbord Diggers" loading="lazy"></figure>
+        <div>
+          <h3>Weekly Bingo</h3>
+          <p>Great prizes up for grabs, including Mounties Rewards.</p>
+          <p class="note">No bingo 21 December to 4 January.</p>
+        </div>
+        <dl><div><dt>Tue &amp; Thu</dt><dd>10am, Community Rooms</dd></div></dl>
+      </article>
+      <article class="reg__row reveal">
+        <figure><img src="../../assets/img/wo-poker.jpg" alt="NPL Poker at Harbord Diggers" loading="lazy"></figure>
+        <div>
+          <h3>NPL Poker</h3>
+          <p class="note">No poker 14 December to 4 January.</p>
+        </div>
+        <dl>
+          <div><dt>Tuesday</dt><dd>Registration 6.30pm, 7pm start, late entry until 9pm</dd></div>
+          <div><dt>Sunday</dt><dd>Registration 3pm</dd></div>
+        </dl>
+      </article>
+      <article class="reg__row reveal">
+        <figure><img src="../../assets/img/wo-sportsbar.jpg" alt="Mates laughing over a beer in the Sports Bar" loading="lazy"></figure>
+        <div>
+          <h3>Weekly Trivia</h3>
+          <p>Get your crew together, test what you know and take a shot at the prizes.</p>
+          <p class="note">No trivia 27 November to 6 January.</p>
+        </div>
+        <dl><div><dt>Wednesday</dt><dd>7.30pm, Sports Bar</dd></div></dl>
+      </article>
+      <article class="reg__row reveal">
+        <figure><img src="../../assets/img/wo-raffle.jpg" alt="A staff member holding two meat trays" loading="lazy"></figure>
+        <div>
+          <h3>Meat Raffles</h3>
+          <p>Premium meat trays, plus automatic entry into the $100 weekly jackpot joker when you buy $20 or more of tickets.</p>
+          <p class="note">No raffles on 27 December.</p>
+        </div>
+        <dl>
+          <div><dt>Thursday</dt><dd>Tickets from 6pm, drawn 7pm</dd></div>
+          <div><dt>Sunday</dt><dd>Tickets from 3pm, drawn 4.30pm</dd></div>
+        </dl>
+      </article>
+      <article class="reg__row reveal">
+        <figure><img src="../../assets/img/live-music.jpg" alt="A musician playing guitar at Harbord Diggers" loading="lazy" style="object-position:50% 30%"></figure>
+        <div>
+          <h3>Live music</h3>
+          <p>The line-up changes from week to week, so have a look before you head down.</p>
+        </div>
+        <a class="btn btn--ink" href="#live-music" style="justify-self:start">See who's playing <span>↓</span></a>
+      </article>
+    </div>
+  </div>
+
+  <section class="wrap lm" id="live-music">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Live &amp; Local</p>
+        <h2 data-split>Supporting local Northern Beaches <em>artists.</em></h2>
+      </div>
+    </div>
+    <div class="lm__grid">
+      <div class="lm__side">
+        <figure class="lm__img wipe"><img src="../../assets/img/live-music.jpg" alt="A musician playing guitar at Harbord Diggers" loading="lazy"><figcaption class="wk__label">Live &amp; Local</figcaption></figure>
+        <p class="lm__lede reveal">A showcase dedicated to local live performers and original music.</p>
+        <dl class="lm__when reveal">
+          <div><dt>Fridays</dt><dd>6pm – 9pm</dd></div>
+          <div><dt>Saturdays</dt><dd>2pm – 5pm and 6pm – 9pm</dd></div>
+          <div><dt>Sundays</dt><dd>1.30pm – 4.30pm</dd></div>
+        </dl>
+      </div>
+      <div class="lm__list reveal">
+        <div class="lm__bar">
+          <p data-lm-title>Next up</p>
+          <div class="lm__chips" role="group" aria-label="Filter by day">
+            <button aria-pressed="true" data-lm-day="">All</button>
+            <button aria-pressed="false" data-lm-day="Fri">Fri</button>
+            <button aria-pressed="false" data-lm-day="Sat">Sat</button>
+            <button aria-pressed="false" data-lm-day="Sun">Sun</button>
+          </div>
+        </div>
+        <ol class="lm__rows" data-lm aria-live="polite"></ol>
+        <button class="btn lm__more" data-lm-more hidden></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="kids" style="padding-top:0">
+    <div class="kd">
+      <div class="kd__img wipe"><img src="../../assets/img/major-fun.jpg" alt="Children playing at Major Fun" loading="lazy"></div>
+      <div class="kd__body">
+        <p class="eyebrow reveal">Kids</p>
+        <h2 data-split>Major <em>Fun.</em></h2>
+        <p class="reveal">The indoor kids play centre at Harbord Diggers.</p>
+        <a class="btn btn--sand reveal" href="https://www.majorfun.com.au/freshwater/explore" target="_blank" rel="noopener">Explore Major Fun <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Make a night of it. <em>Eat first.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span>→</span></a>
+    </div>
+    <div class="next__grid">
+      <a href="../bau-truong/">
+        <div class="on__img wipe" style="view-transition-name:bt-hero"><img src="../../assets/img/bt-booth.jpg" alt="Blue banquette booths and set tables at Bau Truong" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Modern Vietnamese</small><h3>Bau Truong</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="../">
+        <div class="on__img wipe" style="--d:1;view-transition-name:home-hero"><img src="../../assets/img/terrace-dusk.jpg" alt="Harbord Diggers lit up at dusk" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Harbord Diggers</small><h3>Back to home</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="../dining/">Dining</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../community/">Community</a>
+    <a href="../functions/">Functions</a>
+    <a href="../visit/#courtesy-bus">Courtesy bus</a>
+    <a href="../visit/#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Today in Sydney, as a UTC-midnight timestamp so date maths stays simple. ?now=2026-12-22 previews another day.
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const DAY = 864e5;
+  const today = Date.UTC(+p.year, p.month - 1, +p.day);
+  const todayIdx = (new Date(today).getUTCDay() + 6) % 7; // Monday = 0
+  const monday = today - todayIdx * DAY;
+  const iso = (t) => new Date(t).toISOString().slice(0, 10);
+  const fmt = (t, o) => new Intl.DateTimeFormat('en-AU', { timeZone: 'UTC', ...o }).format(t);
+  const short = (s) => s.replace('Weekly ', '');
+  const IMG = '../../assets/img/';
+
+  // Recurring activities, Monday to Sunday: [sort, time, activity, detail]
+  const ACT = {
+    bingo: { name: 'Weekly Bingo', img: 'wo-bingo.jpg', pause: ['2026-12-21', '2027-01-04', '21 Dec – 4 Jan'] },
+    poker: { name: 'NPL Poker', img: 'wo-poker.jpg', pause: ['2026-12-14', '2027-01-04', '14 Dec – 4 Jan'] },
+    trivia: { name: 'Weekly Trivia', img: 'wo-sportsbar.jpg', photo: true, pause: ['2026-11-27', '2027-01-06', '27 Nov – 6 Jan'] },
+    raffle: { name: 'Meat Raffles', img: 'wo-raffle.jpg', photo: true, pause: ['2026-12-27', '2026-12-27', '27 Dec'] },
+  };
+  const WEEK = [
+    [],
+    [['10:00', '10am', 'bingo', 'Community Rooms'], ['18:30', '6.30pm', 'poker', 'Registration 6.30pm, 7pm start']],
+    [['19:30', '7.30pm', 'trivia', 'Hosted in the Sports Bar']],
+    [['10:00', '10am', 'bingo', 'Community Rooms'], ['18:00', '6pm', 'raffle', 'Tickets from 6pm, drawn 7pm']],
+    [], [],
+    [['15:00', '3pm', 'poker', 'Registration 3pm'], ['15:01', '3pm', 'raffle', 'Tickets from 3pm, drawn 4.30pm']],
+  ];
+  // One-off events are read from the timeline further down the page, so there is one source of truth
+  const events = [...document.querySelectorAll('.ev')].map((el) => ({
+    el, date: el.dataset.date, sort: el.dataset.start, time: el.dataset.time,
+    name: el.querySelector('h3').textContent, href: el.querySelector('.btn').href,
+    cta: el.querySelector('.btn').firstChild.textContent.trim(),
+    img: el.querySelector('img').getAttribute('src'), photo: !('art' in el.dataset),
+  }));
+
+  const itemsFor = (t) => {
+    const d = iso(t);
+    const weekly = WEEK[(new Date(t).getUTCDay() + 6) % 7].map(([sort, time, key, detail]) => {
+      const a = ACT[key];
+      const paused = d >= a.pause[0] && d <= a.pause[1];
+      return { sort, time, name: a.name, detail: paused ? `On a break ${a.pause[2]}` : detail, img: IMG + (paused ? 'ocean-terrace.jpg' : a.img), photo: paused || a.photo, paused };
+    });
+    const oneOff = events.filter((e) => e.date === d).map((e) => ({ ...e, detail: 'One-off event' }));
+    return [...weekly, ...oneOff].sort((a, b) => a.sort.localeCompare(b.sort));
+  };
+
+  // Banner: today's line-up
+  const live = itemsFor(today).filter((i) => !i.paused);
+  document.querySelector('[data-today-label]').textContent = `Today · ${fmt(today, { weekday: 'long', day: 'numeric', month: 'long' })}`;
+  document.querySelector('[data-today-line]').textContent = live.length
+    ? live.map((i) => `${short(i.name)} ${i.time.toLowerCase()}`).join(' · ')
+    : 'Nothing on the roster today. See the week ahead';
+
+  // Timeline: hide what has passed, count down to the rest, and alternate sides
+  let shown = 0;
+  events.forEach((e) => {
+    const n = Math.round((Date.parse(e.date) - today) / DAY);
+    e.el.classList.toggle('is-past', n < 0);
+    if (n >= 0) e.el.classList.toggle('is-flip', shown++ % 2 === 1);
+    const pill = e.el.querySelector('[data-in]');
+    pill.hidden = false;
+    pill.textContent = n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : n < 21 ? `In ${n} days` : `In ${Math.round(n / 7)} weeks`;
+  });
+  document.querySelector('.ev-none').hidden = shown > 0;
+  document.querySelector('.tl').hidden = !shown;
+
+  // Day by day: seven rows for the chosen week; the open row lists its line-up and drives the picture
+  const wk = document.querySelector('.wk');
+  const nav = document.querySelector('.wk__nav');
+  const stage = wk.querySelector('.wk__stage');
+  const label = stage.querySelector('.wk__label');
+  const MAX = 12; // weeks ahead
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`);
+  let week = 0;
+  let sel = todayIdx;
+  let data = [];
+  const rows = Array.from({ length: 7 }, (_, i) => {
+    const li = document.createElement('li');
+    li.className = 'wk__day';
+    li.innerHTML = `<h3><button class="wk__btn" aria-controls="wk-${i}"><span class="wk__n"></span><span class="wk__name"></span><span class="wk__meta"></span></button></h3><div class="wk__panel" id="wk-${i}"><ul></ul></div>`;
+    li.firstChild.firstChild.addEventListener('click', () => pick(i));
+    wk.firstElementChild.append(li);
+    return li;
+  });
+
+  // Picture for one line of the open day
+  const show = (k) => {
+    const items = data[sel];
+    stage.querySelectorAll('.wk__slide:not(.is-old)').forEach((s, j) => s.classList.toggle('is-active', j === k));
+    rows[sel].querySelectorAll('.wk__item').forEach((r, j) => r.classList.toggle('is-on', j === k));
+    const x = items[k];
+    label.textContent = !x ? 'Ocean Terrace' : x.paused ? 'On a break' : `${x.time} · ${short(x.name)}`;
+  };
+
+  const pick = (i) => {
+    sel = i;
+    rows.forEach((li, k) => {
+      li.classList.toggle('is-active', k === i);
+      li.querySelector('button').setAttribute('aria-expanded', k === i);
+      li.lastChild.inert = k !== i;
+    });
+    const items = data[i];
+    stage.querySelectorAll('.wk__slide').forEach((s) => { s.classList.add('is-old'); setTimeout(() => s.remove(), 1000); });
+    (items.length ? items : [{ img: IMG + 'ocean-terrace.jpg', photo: true }]).forEach((x) => {
+      stage.insertAdjacentHTML('beforeend', `<div class="wk__slide${x.photo ? '' : ' is-art'}" style="--bg:url('${x.img}')"><img src="${x.img}" alt=""></div>`);
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => show(Math.max(0, items.findIndex((x) => !x.paused)))));
+  };
+
+  const fill = () => {
+    const start = monday + week * 7 * DAY;
+    const end = start + 6 * DAY;
+    const sameMonth = new Date(start).getUTCMonth() === new Date(end).getUTCMonth();
+    nav.firstElementChild.textContent = `${fmt(start, sameMonth ? { day: 'numeric' } : { day: 'numeric', month: 'long' })} – ${fmt(end, { day: 'numeric', month: 'long' })}`;
+    nav.querySelector('[data-wk-prev]').disabled = week === 0;
+    nav.querySelector('[data-wk-next]').disabled = week === MAX;
+    data = rows.map((li, i) => {
+      const t = start + i * DAY;
+      const items = itemsFor(t);
+      const on = items.filter((x) => !x.paused);
+      const [n, name, meta] = li.querySelector('button').children;
+      const rel = t === today ? 'Today' : t === today + DAY ? 'Tomorrow' : '';
+      n.textContent = String(new Date(t).getUTCDate()).padStart(2, '0');
+      name.innerHTML = fmt(t, { weekday: 'long' }) + (rel ? ` <span class="pill">${rel}</span>` : '');
+      meta.textContent = on.length ? on.slice(0, 2).map((x) => short(x.name)).join(' · ') + (on.length > 2 ? ` · +${on.length - 2} more` : '') : items.length ? 'On a break' : 'Nothing regular';
+      li.classList.toggle('is-today', t === today);
+      li.querySelector('button').setAttribute('aria-label', `${fmt(t, { weekday: 'long', day: 'numeric', month: 'long' })}: ${meta.textContent}`);
+      li.querySelector('ul').innerHTML = items.map((x) => `<li class="wk__item${x.paused ? ' is-paused' : ''}">
+        <img class="wk__thumb" src="${x.img}" alt="" loading="lazy">
+        <span class="wk__time">${x.time}</span>
+        <span class="wk__what"><b>${esc(x.name)}</b><small>${x.detail}</small></span>
+        ${x.href ? `<a class="btn btn--sand" href="${x.href}">${x.cta} <span>→</span></a>` : '<a class="pill" href="#weekly">Weekly</a>'}
+      </li>`).join('') || `<li class="wk__empty">No regular activities on ${fmt(t, { weekday: 'long' })}s. Have a look at the <a href="#live-music">live music line-up</a>, or pick somewhere to eat from <a href="../dining/">dining &amp; bars</a>.</li>`;
+      li.querySelectorAll('.wk__item').forEach((row, k) => {
+        row.addEventListener('mouseenter', () => show(k));
+        row.addEventListener('focusin', () => show(k));
+      });
+      return items;
+    });
+    pick(sel);
+  };
+
+  nav.querySelector('[data-wk-prev]').addEventListener('click', () => { week = Math.max(0, week - 1); fill(); });
+  nav.querySelector('[data-wk-next]').addEventListener('click', () => { week = Math.min(MAX, week + 1); fill(); });
+  wk.hidden = nav.hidden = false;
+  fill();
+
+  // Live & Local: each slot runs weekly from its first date; list what is still ahead, a few at a time
+  const SLOTS = [
+    ['Fri', '18:00', '6pm – 9pm', '2026-10-16', ['Benny Black', 'Zoltan', 'Zed Apton', 'Jordan Brady', 'David Agius', 'Adrian Joseph', 'Tim Conlon']],
+    ['Sat', '14:00', '2pm – 5pm', '2026-10-17', ['Zed Apton', 'Jordan Brady', 'Jamie Lindsay', 'Richie Branco', 'Zoltan', 'David Agius', 'Jamie Lindsay']],
+    ['Sat', '18:00', '6pm – 9pm', '2026-10-17', ['DJ Wizmix', 'DJ Dino', 'DJ Barb', 'DJ Carmen', 'DJ Wizmix', 'DJ CRS', 'DJ KC']],
+    ['Sun', '13:30', '1.30pm – 4.30pm', '2026-10-18', ['DJ Carmen', 'DJ KC', 'DJ Barb', 'DJ Adrian', 'DJ KC', 'DJ Dino']],
+  ];
+  const gigs = SLOTS.flatMap(([day, sort, time, first, acts]) => acts.map((act, i) => ({ day, sort, time, act, t: Date.parse(first) + i * 7 * DAY })))
+    .filter((g) => g.t >= today)
+    .sort((a, b) => a.t - b.t || a.sort.localeCompare(b.sort));
+  const lmList = document.querySelector('[data-lm]');
+  const lmMore = document.querySelector('[data-lm-more]');
+  const lmChips = [...document.querySelectorAll('[data-lm-day]')];
+  const FIRST = 6;
+  let lmDay = '';
+  let lmAll = false;
+  const drawGigs = () => {
+    const list = gigs.filter((g) => !lmDay || g.day === lmDay);
+    lmList.innerHTML = list.slice(0, lmAll ? list.length : FIRST).map((g, i) => {
+      const rel = g.t === today ? (g.sort >= '17:00' ? 'Tonight' : 'Today') : g.t === today + DAY ? 'Tomorrow' : '';
+      return `<li class="lm__row${i === 0 ? ' is-next' : ''}" style="--i:${Math.min(i, 8)}">
+        <span class="lm__date"><b>${new Date(g.t).getUTCDate()}</b><small>${g.day} · ${fmt(g.t, { month: 'short' })}</small></span>
+        <span class="lm__act">${esc(g.act)}${rel ? ` <span class="pill">${rel}</span>` : ''}</span>
+        <span class="lm__time">${g.time}</span>
+      </li>`;
+    }).join('') || '<li class="lm__none">No further dates are listed yet. Live &amp; Local runs on Fridays, Saturdays and Sundays.</li>';
+    lmMore.hidden = lmAll || list.length <= FIRST;
+    lmMore.textContent = `Show all ${list.length} sessions`;
+  };
+  lmChips.forEach((chip) => chip.addEventListener('click', () => {
+    lmDay = chip.dataset.lmDay;
+    lmAll = false;
+    lmChips.forEach((c) => c.setAttribute('aria-pressed', c === chip));
+    drawGigs();
+  }));
+  lmMore.addEventListener('click', () => { lmAll = true; drawGigs(); });
+  drawGigs();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Membership — Harbord Diggers (Concept 3: Freshwater)</title>
+<meta name="description" content="Membership at Harbord Diggers: eight Mounties Group venues, Club Rewards, member pricing and discounted holidays.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/ot-table.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../freshwater.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: an arched window with the member card resting against it (the card leans toward the pointer) */
+.mh__media{position:relative;height:min(72vh,680px);align-self:center}
+.mh__arch{position:absolute;inset:0 0 0 auto;width:66%;view-transition-name:mem-hero}
+.mh__par{position:absolute;inset:-6% 0;translate:0 calc(var(--sy,0) * .08px)}
+.mh__par img{object-position:38% 50%}
+.mh .seal{left:14%;top:4%}
+.pass{position:absolute;z-index:3;left:0;bottom:11%;width:clamp(236px,24vw,340px);aspect-ratio:1.586;perspective:900px}
+.js .pass{opacity:0;translate:0 40px;transition:opacity 1s var(--ease) 1.1s,translate 1.2s var(--ease) 1.1s}
+.js .is-loaded .pass{opacity:1;translate:none}
+.pass__in{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:8% 8% 7%;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#24526a,var(--deep) 62%);color:var(--white);box-shadow:0 34px 50px -26px rgba(23,50,63,.75);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotate(-7deg);transition:transform .7s var(--ease)}
+.pass__in::after{content:"";position:absolute;inset:-40%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.2) 50%,transparent 58%);translate:calc(var(--mx,-.6) * 60%) 0;transition:translate .9s var(--ease)}
+.pass__top{display:flex;justify-content:space-between;align-items:flex-start}
+.pass__top img{height:clamp(30px,3vw,42px);width:auto}
+.pass__top i{width:clamp(22px,2.2vw,30px);aspect-ratio:1;border-radius:50%;background:var(--sun)}
+.pass small{display:block;font:600 10px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--aqua)}
+.pass b{display:block;margin-top:8px;font:400 clamp(21px,2.1vw,30px)/1 var(--display)}
+
+/* Benefits */
+.clubs{display:flex;flex-wrap:wrap;gap:6px clamp(14px,1.6vw,24px);align-items:baseline;font:400 clamp(24px,2.9vw,44px)/1.25 var(--display);color:rgba(23,50,63,.42)}
+.clubs li{display:flex;align-items:baseline;gap:clamp(14px,1.6vw,24px);transition:color .4s}
+.clubs li:hover{color:var(--deep)}
+.clubs li:not(:last-child)::after{content:"";align-self:center;width:.2em;height:.2em;border-radius:50%;background:var(--sun)}
+.clubs .is-here{color:var(--deep)}
+.clubs .is-here span{background:linear-gradient(var(--sun),var(--sun)) 0 92%/100% .12em no-repeat}
+.bens{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,5vw,70px)}
+.ben{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:250px;padding:26px 26px 26px;border-radius:22px;background:var(--mist);transition:transform .6s var(--ease),background .5s}
+.ben:hover{transform:translateY(-6px);background:var(--aqua)}
+.ben__n{font:italic 400 clamp(34px,3vw,46px)/1 var(--display);color:var(--teal);opacity:.5}
+.ben h3{font-size:clamp(28px,2.7vw,40px);margin-top:auto;padding-top:26px}
+.ben p{margin-top:10px;color:var(--muted);font-size:15px;max-width:36ch}
+.ben .u{margin-top:14px;font-size:14px}
+.onsite{display:grid;grid-template-columns:clamp(120px,13vw,180px) minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:center;margin-top:16px;padding:14px;border-radius:26px;background:var(--sand)}
+.onsite figure{aspect-ratio:3/4}
+.onsite h3{font-size:clamp(28px,2.8vw,42px)}
+.onsite ul{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.onsite .tag{background:var(--white);border-color:transparent}
+.onsite a.tag{transition:background .3s}
+.onsite a.tag:hover{background:var(--sun)}
+.onsite p{margin-top:16px;font-size:15px;color:var(--muted);max-width:60ch}
+
+/* Join and renew: two short step cards; the one you were sent to is outlined */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(30px,4vw,56px)}
+.way{display:flex;flex-direction:column;align-items:flex-start;scroll-margin-top:110px;transition:box-shadow .6s var(--ease)}
+.way:target{box-shadow:0 0 0 3px var(--sun),0 30px 60px -40px rgba(23,50,63,.55)}
+.way h3{margin-top:18px}
+.way ol{margin:22px 0 28px;padding:0;list-style:none;counter-reset:s;align-self:stretch}
+.way li{counter-increment:s;display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:center;padding:14px 0;border-top:1px solid var(--line);line-height:1.4}
+.way li::before{content:counter(s);width:38px;height:38px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font:400 22px/1 var(--display)}
+.way .btn{margin-top:auto}
+.ways__help{margin-top:22px;color:var(--muted);font-size:15px}
+
+.hol .frame{aspect-ratio:3/2}
+.hol .frame img{inset:-10% 0;height:120%;max-width:none;translate:0 calc((var(--p,.5) - .5) * -10%)}
+
+@media (max-width:1000px){
+  .mh__media{height:min(96vw,560px)}
+  .bens{grid-template-columns:1fr 1fr}
+  .ben{min-height:210px}
+}
+@media (max-width:640px){
+  .mh__arch{width:78%}
+  .mh .seal{left:0;top:2%}
+  .pass{bottom:6%}
+  .bens,.ways{grid-template-columns:1fr}
+  .ben{min-height:0}
+  .ben h3{padding-top:18px}
+  .onsite{grid-template-columns:1fr;padding:14px 18px 22px}
+  .onsite figure{width:120px}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div><span>88 Evans St, Freshwater NSW 2096</span></div>
+  <div><a href="tel:0291054888">(02) 9105 4888</a><a href="../visit/#courtesy-bus">Courtesy bus</a><a href="../functions/">Functions</a></div>
+</div>
+<header class="hd" data-header>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__dd">
+      <a href="../dining/">Dining &amp; Bars <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4"/></svg></a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/"><img src="../../assets/img/bau-truong-food.jpg" alt="" width="48" height="56" loading="lazy"><b>Bau Truong</b><small>Modern Vietnamese</small></a>
+        <a href="../teddy-larkins/"><img src="../../assets/img/teddy-ribs.jpg" alt="" width="48" height="56" loading="lazy"><b>Teddy Larkin's</b><small>Seafood &amp; steakhouse</small></a>
+        <a href="../dd-collective/"><img src="../../assets/img/dd-brunch.jpg" alt="" width="48" height="56" loading="lazy"><b>DD Collective</b><small>Café</small></a>
+        <a href="../ocean-terrace/"><img src="../../assets/img/ocean-terrace.jpg" alt="" width="48" height="56" loading="lazy"><b>Ocean Terrace</b><small>Alfresco dining</small></a>
+        <a href="../main-bar/"><img src="../../assets/img/cocktails.jpg" alt="" width="48" height="56" loading="lazy"><b>Main Bar</b><small>Cocktails &amp; live music</small></a>
+        <a href="../sports-bar/"><img src="../../assets/img/wo-sportsbar.jpg" alt="" width="48" height="56" loading="lazy"><b>Sports Bar</b><small>Live sport &amp; Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="./" aria-current="page">Membership</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-teal.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <div class="hd__actions">
+    <a class="link" href="#renew">Renew</a>
+    <a class="btn btn--fill" href="#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="./" aria-current="page">Membership</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="#join">Join now</a><a href="#renew">Renew</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="pb mh">
+    <nav class="crumb rise" aria-label="Breadcrumb">
+      <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+      <span aria-current="page">Membership</span>
+    </nav>
+    <div>
+      <p class="eyebrow rise">Mounties Group membership</p>
+      <h1 data-split="load">Join the family. <em>It's our way of saying thank you.</em></h1>
+      <p class="pb__lede rise" style="--d:5">Unlock access to our eight venues, member discounts, special promotions, member services and discounted holidays.</p>
+      <div class="pb__cta rise" style="--d:6">
+        <a class="btn btn--fill" href="#join">Join now <span class="arrow">→</span></a>
+        <a class="link" href="#renew">Renew membership</a>
+      </div>
+    </div>
+    <div class="mh__media" data-tilt>
+      <figure class="arch arch--load mh__arch" data-vt-hero><div class="mh__par"><img src="../../assets/img/ot-table.jpg" alt="Three friends sharing a table of food and drinks on the Ocean Terrace" fetchpriority="high"></div></figure>
+      <div class="seal" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0"/></defs><text><textPath href="#circ" textLength="240">One membership · Eight venues ·</textPath></text></svg>
+        <i></i>
+      </div>
+      <div class="pass" aria-hidden="true">
+        <div class="pass__in">
+          <div class="pass__top"><img src="../../assets/logo.svg" alt="" width="250" height="98"><i></i></div>
+          <div><small>Member</small><b>Eight venues, one card</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 2400 34" preserveAspectRatio="none"><path d="M0 17 Q 50 2 100 17 T 200 17 T 300 17 T 400 17 T 500 17 T 600 17 T 700 17 T 800 17 T 900 17 T 1000 17 T 1100 17 T 1200 17 T 1300 17 T 1400 17 T 1500 17 T 1600 17 T 1700 17 T 1800 17 T 1900 17 T 2000 17 T 2100 17 T 2200 17 T 2300 17 T 2400 17" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+
+  <nav class="jump" aria-label="On this page">
+    <span class="eyebrow">On this page</span>
+    <a href="#benefits">Benefits</a><a href="#join">Join</a><a href="#renew">Renew</a><a href="#holidays">Member holidays</a>
+  </nav>
+
+  <section class="wrap" id="benefits">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Member benefits</p>
+        <h2 data-split>One card, <em>eight clubs.</em></h2>
+      </div>
+      <p class="lead reveal">Members earn Club Reward points on everyday purchases within their favourite Mounties Group club. The more you spend, the greater the reward.</p>
+    </div>
+    <ul class="clubs" aria-label="The eight Mounties Group venues">
+      <li class="reveal"><span>Mounties</span></li>
+      <li class="reveal" style="--d:1"><span>Mekong</span></li>
+      <li class="reveal" style="--d:2"><span>Triglav</span></li>
+      <li class="reveal is-here" style="--d:3"><span>Harbord Diggers</span></li>
+      <li class="reveal" style="--d:4"><span>Manly Bowling Club</span></li>
+      <li class="reveal" style="--d:5"><span>Halekulani Bowling Club</span></li>
+      <li class="reveal" style="--d:6"><span>Club Wyong</span></li>
+      <li class="reveal" style="--d:7"><span>Breakers Country Club</span></li>
+    </ul>
+    <div class="bens">
+      <article class="ben reveal"><span class="ben__n" aria-hidden="true">01</span><h3>Eight venues</h3><p>One membership opens the door at all eight Mounties Group venues.</p></article>
+      <article class="ben reveal" style="--d:1"><span class="ben__n" aria-hidden="true">02</span><h3>Club Rewards</h3><p>The member rewards program. Earn points on everyday purchases at your favourite club.</p></article>
+      <article class="ben reveal" style="--d:2"><span class="ben__n" aria-hidden="true">03</span><h3>A birthday bonus</h3><p>$15 birthday bonus points, every year.</p></article>
+      <article class="ben reveal"><span class="ben__n" aria-hidden="true">04</span><h3>Member pricing</h3><p>Special member pricing, including the Mates Rates dining deals through the week.</p><a class="u" href="../dining/#deals">See the dining deals <span class="arrow">→</span></a></article>
+      <article class="ben reveal" style="--d:1"><span class="ben__n" aria-hidden="true">05</span><h3>Shows &amp; promotions</h3><p>The best live shows, promotions and entertainment.</p><a class="u" href="../whats-on/">See what's on <span class="arrow">→</span></a></article>
+      <article class="ben reveal" style="--d:2"><span class="ben__n" aria-hidden="true">06</span><h3>Holidays</h3><p>Discounts on holidays in Sussex Inlet.</p><a class="u" href="#holidays">Member holidays <span class="arrow">↓</span></a></article>
+    </div>
+    <div class="onsite reveal">
+      <figure class="arch"><img src="../../assets/img/major-fun.jpg" alt="Children climbing at Major Fun, the indoor play centre" loading="lazy"></figure>
+      <div>
+        <p class="eyebrow">Also on site for members</p>
+        <h3>More than a club.</h3>
+        <ul>
+          <li class="tag">Fitness centre</li>
+          <li class="tag">Aquatic centre</li>
+          <li class="tag">Physiotherapist</li>
+          <li class="tag">Hair salon</li>
+          <li class="tag">Beauty services</li>
+          <li><a class="tag" href="../whats-on/#kids">Major Fun kids play centre →</a></li>
+        </ul>
+        <p>Membership also gives you access to join the health clubs: Mounties Health &amp; Fitness and G Fitness.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" id="join-or-renew">
+    <p class="eyebrow reveal">Join or renew</p>
+    <h2 data-split>Sorted in <em>a few minutes.</em></h2>
+    <div class="ways">
+      <article class="card way reveal" id="join">
+        <span class="tag tag--sun">New members</span>
+        <h3>Join online in a few minutes</h3>
+        <ol>
+          <li>Open the secure online form. It opens in a new tab.</li>
+          <li>Fill in your details.</li>
+          <li>Start enjoying eight venues, Club Rewards and member pricing.</li>
+        </ol>
+        <a class="btn btn--fill" href="https://aaw.rxcx.au/c6XS" target="_blank" rel="noopener">Join online <span class="arrow">→</span></a>
+      </article>
+      <article class="card way reveal" style="--d:1" id="renew">
+        <span class="tag">Current members</span>
+        <h3>Renew online</h3>
+        <ol>
+          <li>Open the secure renewal form. It opens in a new tab.</li>
+          <li>Confirm your details.</li>
+          <li>Carry on earning Club Rewards points.</li>
+        </ol>
+        <a class="btn" href="https://aaw.rxcx.au/azln" target="_blank" rel="noopener">Renew online <span class="arrow">→</span></a>
+      </article>
+    </div>
+    <p class="ways__help reveal">Have a question first? Call Member Services on <a class="u" href="tel:0291054888">(02) 9105 4888</a>.</p>
+  </div>
+
+  <div class="band band--deep band--2 hol" id="holidays">
+    <div>
+      <p class="eyebrow reveal">Member holidays</p>
+      <h2 data-split>Mounties <em>@ Sussex.</em></h2>
+      <p class="lead reveal">Family holiday cabins at Sussex Inlet, with member discounts on your stay.</p>
+      <div class="band__cta reveal" style="--d:1">
+        <a class="btn btn--sun" href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Explore Mounties @ Sussex <span class="arrow">→</span></a>
+        <a class="btn btn--light" href="tel:0298223519">Bookings (02) 9822 3519</a>
+      </div>
+    </div>
+    <figure class="frame wipe" data-progress="view"><img src="../../assets/img/sussex.jpg" alt="A quiet beach near the Mounties @ Sussex resort" loading="lazy"></figure>
+  </div>
+
+  <section class="wrap next">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Card in hand. <em>Where to first?</em></h2>
+      </div>
+    </div>
+    <div class="next__grid">
+      <a class="bt wipe" href="../dining/#deals">
+        <img src="../../assets/img/dining-share.jpg" alt="Sharing Vietnamese bowls at the table" loading="lazy">
+        <div class="bt__body"><span class="bt__tag">Members' Mates Rates</span><h3>Dining deals</h3><p><span>Lunch and dinner specials through the week, across the venues.</span></p></div>
+      </a>
+      <a class="bt wipe" style="--d:1;view-transition-name:wo-hero" href="../whats-on/">
+        <img src="../../assets/img/wo-terrace-wide.jpg" alt="Harbord Diggers and its terrace at dusk" loading="lazy">
+        <div class="bt__body"><span class="bt__tag">Events &amp; weekly activities</span><h3>What's on</h3><p><span>Bingo, trivia, live music and the big days coming up.</span></p></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98">
+  <nav>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining</a>
+    <a href="../functions/">Functions</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+  </nav>
+  <small><span>Harbord Diggers © 2026. Part of Mounties Group.</span><a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a></small>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // The member card leans toward the pointer and catches the light
+  const el = document.querySelector('[data-tilt]');
+  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(hover: hover)').matches) return;
+  const card = el.querySelector('.pass');
+  el.addEventListener('pointermove', (e) => {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    card.style.setProperty('--ry', `${(x * 16).toFixed(2)}deg`);
+    card.style.setProperty('--rx', `${(y * -12).toFixed(2)}deg`);
+    card.style.setProperty('--mx', (x * 1.6).toFixed(2));
+  });
+  el.addEventListener('pointerleave', () => ['--rx', '--ry', '--mx'].forEach((p) => card.style.removeProperty(p)));
+})();
+</script>
+</body>
+</html>

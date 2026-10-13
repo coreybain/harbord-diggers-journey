@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bau Truong — Harbord Diggers (Concept 1: Shoreline)</title>
+<meta name="description" content="Bau Truong at Harbord Diggers: family-run modern Vietnamese, open Tuesday to Sunday from 12pm to 9pm.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/bt-entrance.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../shoreline.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+:root{--green:#2f7d5b}
+
+/* Banner: copy on cream beside a tall photo that wipes up, with a second photo tucked over its corner */
+.bh{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(28px,4.6vw,76px);padding:80px var(--gap) 0 var(--pad)}
+.bh__copy{display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding-bottom:clamp(18px,3vw,44px)}
+.bh h1{font-size:clamp(46px,6.2vw,100px);font-weight:300;max-width:11ch;margin-top:22px;--base:350ms}
+.bh h1 em{font-weight:300}
+.bh__lede{max-width:44ch;margin-top:24px;color:var(--muted);font-size:clamp(16px,1.25vw,18px)}
+.bh__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.status{display:inline-flex;align-items:center;gap:10px;font:500 13.5px/1.3 var(--body)}
+.status i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--gold);position:relative}
+.status.is-open i{background:var(--green)}
+.status.is-open i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--green);animation:ping 2.2s var(--ease) infinite}
+@keyframes ping{to{transform:scale(3.4);opacity:0}}
+.bh .status{margin-top:28px}
+.bh__media{position:relative;height:calc(100svh - 92px);min-height:560px;max-height:900px}
+.bh__main{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;background:#1c0b2c;view-transition-name:bt-hero}
+.js .bh__main{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.5s var(--ease-io) .1s}
+.js .is-loaded .bh__main{clip-path:inset(0 round var(--r))}
+.bh__par{position:absolute;inset:-7% 0;transform:translate3d(0,calc(var(--sy,0) * .12px),0)}
+.bh__par img{width:100%;height:100%;object-fit:cover}
+.js .bh__main img{transform:scale(1.2);transition:transform 2.6s var(--ease) .1s}
+.js .is-loaded .bh__main img{transform:none}
+.bh__inset{position:absolute;left:-9%;bottom:7%;width:46%;aspect-ratio:4/3;transform:translate3d(0,calc(var(--sy,0) * -.07px),0)}
+.bh__inset div{height:100%;border-radius:var(--r);overflow:hidden;border:8px solid var(--cream);box-shadow:0 30px 60px -30px rgba(38,13,60,.55)}
+.js .bh__inset div{clip-path:inset(0 100% 0 0 round var(--r));transition:clip-path 1.3s var(--ease-io) 1s}
+.js .is-loaded .bh__inset div{clip-path:inset(0 round var(--r))}
+.bh__inset img{width:100%;height:100%;object-fit:cover}
+.seal{position:absolute;right:22px;top:22px;width:118px;height:118px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--ink)}
+.js .seal{opacity:0;transform:scale(.6) rotate(-40deg);transition:opacity .8s var(--ease) 1.5s,transform 1.2s var(--ease) 1.5s}
+.js .is-loaded .seal{opacity:1;transform:none}
+.seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.seal text{font:600 9.6px var(--body);letter-spacing:.21em;text-transform:uppercase;fill:currentColor}
+.seal b{font:italic 400 30px/1 var(--display)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Story */
+.story{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(32px,6vw,110px);align-items:end}
+.story__statement{font-family:var(--display);font-size:clamp(28px,3.7vw,60px);line-height:1.12;letter-spacing:-.022em;margin-top:26px}
+.story__statement .sw{opacity:clamp(.16,calc((var(--p,0) - .1) * 3.2 * var(--n) - var(--i)),1);transition:opacity .5s linear}
+.story__side p{color:var(--muted);max-width:42ch}
+.story__side p+p{margin-top:1em}
+.wide{position:relative;margin:clamp(40px,6vw,90px) var(--gap) 0;aspect-ratio:21/9;border-radius:var(--r);overflow:hidden;color:#fff}
+.wide__in{position:absolute;inset:0}
+.wide__in img{position:absolute;inset:-12% 0;width:100%;height:124%;max-width:none;object-fit:cover;transform:translate3d(0,calc((var(--p,.5) - .5) * -14%),0)}
+.wide__in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,8,32,0) 45%,rgba(20,8,32,.7))}
+.wide figcaption{position:absolute;inset:auto 0 0;padding:clamp(20px,2.6vw,38px);display:flex;justify-content:space-between;align-items:end;gap:20px}
+.wide figcaption p:last-child{font-family:var(--display);font-size:clamp(22px,2.6vw,40px);line-height:1.1;letter-spacing:-.02em;max-width:22ch;text-align:right}
+.wide .eyebrow{color:rgba(255,255,255,.8)}
+
+/* On the menu: dark panel with three dishes and the menu itself */
+.mn{margin:0 var(--gap);padding:clamp(48px,7vw,110px) 0 0;border-radius:var(--r);background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.mn::before{content:"";position:absolute;width:70vw;height:70vw;left:-30vw;top:-36vw;border-radius:50%;background:radial-gradient(closest-side,rgba(201,150,63,.3),transparent);animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(12vw,10vw) scale(1.15)}}
+.mn>*{position:relative}
+.mn__grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,100px);padding-inline:calc(var(--pad) - var(--gap));align-items:end}
+.mn .eyebrow{color:rgba(249,244,236,.7)}
+.mn h2{font-size:clamp(36px,5.2vw,84px);margin-top:20px}
+.mn h2 em{color:#e9c98f}
+.dish{list-style:none;padding:0;margin:clamp(28px,4vw,52px) 0 0;border-top:1px solid rgba(249,244,236,.2)}
+.dish li{position:relative;border-bottom:1px solid rgba(249,244,236,.2)}
+.dish li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:#e9c98f;transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}
+.dish li.is-active::after{transform:scaleX(1)}
+.dish button{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:8px;width:100%;padding:22px 0 20px;text-align:left;opacity:.55;transition:opacity .5s,padding .6s var(--ease)}
+.dish li.is-active button,.dish button:hover{opacity:1}
+.dish__n{font:500 11px/1 var(--body);letter-spacing:.14em;font-variant-numeric:tabular-nums;color:#e9c98f}
+.dish__t{font-family:var(--display);font-size:clamp(24px,2.7vw,42px);line-height:1.08;letter-spacing:-.02em;transition:transform .7s var(--ease)}
+.dish li.is-active .dish__t{font-style:italic;transform:translateX(6px)}
+.dish__tag{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid rgba(249,244,236,.3)}
+.dish__d{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease)}
+.dish li.is-active .dish__d{grid-template-rows:1fr}
+.dish__d p{overflow:hidden;min-height:0;padding-left:52px;max-width:50ch;color:rgba(249,244,236,.78);opacity:0;transition:opacity .5s}
+.dish__d p::after{content:"";display:block;height:22px}
+.dish li.is-active .dish__d p{opacity:1;transition-delay:.15s}
+.mcard{display:block;padding:10px 10px 0;border-radius:var(--r);background:var(--cream);color:var(--ink);transform:rotate(-2.2deg);box-shadow:0 40px 80px -40px rgba(0,0,0,.7);transition:transform .9s var(--ease),box-shadow .9s}
+.mcard:hover{transform:rotate(0) translateY(-6px);box-shadow:0 50px 90px -40px rgba(0,0,0,.8)}
+.mcard__img{display:block;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#fff}
+.mcard__img img{width:100%;height:100%;object-fit:contain}
+.mcard__row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 8px 14px 10px;font-family:var(--display);font-size:clamp(20px,1.8vw,26px);letter-spacing:-.01em}
+.mcard__row small{display:block;font:500 12px/1.3 var(--body);letter-spacing:0;color:var(--muted);margin-top:3px}
+.mcard__go{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .4s,color .4s,transform .6s var(--ease)}
+.mcard:hover .mcard__go{background:var(--ink);color:var(--cream);transform:rotate(90deg)}
+.mn__drinks{margin-top:30px;color:rgba(249,244,236,.76);max-width:46ch}
+.mq{margin-top:clamp(44px,6vw,88px);border-top:1px solid rgba(249,244,236,.2);padding:26px 0 30px;overflow:hidden;white-space:nowrap}
+.mq__track{display:inline-flex;animation:mq 44s linear infinite}
+.mq:hover .mq__track{animation-play-state:paused}
+.mq span{display:inline-flex;align-items:center;font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(26px,3.2vw,50px);letter-spacing:-.02em}
+.mq span::after{content:"";width:7px;height:7px;border-radius:50%;background:#e9c98f;margin-inline:clamp(20px,2.4vw,40px)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Hours and bookings */
+.hrs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,110px);align-items:end}
+.hrs h2{font-size:clamp(34px,4.6vw,72px);margin:18px 0 22px}
+.hrs__note{color:var(--muted);max-width:42ch;margin-top:18px}
+.hrs__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hrs ul{border-top:1px solid var(--line)}
+.hrs li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid var(--line);transition:padding .6s var(--ease)}
+.hrs li span:first-child{font-family:var(--display);font-size:clamp(20px,1.8vw,26px);letter-spacing:-.01em}
+.hrs li span:last-child{font-variant-numeric:tabular-nums}
+.hrs li.is-shut{color:var(--muted)}
+.hrs li.is-today{padding-inline:18px;margin-inline:-18px;background:var(--sand);border-radius:14px;border-bottom-color:transparent}
+.hrs li.is-today span:first-child::after{content:"Today";margin-left:12px;font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);vertical-align:middle}
+
+/* Menu lightbox */
+.lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(24,9,38,.95);color:var(--cream);opacity:0;transition:opacity .45s var(--ease)}
+.lb::backdrop{background:none}
+.lb.is-open{opacity:1}
+html:has(.lb[open]){overflow:hidden}
+.lb__bar{position:absolute;inset:0 0 auto;height:68px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 14px 0 clamp(18px,3vw,36px);z-index:1}
+.lb__bar p{font-family:var(--display);font-size:20px;letter-spacing:-.01em}
+.lb__bar div{display:flex;gap:8px}
+.lb__bar .btn{height:40px}
+.lb__scroll{position:absolute;inset:68px 0 0;overflow:auto;display:flex;padding:0 clamp(12px,3vw,36px) 28px;overscroll-behavior:contain}
+.lb__scroll img{margin:auto;width:min(100%,1500px);border-radius:12px;cursor:zoom-in;transform:translateY(30px) scale(.96);transition:transform .8s var(--ease)}
+.lb.is-open .lb__scroll img{transform:none}
+.lb.is-zoom .lb__scroll img{width:clamp(1300px,150vw,2000px);max-width:none;cursor:zoom-out}
+
+@media (max-width:1000px){
+  .bh{grid-template-columns:1fr;padding-inline:var(--gap)}
+  .bh__copy{padding-inline:calc(var(--pad) - var(--gap));padding-top:6px}
+  .bh__media{height:112vw;min-height:0;max-height:680px}
+  .bh__inset{left:14px;bottom:14px;width:44%}
+  .seal{top:-44px;right:18px;width:104px;height:104px}
+  .story,.mn__grid,.hrs{grid-template-columns:1fr}
+  .wide{aspect-ratio:4/3}
+}
+@media (max-width:640px){
+  .bh__inset div{border-width:6px}
+  .wide figcaption{flex-direction:column;align-items:start}
+  .wide figcaption p:last-child{text-align:left}
+  .dish button{grid-template-columns:32px 1fr}
+  .dish__tag{display:none}
+  .dish__d p{padding-left:40px}
+  .lb__bar p{display:none}
+  .lb__bar{justify-content:flex-end}
+}
+/* Header: Dining & Bars dropdown */
+.hd__dd{position:relative;display:flex}
+.hd__dd>a{display:inline-flex;align-items:center;gap:7px}
+.hd__dd>a i{width:6px;height:6px;border-right:1.5px solid;border-bottom:1.5px solid;transform:translateY(-2px) rotate(45deg);transition:transform .5s var(--ease)}
+.hd__dd:hover>a i,.hd__dd:focus-within>a i{transform:translateY(1px) rotate(225deg)}
+.hd__sub{position:absolute;left:50%;top:100%;padding-top:16px;transform:translate(-50%,10px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),transform .55s var(--ease),visibility 0s .35s}
+.hd__dd:hover .hd__sub,.hd__dd:focus-within .hd__sub{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.hd__sub div{display:grid;min-width:236px;padding:8px;border-radius:20px;background:var(--cream);color:var(--ink);border:1px solid var(--line);box-shadow:0 26px 50px -26px rgba(38,13,60,.5)}
+.hd__nav .hd__sub a{display:flex;justify-content:space-between;align-items:baseline;gap:22px;padding:10px 14px;border-radius:13px;font:400 19px/1.15 var(--display);letter-spacing:-.01em;transition:background .35s}
+.hd__nav .hd__sub a::after{content:"→";position:static;height:auto;background:none;font:400 13px/1 var(--body);opacity:0;transform:translateX(-8px);transition:opacity .35s,transform .5s var(--ease)}
+.hd__nav .hd__sub a:hover,.hd__nav .hd__sub a:focus-visible{background:var(--sand)}
+.hd__nav .hd__sub a:hover::after,.hd__nav .hd__sub a:focus-visible::after{opacity:1;transform:none}
+.hd__nav .hd__sub a[aria-current]{font-style:italic}
+.hd__nav .hd__sub a[aria-current]::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:1;transform:none;align-self:center}
+
+/* Mobile menu: venue links under Dining & Bars */
+.menu__sub{display:flex;flex-wrap:wrap;gap:0 20px;padding:4px 0 12px}
+.menu__links .menu__sub a{display:inline-block;font:500 15px/2 var(--body);letter-spacing:0}
+.rail-ctrl{align-items:center}
+.rail-ctrl .btn{margin-right:8px}
+@media (max-width:640px){.rail-ctrl{display:flex}.rail-ctrl button{display:none}.rail-ctrl .btn{margin:0}#more .head{flex-direction:column;align-items:start}}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="../whats-on/">What's On</a>
+      <div class="hd__dd">
+        <a href="../dining/" aria-current="true">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="./" aria-current="page">Bau Truong</a>
+          <a href="../teddy-larkins/">Teddy Larkin's</a>
+          <a href="../dd-collective/">DD Collective</a>
+          <a href="../ocean-terrace/">Ocean Terrace</a>
+          <a href="../main-bar/">Main Bar</a>
+          <a href="../sports-bar/">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="../membership/">Membership</a>
+      <a href="../community/">Community</a>
+      <a href="../visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="../membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="./" aria-current="page">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="bh">
+    <div class="bh__copy">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; bars</a><i>/</i>
+        <span aria-current="page">Bau Truong</span>
+      </nav>
+      <div>
+        <p class="eyebrow rise" style="--d:1">Modern Vietnamese at Harbord Diggers</p>
+        <h1 data-split="load">Flavours of old Saigon, <em>with a twist.</em></h1>
+        <p class="bh__lede rise" style="--d:5">A family-run eatery that started in Cabramatta, now cooking pho, paper rolls and char-grilled meats above Freshwater Beach.</p>
+        <p class="status rise" style="--d:6" data-status><i></i><span>Open Tuesday to Sunday, 12pm to 9pm</span></p>
+        <div class="bh__cta rise" style="--d:7">
+          <a class="btn btn--solid" href="https://www.bautruong.com.au/restaurant-locations/harbord-diggers/">Book your table <span class="arrow">→</span></a>
+          <a class="btn" href="../../assets/img/bt-menu.jpg" data-lightbox>View the menu</a>
+        </div>
+      </div>
+    </div>
+    <div class="bh__media">
+      <figure class="bh__main" data-vt-hero><div class="bh__par"><img src="../../assets/img/bt-entrance.jpg" alt="The Bau Truong entrance, with its green sign and woven rattan pendant lights" fetchpriority="high"></div></figure>
+      <figure class="bh__inset"><div><img src="../../assets/img/bt-bowls.jpg" alt="Three vermicelli noodle bowls seen from above"></div></figure>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><defs><path id="seal" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#seal" textLength="276">Tuesday to Sunday · 12pm to 9pm ·</textPath></text></svg>
+        <b>bt</b>
+      </div>
+    </div>
+  </div>
+
+  <section id="story" data-progress="view">
+    <div class="wrap story">
+      <div>
+        <p class="eyebrow reveal">The story</p>
+        <p class="story__statement" data-words>Direct from its humble roots in Cabramatta, Bau Truong brings authentic modern Vietnamese cooking to Harbord Diggers on the Northern Beaches.</p>
+      </div>
+      <div class="story__side reveal">
+        <p>It's a family-run eatery. The closely guarded recipes trace back to the childhood of head chef and owner Bac Cang, who migrated from Vietnam.</p>
+        <p>The menu takes its cues from Vietnam's vibrant food culture, with an emphasis on fresh, locally sourced produce and whatever is in season.</p>
+      </div>
+    </div>
+    <figure class="wide wipe" data-progress="view">
+      <div class="wide__in"><img src="../../assets/img/bt-booth.jpg" alt="Blue banquette booths and set tables in the Bau Truong dining room" loading="lazy"></div>
+      <figcaption><p class="eyebrow">Open kitchen</p><p>Watch each dish and drink being made.</p></figcaption>
+    </figure>
+  </section>
+
+  <div class="mn" id="menu">
+    <div class="mn__grid">
+      <div>
+        <p class="eyebrow reveal">On the menu</p>
+        <h2 data-split>Three to <em>start with.</em></h2>
+        <ol class="dish reveal" data-dishes>
+          <li class="is-active">
+            <button aria-expanded="true"><span class="dish__n">01</span><span class="dish__t">Soft-shell crab paper roll</span><span class="dish__tag">Crisp</span></button>
+            <div class="dish__d"><p>Crispy golden soft-shell crab, wrapped in a fresh rice paper roll.</p></div>
+          </li>
+          <li>
+            <button aria-expanded="false"><span class="dish__n">02</span><span class="dish__t">Pork belly in fish sauce</span><span class="dish__tag">Slow-cooked</span></button>
+            <div class="dish__d"><p>Pork belly slow-cooked in fish sauce, served with a side of mixed pickle.</p></div>
+          </li>
+          <li>
+            <button aria-expanded="false"><span class="dish__n">03</span><span class="dish__t">Pho noodle soup</span><span class="dish__tag">The classic</span></button>
+            <div class="dish__d"><p>The quintessential pho: Vietnam's fragrant noodle soup.</p></div>
+          </li>
+        </ol>
+      </div>
+      <div class="reveal" style="--d:2">
+        <a class="mcard" href="../../assets/img/bt-menu.jpg" data-lightbox>
+          <span class="mcard__img"><img src="../../assets/img/bt-menu.jpg" alt="The Bau Truong menu" loading="lazy"></span>
+          <span class="mcard__row"><span>View the full menu<small>Entrées through to desserts</small></span><span class="mcard__go" aria-hidden="true">+</span></span>
+        </a>
+        <p class="mn__drinks">To drink: tropical fruit drinks, sodas, juices and traditional Vietnamese iced coffee.</p>
+      </div>
+    </div>
+    <p class="sr-only">Also on the menu: entrées, fresh salads, char-grilled meats, stir-fried rice and noodles, fragrant soups, fish and desserts.</p>
+    <div class="mq" aria-hidden="true"><div class="mq__track">
+      <span>Entrées</span><span>Fresh salads</span><span>Char-grilled meats</span><span>Stir-fried rice &amp; noodles</span><span>Fragrant soups</span><span>Fish</span><span>Desserts</span><span>Vietnamese iced coffee</span>
+      <span>Entrées</span><span>Fresh salads</span><span>Char-grilled meats</span><span>Stir-fried rice &amp; noodles</span><span>Fragrant soups</span><span>Fish</span><span>Desserts</span><span>Vietnamese iced coffee</span>
+    </div></div>
+  </div>
+
+  <section class="wrap hrs" id="hours">
+    <div>
+      <p class="eyebrow reveal">Hours &amp; bookings</p>
+      <h2 data-split>Lunch through <em>to dinner.</em></h2>
+      <p class="status reveal" data-status><i></i><span>Open Tuesday to Sunday, 12pm to 9pm</span></p>
+      <p class="hrs__note reveal">Express and dine-in, six days a week. You'll find us inside Harbord Diggers at 88 Evans St, Freshwater.</p>
+      <div class="hrs__cta reveal" style="--d:1">
+        <a class="btn btn--solid" href="https://www.bautruong.com.au/restaurant-locations/harbord-diggers/">Book your table <span class="arrow">→</span></a>
+        <a class="btn" href="tel:0291220826">Call (02) 9122 0826</a>
+      </div>
+    </div>
+    <ul class="reveal" style="--d:1" data-hours>
+      <li class="is-shut"><span>Monday</span><span>Closed</span></li>
+      <li><span>Tuesday</span><span>12pm – 9pm</span></li>
+      <li><span>Wednesday</span><span>12pm – 9pm</span></li>
+      <li><span>Thursday</span><span>12pm – 9pm</span></li>
+      <li><span>Friday</span><span>12pm – 9pm</span></li>
+      <li><span>Saturday</span><span>12pm – 9pm</span></li>
+      <li><span>Sunday</span><span>12pm – 9pm</span></li>
+    </ul>
+  </section>
+
+  <section id="more" style="padding-top:0">
+    <div class="wrap head">
+      <div>
+        <p class="eyebrow reveal">Also at the Diggers</p>
+        <h2 data-split>Five more places to <em>pull up a chair.</em></h2>
+      </div>
+      <div class="rail-ctrl reveal">
+        <a class="btn" href="../dining/">All dining &amp; bars <span class="arrow">→</span></a>
+        <button data-rail-prev="more" aria-label="Previous">←</button>
+        <button data-rail-next="more" aria-label="Next">→</button>
+      </div>
+    </div>
+    <div class="rail" data-rail="more">
+      <a class="card reveal" style="--d:0" href="../teddy-larkins/">
+        <div class="card__img" style="view-transition-name:tl-hero"><img src="../../assets/img/teddy-ribs.jpg" alt="Ribs and a beer at Teddy Larkin's" loading="lazy"><span class="card__tag">Seafood &amp; steak</span></div>
+        <h3>Teddy Larkin's <span class="arrow">→</span></h3>
+        <p>A perfectly cooked steak, fresh snapper or a grilled burger at our seafood and steakhouse.</p>
+      </a>
+      <a class="card reveal" style="--d:1" href="../dd-collective/">
+        <div class="card__img" style="view-transition-name:dd-hero"><img src="../../assets/img/dd-brunch.jpg" alt="Brunch and coffee at DD Collective" loading="lazy"><span class="card__tag">Café</span></div>
+        <h3>DD Collective <span class="arrow">→</span></h3>
+        <p>A family-friendly café serving great coffee, healthy options and pub favourites.</p>
+      </a>
+      <a class="card reveal" style="--d:2" href="../main-bar/">
+        <div class="card__img" style="view-transition-name:mb-hero"><img src="../../assets/img/cocktails.jpg" alt="Cocktails at the Main Bar" loading="lazy"><span class="card__tag">Bar</span></div>
+        <h3>Main Bar <span class="arrow">→</span></h3>
+        <p>Beers on tap, cocktails such as espresso martinis, and live music with Northern Beaches views.</p>
+      </a>
+      <a class="card reveal" style="--d:3" href="../ocean-terrace/">
+        <div class="card__img" style="view-transition-name:ot-hero"><img src="../../assets/img/ocean-terrace.jpg" alt="The Ocean Terrace in the evening" loading="lazy"><span class="card__tag">Outdoors</span></div>
+        <h3>Ocean Terrace <span class="arrow">→</span></h3>
+        <p>Waterside views of the Northern Beaches, and a good spot to catch up.</p>
+      </a>
+      <a class="card reveal" style="--d:4" href="../sports-bar/">
+        <div class="card__img" style="view-transition-name:sb-hero"><img src="../../assets/img/wo-sportsbar.jpg" alt="The Sports Bar at Harbord Diggers" loading="lazy"><span class="card__tag">Sport &amp; games</span></div>
+        <h3>Sports Bar <span class="arrow">→</span></h3>
+        <p>Huge screens and live sport, plus Send It: augmented darts, racing simulators and basketball games.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Dinner sorted. <em>Now, what's on?</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/"><span class="arrow">←</span> All dining &amp; bars</a>
+    </div>
+    <div class="next__grid">
+      <a class="tile wipe" href="../whats-on/" style="view-transition-name:wo-hero">
+        <img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A busy evening in the outdoor Sports Bar" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Events &amp; weekly activities</p><h3>What's on</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1;view-transition-name:home-hero" href="../">
+        <img src="../../assets/img/terrace-aerial.jpg" alt="Umbrellas on the Ocean Terrace above Freshwater Beach" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Harbord Diggers</p><h3>Back to home</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<dialog class="lb" aria-label="Bau Truong menu">
+  <div class="lb__bar">
+    <p>Bau Truong menu</p>
+    <div><button class="btn btn--light" data-lb-zoom>Zoom in</button><button class="btn btn--light" data-lb-close>Close</button></div>
+  </div>
+  <div class="lb__scroll"><img alt="The full Bau Truong menu"></div>
+</dialog>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Open or closed right now, in Sydney time (Tue–Sun, 12pm–9pm). ?now=2026-10-13T14:00+11:00 previews another moment.
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const day = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(p.weekday);
+  const mins = +p.hour * 60 + +p.minute;
+  const open = day !== 0 && mins >= 720 && mins < 1260;
+  const text = open ? (mins >= 1200 ? 'Open now, last hour before the 9pm close' : 'Open now until 9pm')
+    : day !== 0 && mins < 720 ? 'Opens today at 12pm'
+    : `Closed now, opens ${day === 6 ? 'Tuesday' : 'tomorrow'} at 12pm`;
+  document.querySelectorAll('[data-status]').forEach((el) => {
+    el.classList.add(open ? 'is-open' : 'is-closed');
+    el.lastElementChild.textContent = text;
+  });
+  document.querySelector('[data-hours]').children[day].classList.add('is-today');
+
+  // Signature dishes: one open at a time
+  const dishes = [...document.querySelectorAll('[data-dishes] li')];
+  const pick = (li) => dishes.forEach((d) => {
+    d.classList.toggle('is-active', d === li);
+    d.firstElementChild.setAttribute('aria-expanded', d === li);
+  });
+  dishes.forEach((li) => {
+    li.firstElementChild.addEventListener('click', () => pick(li));
+    li.firstElementChild.addEventListener('focus', () => pick(li));
+    if (matchMedia('(hover:hover)').matches) li.addEventListener('mouseenter', () => pick(li));
+  });
+
+  // Menu lightbox: fits the screen first, click or tap to zoom in on that spot
+  const lb = document.querySelector('.lb');
+  if (!lb.showModal) return;
+  const img = lb.querySelector('img');
+  const scroller = lb.querySelector('.lb__scroll');
+  const zoomBtn = lb.querySelector('[data-lb-zoom]');
+  const zoom = (on, fx = .5, fy = 0) => {
+    lb.classList.toggle('is-zoom', on);
+    zoomBtn.textContent = on ? 'Zoom out' : 'Zoom in';
+    scroller.scrollTo(on ? fx * img.offsetWidth - scroller.clientWidth / 2 : 0, on ? fy * img.offsetHeight - scroller.clientHeight / 2 : 0);
+  };
+  const close = () => {
+    lb.classList.remove('is-open');
+    setTimeout(() => { lb.close(); zoom(false); }, 420);
+  };
+  document.querySelectorAll('[data-lightbox]').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    img.src = a.href;
+    lb.showModal();
+    requestAnimationFrame(() => requestAnimationFrame(() => lb.classList.add('is-open')));
+  }));
+  img.addEventListener('click', (e) => {
+    const r = img.getBoundingClientRect();
+    zoom(!lb.classList.contains('is-zoom'), (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+  });
+  zoomBtn.addEventListener('click', () => zoom(!lb.classList.contains('is-zoom')));
+  lb.querySelector('[data-lb-close]').addEventListener('click', close);
+  scroller.addEventListener('click', (e) => { if (e.target === scroller) close(); });
+  lb.addEventListener('cancel', (e) => { e.preventDefault(); close(); });
+})();
+</script>
+</body>
+</html>

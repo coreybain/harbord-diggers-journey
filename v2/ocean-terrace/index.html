@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ocean Terrace — Harbord Diggers (Concept 2: Golden Hour)</title>
+<meta name="description" content="The Ocean Terrace at Harbord Diggers: relaxed alfresco dining above Freshwater Beach, with food from DD Collective, Teddy Larkin's and Bau Truong.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/ot-dusk.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../golden-hour.css">
+<link rel="stylesheet" href="../venues.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the terrace opens out from a long horizon slot; headline low on the left, the practical bits low on the right */
+.ot{--from:inset(42% 8% 42% 8% round 999px);--shade:linear-gradient(180deg,rgba(13,27,36,.74),rgba(13,27,36,.06) 30%,rgba(13,27,36,.12) 46%,rgba(13,27,36,.93))}
+.ot .bn__frame{view-transition-name:ot-hero}
+.ot .bn__par img{object-position:50% 60%}
+.ot .bn__in{grid-template-columns:minmax(0,1fr) minmax(0,400px)}
+.ot h1{max-width:12ch}
+.ot__side .vh__lede{margin-top:18px}
+
+/* Intro: two photographs drifting past each other at different speeds */
+.air{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,7vw,130px);align-items:center}
+.air h2{font-size:clamp(36px,5.2vw,86px);margin:24px 0 28px}
+.air p{color:var(--muted);max-width:44ch}
+.air p+p{margin-top:1em}
+.air__pics{position:relative;padding:0 0 clamp(40px,7vw,110px) clamp(40px,8vw,130px)}
+.air__pics figure{overflow:hidden;background:var(--ink2)}
+.air__a{aspect-ratio:4/5;border-radius:999px 999px 22px 22px}
+.air__a img,.air__b img{width:100%;height:100%;object-fit:cover}
+.air__a img{transform:translate3d(0,calc((var(--p,.5) - .5) * -10%),0) scale(1.16)}
+.air__b{position:absolute;left:0;bottom:0;width:48%;aspect-ratio:1;border-radius:22px;border:8px solid var(--ink);transform:translate3d(0,calc((var(--p,.5) - .5) * -90px),0)}
+
+/* Three kitchens, one table */
+.kit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,26px);margin-top:clamp(36px,5vw,70px)}
+.kit .on__img{aspect-ratio:4/3}
+.kit a:nth-child(2){margin-top:clamp(0px,4vw,56px)}
+.kit p{margin-top:10px;font-size:14.5px;color:var(--muted);max-width:36ch}
+
+/* How it works: three steps on paper */
+.steps{list-style:none;padding:0;margin:clamp(32px,4.4vw,60px) 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(13,27,36,.16)}
+.steps li{padding:clamp(22px,2.6vw,38px) clamp(18px,2.4vw,36px) 0 0}
+.steps li+li{padding-left:clamp(18px,2.4vw,36px);border-left:1px solid rgba(13,27,36,.16)}
+.steps span{font:300 clamp(46px,5vw,80px)/1 var(--display);letter-spacing:-.03em;color:var(--teal)}
+.steps h3{font-size:clamp(24px,2.4vw,36px);margin:clamp(40px,6vw,96px) 0 12px}
+.steps p{font-size:15.5px;color:rgba(13,27,36,.72);max-width:32ch}
+
+/* Reserve: a small form that fills in a booking line as you go, and never sends anything */
+.rsv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,7vw,130px);align-items:center}
+.rsv h2{font-size:clamp(36px,5.2vw,86px);margin:24px 0 28px}
+.rsv>div>p{color:var(--muted);max-width:42ch}
+.rsv__pic{margin-top:clamp(28px,3.4vw,48px);aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:var(--ink2)}
+.rsv__pic img{width:100%;height:100%;object-fit:cover}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;padding:clamp(22px,3vw,44px);border-radius:28px;border:1px solid var(--line);background:var(--ink2)}
+.form>*{min-width:0}
+.form .full{grid-column:1/-1}
+.form label,.form legend{display:block;padding:0;margin-bottom:10px;font:600 10.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.form fieldset{border:0;padding:0;margin:0}
+.form input[type=text],.form input[type=tel]{width:100%;height:52px;padding:0 18px;border-radius:14px;border:1px solid var(--line);background:rgba(13,27,36,.5);color:var(--paper);font:500 16px/1 var(--body);transition:border-color .3s,background .3s}
+.form input::placeholder{color:rgba(244,236,223,.34)}
+.form input:focus{outline:0;border-color:var(--sand);background:var(--ink)}
+.step{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 6px;border-radius:14px;border:1px solid var(--line);background:rgba(13,27,36,.5)}
+.step button{width:40px;height:40px;border-radius:50%;font-size:20px;line-height:1;transition:background .3s,color .3s}
+.step button:hover{background:var(--sand);color:var(--ink)}
+.step output{font:300 26px/1 var(--display)}
+.fixed{display:flex;align-items:center;justify-content:space-between;gap:10px;height:52px;padding:0 18px;border-radius:14px;border:1px dashed var(--line);font:300 22px/1 var(--display)}
+.fixed small{font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.dates label{position:relative;margin:0;cursor:pointer}
+.dates input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.dates span{display:grid;justify-items:center;gap:8px;padding:14px 4px 13px;border-radius:999px;border:1px solid var(--line);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:background .5s var(--ease),color .5s,border-color .5s,transform .6s var(--ease)}
+.dates b{font:300 24px/1 var(--display);letter-spacing:-.02em;text-transform:none;color:var(--paper);transition:color .5s}
+.dates label:hover span{border-color:var(--sand)}
+.dates input:checked+span{background:var(--sand);border-color:var(--sand);color:rgba(13,27,36,.7);transform:translateY(-4px)}
+.dates input:checked+span b{color:var(--ink)}
+.dates input:focus-visible+span{outline:2px solid var(--paper);outline-offset:2px}
+.form__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding-top:22px;border-top:1px solid var(--line)}
+.form__sum{font:italic 300 clamp(19px,1.7vw,24px)/1.25 var(--display);color:var(--sand);flex:1 1 220px}
+.form__note{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;background:rgba(237,196,148,.12);border:1px solid rgba(237,196,148,.4);color:var(--sand);font-size:14.5px}
+.form__note::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--sand)}
+.form__note[hidden]{display:none}
+
+@media (max-width:1000px){
+  .ot .bn__in{grid-template-columns:1fr}
+  .air,.rsv{grid-template-columns:1fr}
+  .air__pics{max-width:560px}
+}
+@media (max-width:760px){
+  .ot{--shade:linear-gradient(180deg,rgba(13,27,36,.78),rgba(13,27,36,.1) 24%,rgba(13,27,36,.72) 52%,rgba(13,27,36,.95))}
+  .ot .bn__par img{object-position:60% 60%}
+  .ot__side .vh__lede{display:none}
+  .ot__side .vh__cta{margin-top:20px}
+  .kit{grid-template-columns:1fr;row-gap:30px}
+  .kit a:nth-child(2){margin-top:0}
+  .kit .on__img{aspect-ratio:16/10}
+  .steps{grid-template-columns:1fr}
+  .steps li,.steps li+li{display:grid;grid-template-columns:64px 1fr;column-gap:8px;padding:22px 0;border-left:0}
+  .steps li+li{border-top:1px solid rgba(13,27,36,.16)}
+  .steps span{grid-row:span 2;font-size:40px}
+  .steps h3{margin:4px 0 8px}
+  .form{grid-template-columns:1fr;gap:18px;border-radius:22px}
+  .dates span{padding:12px 2px 11px;font-size:9px;letter-spacing:.08em}
+  .dates b{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){
+  .air__a img,.air__b{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop is-here">
+      <a href="../dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="../teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="../dd-collective/">DD Collective <small>Café</small></a>
+        <a href="./" aria-current="page">Ocean Terrace <small>Outdoors</small></a>
+        <a href="../main-bar/">Main Bar <small>Bar</small></a>
+        <a href="../sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="../membership/#renew">Renew</a>
+    <a class="btn btn--sand" href="../membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="../bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="../teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="../dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="./" aria-current="page">Ocean Terrace</a>
+    <a class="menu__sub" href="../main-bar/">Main Bar</a>
+    <a class="menu__sub" href="../sports-bar/">Sports Bar</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="../membership/#join">Join now</a><a href="../membership/#renew">Renew</a><a href="../functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="bn vh ot" data-progress="view">
+    <div class="bn__frame"><div class="bn__open"><div class="bn__par"><img src="../../assets/img/ot-dusk.jpg" alt="The Ocean Terrace full of people at dusk, seen from above" fetchpriority="high"></div></div></div>
+    <div class="bn__in">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span>←</span> Home</a><i>/</i>
+        <a href="../dining/">Dining &amp; bars</a><i>/</i>
+        <span aria-current="page">Ocean Terrace</span>
+      </nav>
+      <div>
+        <p class="eyebrow rise" style="--d:1">Open-air dining above Freshwater Beach</p>
+        <h1 data-split="load">Alfresco dining, <em>spectacular view.</em></h1>
+      </div>
+      <div class="ot__side">
+        <p class="status rise" style="--d:5" data-status><i></i><span>Open seven days</span></p>
+        <p class="vh__lede rise" style="--d:6">Perched above the coastline: a place to gather, unwind and enjoy great food in a shared, open-air setting.</p>
+        <div class="vh__cta rise" style="--d:7">
+          <a class="btn btn--sand" href="#reserve">Reserve a table <span>↓</span></a>
+          <a class="btn" href="https://wds.webdirector.net/harbord-ve/stores/Menus/Terrace-Express-Menu-2026.pdf" target="_blank" rel="noopener">View the full menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap air" id="story">
+    <div>
+      <p class="eyebrow reveal">The terrace</p>
+      <h2 data-split>Perched above <em>the coastline.</em></h2>
+      <p class="reveal">The Ocean Terrace is designed for relaxed dining, with stunning views and a laid-back coastal atmosphere.</p>
+      <p class="reveal">It's the perfect place to gather, unwind and enjoy great food in a shared, open-air setting.</p>
+    </div>
+    <div class="air__pics" data-progress="view">
+      <figure class="air__a wipe"><img src="../../assets/img/ot-aerial.jpg" alt="Terrace umbrellas and coastal grasses, with the beach beyond" loading="lazy"></figure>
+      <figure class="air__b reveal-fade"><img src="../../assets/img/ot-table.jpg" alt="Three friends sharing a big table of food and drinks on the terrace" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="wrap" id="kitchens" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">On the menu</p>
+        <h2 data-split>Three kitchens, <em>one table.</em></h2>
+      </div>
+      <a class="btn reveal" href="https://wds.webdirector.net/harbord-ve/stores/Menus/Terrace-Express-Menu-2026.pdf" target="_blank" rel="noopener">View the full menu <span>→</span></a>
+    </div>
+    <div class="kit">
+      <a href="../dd-collective/">
+        <div class="on__img wipe"><img src="../../assets/img/dd-burger.jpg" alt="A chicken burger, fries and iced drinks on the terrace" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>From the café</small><h3>DD Collective</h3></div><span class="go">→</span></div>
+        <p class="reveal">Hearty meals and barista-made coffee.</p>
+      </a>
+      <a href="../teddy-larkins/">
+        <div class="on__img wipe" style="--d:1"><img src="../../assets/img/tl-board.jpg" alt="A Teddy Larkin's share board of ribs and steak" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>From the grill</small><h3>Teddy Larkin's</h3></div><span class="go">→</span></div>
+        <p class="reveal">Seafood and steakhouse favourites.</p>
+      </a>
+      <a href="../bau-truong/">
+        <div class="on__img wipe" style="--d:2"><img src="../../assets/img/bt-bowls.jpg" alt="Vietnamese bowls from Bau Truong" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>From Vietnam</small><h3>Bau Truong</h3></div><span class="go">→</span></div>
+        <p class="reveal">Family-run modern Vietnamese.</p>
+      </a>
+    </div>
+    <div class="fine reveal">
+      <p>A selection from all three, so there's something for everyone: ideal for grazing, sharing, or simply enjoying a little bit of everything.</p>
+    </div>
+  </section>
+
+  <div class="panel" id="ordering">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">How it works</p>
+        <h2 data-split>Ordering is <em>simple.</em></h2>
+      </div>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><span>01</span><h3>Find your spot</h3><p>Outside reserved times, tables on the terrace are first come, first served.</p></li>
+      <li class="reveal" style="--d:1"><span>02</span><h3>Order your way</h3><p>Place your order at DD Collective café, or scan the QR code at your table.</p></li>
+      <li class="reveal" style="--d:2"><span>03</span><h3>Sit back</h3><p>Breathe in the sea air and enjoy the view while your food is delivered straight to you.</p></li>
+    </ol>
+  </div>
+
+  <section class="wrap rsv" id="reserve">
+    <div>
+      <p class="eyebrow reveal">Reservations</p>
+      <h2 data-split>A table at noon, <em>Thursday to Sunday.</em></h2>
+      <p class="reveal">Book your table for 12.00pm, Thursday to Sunday. Outside those times, tables are first come, first served.</p>
+      <figure class="rsv__pic wipe"><img src="../../assets/img/ot-screen.jpg" alt="The terrace under a blue sky, with the big outdoor screen" loading="lazy"></figure>
+    </div>
+    <form class="form reveal" data-reserve novalidate>
+      <div>
+        <label for="r-name">Name</label>
+        <input id="r-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+      </div>
+      <div>
+        <label for="r-phone">Phone</label>
+        <input id="r-phone" name="phone" type="tel" autocomplete="tel" placeholder="Your mobile">
+      </div>
+      <div>
+        <label id="r-guests">Guests</label>
+        <div class="step" role="group" aria-labelledby="r-guests">
+          <button type="button" data-step="-1" aria-label="One fewer guest">−</button>
+          <output data-guests aria-live="polite">2</output>
+          <button type="button" data-step="1" aria-label="One more guest">+</button>
+        </div>
+      </div>
+      <div>
+        <label>Time</label>
+        <p class="fixed">12.00pm <small>Fixed</small></p>
+      </div>
+      <fieldset class="full">
+        <legend>Date, Thursday to Sunday</legend>
+        <div class="dates" data-dates></div>
+      </fieldset>
+      <div class="form__foot full">
+        <p class="form__sum" data-sum aria-live="polite"></p>
+        <button class="btn btn--sand" type="submit">Request this table <span>→</span></button>
+      </div>
+      <p class="form__note full" data-note role="status" hidden>This is a design mock-up, nothing was sent.</p>
+    </form>
+  </section>
+
+  <section class="wrap hrs" id="hours" style="padding-top:0">
+    <div>
+      <p class="eyebrow reveal">Operating times</p>
+      <h2 data-split>Morning sun <em>to evening sky.</em></h2>
+      <p class="status reveal" data-status><i></i><span>Open seven days</span></p>
+      <p class="hrs__note reveal">Breakfast Tuesday to Sunday, 8am to 11.30am. Lunch and dinner seven days, 11.30am to 9pm. Hours and operations of restaurants may vary daily.</p>
+      <div class="hrs__cta reveal" style="--d:1">
+        <a class="btn btn--sand" href="tel:0291054888">Call (02) 9105 4888</a>
+        <a class="btn" href="mailto:harbordinfo@mountiesgroup.com.au">Email the club</a>
+      </div>
+    </div>
+    <div class="reveal" style="--d:1">
+      <ul class="days" data-hours>
+        <li><b>Mon<span class="sr-only">day</span></b><span>11.30am<br>– 9pm</span></li>
+        <li><b>Tue<span class="sr-only">sday</span></b><span>8am<br>– 9pm</span></li>
+        <li><b>Wed<span class="sr-only">nesday</span></b><span>8am<br>– 9pm</span></li>
+        <li><b>Thu<span class="sr-only">rsday</span></b><span>8am<br>– 9pm</span></li>
+        <li><b>Fri<span class="sr-only">day</span></b><span>8am<br>– 9pm</span></li>
+        <li><b>Sat<span class="sr-only">urday</span></b><span>8am<br>– 9pm</span></li>
+        <li><b>Sun<span class="sr-only">day</span></b><span>8am<br>– 9pm</span></li>
+      </ul>
+      <div class="track" aria-hidden="true">
+        <p class="track__top"><span data-track-day>Today</span><span>Breakfast, then lunch &amp; dinner</span></p>
+        <div class="track__bar"><i class="track__now"><span></span></i></div>
+        <div class="track__ticks"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="more" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Also at the Diggers</p>
+        <h2 data-split>Step back inside <em>for something else.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span>→</span></a>
+    </div>
+    <div class="also">
+      <a href="../bau-truong/">
+        <div class="on__img wipe" style="view-transition-name:bt-hero"><img src="../../assets/img/bt-booth.jpg" alt="Blue banquette booths and set tables at Bau Truong" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Modern Vietnamese</small><h3>Bau Truong</h3></div><span class="go">→</span></div>
+        <p class="reveal">Family-run modern Vietnamese, from traditional pho to fresh paper rolls.</p>
+      </a>
+      <a href="../teddy-larkins/">
+        <div class="on__img wipe" style="--d:1;view-transition-name:tl-hero"><img src="../../assets/img/teddy-ribs.jpg" alt="Ribs and a beer at Teddy Larkin's" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Seafood &amp; steak</small><h3>Teddy Larkin's</h3></div><span class="go">→</span></div>
+        <p class="reveal">Rangers Valley steaks, slow-cooked ribs and locally sourced seafood.</p>
+      </a>
+      <a href="../dd-collective/">
+        <div class="on__img wipe" style="--d:2;view-transition-name:dd-hero"><img src="../../assets/img/dd-cafe.jpg" alt="The DD Collective café counter under a woven pendant light" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Café</small><h3>DD Collective</h3></div><span class="go">→</span></div>
+        <p class="reveal">Barista-made coffee all day, breakfast classics and pub favourites.</p>
+      </a>
+      <a href="../main-bar/">
+        <div class="on__img wipe" style="--d:3;view-transition-name:mb-hero"><img src="../../assets/img/cocktails.jpg" alt="Cocktails at the Main Bar" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Bar</small><h3>Main Bar</h3></div><span class="go">→</span></div>
+        <p class="reveal">Handcrafted cocktails, cold beers and live acts Friday to Sunday.</p>
+      </a>
+      <a href="../sports-bar/">
+        <div class="on__img wipe" style="--d:4;view-transition-name:sb-hero"><img src="../../assets/img/wo-sportsbar.jpg" alt="Mates laughing over a beer in the Sports Bar" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Sports Bar + Send It</small><h3>Sports Bar</h3></div><span class="go">→</span></div>
+        <p class="reveal">Huge screens, live sport and Send It's darts, racing sims and basketball.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>View sorted. <em>Now, what's on?</em></h2>
+      </div>
+    </div>
+    <div class="next__grid">
+      <a href="../whats-on/">
+        <div class="on__img wipe" style="view-transition-name:wo-hero"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A full outdoor Sports Bar at dusk, festoon lights on" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Events &amp; weekly activities</small><h3>What's on</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="../">
+        <div class="on__img wipe" style="--d:1;view-transition-name:home-hero"><img src="../../assets/img/terrace-dusk.jpg" alt="Harbord Diggers lit up at dusk" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Harbord Diggers</small><h3>Back to home</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="../dining/">Dining</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../community/">Community</a>
+    <a href="../functions/">Functions</a>
+    <a href="../visit/#courtesy-bus">Courtesy bus</a>
+    <a href="../visit/#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // The time in Sydney right now. ?now=2026-10-16T18:30+11:00 previews another moment.
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const day = DAYS.findIndex((d) => d.startsWith(p.weekday));
+  const mins = +p.hour * 60 + +p.minute;
+  const clock = (m) => `${(Math.floor(m / 60) + 11) % 12 + 1}${m % 60 ? '.' + String(m % 60).padStart(2, '0') : ''}${m < 720 ? 'am' : 'pm'}`;
+
+  // Service times as minutes from midnight, Monday first
+  const V = [[720, 1260]], T = [[690, 900], [1020, 1260]], L = [[690, 1260]], B = [[480, 690], [690, 1260]];
+  const HOURS = { 'bau-truong': [[], V, V, V, V, V, V], 'teddy-larkins': [[], [], T, T, T, T, T], 'dd-collective': [L, B, B, B, B, B, B], 'ocean-terrace': [L, B, B, B, B, B, B] };
+  const statusOf = (week) => {
+    const at = week[day].findIndex(([a, b]) => mins >= a && mins < b);
+    if (at > -1) {
+      let end = week[day][at][1];
+      week[day].slice(at + 1).forEach(([a, b]) => { if (a === end) end = b; }); // breakfast runs straight into lunch
+      return { open: true, short: `Open until ${clock(end)}`, text: end - mins <= 60 ? `Open now, last hour before the ${clock(end)} close` : `Open now until ${clock(end)}` };
+    }
+    const later = week[day].find(([a]) => a > mins);
+    if (later) return { open: false, short: `Opens ${clock(later[0])}`, text: `Opens today at ${clock(later[0])}` };
+    for (let i = 1; i < 8; i++) {
+      const d = (day + i) % 7;
+      if (week[d].length) return { open: false, short: `Opens ${i === 1 ? 'tomorrow' : DAYS[d]}`, text: `Closed now, opens ${i === 1 ? 'tomorrow' : DAYS[d]} at ${clock(week[d][0][0])}` };
+    }
+  };
+  const setStatus = (el, s) => { el.classList.add(s.open ? 'is-open' : 'is-closed'); el.lastElementChild.textContent = s.text; };
+
+  const week = HOURS['ocean-terrace'];
+  const now = statusOf(week);
+  document.querySelectorAll('[data-status]').forEach((el) => setStatus(el, now));
+
+  // The week of lanterns lifts today's; the line below draws today's service between two times, with a mark for "now"
+  const paintWeek = (week, from, to) => {
+    const today = document.querySelector('[data-hours]').children[day];
+    today.classList.add('is-today');
+    today.setAttribute('aria-current', 'date');
+    const track = document.querySelector('.track');
+    const bar = track.querySelector('.track__bar');
+    const pct = (m) => ((m - from) / (to - from) * 100).toFixed(3);
+    let d = day;
+    while (!week[d].length) d = (d + 1) % 7; // a day without service shows the next one, dimmed
+    track.classList.toggle('is-shut', d !== day);
+    document.querySelector('[data-track-day]').textContent = d === day ? `Today, ${DAYS[day]}` : `Next service, ${DAYS[d]}`;
+    week[d].forEach(([a, b], i) => bar.insertAdjacentHTML('afterbegin', `<i class="track__open" style="left:${pct(a)}%;right:${100 - pct(b)}%;--i:${i}"></i>`));
+    track.querySelector('.track__ticks').innerHTML = [...new Set(week[d].flat())].map((m) => `<span style="left:${pct(m)}%">${clock(m)}</span>`).join('');
+    const now = track.querySelector('.track__now');
+    if (mins >= from && mins <= to) {
+      now.classList.add('is-on');
+      now.style.setProperty('--x', pct(mins) + '%');
+      now.firstElementChild.textContent = `Now ${clock(mins)}`;
+    }
+  };
+  paintWeek(week, 420, 1320);
+
+  // Reserve a table: the next eight Thursday-to-Sunday dates, a guest stepper and a booking line that writes itself.
+  // Nothing is sent anywhere.
+  const form = document.querySelector('[data-reserve]');
+  const dates = form.querySelector('[data-dates]');
+  const sum = form.querySelector('[data-sum]');
+  const guests = form.querySelector('[data-guests]');
+  const note = form.querySelector('[data-note]');
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const start = Date.UTC(+p.year, +p.month - 1, +p.day);
+  for (let i = mins < 720 ? 0 : 1, n = 0; n < 8; i++) {
+    const d = new Date(start + i * 864e5);
+    const wd = (d.getUTCDay() + 6) % 7;
+    if (wd < 3) continue;
+    dates.insertAdjacentHTML('beforeend', `<label><input type="radio" name="date" value="${DAYS[wd]} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}"${n ? '' : ' checked'}><span>${DAYS[wd].slice(0, 3)}<b>${d.getUTCDate()}</b>${MONTHS[d.getUTCMonth()].slice(0, 3)}</span></label>`);
+    n++;
+  }
+  const write = () => {
+    const n = +guests.textContent;
+    sum.textContent = `Table for ${n}, ${form.elements.date.value} at 12.00pm`;
+    note.hidden = true;
+  };
+  form.querySelectorAll('[data-step]').forEach((b) => b.addEventListener('click', () => {
+    guests.textContent = Math.min(12, Math.max(1, +guests.textContent + +b.dataset.step));
+    write();
+  }));
+  form.addEventListener('change', write);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    note.hidden = false;
+  });
+  write();
+})();
+</script>
+</body>
+</html>

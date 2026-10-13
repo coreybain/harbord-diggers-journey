@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What's On — Harbord Diggers (Concept 1: Shoreline)</title>
+<meta name="description" content="What's on at Harbord Diggers: upcoming events, plus weekly bingo, trivia, poker and meat raffles.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/wo-terrace-wide.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../shoreline.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: headline first, then a wide photo that opens like a curtain, with today's line-up pinned to it */
+.wh{padding-top:80px}
+.wh__row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:clamp(24px,4vw,64px);align-items:end;padding-block:clamp(10px,1.6vw,22px) clamp(24px,3vw,44px)}
+.wh h1{font-size:clamp(52px,8.6vw,138px);font-weight:300;line-height:.98;--base:250ms}
+.wh h1 em{font-weight:300}
+.wh__aside p{color:var(--muted)}
+.wh__jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.wh__frame{position:relative;margin-inline:var(--gap);height:clamp(300px,52svh,600px);border-radius:var(--r);overflow:hidden;background:#1c0b2c;view-transition-name:wo-hero}
+.js .wh__frame{clip-path:inset(0 46% round var(--r));transition:clip-path 1.6s var(--ease-io) .2s}
+.js .is-loaded .wh__frame{clip-path:inset(0 round var(--r))}
+.wh__par{position:absolute;inset:-10% 0;transform:translate3d(0,calc(var(--sy,0) * .14px),0)}
+.wh__par img{width:100%;height:100%;object-fit:cover}
+.js .wh__frame img{transform:scale(1.18);transition:transform 2.8s var(--ease) .2s}
+.js .is-loaded .wh__frame img{transform:none}
+.today{position:absolute;left:clamp(12px,1.6vw,24px);bottom:clamp(12px,1.6vw,24px);max-width:min(440px,calc(100% - 24px));display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 18px;padding:16px 16px 16px 20px;border-radius:18px;background:rgba(249,244,236,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);transition:transform .6s var(--ease),opacity 1s var(--ease) 1.5s}
+.js .today{opacity:0}
+.js .is-loaded .today{opacity:1}
+.today:hover{transform:translateY(-4px)}
+.today .eyebrow{display:flex;align-items:center;gap:8px}
+.today .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.today b{grid-column:1;font:400 clamp(19px,1.7vw,24px)/1.2 var(--display);letter-spacing:-.01em}
+.today__go{grid-row:1/3;grid-column:2;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .4s,color .4s,transform .6s var(--ease)}
+.today:hover .today__go{background:var(--ink);color:var(--cream);transform:rotate(90deg)}
+
+/* This week: day picker */
+.wk{padding:clamp(16px,2.4vw,36px);border-radius:var(--r);background:var(--sand)}
+.wk__bar{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.wk__range{font-family:var(--display);font-size:clamp(22px,2.2vw,32px);letter-spacing:-.015em}
+.wk .rail-ctrl{display:flex}
+.wk .rail-ctrl button{width:44px;height:44px}
+.wk__days{position:relative;display:grid;grid-template-columns:repeat(7,1fr);margin-top:18px;padding:6px;border-radius:20px;background:var(--cream)}
+.wk__ind{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px) / 7);border-radius:15px;background:var(--ink);transform:translateX(calc(var(--i,0) * 100%));transition:transform .7s var(--ease)}
+.wk__day{position:relative;display:grid;justify-items:center;gap:7px;padding:14px 0 12px;border-radius:15px;transition:color .45s}
+.wk__day[aria-selected="true"]{color:var(--cream)}
+.wk__day span{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;opacity:.65}
+.wk__day.is-today span{color:var(--gold);opacity:1}
+.wk__day b{font:400 clamp(22px,2.6vw,38px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.wk__day i{display:flex;gap:3px;height:5px}
+.wk__day u{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.wk__panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.86fr);gap:clamp(20px,3.4vw,56px);align-items:start;margin-top:clamp(22px,3vw,40px)}
+.wk__title{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:clamp(28px,3.2vw,50px)}
+.pill{display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid var(--gold);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#8a6420;white-space:nowrap;vertical-align:middle}
+.wk__list{margin-top:18px;border-top:1px solid var(--line)}
+.wk__row{display:grid;grid-template-columns:clamp(96px,10.4vw,150px) 1fr auto;align-items:center;gap:6px 16px;padding:17px 0;border-bottom:1px solid var(--line);animation:rowin .9s var(--ease) both;animation-delay:calc(var(--i) * 90ms)}
+@keyframes rowin{from{opacity:0;transform:translateY(18px)}}
+.wk__time{font-family:var(--display);font-size:clamp(24px,2.4vw,36px);line-height:1;letter-spacing:-.02em;transition:transform .6s var(--ease)}
+.wk__row.is-active .wk__time{font-style:italic;transform:translateX(4px)}
+.wk__what b{display:block;font:600 15.5px/1.3 var(--body)}
+.wk__what small{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.wk__row .btn{height:38px;padding:0 15px;font-size:11px}
+.wk__row.is-paused .wk__time,.wk__row.is-paused b{opacity:.45;text-decoration:line-through;text-decoration-thickness:1px}
+.wk__empty{padding:22px 0;border-bottom:1px solid var(--line);color:var(--muted);animation:rowin .9s var(--ease) both}
+.wk__empty a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.wk__stage{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;background:var(--cream)}
+.wk__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(1.05);transition:opacity .8s var(--ease),transform 1.4s var(--ease)}
+.wk__stage img.is-photo{object-fit:cover}
+.wk__stage img.is-active{opacity:1;transform:none}
+.wk__notes{margin-top:18px;font-size:13px;color:var(--muted)}
+
+/* Upcoming events */
+.ev{position:relative;display:grid;grid-template-columns:clamp(84px,9vw,140px) clamp(210px,23vw,350px) minmax(0,1fr) auto;align-items:center;gap:clamp(16px,3vw,52px);padding:clamp(22px,2.6vw,36px) 0;border-top:1px solid var(--line)}
+.ev:last-of-type{border-bottom:1px solid var(--line)}
+.ev::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}
+.ev:hover::before{transform:scaleX(1)}
+.ev.is-past{display:none}
+.ev__date b{display:block;font:300 clamp(50px,5.8vw,94px)/.9 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.ev__date span{display:block;margin-top:10px;font:600 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.ev__img{display:block;aspect-ratio:var(--ar,16/9);border-radius:16px;overflow:hidden;background:var(--sand);transition:transform .9s var(--ease),box-shadow .9s}
+.ev__img img{width:100%;height:100%;object-fit:cover}
+.ev:hover .ev__img{transform:translateY(-5px) rotate(-1deg);box-shadow:0 26px 44px -28px rgba(38,13,60,.5)}
+.ev__meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font:500 13px/1.3 var(--body);color:var(--muted)}
+.ev h3{font-size:clamp(26px,2.7vw,42px);margin:10px 0 10px}
+.ev__body>p:last-child{color:var(--muted);max-width:56ch;font-size:15px}
+.ev-none{padding:28px 0;border-block:1px solid var(--line);color:var(--muted)}
+
+/* Every week */
+.reg{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(28px,3vw,44px) var(--gap)}
+.reg figure{aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--sand)}
+.reg figure img{width:100%;height:100%;object-fit:cover}
+.reg article>div{padding-right:14px}
+.reg h3{font-size:clamp(24px,2.1vw,32px);margin-top:18px}
+.reg ul{margin-top:12px;border-top:1px solid var(--line)}
+.reg li{display:grid;grid-template-columns:86px 1fr;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.45}
+.reg li b{font:600 11px/1.9 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.reg p{margin-top:12px;font-size:14.5px;color:var(--muted)}
+.reg p.note{font:italic 400 15px/1.4 var(--display)}
+.live{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);margin-top:clamp(40px,5vw,72px);padding:12px;border-radius:var(--r);background:var(--sand)}
+.live figure{flex:none;width:clamp(84px,9vw,128px);aspect-ratio:1;border-radius:14px;overflow:hidden}
+.live img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform 1.2s var(--ease)}
+.live:hover img{transform:scale(1.08)}
+.live div{flex:1}
+.live h3{font-size:clamp(22px,2.2vw,32px)}
+.live p{color:var(--muted);font-size:14.5px;margin-top:4px}
+.live .btn{margin-right:12px}
+
+@media (max-width:1000px){
+  .wh__row{grid-template-columns:1fr}
+  .wk__panel{grid-template-columns:1fr}
+  .wk__stage{order:-1}
+  .ev{grid-template-columns:auto minmax(0,1fr);align-items:start}
+  .ev__img{grid-column:2;grid-row:1}
+  .ev__body{grid-column:1/-1}
+  .ev>.btn{grid-column:1/-1;justify-self:start}
+  .ev__date{min-width:84px}
+  .reg{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .wh__frame{height:auto;overflow:visible;background:none;clip-path:none!important;view-transition-name:none}
+  .wh__par{position:relative;inset:auto;transform:none;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:#1c0b2c;view-transition-name:wo-hero}
+  .js .wh__par{clip-path:inset(0 46% round var(--r));transition:clip-path 1.6s var(--ease-io) .2s}
+  .js .is-loaded .wh__par{clip-path:inset(0 round var(--r))}
+  .today{position:relative;left:auto;bottom:auto;max-width:none;margin-top:var(--gap);background:var(--sand);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .wk{margin-inline:calc(var(--gap) - var(--pad))}
+  .wk__days{padding:4px;border-radius:16px}
+  .wk__ind{top:4px;bottom:4px;left:4px;width:calc((100% - 8px) / 7);border-radius:12px}
+  .wk__day span{font-size:9px;letter-spacing:.1em}
+  .wk__row{grid-template-columns:76px 1fr}
+  .wk__row .btn,.wk__row .pill{grid-column:2;justify-self:start}
+  .reg{grid-template-columns:1fr}
+  .live{flex-wrap:wrap}
+  .live .btn{margin:0 0 6px 6px}
+}
+/* Header: Dining & Bars dropdown */
+.hd__dd{position:relative;display:flex}
+.hd__dd>a{display:inline-flex;align-items:center;gap:7px}
+.hd__dd>a i{width:6px;height:6px;border-right:1.5px solid;border-bottom:1.5px solid;transform:translateY(-2px) rotate(45deg);transition:transform .5s var(--ease)}
+.hd__dd:hover>a i,.hd__dd:focus-within>a i{transform:translateY(1px) rotate(225deg)}
+.hd__sub{position:absolute;left:50%;top:100%;padding-top:16px;transform:translate(-50%,10px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),transform .55s var(--ease),visibility 0s .35s}
+.hd__dd:hover .hd__sub,.hd__dd:focus-within .hd__sub{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.hd__sub div{display:grid;min-width:236px;padding:8px;border-radius:20px;background:var(--cream);color:var(--ink);border:1px solid var(--line);box-shadow:0 26px 50px -26px rgba(38,13,60,.5)}
+.hd__nav .hd__sub a{display:flex;justify-content:space-between;align-items:baseline;gap:22px;padding:10px 14px;border-radius:13px;font:400 19px/1.15 var(--display);letter-spacing:-.01em;transition:background .35s}
+.hd__nav .hd__sub a::after{content:"→";position:static;height:auto;background:none;font:400 13px/1 var(--body);opacity:0;transform:translateX(-8px);transition:opacity .35s,transform .5s var(--ease)}
+.hd__nav .hd__sub a:hover,.hd__nav .hd__sub a:focus-visible{background:var(--sand)}
+.hd__nav .hd__sub a:hover::after,.hd__nav .hd__sub a:focus-visible::after{opacity:1;transform:none}
+.hd__nav .hd__sub a[aria-current]{font-style:italic}
+.hd__nav .hd__sub a[aria-current]::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:1;transform:none;align-self:center}
+
+/* Mobile menu: venue links under Dining & Bars */
+.menu__sub{display:flex;flex-wrap:wrap;gap:0 20px;padding:4px 0 12px}
+.menu__links .menu__sub a{display:inline-block;font:500 15px/2 var(--body);letter-spacing:0}
+
+/* Live & Local, and kids */
+.lm{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(28px,5.4vw,96px);align-items:start}
+.lm__pic{position:sticky;top:96px;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:#1c0b2c}
+.lm__pic img{width:100%;height:100%;object-fit:cover}
+.lm h2{font-size:clamp(34px,4.6vw,72px);margin:18px 0 20px}
+.lm__lede{color:var(--muted);max-width:48ch}
+.lm__when{display:grid;grid-template-columns:repeat(3,1fr);margin:clamp(24px,3vw,40px) 0 clamp(28px,3.4vw,48px);border-top:1px solid var(--line)}
+.lm__when div{padding:16px 16px 0 0}
+.lm__when div+div{padding-left:16px;border-left:1px solid var(--line)}
+.lm__when b{display:block;font:400 clamp(21px,2vw,30px)/1.1 var(--display);letter-spacing:-.02em}
+.lm__when span{display:block;margin-top:6px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.lm__sub{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.gigs{border-top:1px solid var(--line)}
+.gig{display:grid;grid-template-columns:clamp(84px,8vw,120px) 1fr auto;align-items:baseline;gap:6px 16px;padding:15px 0;border-bottom:1px solid var(--line);animation:rowin .9s var(--ease) both;animation-delay:calc(var(--i) * 80ms)}
+.gig__day{font:600 11px/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.gig__who{font-family:var(--display);font-size:clamp(22px,2.2vw,32px);line-height:1.1;letter-spacing:-.02em;transition:transform .6s var(--ease)}
+.gig:hover .gig__who{font-style:italic;transform:translateX(5px)}
+.gig__time{font-size:14px;color:var(--muted);white-space:nowrap}
+.gig.is-today .gig__day{color:#8a6420}
+.gigs__none{padding:20px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.kids{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:clamp(20px,4vw,64px);padding:12px;border-radius:var(--r);background:var(--sand)}
+.kids figure{border-radius:14px;overflow:hidden;aspect-ratio:16/10}
+.kids img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.kids:hover img{transform:scale(1.05)}
+.kids__body{padding:clamp(8px,2vw,28px) clamp(8px,2vw,28px) clamp(8px,2vw,28px) 0}
+.kids h2{font-size:clamp(32px,4vw,60px);margin:16px 0 14px}
+.kids p{color:var(--muted);max-width:44ch}
+.kids .btn{margin-top:24px}
+@media (max-width:1000px){
+  .lm,.kids{grid-template-columns:1fr}
+  .lm__pic{position:static;aspect-ratio:4/3}
+  .lm__pic img{object-position:50% 25%}
+  .kids__body{padding:6px 10px 16px}
+}
+@media (max-width:640px){
+  .lm__when{grid-template-columns:1fr}
+  .lm__when div,.lm__when div+div{padding:14px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .gig{grid-template-columns:1fr auto}
+  .gig__day{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="./" aria-current="page">What's On</a>
+      <div class="hd__dd">
+        <a href="../dining/">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../teddy-larkins/">Teddy Larkin's</a>
+          <a href="../dd-collective/">DD Collective</a>
+          <a href="../ocean-terrace/">Ocean Terrace</a>
+          <a href="../main-bar/">Main Bar</a>
+          <a href="../sports-bar/">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="../membership/">Membership</a>
+      <a href="../community/">Community</a>
+      <a href="../visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="../membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="./" aria-current="page">What's On</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="wh">
+    <div class="wrap">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <span aria-current="page">What's on</span>
+      </nav>
+      <div class="wh__row">
+        <h1 data-split="load">What's on <em>at the Diggers.</em></h1>
+        <div class="wh__aside rise" style="--d:4">
+          <p>Bingo mornings, trivia nights, meat raffles and a few big days on the calendar. Here's the week ahead and what's coming up.</p>
+          <div class="wh__jump">
+            <a class="btn" href="#week">This week <span aria-hidden="true">↓</span></a>
+            <a class="btn" href="#events">Coming up <span aria-hidden="true">↓</span></a>
+            <a class="btn" href="#live-music">Live music <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wh__frame" data-vt-hero>
+      <div class="wh__par" data-vt-hero><img src="../../assets/img/wo-terrace-wide.jpg" alt="Harbord Diggers and its terrace at dusk, umbrellas out on the lawn" fetchpriority="high"></div>
+      <a class="today" href="#week">
+        <span class="eyebrow" data-today-label>This week</span>
+        <b data-today-line>See what's on, day by day</b>
+        <span class="today__go" aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="wrap" id="week">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Day by day</p>
+        <h2 data-split>This week <em>at the Diggers.</em></h2>
+      </div>
+    </div>
+    <div class="wk reveal" hidden>
+      <div class="wk__bar">
+        <p class="wk__range" aria-live="polite"></p>
+        <div class="rail-ctrl">
+          <button data-wk-prev aria-label="Previous week">←</button>
+          <button data-wk-next aria-label="Next week">→</button>
+        </div>
+      </div>
+      <div class="wk__days" role="tablist" aria-label="Day of the week"><span class="wk__ind"></span></div>
+      <div class="wk__panel" role="tabpanel">
+        <div>
+          <h3 class="wk__title"></h3>
+          <ul class="wk__list"></ul>
+        </div>
+        <div class="wk__stage"></div>
+      </div>
+    </div>
+    <p class="wk__notes reveal">Summer breaks: no trivia 27 November to 6 January, no poker 14 December to 4 January, no bingo 21 December to 4 January, and no raffle on 27 December.</p>
+  </section>
+
+  <section class="wrap" id="events" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Coming up</p>
+        <h2 data-split>Dates worth <em>writing down.</em></h2>
+      </div>
+      <a class="btn reveal" href="tel:0291054888">Member services (02) 9105 4888</a>
+    </div>
+
+    <article class="ev reveal" data-date="2026-10-30" data-start="18:00" data-time="6pm">
+      <div class="ev__date"><b>30</b><span>Oct · Fri</span></div>
+      <a class="ev__img" href="https://datemymate.au/events/harborddiggers" tabindex="-1"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A busy evening in the outdoor Sports Bar" loading="lazy"></a>
+      <div class="ev__body">
+        <p class="ev__meta">Friday, 6pm · Outdoor Sports Bar <span class="pill" data-in hidden></span></p>
+        <h3>Date My Mate</h3>
+        <p>Mates pitch their friends in the outdoor Sports Bar, with ocean views and a drink on arrival. No pressure, just an easy night out.</p>
+      </div>
+      <a class="btn btn--solid" href="https://datemymate.au/events/harborddiggers">Tickets <span class="arrow">→</span></a>
+    </article>
+
+    <article class="ev reveal" data-date="2026-11-03" data-start="12:00" data-time="12pm">
+      <div class="ev__date"><b>03</b><span>Nov · Tue</span></div>
+      <a class="ev__img" href="https://events.humanitix.com/melbourne-cup-sports-bar" tabindex="-1"><img src="../../assets/img/wo-mates.jpg" alt="Mates in suits sharing beers on the terrace" loading="lazy"></a>
+      <div class="ev__body">
+        <p class="ev__meta">Tuesday, 12pm – 3pm · Sports Bar <span class="pill" data-in hidden></span></p>
+        <h3>Melbourne Cup in the Sports Bar</h3>
+        <p>Grab a Neigh Sayers table for $89 and bring up to five mates. That's a schooner each, buffalo wings to share, sweepstakes entry and a free game of Send It!</p>
+      </div>
+      <a class="btn btn--solid" href="https://events.humanitix.com/melbourne-cup-sports-bar">Book a table <span class="arrow">→</span></a>
+    </article>
+
+    <article class="ev reveal" data-date="2026-11-03" data-start="12:30" data-time="12.30pm">
+      <div class="ev__date"><b>03</b><span>Nov · Tue</span></div>
+      <a class="ev__img" style="--ar:2/1" href="https://events.humanitix.com/melbourne-cup-harbord-diggers-2026" tabindex="-1"><img src="../../assets/img/wo-cup.jpg" alt="Melbourne Cup at Harbord Diggers" loading="lazy"></a>
+      <div class="ev__body">
+        <p class="ev__meta">Tuesday, 12.30pm – 3pm <span class="pill" data-in hidden></span></p>
+        <h3>Melbourne Cup: Race Day Royalty</h3>
+        <p>Race day meets seaside style. The $89 Race Day Royalty package includes prawns and oysters.</p>
+      </div>
+      <a class="btn btn--solid" href="https://events.humanitix.com/melbourne-cup-harbord-diggers-2026">Tickets <span class="arrow">→</span></a>
+    </article>
+
+    <article class="ev reveal" data-date="2026-11-14" data-start="23:00" data-time="Evening">
+      <div class="ev__date"><b>14</b><span>Nov · Sat</span></div>
+      <a class="ev__img" style="--ar:2/1" href="https://www.eventbrite.com.au/e/alicia-bickett-psychic-medium-event-sydney-northern-beaches-nsw-tickets-1996456429925" tabindex="-1"><img src="../../assets/img/wo-psychic.jpg" alt="Alicia Bickett, psychic medium" loading="lazy"></a>
+      <div class="ev__body">
+        <p class="ev__meta">Saturday · One night only <span class="pill" data-in hidden></span></p>
+        <h3>Psychic medium Alicia Bickett</h3>
+        <p>A live mediumship event: an evening of connection, insight, laughter and healing. Tickets are limited.</p>
+      </div>
+      <a class="btn btn--solid" href="https://www.eventbrite.com.au/e/alicia-bickett-psychic-medium-event-sydney-northern-beaches-nsw-tickets-1996456429925">Tickets <span class="arrow">→</span></a>
+    </article>
+
+    <article class="ev reveal" data-date="2026-12-25" data-start="12:00" data-time="12pm">
+      <div class="ev__date"><b>25</b><span>Dec · Fri</span></div>
+      <a class="ev__img" href="https://events.humanitix.com/harbord-diggers-christmas-day-lunch-2026" tabindex="-1"><img src="../../assets/img/wo-xmas.jpg" alt="Christmas Day buffet menu at Harbord Diggers" loading="lazy"></a>
+      <div class="ev__body">
+        <p class="ev__meta">Friday, 12pm – 3pm <span class="pill" data-in hidden></span></p>
+        <h3>Christmas Day buffet</h3>
+        <p>An all-you-can-eat Christmas buffet for families and friends, with none of the washing up. Table reservations are for 10 or more people.</p>
+      </div>
+      <a class="btn btn--solid" href="https://events.humanitix.com/harbord-diggers-christmas-day-lunch-2026">Tickets <span class="arrow">→</span></a>
+    </article>
+    <p class="ev-none" hidden>Nothing new on the calendar just yet. Call member services on (02) 9105 4888 to hear what's planned.</p>
+  </section>
+
+  <section class="wrap" id="weekly" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Every week</p>
+        <h2 data-split>The regulars, <em>and their rituals.</em></h2>
+      </div>
+    </div>
+    <div class="reg">
+      <article class="reveal">
+        <figure class="wipe"><img src="../../assets/img/wo-bingo.jpg" alt="Weekly Bingo at Harbord Diggers" loading="lazy"></figure>
+        <div>
+          <h3>Weekly Bingo</h3>
+          <ul><li><b>Tue &amp; Thu</b><span>10am, Community Rooms</span></li></ul>
+          <p>Great prizes up for grabs, including Mounties Rewards.</p>
+          <p class="note">No bingo 21 December to 4 January.</p>
+        </div>
+      </article>
+      <article class="reveal" style="--d:1">
+        <figure class="wipe" style="--d:1"><img src="../../assets/img/wo-poker.jpg" alt="NPL Poker at Harbord Diggers" loading="lazy"></figure>
+        <div>
+          <h3>NPL Poker</h3>
+          <ul>
+            <li><b>Tuesday</b><span>Registration 6.30pm, 7pm start, late entry until 9pm</span></li>
+            <li><b>Sunday</b><span>Registration 3pm</span></li>
+          </ul>
+          <p class="note">No poker 14 December to 4 January.</p>
+        </div>
+      </article>
+      <article class="reveal" style="--d:2">
+        <figure class="wipe" style="--d:2"><img src="../../assets/img/wo-sportsbar.jpg" alt="Mates laughing over a beer in the Sports Bar" loading="lazy"></figure>
+        <div>
+          <h3>Weekly Trivia</h3>
+          <ul><li><b>Wednesday</b><span>7.30pm, Sports Bar</span></li></ul>
+          <p>Get your crew together, test what you know and take a shot at the prizes.</p>
+          <p class="note">No trivia 27 November to 6 January.</p>
+        </div>
+      </article>
+      <article class="reveal" style="--d:3">
+        <figure class="wipe" style="--d:3"><img src="../../assets/img/wo-raffle.jpg" alt="A staff member holding two meat trays" loading="lazy"></figure>
+        <div>
+          <h3>Meat Raffles</h3>
+          <ul>
+            <li><b>Thursday</b><span>Tickets from 6pm, drawn 7pm</span></li>
+            <li><b>Sunday</b><span>Tickets from 3pm, drawn 4.30pm</span></li>
+          </ul>
+          <p>Premium meat trays, plus automatic entry into the $100 weekly jackpot joker when you buy $20 or more of tickets.</p>
+          <p class="note">No raffles on 27 December.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="live-music" style="padding-top:0">
+    <div class="lm">
+      <figure class="lm__pic wipe"><img src="../../assets/img/live-music.jpg" alt="A musician playing guitar at Harbord Diggers" loading="lazy"></figure>
+      <div>
+        <p class="eyebrow reveal">Live &amp; Local</p>
+        <h2 data-split>Supporting local <em>Northern Beaches artists.</em></h2>
+        <p class="lm__lede reveal">A showcase dedicated to local live performers and original music, every weekend at the Diggers.</p>
+        <div class="lm__when reveal">
+          <div><b>Fridays</b><span>6pm – 9pm</span></div>
+          <div><b>Saturdays</b><span>2pm – 5pm and 6pm – 9pm</span></div>
+          <div><b>Sundays</b><span>1.30pm – 4.30pm</span></div>
+        </div>
+        <p class="lm__sub reveal">Next up</p>
+        <ul class="gigs" data-gigs></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="kids" style="padding-top:0">
+    <div class="kids reveal">
+      <figure><img src="../../assets/img/major-fun.jpg" alt="Children playing at Major Fun" loading="lazy"></figure>
+      <div class="kids__body">
+        <p class="eyebrow">Kids</p>
+        <h2>Major <em>Fun.</em></h2>
+        <p>The indoor kids play centre at Harbord Diggers.</p>
+        <a class="btn btn--solid" href="https://www.majorfun.com.au/freshwater/explore" target="_blank" rel="noopener">Explore Major Fun <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Make a night of it. <em>Eat first.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span class="arrow">→</span></a>
+    </div>
+    <div class="next__grid">
+      <a class="tile wipe" href="../bau-truong/" style="view-transition-name:bt-hero">
+        <img src="../../assets/img/bt-bowls.jpg" alt="Vermicelli noodle bowls at Bau Truong" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Modern Vietnamese</p><h3>Bau Truong</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1;view-transition-name:home-hero" href="../">
+        <img src="../../assets/img/terrace-aerial.jpg" alt="Umbrellas on the Ocean Terrace above Freshwater Beach" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Harbord Diggers</p><h3>Back to home</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Today in Sydney, as a UTC-midnight timestamp so date maths stays simple. ?now=2026-12-22 previews another day.
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const DAY = 864e5;
+  const today = Date.UTC(+p.year, p.month - 1, +p.day);
+  const todayIdx = (new Date(today).getUTCDay() + 6) % 7; // Monday = 0
+  const monday = today - todayIdx * DAY;
+  const iso = (t) => new Date(t).toISOString().slice(0, 10);
+  const fmt = (t, o) => new Intl.DateTimeFormat('en-AU', { timeZone: 'UTC', ...o }).format(t);
+  const IMG = '../../assets/img/';
+
+  // Live & Local: the next few sessions from today
+  const LIVE = [
+    ['2026-10-16', '6pm – 9pm', 'Benny Black'], ['2026-10-17', '2pm – 5pm', 'Zed Apton'], ['2026-10-17', '6pm – 9pm', 'DJ Wizmix'], ['2026-10-18', '1.30pm – 4.30pm', 'DJ Carmen'],
+    ['2026-10-23', '6pm – 9pm', 'Zoltan'], ['2026-10-24', '2pm – 5pm', 'Jordan Brady'], ['2026-10-24', '6pm – 9pm', 'DJ Dino'], ['2026-10-25', '1.30pm – 4.30pm', 'DJ KC'],
+    ['2026-10-30', '6pm – 9pm', 'Zed Apton'], ['2026-10-31', '2pm – 5pm', 'Jamie Lindsay'], ['2026-10-31', '6pm – 9pm', 'DJ Barb'], ['2026-11-01', '1.30pm – 4.30pm', 'DJ Barb'],
+    ['2026-11-06', '6pm – 9pm', 'Jordan Brady'], ['2026-11-07', '2pm – 5pm', 'Richie Branco'], ['2026-11-07', '6pm – 9pm', 'DJ Carmen'], ['2026-11-08', '1.30pm – 4.30pm', 'DJ Adrian'],
+    ['2026-11-13', '6pm – 9pm', 'David Agius'], ['2026-11-14', '2pm – 5pm', 'Zoltan'], ['2026-11-14', '6pm – 9pm', 'DJ Wizmix'], ['2026-11-15', '1.30pm – 4.30pm', 'DJ KC'],
+    ['2026-11-20', '6pm – 9pm', 'Adrian Joseph'], ['2026-11-21', '2pm – 5pm', 'David Agius'], ['2026-11-21', '6pm – 9pm', 'DJ CRS'], ['2026-11-22', '1.30pm – 4.30pm', 'DJ Dino'],
+    ['2026-11-27', '6pm – 9pm', 'Tim Conlon'], ['2026-11-28', '2pm – 5pm', 'Jamie Lindsay'], ['2026-11-28', '6pm – 9pm', 'DJ KC'],
+  ];
+  const nextGigs = LIVE.filter((g) => g[0] >= iso(today)).slice(0, 7);
+  document.querySelector('[data-gigs]').innerHTML = nextGigs.map(([d, time, who], i) => `
+    <li class="gig${d === iso(today) ? ' is-today' : ''}" style="--i:${i}">
+      <span class="gig__day">${d === iso(today) ? 'Today' : fmt(Date.parse(d), { weekday: 'short', day: 'numeric', month: 'short' })}</span>
+      <span class="gig__who">${who}</span>
+      <span class="gig__time">${time}</span>
+    </li>`).join('') || '<li class="gigs__none">The next line-up is on its way. Live &amp; Local plays every Friday, Saturday and Sunday.</li>';
+
+  // Recurring activities, Monday to Sunday: [sort, time, activity, detail]
+  const ACT = {
+    bingo: { name: 'Weekly Bingo', img: 'wo-bingo.jpg', pause: ['2026-12-21', '2027-01-04', '21 Dec – 4 Jan'] },
+    poker: { name: 'NPL Poker', img: 'wo-poker.jpg', pause: ['2026-12-14', '2027-01-04', '14 Dec – 4 Jan'] },
+    trivia: { name: 'Weekly Trivia', img: 'wo-sportsbar.jpg', photo: true, pause: ['2026-11-27', '2027-01-06', '27 Nov – 6 Jan'] },
+    raffle: { name: 'Meat Raffles', img: 'wo-raffle.jpg', photo: true, pause: ['2026-12-27', '2026-12-27', '27 Dec'] },
+  };
+  const WEEK = [
+    [],
+    [['10:00', '10am', 'bingo', 'Community Rooms'], ['18:30', '6.30pm', 'poker', 'Registration 6.30pm, 7pm start']],
+    [['19:30', '7.30pm', 'trivia', 'Hosted in the Sports Bar']],
+    [['10:00', '10am', 'bingo', 'Community Rooms'], ['18:00', '6pm', 'raffle', 'Tickets from 6pm, drawn 7pm']],
+    [], [],
+    [['15:00', '3pm', 'poker', 'Registration 3pm'], ['15:01', '3pm', 'raffle', 'Tickets from 3pm, drawn 4.30pm']],
+  ];
+  // One-off events are read from the list further down the page, so there is one source of truth
+  const events = [...document.querySelectorAll('.ev')].map((el) => ({
+    el, date: el.dataset.date, sort: el.dataset.start, time: el.dataset.time,
+    name: el.querySelector('h3').textContent, href: el.querySelector('.btn').href,
+    cta: el.querySelector('.btn').firstChild.textContent.trim(),
+    img: el.querySelector('img').getAttribute('src'), photo: !el.querySelector('.ev__img').style.length,
+  }));
+
+  const itemsFor = (t) => {
+    const d = iso(t);
+    const weekly = WEEK[(new Date(t).getUTCDay() + 6) % 7].map(([sort, time, key, detail]) => {
+      const a = ACT[key];
+      const paused = d >= a.pause[0] && d <= a.pause[1];
+      return { sort, time, name: a.name, detail: paused ? `On a break ${a.pause[2]}` : detail, img: IMG + (paused ? 'ocean-terrace.jpg' : a.img), photo: paused || a.photo, paused };
+    });
+    const oneOff = events.filter((e) => e.date === d).map((e) => ({ ...e, detail: 'One-off event' }));
+    return [...weekly, ...oneOff].sort((a, b) => a.sort.localeCompare(b.sort));
+  };
+
+  // Banner chip: today's line-up
+  const live = itemsFor(today).filter((i) => !i.paused);
+  document.querySelector('[data-today-label]').textContent = `Today · ${fmt(today, { weekday: 'long', day: 'numeric', month: 'long' })}`;
+  document.querySelector('[data-today-line]').textContent = live.length
+    ? live.map((i) => `${i.name.replace('Weekly ', '')} ${i.time.toLowerCase()}`).join(' · ')
+    : 'Nothing on the roster today. See the week ahead';
+
+  // Event list: hide what has passed, count down to the rest
+  events.forEach((e) => {
+    const n = Math.round((Date.parse(e.date) - today) / DAY);
+    e.el.classList.toggle('is-past', n < 0);
+    const pill = e.el.querySelector('[data-in]');
+    pill.hidden = false;
+    pill.textContent = n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : n < 21 ? `In ${n} days` : `In ${Math.round(n / 7)} weeks`;
+  });
+  document.querySelector('.ev-none').hidden = events.some((e) => !e.el.classList.contains('is-past'));
+
+  // Week picker
+  const wk = document.querySelector('.wk');
+  const days = wk.querySelector('.wk__days');
+  const list = wk.querySelector('.wk__list');
+  const stage = wk.querySelector('.wk__stage');
+  const MAX = 12; // weeks ahead
+  let week = 0;
+  let sel = todayIdx;
+  ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].forEach((d, i) => {
+    days.insertAdjacentHTML('beforeend', `<button class="wk__day" role="tab" data-i="${i}"><span>${d}</span><b></b><i></i></button>`);
+  });
+  const tabs = [...days.querySelectorAll('.wk__day')];
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`);
+
+  const show = (i) => stage.querySelectorAll('img').forEach((im, k) => {
+    im.classList.toggle('is-active', k === i);
+    list.children[k] && list.children[k].classList.toggle('is-active', k === i);
+  });
+
+  const render = () => {
+    const start = monday + week * 7 * DAY;
+    const end = start + 6 * DAY;
+    const sameMonth = new Date(start).getUTCMonth() === new Date(end).getUTCMonth();
+    wk.querySelector('.wk__range').textContent = `${fmt(start, sameMonth ? { day: 'numeric' } : { day: 'numeric', month: 'long' })} – ${fmt(end, { day: 'numeric', month: 'long' })}`;
+    wk.querySelector('[data-wk-prev]').disabled = week === 0;
+    wk.querySelector('[data-wk-next]').disabled = week === MAX;
+    tabs.forEach((tab, i) => {
+      const t = start + i * DAY;
+      const on = i === sel;
+      tab.children[1].textContent = new Date(t).getUTCDate();
+      tab.children[2].innerHTML = '<u></u>'.repeat(itemsFor(t).filter((x) => !x.paused).length);
+      tab.classList.toggle('is-today', t === today);
+      tab.firstElementChild.textContent = t === today ? 'Today' : fmt(t, { weekday: 'short' });
+      tab.setAttribute('aria-selected', on);
+      tab.setAttribute('aria-label', fmt(t, { weekday: 'long', day: 'numeric', month: 'long' }));
+      tab.tabIndex = on ? 0 : -1;
+    });
+    days.style.setProperty('--i', sel);
+
+    const t = start + sel * DAY;
+    const items = itemsFor(t);
+    const rel = t === today ? 'Today' : t === today + DAY ? 'Tomorrow' : '';
+    wk.querySelector('.wk__title').innerHTML = `${fmt(t, { weekday: 'long', day: 'numeric', month: 'long' })}${rel ? ` <span class="pill">${rel}</span>` : ''}`;
+    list.innerHTML = items.map((x, i) => `<li class="wk__row${x.paused ? ' is-paused' : ''}" style="--i:${i}">
+      <span class="wk__time">${x.time}</span>
+      <span class="wk__what"><b>${esc(x.name)}</b><small>${x.detail}</small></span>
+      ${x.href ? `<a class="btn btn--solid" href="${x.href}">${x.cta} <span class="arrow">→</span></a>` : '<a class="pill" href="#weekly">Weekly</a>'}
+    </li>`).join('') || `<li class="wk__empty">No regular activities on ${fmt(t, { weekday: 'long' })}s. Have a look at the <a href="#live-music">live music line-up</a>, or pick somewhere to eat from <a href="../dining/">dining &amp; bars</a>.</li>`;
+    stage.innerHTML = (items.length ? items : [{ img: IMG + 'ocean-terrace.jpg', photo: true }]).map((x) => `<img src="${x.img}" alt=""${x.photo ? ' class="is-photo"' : ''}>`).join('');
+    [...list.querySelectorAll('.wk__row')].forEach((row, i) => {
+      row.addEventListener('mouseenter', () => show(i));
+      row.addEventListener('focusin', () => show(i));
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => show(Math.max(0, items.findIndex((x) => !x.paused)))));
+  };
+
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { sel = i; render(); }));
+  days.addEventListener('keydown', (e) => {
+    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!step) return;
+    e.preventDefault();
+    sel = (sel + step + 7) % 7;
+    render();
+    tabs[sel].focus();
+  });
+  wk.querySelector('[data-wk-prev]').addEventListener('click', () => { week = Math.max(0, week - 1); render(); });
+  wk.querySelector('[data-wk-next]').addEventListener('click', () => { week = Math.min(MAX, week + 1); render(); });
+  wk.hidden = false;
+  render();
+})();
+</script>
+</body>
+</html>

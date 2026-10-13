@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Membership — Harbord Diggers (Concept 2: Golden Hour)</title>
+<meta name="description" content="Membership at Harbord Diggers: eight Mounties Group venues, Club Rewards, member pricing and discounted holidays. Join or renew online.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/wo-mates.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../golden-hour.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the terrace opens out from a window the shape of a member card; copy low on the left, the page's four stops on the right */
+.mh{--from:inset(29% 33% 29% 33% round 26px);--shade:linear-gradient(90deg,rgba(13,27,36,.9),rgba(13,27,36,.6) 46%,rgba(13,27,36,.22)),linear-gradient(180deg,rgba(13,27,36,.78),rgba(13,27,36,.08) 32%,rgba(13,27,36,.1) 50%,rgba(13,27,36,.9))}
+.mh .bn__frame{view-transition-name:mem-hero}
+.mh .bn__par img{object-position:70% 40%}
+.mh .bn__in{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 1fr;align-items:end;gap:24px clamp(24px,4vw,64px);padding:clamp(96px,13vh,124px) var(--pad) clamp(34px,5vh,60px)}
+.mh .crumb{grid-column:1/-1;align-self:start}
+.mh h1{font-size:clamp(44px,min(7.6vw,13.4vh),124px);max-width:11ch;margin-top:24px;--base:450ms}
+.jump{min-width:310px;padding:6px 22px 8px;border-radius:22px;border:1px solid var(--line);background:rgba(13,27,36,.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.jump small{display:block;padding:14px 0 12px;font:600 10.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.jump a{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:12px 0;border-top:1px solid var(--line);font:300 21px/1.1 var(--display);letter-spacing:-.02em;transition:color .3s,padding .5s var(--ease)}
+.jump a span{font:500 12px/1 var(--body);color:var(--muted);transition:transform .5s var(--ease),color .3s}
+.jump a:hover{color:var(--sand);padding-left:8px}
+.jump a:hover span{transform:translateY(3px);color:var(--sand)}
+
+/* Benefits: seven rows, the open one writes itself onto the card beside it */
+.bf{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,6vw,110px);align-items:start;margin-top:clamp(36px,5vw,70px)}
+.bf__list{border-top:1px solid var(--line)}
+.bf__row{position:relative;border-bottom:1px solid var(--line)}
+.bf__row::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--sand);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.bf__row.is-active::after{transform:scaleX(1)}
+.bf__btn{display:grid;grid-template-columns:54px 1fr auto;align-items:baseline;gap:8px;width:100%;padding:clamp(13px,1.4vw,20px) 0;text-align:left}
+.bf__n{font:500 12px/1 var(--body);letter-spacing:.1em;color:var(--muted)}
+.bf__name{font-size:clamp(27px,3.3vw,52px);opacity:.42;transition:opacity .5s,transform .7s var(--ease),color .5s}
+.bf__btn:hover .bf__name{opacity:.8}
+.is-active .bf__name{opacity:1;transform:translateX(10px);color:var(--sand)}
+.bf__meta{font:500 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:opacity .4s}
+.is-active .bf__meta{opacity:0}
+.bf__panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .8s var(--ease),opacity .5s}
+.is-active .bf__panel{grid-template-rows:1fr;opacity:1;transition:grid-template-rows .8s var(--ease),opacity .7s .15s}
+.bf__panel>div{overflow:hidden;min-height:0;padding-left:62px}
+.bf__panel p{max-width:50ch;color:var(--muted)}
+.bf__panel p:last-child{padding-bottom:26px}
+.bf__panel p+p{margin-top:12px}
+.bf__stage{position:sticky;top:110px;display:grid;gap:26px;justify-items:center}
+.card3d{width:min(100%,520px);perspective:1200px}
+.card{position:relative;container-type:inline-size;aspect-ratio:1.586;display:flex;flex-direction:column;justify-content:space-between;padding:6.2% 6.6%;border-radius:24px;overflow:hidden;background:linear-gradient(140deg,#1f465d 0%,#132a37 44%,#0a151c 100%);border:1px solid rgba(237,196,148,.34);box-shadow:0 50px 80px -44px rgba(0,0,0,.85);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .9s var(--ease)}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,78%) var(--my,6%),rgba(237,196,148,.28),rgba(237,196,148,0) 58%);pointer-events:none}
+.card::after{content:"";position:absolute;right:-16%;bottom:-62%;width:72%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(237,196,148,.22);pointer-events:none}
+.card>*{position:relative;z-index:1}
+.card__top{display:flex;justify-content:space-between;align-items:center}
+.card__top img{height:9cqw;width:auto}
+.card__top span,.card__foot{font:600 2.1cqw/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.card__mid{transition:opacity .45s var(--ease),transform .6s var(--ease)}
+.card__mid.is-out{opacity:0;transform:translateY(10px);transition-duration:.22s}
+.card__mid b{display:block;font:300 19cqw/.95 var(--display);letter-spacing:-.04em;font-variation-settings:"opsz" 144;color:var(--sand);white-space:nowrap}
+.card__mid b.is-long{font-size:13cqw;font-style:italic}
+.card__mid span{display:block;margin-top:2.2cqw;font-size:3.2cqw;line-height:1.3;color:rgba(244,236,223,.82)}
+.card__foot{display:flex;justify-content:space-between}
+.bf__stage p{max-width:38ch;text-align:center;font-size:14.5px;color:var(--muted)}
+
+/* Join and renew: two cards on the paper panel */
+.jr__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,24px);margin-top:clamp(32px,4.4vw,60px)}
+.jr__card{display:flex;flex-direction:column;padding:clamp(24px,3.2vw,48px);border-radius:22px;border:1px solid var(--rule)}
+.jr__card small{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.jr__card h3{font-size:clamp(28px,3.2vw,50px);max-width:13ch;margin:16px 0 clamp(20px,2.4vw,32px)}
+.jr__card .steps{margin-bottom:30px}
+.jr__card .btn{align-self:flex-start;margin-top:auto}
+.jr__card--ink{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.jr__card--ink small,.jr__card--ink .steps li::before{color:var(--sand)}
+.jr__card--ink .steps li{border-color:var(--line)}
+.jr__card--ink .steps span{color:var(--muted)}
+.jr__note{margin-top:22px}
+
+/* On site for members */
+.site__list{margin-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(16px,2.4vw,36px);border-bottom:1px solid var(--line)}
+.site__list li{padding:15px 0;border-top:1px solid var(--line);font:300 clamp(19px,1.7vw,25px)/1.2 var(--display);letter-spacing:-.015em}
+.site__pics{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.8vw,26px);align-items:start}
+.site__pics .pic{aspect-ratio:3/4}
+.site__pics .pic:last-child{margin-top:clamp(0px,6vw,90px)}
+
+@media (max-width:1000px){
+  .mh .bn__in{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;padding-bottom:84px}
+  .jump{min-width:0;display:flex;flex-wrap:wrap;gap:0 22px;padding:4px 18px}
+  .jump small{display:none}
+  .jump a{border:0;font-size:18px;gap:8px;padding:11px 0}
+  .bf{grid-template-columns:1fr}
+  .bf__stage{position:static;order:-1}
+}
+@media (max-width:760px){
+  .mh .bn__par img{object-position:74% 40%}
+  .bf__btn{grid-template-columns:38px 1fr}
+  .bf__meta{display:none}
+  .bf__panel>div{padding-left:46px}
+  .jr__grid{grid-template-columns:1fr}
+  .site__list{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .card{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop">
+      <a href="../dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="../teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="../dd-collective/">DD Collective <small>Café</small></a>
+        <a href="../ocean-terrace/">Ocean Terrace <small>Outdoors</small></a>
+        <a href="../main-bar/">Main Bar <small>Bar</small></a>
+        <a href="../sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="./" aria-current="page">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="#renew">Renew</a>
+    <a class="btn btn--sand" href="#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="../bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="../teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="../dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="../ocean-terrace/">Ocean Terrace</a>
+    <a class="menu__sub" href="../main-bar/">Main Bar</a>
+    <a class="menu__sub" href="../sports-bar/">Sports Bar</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="./" aria-current="page">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="#join">Join now</a><a href="#renew">Renew</a><a href="../functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="bn mh" data-progress="view">
+    <div class="bn__frame"><div class="bn__open"><div class="bn__par"><img src="../../assets/img/wo-mates.jpg" alt="Mates sharing beers under the umbrellas on the terrace" fetchpriority="high"></div></div></div>
+    <div class="bn__in">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span>←</span> Home</a><i>/</i>
+        <span aria-current="page">Membership</span>
+      </nav>
+      <div>
+        <p class="eyebrow rise" style="--d:1">Membership</p>
+        <h1 data-split="load">Join the Mounties Group <em>family.</em></h1>
+        <p class="bn__lede rise" style="--d:5">Eight venues, member discounts, special promotions, member services and discounted holidays. It's our way of saying thank you.</p>
+        <div class="bn__cta rise" style="--d:6">
+          <a class="btn btn--sand" href="#join">Join now <span>→</span></a>
+          <a class="btn" href="#renew">Renew</a>
+        </div>
+      </div>
+      <nav class="jump rise" style="--d:8" aria-label="On this page">
+        <small>On this page</small>
+        <a href="#benefits">Member benefits <span>↓</span></a>
+        <a href="#join">Join online <span>↓</span></a>
+        <a href="#renew">Renew online <span>↓</span></a>
+        <a href="#holidays">Member holidays <span>↓</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Mounties</span><span>Mekong</span><span>Triglav</span><span>Harbord Diggers</span><span>Manly Bowling Club</span><span>Halekulani Bowling Club</span><span>Club Wyong</span><span>Breakers Country Club</span>
+      <span>Mounties</span><span>Mekong</span><span>Triglav</span><span>Harbord Diggers</span><span>Manly Bowling Club</span><span>Halekulani Bowling Club</span><span>Club Wyong</span><span>Breakers Country Club</span>
+    </div>
+  </div>
+  <p class="sr-only">One membership covers eight venues: Mounties, Mekong, Triglav, Harbord Diggers, Manly Bowling Club, Halekulani Bowling Club, Club Wyong and Breakers Country Club.</p>
+
+  <section class="wrap" id="benefits">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Member benefits</p>
+        <h2 data-split>One membership, <em>eight clubs.</em></h2>
+      </div>
+      <a class="btn reveal" href="#join">Join now <span>→</span></a>
+    </div>
+    <div class="bf">
+      <ul class="bf__list reveal" data-benefits>
+        <li class="bf__row is-active" data-big="8" data-line="venues on one membership">
+          <h3><button class="bf__btn" aria-expanded="true" aria-controls="bf-1"><span class="bf__n">01</span><span class="bf__name">Eight venues</span><span class="bf__meta">One membership</span></button></h3>
+          <div class="bf__panel" id="bf-1"><div><p>Your membership opens the door at Mounties, Mekong, Triglav, Harbord Diggers, Manly Bowling Club, Halekulani Bowling Club, Club Wyong and Breakers Country Club.</p></div></div>
+        </li>
+        <li class="bf__row" data-big="Rewards" data-line="points on everyday purchases">
+          <h3><button class="bf__btn" aria-expanded="false" aria-controls="bf-2"><span class="bf__n">02</span><span class="bf__name">Club Rewards</span><span class="bf__meta">Earn as you go</span></button></h3>
+          <div class="bf__panel" id="bf-2"><div><p>Earn Club Reward points on everyday purchases within your favourite Mounties Group club. The more you spend, the greater the reward.</p></div></div>
+        </li>
+        <li class="bf__row" data-big="$15" data-line="birthday bonus points">
+          <h3><button class="bf__btn" aria-expanded="false" aria-controls="bf-3"><span class="bf__n">03</span><span class="bf__name">Birthday bonus</span><span class="bf__meta">Once a year</span></button></h3>
+          <div class="bf__panel" id="bf-3"><div><p>A $15 birthday bonus, paid in points, when your birthday comes around.</p></div></div>
+        </li>
+        <li class="bf__row" data-big="Mates Rates" data-line="special member pricing">
+          <h3><button class="bf__btn" aria-expanded="false" aria-controls="bf-4"><span class="bf__n">04</span><span class="bf__name">Member pricing</span><span class="bf__meta">Mates Rates</span></button></h3>
+          <div class="bf__panel" id="bf-4"><div><p>Special member pricing across the club, including the Mates Rates dining deals at Bau Truong, Teddy Larkin's and DD Collective.</p><p><a class="tlink" href="../dining/#deals">See this week's dining deals →</a></p></div></div>
+        </li>
+        <li class="bf__row" data-big="Live" data-line="shows, promotions and entertainment">
+          <h3><button class="bf__btn" aria-expanded="false" aria-controls="bf-5"><span class="bf__n">05</span><span class="bf__name">Shows &amp; promotions</span><span class="bf__meta">Entertainment</span></button></h3>
+          <div class="bf__panel" id="bf-5"><div><p>The best live shows, promotions and entertainment across the group.</p><p><a class="tlink" href="../whats-on/">See what's on at the Diggers →</a></p></div></div>
+        </li>
+        <li class="bf__row" data-big="Sussex Inlet" data-line="discounted member holidays">
+          <h3><button class="bf__btn" aria-expanded="false" aria-controls="bf-6"><span class="bf__n">06</span><span class="bf__name">Holiday discounts</span><span class="bf__meta">Sussex Inlet</span></button></h3>
+          <div class="bf__panel" id="bf-6"><div><p>Discounts on holidays at Mounties @ Sussex, the family holiday cabins at Sussex Inlet.</p><p><a class="tlink" href="#holidays">More about member holidays ↓</a></p></div></div>
+        </li>
+        <li class="bf__row" data-big="Fitness" data-line="access to join the health clubs">
+          <h3><button class="bf__btn" aria-expanded="false" aria-controls="bf-7"><span class="bf__n">07</span><span class="bf__name">Health clubs</span><span class="bf__meta">Access to join</span></button></h3>
+          <div class="bf__panel" id="bf-7"><div><p>Members have access to join the group's health clubs: Mounties Health &amp; Fitness and G Fitness.</p></div></div>
+        </li>
+      </ul>
+      <div class="bf__stage reveal-fade" data-stage>
+        <div class="card3d" aria-hidden="true">
+          <div class="card">
+            <div class="card__top"><img src="../../assets/logo.svg" alt="" width="250" height="98"><span>Member</span></div>
+            <div class="card__mid"><b>8</b><span>venues on one membership</span></div>
+            <div class="card__foot"><span>Mounties Group</span><span data-card-n>01 / 07</span></div>
+          </div>
+        </div>
+        <p>Members earn Club Reward points on everyday purchases, at whichever Mounties Group club they call their favourite.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="panel jr">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Join or renew</p>
+        <h2 data-split>Sorted online, <em>start to finish.</em></h2>
+      </div>
+    </div>
+    <div class="jr__grid">
+      <article class="jr__card jr__card--ink reveal" id="join">
+        <small>New members</small>
+        <h3>Join online in a few minutes</h3>
+        <ol class="steps">
+          <li><div><b>Open the online form</b><span>The button below takes you to the Mounties Group membership sign-up.</span></div></li>
+          <li><div><b>Add your details</b><span>Follow the prompts. It only takes a few minutes.</span></div></li>
+          <li><div><b>Come on in</b><span>Your membership covers all eight venues, Harbord Diggers included.</span></div></li>
+        </ol>
+        <a class="btn btn--sand" href="https://aaw.rxcx.au/c6XS" target="_blank" rel="noopener">Join now <span>→</span></a>
+      </article>
+      <article class="jr__card reveal" id="renew" style="--d:1">
+        <small>Current members</small>
+        <h3>Renew online</h3>
+        <ol class="steps">
+          <li><div><b>Open the renewal form</b><span>The button below takes you to the Mounties Group renewals page.</span></div></li>
+          <li><div><b>Follow the prompts</b><span>Confirm your details and renew your membership.</span></div></li>
+          <li><div><b>Carry on as usual</b><span>Rewards, member pricing and the rest of your benefits continue.</span></div></li>
+        </ol>
+        <a class="btn btn--ink" href="https://aaw.rxcx.au/azln" target="_blank" rel="noopener">Renew now <span>→</span></a>
+      </article>
+    </div>
+    <p class="fine jr__note reveal">Both forms open on the Mounties Group membership site in a new tab. Need a hand? Call Member Services on <a class="tlink" href="tel:0291054888">(02) 9105 4888</a>.</p>
+  </div>
+
+  <section class="wrap duo" id="on-site">
+    <div>
+      <p class="eyebrow reveal">On site for members</p>
+      <h2 data-split>More than a <em>night out.</em></h2>
+      <p class="lede reveal">Alongside the bars and restaurants, Harbord Diggers members have a whole precinct to use.</p>
+      <ul class="site__list reveal">
+        <li>Fitness centre</li>
+        <li>Aquatic centre</li>
+        <li>Physiotherapist</li>
+        <li>Hair salon</li>
+        <li>Beauty services</li>
+        <li>Major Fun kids play centre</li>
+      </ul>
+      <div class="cta reveal">
+        <a class="btn" href="../whats-on/#kids">Kids at the Diggers <span>→</span></a>
+        <a class="btn" href="../visit/">Plan your visit</a>
+      </div>
+    </div>
+    <div class="site__pics">
+      <figure class="pic wipe"><img src="../../assets/img/major-fun.jpg" alt="A child climbing at Major Fun, the indoor play centre" loading="lazy"></figure>
+      <figure class="pic wipe" style="--d:1"><img src="../../assets/img/ot-table.jpg" alt="Three friends sharing a table of food and drinks on the Ocean Terrace" loading="lazy" style="object-position:38% 50%"></figure>
+    </div>
+  </section>
+
+  <div class="full" id="holidays" data-progress="view">
+    <div class="full__bg"><img src="../../assets/img/sussex.jpg" alt="Clear turquoise water and a small beach near Sussex Inlet" loading="lazy"></div>
+    <div class="full__in">
+      <div>
+        <p class="eyebrow reveal">Member holidays</p>
+        <h2 data-split>Mounties <em>@ Sussex.</em></h2>
+      </div>
+      <div class="full__info reveal">
+        <span>Family holiday cabins at Sussex Inlet, with discounts for members.</span>
+        <a href="tel:0298223519">Bookings (02) 9822 3519</a>
+        <a class="btn btn--sand" href="https://mountiesgroup.com.au/resorts/mounties-at-sussex" target="_blank" rel="noopener">Mounties @ Sussex <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap next">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Card in hand. <em>Now use it.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span>→</span></a>
+    </div>
+    <div class="next__grid">
+      <a href="../dining/#deals">
+        <div class="on__img wipe"><img src="../../assets/img/dining-share.jpg" alt="Hands with chopsticks over shared Vietnamese bowls" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Mates Rates</small><h3>Member dining deals</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="../whats-on/">
+        <div class="on__img wipe" style="--d:1;view-transition-name:wo-hero"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A full outdoor Sports Bar at dusk, festoon lights on" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Events &amp; weekly activities</small><h3>What's on</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="../dining/">Dining</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../community/">Community</a>
+    <a href="../functions/">Functions</a>
+    <a href="../visit/#courtesy-bus">Courtesy bus</a>
+    <a href="../visit/#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Benefits: one row open at a time, and the open one is written onto the card
+  const rows = [...document.querySelectorAll('.bf__row')];
+  const mid = document.querySelector('.card__mid');
+  const [big, line] = mid.children;
+  const count = document.querySelector('[data-card-n]');
+  let current = 0;
+  let timer;
+  const write = (i) => {
+    big.textContent = rows[i].dataset.big;
+    big.classList.toggle('is-long', rows[i].dataset.big.length > 4);
+    line.textContent = rows[i].dataset.line;
+    count.textContent = `0${i + 1} / 0${rows.length}`;
+  };
+  const pick = (i) => {
+    rows.forEach((row, k) => {
+      row.classList.toggle('is-active', k === i);
+      row.querySelector('button').setAttribute('aria-expanded', k === i);
+      row.lastElementChild.inert = k !== i;
+    });
+    if (i === current) return;
+    current = i;
+    clearTimeout(timer);
+    mid.classList.add('is-out');
+    timer = setTimeout(() => { write(i); mid.classList.remove('is-out'); }, 240);
+  };
+  const hover = matchMedia('(hover:hover)').matches;
+  rows.forEach((row, i) => {
+    const btn = row.querySelector('button');
+    btn.addEventListener('click', () => pick(i));
+    btn.addEventListener('focus', () => pick(i));
+    if (hover) row.addEventListener('mouseenter', () => pick(i));
+  });
+  write(0);
+  pick(0);
+
+  // The card leans toward the pointer, and its sheen follows
+  const stage = document.querySelector('[data-stage]');
+  const card = stage.querySelector('.card');
+  if (hover && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    stage.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = Math.min(Math.max((e.clientX - r.left) / r.width, -.2), 1.2);
+      const y = Math.min(Math.max((e.clientY - r.top) / r.height, -.2), 1.2);
+      card.style.setProperty('--ry', `${((x - .5) * 12).toFixed(2)}deg`);
+      card.style.setProperty('--rx', `${((.5 - y) * 10).toFixed(2)}deg`);
+      card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+      card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+    });
+    stage.addEventListener('pointerleave', () => ['--rx', '--ry', '--mx', '--my'].forEach((p) => card.style.removeProperty(p)));
+  }
+})();
+</script>
+</body>
+</html>

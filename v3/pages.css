@@ -1,0 +1,121 @@
+/* Freshwater: shared styles for the info pages (membership, visit, functions, community, privacy).
+   Loaded after freshwater.css; each page adds its own banner composition inline. */
+
+/* Banner: headline one side, the page's own arched media the other */
+.pb{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,70px);align-items:center;padding:clamp(64px,6vw,84px) var(--pad) clamp(40px,5vw,70px);min-height:calc(100svh - 124px)}
+.pb .crumb{position:absolute;left:var(--pad);top:clamp(16px,2vw,26px)}
+.pb h1{font-size:clamp(44px,5.2vw,90px);margin-top:20px;--base:300ms}
+.pb__lede{max-width:44ch;margin-top:24px;color:var(--muted);font-size:clamp(16px,1.25vw,18px)}
+.pb__cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:28px}
+
+/* Arched photo window, with the banner load-in */
+.arch{position:relative;border-radius:var(--arch);overflow:hidden;background:var(--aqua)}
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.js .arch--load{clip-path:inset(100% 0 0 0 round var(--arch));transition:clip-path 1.5s var(--ease-io) calc(var(--k,0) * 160ms + .2s)}
+.js .is-loaded .arch--load{clip-path:inset(0 round var(--arch))}
+.js .arch--load img{transform:scale(1.14);transition:transform 2.6s var(--ease) .2s}
+.js .is-loaded .arch--load img{transform:none}
+.bw{filter:grayscale(1) contrast(1.04)}
+
+/* Round seal with the spinning text ring */
+.seal{position:absolute;z-index:2;width:clamp(104px,10vw,148px);aspect-ratio:1;border-radius:50%;background:var(--white);box-shadow:0 14px 34px -16px rgba(23,50,63,.5);display:grid;place-items:center}
+.js .seal{scale:0;transition:scale 1s var(--ease) 1.4s}
+.js .is-loaded .seal{scale:1}
+.seal .ring{inset:6%;width:88%;height:88%}
+.seal .ring text{font-size:10.4px;letter-spacing:.21em}
+.seal i{width:26%;aspect-ratio:1;border-radius:50%;background:var(--sun)}
+
+/* On this page */
+.jump{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:clamp(22px,2.6vw,36px) var(--pad) 0}
+.jump span{margin-right:10px}
+.jump a{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;background:var(--mist);font:600 13.5px/1 var(--body);transition:background .4s,transform .4s var(--ease)}
+.jump a:hover{background:var(--sun);transform:translateY(-2px)}
+
+/* Centred intro and fact tiles, as on the Bau Truong page */
+.intro{text-align:center;max-width:1180px;margin-inline:auto}
+.intro h2{font-size:clamp(34px,4.9vw,78px);line-height:1.06;margin-top:26px}
+.intro p.body{max-width:60ch;margin:28px auto 0;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(40px,6vw,80px)}
+.fact{padding:26px 26px 28px;border-radius:22px;background:var(--mist);transition:transform .6s var(--ease),background .5s}
+.fact:hover{transform:translateY(-6px);background:var(--aqua)}
+.fact b{display:block;font:400 clamp(48px,5.6vw,84px)/1 var(--display);letter-spacing:-.015em}
+.fact b i{font-style:normal}
+.fact>span{display:block;margin-top:10px;color:var(--muted);font-size:15px;max-width:34ch}
+
+/* Rounded colour bands */
+.band{background:var(--mist);border-radius:clamp(22px,3vw,40px);margin-inline:clamp(10px,1.6vw,24px);padding:clamp(48px,7vw,110px) clamp(20px,5vw,84px)}
+.band--2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:center}
+.band h2{font-size:clamp(40px,5.4vw,88px);margin-top:20px}
+.band .lead{max-width:46ch;margin-top:22px;color:var(--muted)}
+.band--deep{background:var(--deep);color:var(--white)}
+.band--deep .eyebrow,.band--deep em{color:var(--aqua)}
+.band--deep .lead{color:inherit;opacity:.8}
+.band__cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:28px}
+.band+.band,.gap-top{margin-top:clamp(72px,10vw,150px)}
+.lead{max-width:52ch;color:var(--muted)}
+.fine{font-size:13.5px;line-height:1.55;color:var(--muted)}
+.band--deep .fine{color:inherit;opacity:.7}
+.u{font-weight:600;text-decoration:underline;text-decoration-color:var(--sun);text-decoration-thickness:1.5px;text-underline-offset:4px;transition:text-decoration-color .3s}
+.u:hover{text-decoration-color:currentColor}
+
+/* Photo with one generous corner, as in the homepage's visit block */
+.frame{position:relative;border-radius:26px 26px 26px clamp(110px,14vw,200px);overflow:hidden;aspect-ratio:16/11;background:var(--aqua)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* Label and value rows */
+.rows{display:grid;margin:26px 0 0}
+.rows>div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;padding:15px 0;border-top:1px solid var(--line)}
+.rows>div:last-child{border-bottom:1px solid var(--line)}
+.rows dt{font:600 11px/2.3 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.rows dd{margin:0;overflow-wrap:anywhere}
+.band--deep .rows>div{border-color:rgba(255,255,255,.18)}
+.band--deep .rows dt{color:var(--aqua)}
+
+/* Ticked list, as in the homepage's membership block */
+.perks{display:grid}
+.perk{display:flex;align-items:center;gap:16px;padding:17px 0;border-bottom:1px solid var(--line);font-size:16.5px;line-height:1.4;transition:padding .5s var(--ease)}
+.perk:first-child{border-top:1px solid var(--line)}
+.perk:hover{padding-left:10px}
+.perk svg{flex:none;width:30px;height:30px;border-radius:50%;background:var(--sun);padding:8px}
+.perk path{fill:none;stroke:var(--deep);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:22;stroke-dashoffset:22;transition:stroke-dashoffset .7s var(--ease) calc(var(--d,0) * 90ms + 350ms)}
+.perk.in path{stroke-dashoffset:0}
+.band--deep .perk,.band--deep .perk:first-child{border-color:rgba(255,255,255,.18)}
+
+/* Forms: none of them send anything */
+.card{padding:clamp(22px,2.6vw,36px);border-radius:26px;background:var(--white);color:var(--deep);box-shadow:0 30px 60px -40px rgba(23,50,63,.55)}
+.card h3{font-size:clamp(30px,3vw,44px)}
+.card>p{margin-top:10px;color:var(--muted);font-size:15px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.field{display:grid;gap:8px;min-width:0;font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.field--full,.form>.btn,.form__note{grid-column:1/-1}
+.field input,.field select,.field textarea{width:100%;min-width:0;height:52px;padding:0 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--white);color:var(--deep);font:400 16px/1.3 var(--body);letter-spacing:0;text-transform:none;transition:border-color .3s,box-shadow .3s;-webkit-appearance:none;appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 3l4 4 4-4' fill='none' stroke='%2317323f' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:10px;padding-right:38px}
+.field textarea{height:auto;min-height:132px;padding:14px 16px;resize:vertical}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:rgba(23,50,63,.4)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--deep);box-shadow:0 0 0 4px rgba(255,210,0,.4)}
+.form>.btn{justify-self:start;cursor:pointer}
+.form__note{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .6s var(--ease),opacity .6s}
+.form__note>span{overflow:hidden;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px}
+.form__note>span::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--sun)}
+.form.is-sent .form__note{grid-template-rows:1fr;opacity:1}
+
+/* Keep exploring */
+.next{padding-top:clamp(72px,10vw,150px)}
+
+@media (max-width:1000px){
+  .pb{grid-template-columns:1fr;min-height:0;padding-top:14px;gap:26px}
+  .pb .crumb{position:static}
+  .band--2{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .facts{grid-template-columns:1fr}
+  .jump span{flex-basis:100%;margin:0 0 4px}
+  .form{grid-template-columns:1fr}
+  .rows>div{grid-template-columns:96px minmax(0,1fr)}
+  .frame{border-radius:22px 22px 22px 110px}
+}
+
+/* Mobile menu: the six venues under Dining & Bars (same rules as venues.css) */
+.menu__links .menu__sub{display:flex;flex-wrap:wrap;gap:0 20px;margin:4px 0 12px}
+.menu__links .menu__sub a{font:500 15.5px/1 var(--body);letter-spacing:0;padding:9px 0;color:var(--aqua)}
+.menu__links .menu__sub a[aria-current]{color:var(--sun);font-style:normal}

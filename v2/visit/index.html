@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visit — Harbord Diggers (Concept 2: Golden Hour)</title>
+<meta name="description" content="Plan your visit to Harbord Diggers: 88 Evans Street, Freshwater. Directions, on-site parking, venue hours, the members' courtesy bus and contact details.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/vi-grounds.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../golden-hour.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the headland opens out from a round porthole; the three things people ask for sit along the foot */
+.vh{--from:circle(17% at 70% 44%);--shade:linear-gradient(180deg,rgba(13,27,36,.74),rgba(13,27,36,.12) 30%,rgba(13,27,36,.3) 54%,rgba(13,27,36,.95)),linear-gradient(90deg,rgba(13,27,36,.6),rgba(13,27,36,0) 62%)}
+.js .is-loaded .vh .bn__open{clip-path:circle(125% at 70% 44%)}
+.vh .bn__frame{view-transition-name:vis-hero}
+.vh .bn__par img{object-position:50% 62%}
+.vh .bn__in{display:flex;flex-direction:column;padding:clamp(96px,13vh,124px) var(--pad) 0}
+.vh__copy{margin-top:auto;padding-bottom:clamp(26px,4vh,46px)}
+.vh h1{font-size:clamp(44px,min(8.6vw,14.5vh),140px);margin-top:24px;--base:450ms}
+.vh__strip{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;border-top:1px solid var(--line);margin-bottom:clamp(64px,9vh,84px)}
+.vh__strip>*{display:grid;gap:8px;align-content:start;padding:20px clamp(16px,2vw,32px) 0 0}
+.vh__strip>*+*{padding-left:clamp(16px,2vw,32px);border-left:1px solid var(--line)}
+.vh__strip small{font:600 10.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.vh__strip b{font:300 clamp(18px,1.7vw,25px)/1.2 var(--display);letter-spacing:-.02em}
+.vh__strip a b{transition:color .3s}
+.vh__strip a:hover b{color:var(--sand)}
+.vh__strip .status{font:inherit}
+
+/* Getting here */
+.gh__pic{position:relative;aspect-ratio:5/4}
+
+/* Hours board: pick a day, the bars redraw along an 8am to 9pm line */
+.hb__top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:clamp(32px,4.4vw,60px)}
+.hb__day{font:300 clamp(24px,2.4vw,36px)/1.1 var(--display);letter-spacing:-.02em}
+.hb__day em{color:var(--sand)}
+.hb{margin-top:26px;border-bottom:1px solid var(--line)}
+.hb__axis,.hb__row{display:grid;grid-template-columns:clamp(150px,18vw,260px) minmax(0,1fr) clamp(150px,15vw,210px);gap:clamp(14px,2vw,32px);align-items:center}
+.hb__axis{padding-bottom:10px}
+.hb__ticks{position:relative;height:14px;grid-column:2}
+.hb__ticks span{position:absolute;left:calc(var(--x) * 100%);transform:translateX(-50%);font:600 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.hb__ticks span:first-child{transform:none}
+.hb__ticks span:last-child{transform:translateX(-100%)}
+.hb__row{padding:20px 0;border-top:1px solid var(--line)}
+.hb__name{font:300 clamp(21px,2.1vw,31px)/1.1 var(--display);letter-spacing:-.02em;transition:color .3s}
+.hb__name:hover{color:var(--sand)}
+.hb__name small{display:block;margin-top:6px;font:500 12px/1 var(--body);letter-spacing:.04em;color:var(--muted)}
+.hb__track{position:relative;height:32px;border-radius:999px;background:repeating-linear-gradient(90deg,rgba(244,236,223,.14) 0 1px,transparent 1px calc(100% / 13)),rgba(244,236,223,.045);overflow:hidden}
+.hb__bar{position:absolute;top:0;bottom:0;left:calc(var(--a) * 100%);width:calc((var(--b) - var(--a)) * 100%);border-radius:999px;background:var(--sand);transform-origin:left;animation:grow .9s var(--ease) both;animation-delay:calc(var(--k,0) * 70ms)}
+.hb__bar--soft{background:rgba(237,196,148,.42)}
+@keyframes grow{from{transform:scaleX(0);opacity:.2}}
+.hb__now{position:absolute;top:-4px;bottom:-4px;left:calc(var(--x) * 100%);width:2px;background:var(--paper);border-radius:2px;z-index:2}
+.hb__note{position:absolute;inset:0;display:flex;align-items:center;padding-left:16px;font:500 12.5px/1 var(--body);color:var(--muted)}
+.hb__say{font:500 13.5px/1.4 var(--body);color:var(--muted);text-align:right}
+.hb__say .status{font:inherit;color:var(--paper)}
+.hb__key{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:20px}
+.hb__key span{display:inline-flex;align-items:center;gap:10px}
+.hb__key i{width:22px;height:8px;border-radius:8px;background:var(--sand)}
+.hb__key i.soft{background:rgba(237,196,148,.42)}
+
+/* Courtesy bus */
+.bus{display:grid;grid-template-columns:minmax(0,.66fr) minmax(0,1.34fr);gap:clamp(28px,5vw,90px);align-items:start}
+.bus .pic{aspect-ratio:4/5;position:sticky;top:110px}
+.bus h2{font-size:clamp(36px,5.2vw,86px);margin-top:26px}
+.bus__now{margin-top:28px;padding:18px 22px;border-radius:18px;border:1px solid var(--rule);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px}
+.bus__now span:last-child{font-size:14px;color:var(--soft)}
+.bus__week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:14px}
+.bus__day{display:grid;gap:10px;justify-items:center;align-content:start;padding:16px 4px 14px;border-radius:16px;border:1px solid var(--rule);text-align:center;transition:background .5s var(--ease),color .5s,transform .7s var(--ease)}
+.bus__day small{font:600 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase}
+.bus__day i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(13,27,36,.34)}
+.bus__day b{font:500 12px/1.35 var(--body);min-height:2.7em}
+.bus__day.is-on i{background:var(--teal);border-color:var(--teal)}
+.bus__day:not(.is-on){color:rgba(13,27,36,.46)}
+.bus__day.is-today{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:translateY(-6px)}
+.bus__day.is-today i{border-color:rgba(244,236,223,.5)}
+.bus__day.is-today.is-on i{background:var(--sand);border-color:var(--sand)}
+.bus .facts{margin-top:30px}
+
+/* Contact */
+.ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,7vw,130px);align-items:start}
+.ct h2{font-size:clamp(36px,5.2vw,86px);margin-top:26px}
+.ct .facts{margin-top:clamp(28px,3.4vw,46px)}
+.ct .facts dd{font:300 clamp(18px,1.5vw,22px)/1.3 var(--display);letter-spacing:-.015em;overflow-wrap:anywhere}
+@media (max-width:640px){.ct .facts>div{grid-template-columns:78px minmax(0,1fr)}.ct .facts dd{font-size:16px}}
+.ct__form{padding:clamp(24px,3.2vw,48px);border-radius:22px;border:1px solid var(--line);background:rgba(244,236,223,.03)}
+.ct__form h3{font-size:clamp(26px,2.8vw,42px);margin-bottom:clamp(22px,2.6vw,34px)}
+
+@media (max-width:1000px){
+  .bus,.ct{grid-template-columns:1fr}
+  .bus .pic{position:static;aspect-ratio:16/10}
+  .hb__axis,.hb__row{grid-template-columns:minmax(0,1fr) auto}
+  .hb__ticks{grid-column:1/-1;grid-row:2}
+  .hb__axis{padding-bottom:6px}
+  .hb__track{grid-column:1/-1;grid-row:2}
+  .hb__row{row-gap:14px}
+}
+@media (max-width:760px){
+  .vh .bn__par img{object-position:58% 60%}
+  .vh__strip{grid-template-columns:1fr;margin-bottom:76px}
+  .vh__strip>*{grid-template-columns:96px 1fr;align-items:baseline;padding:11px 0 0}
+  .vh__strip>*+*{padding-left:0;border-left:0;margin-top:11px;border-top:1px solid var(--line)}
+  .vh__strip b{font-size:16px}
+  .vh .bn__lede{display:none}
+  .bus__week{grid-template-columns:repeat(4,1fr)}
+  .bus__day.is-today{transform:none}
+  .hb__say{font-size:12.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hb__bar{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop">
+      <a href="../dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="../teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="../dd-collective/">DD Collective <small>Café</small></a>
+        <a href="../ocean-terrace/">Ocean Terrace <small>Outdoors</small></a>
+        <a href="../main-bar/">Main Bar <small>Bar</small></a>
+        <a href="../sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="./" aria-current="page">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="../membership/#renew">Renew</a>
+    <a class="btn btn--sand" href="../membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="../bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="../teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="../dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="../ocean-terrace/">Ocean Terrace</a>
+    <a class="menu__sub" href="../main-bar/">Main Bar</a>
+    <a class="menu__sub" href="../sports-bar/">Sports Bar</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="./" aria-current="page">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="../membership/#join">Join now</a><a href="../membership/#renew">Renew</a><a href="../functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="bn vh" data-progress="view">
+    <div class="bn__frame"><div class="bn__open"><div class="bn__par"><img src="../../assets/img/vi-grounds.jpg" alt="The club's terraced grounds and lawn, looking out to the ocean" fetchpriority="high"></div></div></div>
+    <div class="bn__in">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span>←</span> Home</a><i>/</i>
+        <span aria-current="page">Visit</span>
+      </nav>
+      <div class="vh__copy">
+        <p class="eyebrow rise" style="--d:1">Plan your visit</p>
+        <h1 data-split="load">On the headland <em>at Freshwater.</em></h1>
+        <p class="bn__lede rise" style="--d:5">Six venues under one roof above Freshwater Beach, with parking on site and a courtesy bus for members.</p>
+      </div>
+      <div class="vh__strip rise" style="--d:7">
+        <a href="#getting-here"><small>Find us</small><b>88 Evans St, Freshwater NSW 2096</b></a>
+        <a href="#courtesy-bus"><small>Courtesy bus</small><b><span class="status" data-bus-status><i></i><span>Thursday to Sunday</span></span></b></a>
+        <a href="tel:0291054888"><small>Call</small><b>(02) 9105 4888</b></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap duo" id="getting-here">
+    <div>
+      <p class="eyebrow reveal">Getting here</p>
+      <h2 data-split>Follow the coast <em>to Evans Street.</em></h2>
+      <dl class="facts reveal" style="margin-top:clamp(28px,3.4vw,46px)">
+        <div><dt>Address</dt><dd>88 Evans Street, Freshwater NSW 2096</dd></div>
+        <div><dt>Parking</dt><dd>On-site parking</dd></div>
+        <div><dt>Members</dt><dd>A free courtesy bus runs door to door within 5 kilometres of the club, Thursday to Sunday. <a class="tlink" href="#courtesy-bus">See the timetable</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:0291054888">(02) 9105 4888</a></dd></div>
+      </dl>
+      <div class="cta reveal">
+        <a class="btn btn--sand" href="https://www.google.com/maps/dir/?api=1&destination=Harbord+Diggers+88+Evans+St+Freshwater+NSW+2096" target="_blank" rel="noopener">Get directions <span>→</span></a>
+        <a class="btn" href="#contact">Contact us</a>
+      </div>
+    </div>
+    <figure class="pic gh__pic wipe" data-progress="view">
+      <img src="../../assets/img/terrace-aerial.jpg" alt="Harbord Diggers from the air, its terrace above Freshwater Beach" loading="lazy">
+      <figcaption class="pic__chip">88 Evans St, above Freshwater Beach</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap" id="hours" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Venue hours</p>
+        <h2 data-split>What's open, <em>and when.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">All dining &amp; bars <span>→</span></a>
+    </div>
+    <div class="hb__top reveal">
+      <p class="hb__day" data-hb-day aria-live="polite"></p>
+      <div class="chips" data-hb-days role="group" aria-label="Choose a day"></div>
+    </div>
+    <div class="hb reveal">
+      <div class="hb__axis" aria-hidden="true">
+        <div class="hb__ticks"><span style="--x:0">8am</span><span style="--x:.3077">12pm</span><span style="--x:.5385">3pm</span><span style="--x:.7692">6pm</span><span style="--x:1">9pm</span></div>
+      </div>
+      <div data-hb-rows></div>
+    </div>
+    <div class="hb__key fine reveal">
+      <span><i></i> Lunch &amp; dinner</span>
+      <span><i class="soft"></i> Breakfast</span>
+      <span>The Main Bar and Sports Bar are open daily with the club. Hours and operations of restaurants may vary daily.</span>
+    </div>
+  </section>
+
+  <div class="panel" id="courtesy-bus">
+    <div class="bus">
+      <figure class="pic wipe" data-progress="view"><img src="../../assets/img/vi-bus.jpg" alt="Inside the Harbord Diggers courtesy coach" loading="lazy"></figure>
+      <div>
+        <p class="eyebrow reveal">Courtesy bus</p>
+        <h2 data-split>Door to door, <em>on us.</em></h2>
+        <p class="lede reveal">A free door-to-door service for members, within a 5 kilometre radius of the club.</p>
+        <div class="bus__now reveal"><span class="status" data-bus-status><i></i><span>Thursday to Sunday</span></span><span data-bus-next></span></div>
+        <div class="bus__week reveal" data-bus-week></div>
+        <dl class="facts reveal">
+          <div><dt>Who</dt><dd>Members. Children must be 7 or older to ride, as the buses aren't fitted with child restraints.</dd></div>
+          <div><dt>Where</dt><dd>Door to door within 5 kilometres of the club.</dd></div>
+          <div><dt>Enquiries</dt><dd>Member Services, <a class="tlink" href="tel:0291054888">(02) 9105 4888</a></dd></div>
+        </dl>
+        <p class="fine reveal" style="margin-top:20px">Subject to driver availability and may change with minimal notice. The bus does not run on 25 December.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap ct" id="contact">
+    <div>
+      <p class="eyebrow reveal">Contact</p>
+      <h2 data-split>Say <em>g'day.</em></h2>
+      <dl class="facts reveal">
+        <div><dt>Phone</dt><dd><a href="tel:0291054888">(02) 9105 4888</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:harbordinfo@mountiesgroup.com.au">harbordinfo@mountiesgroup.com.au</a></dd></div>
+        <div><dt>Address</dt><dd>88 Evans Street, Freshwater NSW 2096</dd></div>
+        <div><dt>Social</dt><dd><a href="https://www.facebook.com/HarbordDiggers/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/harborddiggers/" target="_blank" rel="noopener">Instagram</a></dd></div>
+      </dl>
+      <div class="cta reveal">
+        <a class="btn" href="../functions/#enquire">Planning an event? <span>→</span></a>
+      </div>
+    </div>
+    <div class="ct__form reveal">
+      <h3>Send us your feedback</h3>
+      <form class="form" data-mock novalidate>
+        <div class="field"><label for="fb-name">Name</label><input id="fb-name" name="name" autocomplete="name" placeholder="Your name"></div>
+        <div class="field"><label for="fb-email">Email</label><input id="fb-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+        <div class="field field--full"><label for="fb-msg">Message</label><textarea id="fb-msg" name="message" placeholder="How was your visit?"></textarea></div>
+        <div class="form__foot">
+          <button class="btn btn--sand" type="submit">Send feedback <span>→</span></button>
+          <p class="form__note" role="status">This is a design mock-up, nothing was sent.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>You're here. <em>Now what?</em></h2>
+      </div>
+      <a class="btn reveal" href="../membership/">Membership <span>→</span></a>
+    </div>
+    <div class="next__grid">
+      <a href="../dining/">
+        <div class="on__img wipe"><img src="../../assets/img/ot-dusk.jpg" alt="The whole terrace full of people at dusk" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Six venues, one roof</small><h3>Dining &amp; bars</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="../whats-on/">
+        <div class="on__img wipe" style="--d:1;view-transition-name:wo-hero"><img src="../../assets/img/wo-sportsbar-dusk.jpg" alt="A full outdoor Sports Bar at dusk, festoon lights on" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Events &amp; weekly activities</small><h3>What's on</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="../dining/">Dining</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../community/">Community</a>
+    <a href="../functions/">Functions</a>
+    <a href="#courtesy-bus">Courtesy bus</a>
+    <a href="#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Now in Sydney. ?now=2026-10-16T19:30 previews another moment (a bare date previews late morning).
+  const q = new URLSearchParams(location.search).get('now');
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(q ? new Date(q) : new Date()).map((x) => [x.type, x.value]));
+  const todayIdx = (new Date(Date.UTC(+p.year, p.month - 1, +p.day)).getUTCDay() + 6) % 7; // Monday = 0
+  const hour = +p.hour + p.minute / 60;
+  const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const clock = (h) => { const m = Math.round((h % 1) * 60); const hh = Math.floor(h) % 24; return `${hh % 12 || 12}${m ? '.' + String(m).padStart(2, '0') : ''}${hh < 12 ? 'am' : 'pm'}`; };
+
+  // Venue hours, Monday to Sunday: [from, to, breakfast?]
+  const BF = [8, 11.5, 1];
+  const ALL = [11.5, 21];
+  const VENUES = [
+    { name: 'Bau Truong', kind: 'Vietnamese', href: '../bau-truong/', days: [[], [[12, 21]], [[12, 21]], [[12, 21]], [[12, 21]], [[12, 21]], [[12, 21]]], note: ['Closed Mondays'] },
+    { name: "Teddy Larkin's", kind: 'Seafood & steakhouse', href: '../teddy-larkins/', days: [[], [], ...Array(5).fill([[11.5, 15], [17, 21]])], note: ['Express Menu only', 'Express Menu only'] },
+    { name: 'DD Collective', kind: 'Café', href: '../dd-collective/', days: [[ALL], ...Array(6).fill([BF, ALL])] },
+    { name: 'Ocean Terrace', kind: 'Alfresco dining', href: '../ocean-terrace/', days: [[ALL], ...Array(6).fill([BF, ALL])] },
+  ];
+  const x = (h) => ((h - 8) / 13).toFixed(4);
+  const chips = document.querySelector('[data-hb-days]');
+  const rows = document.querySelector('[data-hb-rows]');
+  const label = document.querySelector('[data-hb-day]');
+  const say = (v, d) => {
+    const spans = v.days[d];
+    if (!spans.length) return v.note?.[d] || 'Closed';
+    if (d !== todayIdx) return spans.filter((s) => !s[2]).map((s) => `${clock(s[0])} – ${clock(s[1])}`).join(', ');
+    const open = spans.find((s) => hour >= s[0] && hour < s[1]);
+    if (open) return `<span class="status is-open"><i></i><span>Open now, until ${clock(spans.find((s) => s[0] === open[1])?.[1] ?? open[1])}</span></span>`;
+    const next = spans.find((s) => s[0] > hour);
+    return next ? `Opens at ${clock(next[0])}` : 'Closed for today';
+  };
+  const draw = (d) => {
+    label.innerHTML = d === todayIdx ? `<em>Today,</em> ${DAYS[d]}` : DAYS[d];
+    [...chips.children].forEach((c, i) => c.setAttribute('aria-pressed', i === d));
+    rows.innerHTML = VENUES.map((v, k) => `
+      <div class="hb__row">
+        <a class="hb__name" href="${v.href}">${v.name}<small>${v.kind}</small></a>
+        <div class="hb__track">${v.days[d].map((s) => `<i class="hb__bar${s[2] ? ' hb__bar--soft' : ''}" style="--a:${x(s[0])};--b:${x(s[1])};--k:${k}"></i>`).join('')}${d === todayIdx && hour > 8 && hour < 21 ? `<i class="hb__now" style="--x:${x(hour)}"></i>` : ''}${v.days[d].length ? '' : `<span class="hb__note">${v.note?.[d] || 'Closed'}</span>`}</div>
+        <p class="hb__say">${say(v, d)}</p>
+      </div>`).join('');
+  };
+  chips.innerHTML = DAYS.map((n, i) => `<button class="chip" type="button" aria-pressed="false" aria-label="${n}">${n.slice(0, 3)}</button>`).join('');
+  chips.addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (b) draw([...chips.children].indexOf(b)); });
+  draw(todayIdx);
+
+  // Courtesy bus: Thursday and Friday 5pm to 2am, Saturday noon to 2am, Sunday noon to 8pm. Not on 25 December.
+  const BUS = [null, null, null, [17, 26], [17, 26], [12, 26], [12, 20]];
+  const xmas = +p.month === 12 && +p.day === 25;
+  const week = document.querySelector('[data-bus-week]');
+  week.innerHTML = DAYS.map((n, i) => `<div class="bus__day${BUS[i] ? ' is-on' : ''}${i === todayIdx ? ' is-today' : ''}"><small>${n.slice(0, 3)}</small><i></i><b>${BUS[i] ? `${clock(BUS[i][0])}<br>to ${clock(BUS[i][1])}` : 'No service'}</b></div>`).join('');
+  const prev = BUS[(todayIdx + 6) % 7];
+  const run = BUS[todayIdx];
+  let on = false;
+  let text;
+  let next = '';
+  if (xmas) { text = 'Not running on 25 December'; }
+  else if (prev && prev[1] > 24 && hour < prev[1] - 24) { on = true; text = `Running now, until ${clock(prev[1])}`; }
+  else if (run && hour >= run[0] && hour < run[1]) { on = true; text = `Running now, until ${clock(run[1])}`; }
+  else if (run && hour < run[0]) { text = `Runs today from ${clock(run[0])}`; next = `Until ${clock(run[1])}`; }
+  else {
+    let k = 1;
+    while (!BUS[(todayIdx + k) % 7]) k++;
+    const d = (todayIdx + k) % 7;
+    text = `Next runs ${k === 1 ? 'tomorrow' : DAYS[d]} from ${clock(BUS[d][0])}`;
+  }
+  document.querySelectorAll('[data-bus-status]').forEach((el) => { el.classList.toggle('is-open', on); el.lastElementChild.textContent = text; });
+  document.querySelector('[data-bus-next]').textContent = next || 'Thursday to Sunday';
+
+  // The feedback form never goes anywhere
+  document.querySelectorAll('form[data-mock]').forEach((form) => form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.querySelector('.form__note').classList.add('is-on');
+  }));
+})();
+</script>
+</body>
+</html>

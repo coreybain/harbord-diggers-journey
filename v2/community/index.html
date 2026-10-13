@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Community &amp; our story — Harbord Diggers (Concept 2: Golden Hour)</title>
+<meta name="description" content="The Harbord Diggers story since 5 June 1930: founded on community and mateship, a history of giving back, and the difference our profits make.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/wo-terrace-wide.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../golden-hour.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: the evening terrace opens out from a thin band of horizon; the headline sits centred with the founding date beneath */
+.ch{--from:inset(47% 0 47% 0 round 0px);--shade:radial-gradient(60% 34% at 50% 52%,rgba(13,27,36,.62),rgba(13,27,36,0)),linear-gradient(180deg,rgba(13,27,36,.8),rgba(13,27,36,.34) 30%,rgba(13,27,36,.5) 58%,rgba(13,27,36,.95))}
+.ch .bn__frame{view-transition-name:com-hero}
+.ch .bn__par img{object-position:50% 46%}
+.ch .bn__in{display:flex;flex-direction:column;padding:clamp(96px,13vh,124px) var(--pad) clamp(70px,10vh,96px)}
+.ch__copy{margin:auto 0;text-align:center;display:grid;justify-items:center}
+.ch h1{font-size:clamp(46px,min(9.4vw,15.5vh),152px);margin-top:26px;--base:450ms}
+.ch .bn__lede{max-width:50ch;margin-inline:auto}
+.ch__foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(16px,2.4vw,36px)}
+.ch__foot::before,.ch__foot::after{content:"";height:1px;background:var(--line)}
+.ch__foot span{font:600 11px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:rgba(244,236,223,.86)}
+.ch__foot b{font:italic 300 1.9em/0 var(--display);letter-spacing:-.02em;text-transform:none;color:var(--sand);margin:0 .3em;position:relative;top:.12em}
+
+/* Archival photographs sit in a paper mount, like prints */
+.print{margin:0;padding:clamp(8px,.9vw,13px);padding-bottom:0;border-radius:5px;background:var(--paper);color:var(--ink);box-shadow:0 34px 60px -34px rgba(0,0,0,.8);rotate:var(--r,0deg);transition:rotate 1.2s var(--ease)}
+.print img{display:block;width:100%;height:auto;border-radius:2px;filter:sepia(.14) contrast(1.04)}
+.print figcaption{padding:11px 2px 13px;font:italic 400 14.5px/1.35 var(--display);letter-spacing:-.005em}
+.print:hover{rotate:0deg}
+.panel .print{box-shadow:0 30px 50px -34px rgba(13,27,36,.6);background:#fff}
+
+/* Story intro */
+.st{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,7vw,130px);align-items:center}
+.st h2{font-size:clamp(36px,5.2vw,86px);margin-top:26px}
+.st .prose{margin-top:clamp(24px,3vw,40px)}
+.st__pics{display:grid;grid-template-columns:repeat(12,1fr);align-items:start}
+.st__pics .print:first-child{grid-column:1/10;grid-row:1;--r:-1.6deg}
+.st__pics .print:last-child{grid-column:6/13;grid-row:1;margin-top:46%;--r:1.4deg;z-index:1}
+
+/* Timeline: the year stays put on the left and changes as each chapter passes; the rule fills as you go */
+.tl{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,110px);margin-top:clamp(40px,6vw,90px)}
+.tl__year{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;pointer-events:none}
+.tl__year small{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.tl__year b{display:block;margin-top:14px;font:300 clamp(96px,15.5vw,250px)/.86 var(--display);letter-spacing:-.055em;font-variation-settings:"opsz" 144;color:var(--sand);white-space:nowrap;transition:opacity .35s var(--ease),transform .6s var(--ease)}
+.tl__year b.is-out{opacity:0;transform:translateY(18px);transition-duration:.18s}
+.tl__year span{display:block;margin-top:22px;font:italic 300 clamp(19px,1.8vw,26px)/1.25 var(--display);letter-spacing:-.01em;max-width:18ch;transition:opacity .35s var(--ease)}
+.tl__year b.is-out+span{opacity:0}
+.tl__list{list-style:none;margin:0;position:relative;padding:22vh 0 14vh clamp(28px,3.4vw,54px)}
+.tl__list::before,.tl__list::after{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line)}
+.tl__list::after{background:var(--sand);transform-origin:top;transform:scaleY(var(--p,0))}
+.tl__item{position:relative;padding:clamp(26px,3.4vw,48px) 0;opacity:.34;transition:opacity .7s var(--ease)}
+.tl__item.is-on{opacity:1}
+.tl__item::before{content:"";position:absolute;left:calc(clamp(28px,3.4vw,54px) * -1 - 4px);top:calc(clamp(26px,3.4vw,48px) + 9px);width:9px;height:9px;border-radius:50%;background:var(--ink);border:1px solid var(--muted);transition:background .5s,border-color .5s,transform .7s var(--ease)}
+.tl__item.is-on::before{background:var(--sand);border-color:var(--sand);transform:scale(1.5)}
+.tl__item small{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+.tl__item h3{font-size:clamp(28px,3vw,48px);margin-top:14px;max-width:16ch}
+.tl__item p{margin-top:14px;max-width:46ch;color:var(--muted)}
+.tl__item .print{margin-top:28px;max-width:440px;--r:-1.2deg}
+.tl__item .pic{margin-top:28px;max-width:520px;aspect-ratio:16/10}
+
+/* Giving */
+.gv__stats{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,24px);margin-top:clamp(32px,4.4vw,60px)}
+.gv__stat{padding:clamp(24px,3vw,44px);border-radius:22px;border:1px solid var(--rule)}
+.gv__stat:first-child{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.gv__stat b{display:block;font:300 clamp(54px,8vw,132px)/.9 var(--display);letter-spacing:-.05em;font-variation-settings:"opsz" 144;white-space:nowrap}
+.gv__stat:first-child b{color:var(--sand)}
+.gv__stat p{margin-top:18px;max-width:30ch;font-size:16px}
+.gv__stat:first-child p{color:rgba(244,236,223,.8)}
+.gv{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,6vw,100px);align-items:start;margin-top:clamp(40px,6vw,90px)}
+.gv__list{border-bottom:1px solid var(--rule)}
+.gv__list li{display:grid;grid-template-columns:44px 1fr;align-items:baseline;padding:20px 0;border-top:1px solid var(--rule)}
+.gv__list li::before{content:"0" counter(g);counter-increment:g;font:500 12px/1 var(--body);letter-spacing:.1em;color:var(--teal)}
+.gv__list{counter-reset:g}
+.gv__list b{display:block;font:300 clamp(21px,2.1vw,31px)/1.15 var(--display);letter-spacing:-.02em}
+.gv__list span{display:block;margin-top:6px;font-size:14.5px;color:var(--soft)}
+.gv__pics{display:grid}
+.gv__pics .print:nth-child(1){--r:1.3deg;width:78%}
+.gv__pics .print:nth-child(2){--r:-1.5deg;width:62%;justify-self:end;margin-top:4%}
+.gv__pics .print:nth-child(3){--r:1deg;width:38%;margin-top:-34%}
+
+/* Profit for purpose */
+.pp__say{font:300 clamp(32px,5.4vw,92px)/1.04 var(--display);letter-spacing:-.035em;font-variation-settings:"opsz" 144;max-width:17ch;margin-top:30px}
+.pp__say .sw{opacity:clamp(.16,calc((var(--p,0) - .12) * 2.8 * var(--n) - var(--i)),1);transition:opacity .25s linear}
+.pp__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(44px,6vw,90px);border-top:1px solid var(--line)}
+.pp__cell{padding:clamp(22px,2.4vw,34px) clamp(16px,2vw,30px) 0 0}
+.pp__cell+.pp__cell{padding-left:clamp(16px,2vw,30px);border-left:1px solid var(--line)}
+.pp__cell b{display:block;font:300 clamp(40px,4.4vw,70px)/1 var(--display);letter-spacing:-.04em;color:var(--sand);white-space:nowrap}
+.pp__cell b.is-word{font-style:italic;font-size:clamp(30px,3vw,46px);line-height:1.5}
+.pp__cell p{margin-top:16px;font-size:15px;color:var(--muted)}
+.pp__cell .tlink{display:inline-block;margin-top:12px;font-size:14px}
+.pp__note{margin-top:clamp(28px,3.4vw,46px);max-width:60ch}
+
+@media (max-width:1000px){
+  .st{grid-template-columns:1fr}
+  .pp__grid{grid-template-columns:1fr 1fr}
+  .pp__cell{padding-bottom:26px}
+  .pp__cell:nth-child(3){padding-left:0;border-left:0}
+  .pp__cell:nth-child(n+3){border-top:1px solid var(--line)}
+  .gv{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .ch h1{font-size:clamp(46px,14vw,70px)}
+  .ch__foot span{font-size:9.5px;letter-spacing:.16em}
+  .tl{grid-template-columns:1fr;gap:0}
+  .tl__year{top:64px;height:auto;z-index:3;margin-inline:calc(var(--pad) * -1);padding:14px var(--pad) 14px;flex-direction:row;align-items:baseline;justify-content:flex-start;gap:14px;background:linear-gradient(180deg,var(--ink) 84%,rgba(13,27,36,0))}
+  .tl__year::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:64px;background:var(--ink)}
+  .tl__year small{display:none}
+  .tl__year b{font-size:60px;margin:0}
+  .tl__year span{margin:0;font-size:16px;max-width:none}
+  .tl__list{padding:20px 0 40px 26px}
+  .tl__item::before{left:-30px}
+  .gv__stats{grid-template-columns:1fr}
+  .gv__pics{gap:22px}
+  .gv__pics .print{width:100%!important;margin-top:0!important}
+  .pp__grid{grid-template-columns:1fr}
+  .pp__cell+.pp__cell{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){
+  .pp__say .sw{opacity:1}
+  .tl__item{opacity:1}
+  .tl__list::after{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo.svg" alt="Harbord Diggers" width="250" height="98"></a>
+  <nav class="hd__nav" aria-label="Primary">
+    <div class="hd__drop">
+      <a href="../dining/" aria-haspopup="true">Dining &amp; Bars</a>
+      <div class="hd__sub"><div>
+        <a href="../bau-truong/">Bau Truong <small>Vietnamese</small></a>
+        <a href="../teddy-larkins/">Teddy Larkin's <small>Seafood &amp; steak</small></a>
+        <a href="../dd-collective/">DD Collective <small>Café</small></a>
+        <a href="../ocean-terrace/">Ocean Terrace <small>Outdoors</small></a>
+        <a href="../main-bar/">Main Bar <small>Bar</small></a>
+        <a href="../sports-bar/">Sports Bar <small>Send It</small></a>
+      </div></div>
+    </div>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="./" aria-current="page">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="hd__actions">
+    <a href="../membership/#renew">Renew</a>
+    <a class="btn btn--sand" href="../membership/#join">Join now</a>
+    <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <a class="menu__sub" href="../bau-truong/">Bau Truong</a>
+    <a class="menu__sub" href="../teddy-larkins/">Teddy Larkin's</a>
+    <a class="menu__sub" href="../dd-collective/">DD Collective</a>
+    <a class="menu__sub" href="../ocean-terrace/">Ocean Terrace</a>
+    <a class="menu__sub" href="../main-bar/">Main Bar</a>
+    <a class="menu__sub" href="../sports-bar/">Sports Bar</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../membership/">Membership</a>
+    <a href="./" aria-current="page">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="../membership/#join">Join now</a><a href="../membership/#renew">Renew</a><a href="../functions/">Functions</a><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span></div>
+</div>
+
+<main id="top">
+  <div class="bn ch" data-progress="view">
+    <div class="bn__frame"><div class="bn__open"><div class="bn__par"><img src="../../assets/img/wo-terrace-wide.jpg" alt="The terrace at dusk, full of people, the ocean beyond" fetchpriority="high"></div></div></div>
+    <div class="bn__in">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span>←</span> Home</a><i>/</i>
+        <span aria-current="page">Community</span>
+      </nav>
+      <div class="ch__copy">
+        <p class="eyebrow rise" style="--d:1">Community &amp; our story</p>
+        <h1 data-split="load">Built on <em>mateship.</em></h1>
+        <p class="bn__lede rise" style="--d:5">A Diggers legacy spanning more than eight decades, and a club that puts its profits back into the place it calls home.</p>
+      </div>
+      <p class="ch__foot rise" style="--d:7"><span>Est. <b>1930</b> Freshwater</span></p>
+    </div>
+  </div>
+
+  <section class="wrap st" id="story">
+    <div>
+      <p class="eyebrow reveal">Our story</p>
+      <h2 data-split>Founded on community <em>and mateship.</em></h2>
+      <div class="prose reveal">
+        <p>With friendships forged on the poppy fields of France, a group of Aussie Diggers returned home to the Northern Beaches wanting a place to meet and share their stories over a cold beer.</p>
+        <p>On 5 June 1930, Harbord Diggers was born.</p>
+      </div>
+    </div>
+    <div class="st__pics">
+      <figure class="print reveal"><img src="../../assets/img/co-tents.jpg" alt="Soldiers resting by their tents" width="1500" height="999" loading="lazy"><figcaption>Soldiers resting by their tents</figcaption></figure>
+      <figure class="print reveal" style="--d:2"><img src="../../assets/img/co-soldier.jpg" alt="A digger carrying a mate" width="1500" height="946" loading="lazy"><figcaption>A digger carrying a mate</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wrap" id="timeline" style="padding-top:0;padding-bottom:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Eight decades and counting</p>
+        <h2 data-split>From a hut <em>to the headland.</em></h2>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl__year" aria-hidden="true">
+        <small>The Diggers story</small>
+        <b data-tl-year>1930</b>
+        <span data-tl-title>Harbord Diggers is born</span>
+      </div>
+      <ol class="tl__list" data-progress>
+        <li class="tl__item is-on" data-year="1930">
+          <small>5 June 1930</small>
+          <h3>Harbord Diggers is born</h3>
+          <p>Members met at an old hut by Freshwater beach. Billy teas were served to holiday makers, with the money raised going to members and families in hardship.</p>
+          <figure class="print"><img src="../../assets/img/co-diggers.jpg" alt="Diggers with sandbags on the beach in the 1930s" width="1500" height="1205" loading="lazy"><figcaption>Diggers with sandbags on the beach, 1930s</figcaption></figure>
+        </li>
+        <li class="tl__item" data-year="1933">
+          <small>1933</small>
+          <h3>A storm takes the hut</h3>
+          <p>A storm washed away the hut, and members moved to a club member's residence.</p>
+        </li>
+        <li class="tl__item" data-year="1935">
+          <small>1935</small>
+          <h3>The old barber shop</h3>
+          <p>The club relocated to Wilsons Old Barber Shop on Moore Road.</p>
+        </li>
+        <li class="tl__item" data-year="1952">
+          <small>1952</small>
+          <h3>A home on the headland</h3>
+          <p>With the help of community leaders, the club lobbied for the headland where it stands today, and building commenced.</p>
+        </li>
+        <li class="tl__item" data-year="1960s">
+          <small>Late 1960s and 70s</small>
+          <h3>Stars in the auditorium</h3>
+          <p>The club expanded, and stars from around the world played the auditorium to massive crowds.</p>
+        </li>
+        <li class="tl__item" data-year="1980s">
+          <small>Late 1980s</small>
+          <h3>An Australian icon</h3>
+          <p>By the late 1980s, Harbord Diggers was one of the most iconic clubs in Australia.</p>
+        </li>
+        <li class="tl__item" data-year="2006">
+          <small>2006</small>
+          <h3>Mounties Group steps in</h3>
+          <p>Mounties Group stepped in with a vision to revamp the club.</p>
+        </li>
+        <li class="tl__item" data-year="2014">
+          <small>2014</small>
+          <h3>Approval for a new venue</h3>
+          <p>Development approval was granted for a new venue.</p>
+        </li>
+        <li class="tl__item" data-year="2016">
+          <small>2016</small>
+          <h3>Construction begins</h3>
+          <p>Work started on the new club.</p>
+        </li>
+        <li class="tl__item" data-year="2018">
+          <small>30 June 2018</small>
+          <h3>The new Harbord Diggers opens</h3>
+          <p>Stage One of the new Harbord Diggers opened its doors.</p>
+          <figure class="pic"><img src="../../assets/img/terrace-aerial.jpg" alt="The new club's terrace above Freshwater Beach" loading="lazy"></figure>
+        </li>
+        <li class="tl__item" data-year="2019">
+          <small>2019</small>
+          <h3>Stage Two completes the precinct</h3>
+          <p>Fitness, aquatic and the Watermark Freshwater retirement residences were completed.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="panel" id="giving">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">A history of giving back</p>
+        <h2 data-split>Proud of <em>our firsts.</em></h2>
+      </div>
+    </div>
+    <div class="gv__stats">
+      <div class="gv__stat reveal"><b><span data-count="180">180</span>+</b><p>local organisations supported.</p></div>
+      <div class="gv__stat reveal" style="--d:1"><b>$<span data-count="600">600</span>,000+</b><p>of financial support provided each year.</p></div>
+    </div>
+    <div class="gv">
+      <ul class="gv__list reveal">
+        <li><div><b>The first CAT scan machine on the Northern Beaches</b><span>Donated to Manly Hospital.</span></div></li>
+        <li><div><b>The first motorised surf life-saving boat on the Northern Beaches</b><span>Donated by the club.</span></div></li>
+        <li><div><b>The first local fitness centre in a registered club</b><span>Built over 50 years ago.</span></div></li>
+        <li><div><b>Waves Youth Centre</b><span>Established by the club.</span></div></li>
+        <li><div><b>Stewart House and Bear Cottage</b><span>An annual Christmas party for Stewart House children, and gift donations for Stewart House and Bear Cottage.</span></div></li>
+      </ul>
+      <div class="gv__pics">
+        <figure class="print reveal"><img src="../../assets/img/co-surfboat.jpg" alt="The Jack Wilson power surf boat at Freshwater Beach" width="1500" height="1312" loading="lazy"><figcaption>The "Jack Wilson" power surf boat at Freshwater Beach</figcaption></figure>
+        <figure class="print reveal"><img src="../../assets/img/co-catscan.jpg" alt="The CAT scan equipment donated to Manly Hospital" width="1500" height="1122" loading="lazy"><figcaption>The CAT scan equipment donated to Manly Hospital</figcaption></figure>
+        <figure class="print reveal"><img src="../../assets/img/co-cheque.jpg" alt="A cheque presentation to Manly District Hospital" width="1495" height="1500" loading="lazy"><figcaption>Cheque presentation to Manly District Hospital</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap" id="profit-for-purpose">
+    <p class="eyebrow reveal">Profit for purpose</p>
+    <p class="pp__say" data-words data-progress="view">Profit from every beer poured, every meal served and every game played is invested back into the community.</p>
+    <div class="pp__grid">
+      <div class="pp__cell reveal"><b><span data-count="250">250</span>+</b><p>local jobs, making the club one of the largest employers on the Northern Beaches.</p></div>
+      <div class="pp__cell reveal" style="--d:1"><b>$1 million+</b><p>contributed annually by Mounties Group to local community groups.</p></div>
+      <div class="pp__cell reveal" style="--d:2"><b class="is-word">Wellbeing</b><p>A fitness and aquatic precinct that prioritises health and wellbeing.</p></div>
+      <div class="pp__cell reveal" style="--d:3"><b class="is-word">Over-55s</b><p>Watermark Freshwater residences, right on site.</p><a class="tlink" href="https://watermarkfreshwater.com.au/" target="_blank" rel="noopener">Watermark Freshwater ↗</a></div>
+    </div>
+    <p class="fine pp__note reveal">The difference our profits make: they go back into the community through grants, donations, new facilities and events.</p>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Be part <em>of it.</em></h2>
+      </div>
+      <a class="btn reveal" href="../functions/#community-rooms">Community rooms <span>→</span></a>
+    </div>
+    <div class="next__grid">
+      <a href="../membership/">
+        <div class="on__img wipe" style="view-transition-name:mem-hero"><img src="../../assets/img/wo-mates.jpg" alt="Mates sharing beers under the umbrellas on the terrace" loading="lazy"></div>
+        <div class="on__cap reveal"><div><small>Eight venues, one membership</small><h3>Become a member</h3></div><span class="go">→</span></div>
+      </a>
+      <a href="../visit/">
+        <div class="on__img wipe" style="--d:1;view-transition-name:vis-hero"><img src="../../assets/img/vi-grounds.jpg" alt="The club's terraced grounds looking out to the ocean" loading="lazy" style="object-position:50% 72%"></div>
+        <div class="on__cap reveal"><div><small>Directions, parking, courtesy bus</small><h3>Plan your visit</h3></div><span class="go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+  <nav>
+    <a href="../dining/">Dining</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="./">Community</a>
+    <a href="../functions/">Functions</a>
+    <a href="../visit/#courtesy-bus">Courtesy bus</a>
+    <a href="../visit/#contact">Contact</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+  </nav>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Timeline: whichever chapter is crossing the middle of the screen sets the big year beside it
+  const year = document.querySelector('[data-tl-year]');
+  const title = document.querySelector('[data-tl-title]');
+  const items = [...document.querySelectorAll('.tl__item')];
+  let current = items[0];
+  let timer;
+  const show = (item) => {
+    if (item === current) return;
+    current = item;
+    items.forEach((el) => el.classList.toggle('is-on', el === item));
+    clearTimeout(timer);
+    year.classList.add('is-out');
+    timer = setTimeout(() => {
+      year.textContent = item.dataset.year;
+      title.textContent = item.querySelector('h3').textContent;
+      year.classList.remove('is-out');
+    }, 190);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) show(e.target); });
+  }, { rootMargin: '-46% 0px -46% 0px' });
+  items.forEach((el) => io.observe(el));
+})();
+</script>
+</body>
+</html>

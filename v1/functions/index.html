@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Functions — Harbord Diggers (Concept 1: Shoreline)</title>
+<meta name="description" content="Functions and events at Harbord Diggers: event spaces, community rooms and catering on the Northern Beaches.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../../assets/img/fn-terrace.jpg">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../shoreline.css">
+<link rel="stylesheet" href="../pages.css">
+<script>addEventListener('pagereveal',(e)=>{if(e.viewTransition)document.documentElement.classList.add('vt')})</script>
+<style>
+/* Banner: a mosaic of three rooms on the left, copy on the right */
+.fh{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(28px,4.6vw,76px);padding:80px var(--pad) 0 var(--gap)}
+.fh__media{display:grid;grid-template-columns:1.55fr 1fr;grid-template-rows:1fr 1fr;gap:var(--gap);height:calc(100svh - 92px);min-height:560px;max-height:860px}
+.fh__media figure{position:relative;border-radius:var(--r);overflow:hidden;background:#1c0b2c}
+.fh__media img{width:100%;height:100%;object-fit:cover}
+.fh__main{grid-row:1/3;view-transition-name:fn-hero}
+.fh__par{position:absolute;inset:-6% 0;transform:translate3d(0,calc(var(--sy,0) * .1px),0)}
+.js .fh__media figure{clip-path:inset(100% 0 0 0 round var(--r));transition:clip-path 1.4s var(--ease-io) calc(var(--k,0) * .22s + .1s)}
+.js .is-loaded .fh__media figure{clip-path:inset(0 round var(--r))}
+.js .fh__media img{transform:scale(1.2);transition:transform 2.6s var(--ease) calc(var(--k,0) * .22s + .1s)}
+.js .is-loaded .fh__media img{transform:none}
+.fh__media figcaption{position:absolute;left:12px;bottom:12px;padding:7px 12px;border-radius:999px;background:rgba(249,244,236,.9);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.fh__copy{display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding-bottom:clamp(18px,3vw,44px)}
+.fh h1{font-size:clamp(46px,6vw,98px);font-weight:300;max-width:10ch;margin-top:22px;--base:350ms}
+.fh h1 em{font-weight:300}
+.fh .lede{margin-top:24px}
+.fh .cta{margin-top:26px}
+.fh__tel{margin-top:26px;font-size:14px;color:var(--muted)}
+.fh__tel a{color:var(--ink)}
+
+/* Space finder */
+.find{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px clamp(20px,3.4vw,56px);padding:clamp(18px,2.4vw,34px) clamp(18px,2.8vw,40px);border-radius:var(--r);background:var(--sand)}
+.find__n{display:flex;align-items:baseline;gap:12px;min-width:clamp(150px,17vw,250px)}
+.find__n output{font:300 clamp(60px,7vw,112px)/.9 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.find__n span{font:600 11px/1.3 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.find__slide label{display:block;font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.find input[type=range]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:36px;margin:0;background:none;cursor:grab}
+.find input[type=range]::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--ink) var(--f,0%),rgba(38,13,60,.2) var(--f,0%))}
+.find input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-14px;border-radius:50%;background:var(--ink);border:8px solid var(--sand);box-shadow:0 0 0 1px var(--ink);transition:transform .4s var(--ease)}
+.find input[type=range]:active::-webkit-slider-thumb{transform:scale(1.25)}
+.find input[type=range]::-moz-range-track{height:2px;background:rgba(38,13,60,.2)}
+.find input[type=range]::-moz-range-progress{height:2px;background:var(--ink)}
+.find input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--ink);border:8px solid var(--sand);box-shadow:0 0 0 1px var(--ink)}
+.find__scale{display:flex;justify-content:space-between;font:500 11px/1 var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.chips{position:relative;display:inline-grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:999px;background:var(--cream)}
+.chips i{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px) / 3);border-radius:999px;background:var(--ink);transform:translateX(calc(var(--i,0) * 100%));transition:transform .6s var(--ease)}
+.chips button{position:relative;height:40px;padding:0 16px;border-radius:999px;font:600 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;transition:color .4s}
+.chips button[aria-pressed="true"]{color:var(--cream)}
+.find__out{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px;padding-top:16px;border-top:1px solid var(--line);font-size:14.5px}
+.find__out button{font:600 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;padding:8px 0}
+.find__out button[hidden]{display:none}
+
+/* Space cards */
+.sub{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:clamp(40px,5vw,72px) 0 clamp(20px,2.4vw,32px)}
+.sub h3{font-size:clamp(28px,3.2vw,50px)}
+.sub p{color:var(--muted);font-size:14.5px;max-width:48ch;text-align:right}
+.sps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,44px) var(--gap)}
+.sp{display:flex;flex-direction:column}
+.sp>*{transition:opacity .7s var(--ease),filter .7s var(--ease)}
+.sp__img{position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:var(--sand)}
+.sp__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.sp:hover .sp__img img{transform:scale(1.05)}
+.sp__tag{position:absolute;left:14px;top:14px;padding:7px 12px;border-radius:999px;background:rgba(249,244,236,.9);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.sp__fit{position:absolute;right:14px;top:14px;padding:7px 12px;border-radius:999px;background:var(--ink);color:var(--cream);font:600 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(-6px);transition:opacity .5s,transform .6s var(--ease)}
+.is-finding .sp__fit{opacity:1;transform:none}
+.sp.is-out .sp__fit{background:rgba(249,244,236,.9);color:var(--ink)}
+.sp.is-out>*{opacity:.4;filter:grayscale(.7)}
+.sp.is-out:hover>*,.sp.is-out:focus-within>*{opacity:1;filter:none}
+.sp__top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:18px}
+.sp h4{font:400 clamp(24px,2.1vw,32px)/1.08 var(--display);letter-spacing:-.022em}
+.sp__cap{flex:none;font:500 13px/1 var(--body);color:var(--muted);white-space:nowrap}
+.sp__cap b{font:400 clamp(24px,2.1vw,32px)/1 var(--display);letter-spacing:-.02em;color:var(--ink);margin-right:5px}
+.sp>p{color:var(--muted);font-size:14.5px;margin-top:10px}
+.sp dl{margin:16px 0 0;border-top:1px solid var(--line);font-size:14px}
+.sp dl div{display:grid;grid-template-columns:92px 1fr;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);line-height:1.45}
+.sp dt{font:600 10.5px/2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sp dd{margin:0}
+.sp .btn{align-self:flex-start;margin-top:18px;height:40px;padding:0 16px;font-size:11px}
+.sp__end{margin-top:auto}
+.sp--wide{grid-column:span 2}
+.sp--wide .sp__img{aspect-ratio:8/3}
+
+/* Catering */
+.cat{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,100px);align-items:center}
+.pl{margin-top:clamp(28px,4vw,48px);border-top:1px solid rgba(249,244,236,.2)}
+.pl a{position:relative;display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:8px;padding:21px 0 19px;border-bottom:1px solid rgba(249,244,236,.2)}
+.pl a::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:#e9c98f;transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}
+.pl a:hover::after{transform:scaleX(1)}
+.pl__n{font:500 11px/1 var(--body);letter-spacing:.14em;color:#e9c98f}
+.pl__t{font-family:var(--display);font-size:clamp(24px,2.7vw,42px);line-height:1.08;letter-spacing:-.02em;transition:transform .7s var(--ease)}
+.pl a:hover .pl__t{font-style:italic;transform:translateX(6px)}
+.pl__tag{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;padding:7px 11px;border-radius:999px;border:1px solid rgba(249,244,236,.3);white-space:nowrap}
+.cat__pics{position:relative;padding:0 0 14% 16%}
+.cat__pics figure{border-radius:18px;overflow:hidden}
+.cat__pics img{width:100%;height:100%;object-fit:cover}
+.cat__pics figure:first-child{aspect-ratio:3/2}
+.cat__pics figure:last-child{position:absolute;left:0;bottom:0;width:46%;aspect-ratio:1;border:8px solid var(--ink);border-radius:var(--r)}
+
+/* Enquiry + key terms */
+.enq{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,90px);align-items:start}
+.enq h2{font-size:clamp(34px,4.6vw,72px);margin:18px 0 22px}
+.enq__side>p{color:var(--muted);max-width:44ch}
+.terms{margin-top:28px;border-top:1px solid var(--line)}
+.terms details{border-bottom:1px solid var(--line)}
+.terms summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;cursor:pointer;list-style:none;font-family:var(--display);font-size:clamp(20px,1.8vw,26px);letter-spacing:-.01em}
+.terms summary::-webkit-details-marker{display:none}
+.terms summary::after{content:"+";flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:400 17px/1 var(--body);transition:transform .6s var(--ease),background .4s,color .4s}
+.terms summary:hover::after{background:var(--ink);color:var(--cream)}
+.terms details[open] summary::after{transform:rotate(45deg)}
+.terms details p{padding:0 50px 18px 0;color:var(--muted);font-size:14.5px;animation:rowin .7s var(--ease) both}
+
+@media (max-width:1000px){
+  .fh{grid-template-columns:1fr;padding-inline:var(--gap)}
+  .fh__copy{order:-1;padding-inline:calc(var(--pad) - var(--gap));padding-top:6px;padding-bottom:0}
+  .fh__media{height:86vw;min-height:0;max-height:640px}
+  .find{grid-template-columns:auto minmax(0,1fr)}
+  .chips{grid-column:1/-1;justify-self:start}
+  .sps{grid-template-columns:1fr 1fr}
+  .sp--wide .sp__img{aspect-ratio:8/3}
+  .cat,.enq{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .find{grid-template-columns:1fr}
+  .find__n{min-width:0}
+  .sub{flex-direction:column;align-items:start}
+  .sub p{text-align:left}
+  .sps{grid-template-columns:1fr}
+  .sp--wide{grid-column:auto}
+  .sp--wide .sp__img{aspect-ratio:4/3}
+  .pl a{grid-template-columns:32px 1fr}
+  .pl__tag{display:none}
+  .terms details p{padding-right:0}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" data-header>
+  <div class="hd__bar">
+    <a class="hd__logo" href="../" aria-label="Harbord Diggers home"><img src="../../assets/logo-purple.svg" alt="Harbord Diggers" width="250" height="98"></a>
+    <nav class="hd__nav" aria-label="Primary">
+      <a href="../whats-on/">What's On</a>
+      <div class="hd__dd">
+        <a href="../dining/">Dining &amp; Bars <i aria-hidden="true"></i></a>
+        <div class="hd__sub"><div>
+          <a href="../bau-truong/">Bau Truong</a>
+          <a href="../teddy-larkins/">Teddy Larkin's</a>
+          <a href="../dd-collective/">DD Collective</a>
+          <a href="../ocean-terrace/">Ocean Terrace</a>
+          <a href="../main-bar/">Main Bar</a>
+          <a href="../sports-bar/">Sports Bar</a>
+        </div></div>
+      </div>
+      <a href="../membership/">Membership</a>
+      <a href="../community/">Community</a>
+      <a href="../visit/">Visit</a>
+    </nav>
+    <div class="hd__actions">
+      <a class="btn" href="../membership/#renew">Renew</a>
+      <a class="btn btn--solid" href="../membership/#join">Join now</a>
+      <button class="burger" data-menu-toggle aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" aria-label="Menu">
+  <nav class="menu__links">
+    <a href="../">Home</a>
+    <a href="../whats-on/">What's On</a>
+    <a href="../dining/">Dining &amp; Bars</a>
+    <div class="menu__sub">
+      <a href="../bau-truong/">Bau Truong</a>
+      <a href="../teddy-larkins/">Teddy Larkin's</a>
+      <a href="../dd-collective/">DD Collective</a>
+      <a href="../ocean-terrace/">Ocean Terrace</a>
+      <a href="../main-bar/">Main Bar</a>
+      <a href="../sports-bar/">Sports Bar</a>
+    </div>
+    <a href="../membership/">Membership</a>
+    <a href="../community/">Community</a>
+    <a href="../visit/">Visit</a>
+  </nav>
+  <div class="menu__foot"><a href="tel:0291054888">(02) 9105 4888</a><span>88 Evans St, Freshwater NSW 2096</span><a href="../membership/#renew">Renew membership</a><a href="../functions/">Functions</a></div>
+</div>
+
+<main id="top">
+  <div class="fh">
+    <div class="fh__media">
+      <figure class="fh__main" data-vt-hero><div class="fh__par"><img src="../../assets/img/fn-terrace.jpg" alt="Umbrellas, high tables and lawn on Duke's Terrace" fetchpriority="high"></div><figcaption>Duke's Terrace</figcaption></figure>
+      <figure style="--k:1"><img src="../../assets/img/fn-lounge.jpg" alt="Duke's Lounge, set with high bar tables and dining tables"><figcaption>Duke's Lounge</figcaption></figure>
+      <figure style="--k:2"><img src="../../assets/img/fn-garden.jpg" alt="Undercover timber bench seating at Garden View"><figcaption>Garden View</figcaption></figure>
+    </div>
+    <div class="fh__copy">
+      <nav class="crumb rise" aria-label="Breadcrumb">
+        <a href="../"><span class="arrow">←</span> Home</a><i>/</i>
+        <span aria-current="page">Functions</span>
+      </nav>
+      <div>
+        <p class="eyebrow rise" style="--d:1">Harbord Diggers Events</p>
+        <h1 data-split="load">Your event, <em>above the coast.</em></h1>
+        <p class="lede rise" style="--d:5">One of the most spectacular venues for hire on the Northern Beaches, from relaxed sitting areas to purpose-built function rooms and conference facilities.</p>
+        <div class="cta rise" style="--d:6">
+          <a class="btn btn--solid" href="#enquire">Enquire now <span class="arrow">→</span></a>
+          <a class="btn" href="#spaces">Find a space <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="fh__tel rise" style="--d:7">Function bookings <a class="tlink" href="tel:0291054888">(02) 9105 4888</a></p>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap say" id="about" data-progress="view">
+    <div>
+      <p class="eyebrow reveal">The setting</p>
+      <p class="say__statement" data-words>Set among native local flora, with sweeping views toward Curl Curl beach and the Northern Beaches coastline.</p>
+    </div>
+    <div class="say__side reveal">
+      <p>Engagements, birthdays, corporate events, conferences, meetings and sporting functions, all catered through our in-house dining outlets.</p>
+      <p>Decorations are not provided, but you're welcome to bring your own.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="spaces" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Find a space</p>
+        <h2 data-split>Eight spaces, <em>one headland.</em></h2>
+      </div>
+    </div>
+    <div class="find reveal" data-find>
+      <div class="find__n"><output for="guests" data-guests>50</output><span>guests</span></div>
+      <div class="find__slide">
+        <label for="guests">How many are coming?</label>
+        <input id="guests" type="range" min="10" max="150" step="10" value="50">
+        <div class="find__scale" aria-hidden="true"><span>10</span><span>150</span></div>
+      </div>
+      <div class="chips" role="group" aria-label="Setting">
+        <i></i>
+        <button type="button" aria-pressed="true" data-set="any">Any</button>
+        <button type="button" aria-pressed="false" data-set="in">Indoor</button>
+        <button type="button" aria-pressed="false" data-set="out">Outdoor</button>
+      </div>
+      <div class="find__out">
+        <p aria-live="polite" data-find-line>Eight spaces, for 20 to 150 guests. Slide to see which suit your numbers.</p>
+        <button type="button" data-find-reset hidden>Show all spaces</button>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3 class="reveal">Event spaces</h3>
+      <p class="reveal">Three-hour hire, with the fee payable upfront. Food and beverages are extra and payable at the end of the event.</p>
+    </div>
+    <div class="sps">
+      <article class="sp reveal" data-cap="50" data-set="out" data-name="Garden View">
+        <div class="sp__img"><img src="../../assets/img/fn-garden.jpg" alt="Undercover timber bench seating at Garden View" loading="lazy"><span class="sp__tag">Outdoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Garden View</h4><span class="sp__cap"><b>50</b>guests</span></div>
+        <p>A relaxed outdoor setting with undercover bench seating, for intimate gatherings and casual celebrations.</p>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Available</dt><dd>7 days, excluding public holidays and major events</dd></div>
+            <div><dt>Hire fee</dt><dd>$200</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Garden View">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="sp reveal" style="--d:1" data-cap="150" data-min="100" data-set="out" data-name="Duke's Terrace">
+        <div class="sp__img"><img src="../../assets/img/fn-terrace.jpg" alt="Umbrellas, high tables and lawn on Duke's Terrace" loading="lazy"><span class="sp__tag">Outdoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Duke's Terrace</h4><span class="sp__cap"><b>150</b>guests</span></div>
+        <p>A relaxed outdoor venue with high tables, umbrellas and bench seating. Minimum booking of 100. The container bar and outdoor smoking area remain open to the public.</p>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Available</dt><dd>7 days, excluding public holidays, major events, and weekends in December and January</dd></div>
+            <div><dt>Hire fee</dt><dd>$200 March to October · $300 November to February</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Duke's Terrace">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="sp reveal" style="--d:2" data-cap="70" data-set="in" data-name="Duke's Lounge">
+        <div class="sp__img"><img src="../../assets/img/fn-lounge.jpg" alt="Duke's Lounge, set with high bar tables and dining tables" loading="lazy"><span class="sp__tag">Indoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Duke's Lounge</h4><span class="sp__cap"><b>70</b>guests</span></div>
+        <p>An inviting indoor setting with high bar tables and seated dining.</p>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Available</dt><dd>7 days, excluding public holidays and major events</dd></div>
+            <div><dt>Hire fee</dt><dd>$200</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Duke's Lounge">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="sub" id="community-rooms">
+      <h3 class="reveal">Community rooms</h3>
+      <p class="reveal">Booked by the hour, for meetings, classes and get-togethers.</p>
+    </div>
+    <div class="sps">
+      <article class="sp reveal" data-cap="30" data-set="in" data-name="Curl Curl">
+        <div class="sp__img"><img src="../../assets/img/fn-curl.jpg" alt="The Curl Curl room set up in a U-shape with a projector screen" loading="lazy"><span class="sp__tag">Indoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Curl Curl</h4><span class="sp__cap"><b>30</b>people</span></div>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Layouts</dt><dd>Boardroom, classroom, theatre, U-shape</dd></div>
+            <div><dt>Included</dt><dd>Data projector screen and LCD TV, free</dd></div>
+            <div><dt>Hire fee</dt><dd>$50 per hour</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Curl Curl">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="sp reveal" style="--d:1" data-cap="50" data-set="in" data-name="Freshwater">
+        <div class="sp__img"><img src="../../assets/img/fn-theatre.jpg" alt="The Freshwater room set up theatre style with a lectern" loading="lazy"><span class="sp__tag">Indoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Freshwater</h4><span class="sp__cap"><b>50</b>people</span></div>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Layouts</dt><dd>Boardroom, classroom, theatre, U-shape</dd></div>
+            <div><dt>Included</dt><dd>LCD TV, free</dd></div>
+            <div><dt>Hire fee</dt><dd>$50 per hour</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Freshwater">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="sp reveal" style="--d:2" data-cap="20" data-set="in" data-name="Manly">
+        <div class="sp__img"><img src="../../assets/img/fn-manly.jpg" alt="The Manly room set up classroom style" loading="lazy"><span class="sp__tag">Indoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Manly</h4><span class="sp__cap"><b>20</b>people</span></div>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Layouts</dt><dd>Boardroom, classroom, theatre, U-shape</dd></div>
+            <div><dt>Included</dt><dd>LCD TV, free</dd></div>
+            <div><dt>Hire fee</dt><dd>$50 per hour</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Manly">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="sp reveal" data-cap="20" data-set="in" data-name="Community Hub">
+        <div class="sp__img"><img src="../../assets/img/fn-boardroom.jpg" alt="The Community Hub set up as a boardroom" loading="lazy"><span class="sp__tag">Indoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Community Hub</h4><span class="sp__cap"><b>20</b>people</span></div>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Layouts</dt><dd>Boardroom, classroom, theatre, U-shape</dd></div>
+            <div><dt>Included</dt><dd>Projector screen, free</dd></div>
+            <div><dt>Hire fee</dt><dd>$50 per hour</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Community Hub">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="sp sp--wide reveal" style="--d:1" data-cap="100" data-set="in" data-name="Community Rooms (combined)">
+        <div class="sp__img"><img src="../../assets/img/fn-cocktail.jpg" alt="The combined Community Rooms set up cocktail style with high tables" loading="lazy"><span class="sp__tag">Indoor</span><span class="sp__fit" aria-hidden="true"></span></div>
+        <div class="sp__top"><h4>Community Rooms, combined</h4><span class="sp__cap"><b>100</b>guests</span></div>
+        <div class="sp__end">
+          <dl>
+            <div><dt>Layouts</dt><dd>Banquet (80), cocktail and theatre</dd></div>
+            <div><dt>Included</dt><dd>Projector and LCD TV, free</dd></div>
+            <div><dt>Hire fee</dt><dd>On request</dd></div>
+          </dl>
+          <a class="btn" href="#enquire" data-space="Community Rooms (combined)">Enquire <span class="arrow">→</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="dark" id="catering">
+    <div class="cat">
+      <div>
+        <p class="eyebrow reveal">Catering</p>
+        <h2 data-split>Platters from <em>our own kitchens.</em></h2>
+        <p class="dark__lede reveal">Catering comes from the in-house dining outlets, so outside food is not permitted. Cakes are welcome, with no cakeage.</p>
+        <div class="pl reveal">
+          <a href="https://wds.webdirector.net/harbord-ve/stores/Menus/HD-266_Platter_Menus-DDs.pdf" target="_blank" rel="noopener"><span class="pl__n">01</span><span class="pl__t">DD Collective</span><span class="pl__tag">Platter menu ↗</span></a>
+          <a href="https://wds.webdirector.net/harbord-ve/stores/Menus/HD-266_Platter_Menus-Teddy.pdf" target="_blank" rel="noopener"><span class="pl__n">02</span><span class="pl__t">Teddy Larkin's</span><span class="pl__tag">Platter menu ↗</span></a>
+          <a href="https://wds.webdirector.net/harbord-ve/stores/Menus/HD-266_Platter_Menus-BauTruong.pdf" target="_blank" rel="noopener"><span class="pl__n">03</span><span class="pl__t">Bau Truong</span><span class="pl__tag">Platter menu ↗</span></a>
+        </div>
+      </div>
+      <div class="cat__pics">
+        <figure class="wipe"><img src="../../assets/img/fn-platter.jpg" alt="Seafood and finger-food platters on a timber table" loading="lazy"></figure>
+        <figure class="wipe" style="--d:3"><img src="../../assets/img/fn-sliders.jpg" alt="A board of sliders being carried out" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap enq" id="enquire">
+    <form class="form reveal" data-mock>
+      <h3>Tell us about your event</h3>
+      <div class="field"><label for="en-name">Name</label><input id="en-name" name="name" autocomplete="name"></div>
+      <div class="field"><label for="en-email">Email</label><input id="en-email" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><label for="en-phone">Phone</label><input id="en-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="en-type">Event type</label>
+        <select id="en-type" name="type"><option>Birthday</option><option>Engagement</option><option>Corporate event</option><option>Conference</option><option>Meeting</option><option>Sporting function</option><option>Something else</option></select>
+      </div>
+      <div class="field"><label for="en-date">Date</label><input id="en-date" name="date" type="date"></div>
+      <div class="field"><label for="en-guests">Guests</label><input id="en-guests" name="guests" type="number" min="1" max="150" inputmode="numeric"></div>
+      <div class="field field--full"><label for="en-space">Preferred space</label>
+        <select id="en-space" name="space"><option>Not sure yet</option><option>Garden View</option><option>Duke's Terrace</option><option>Duke's Lounge</option><option>Curl Curl</option><option>Freshwater</option><option>Manly</option><option>Community Hub</option><option>Community Rooms (combined)</option></select>
+      </div>
+      <div class="form__end">
+        <button class="btn btn--solid" type="submit">Send enquiry <span class="arrow">→</span></button>
+        <p class="form__note" role="status" hidden>This is a design mock-up, nothing was sent.</p>
+      </div>
+    </form>
+    <div class="enq__side">
+      <p class="eyebrow reveal">Enquire</p>
+      <h2 data-split>Let's plan <em>your day.</em></h2>
+      <p class="reveal">Send the details through, or call function bookings on <a class="tlink" href="tel:0291054888">(02) 9105 4888</a>. A few things worth knowing first:</p>
+      <div class="terms reveal">
+        <details open>
+          <summary>Who can book</summary>
+          <p>Event holders must be a current Mounties Group member. <a class="tlink" href="../membership/#join">Not a member yet?</a></p>
+        </details>
+        <details>
+          <summary>Duration and curfew</summary>
+          <p>Event spaces are hired for three hours, and community rooms can be booked hourly. All outdoor bookings have a 9.30pm curfew.</p>
+        </details>
+        <details>
+          <summary>Cancellations</summary>
+          <p>Cancellations made in writing at least 48 hours before the event receive an 80% refund of the minimum spend. There is no refund within 48 hours.</p>
+        </details>
+        <details>
+          <summary>Food, cakes and decorations</summary>
+          <p>Cakes are welcome and there is no cakeage. No external food. Decorations are not provided but you can bring your own; confetti and gender-reveal balloons are not permitted.</p>
+        </details>
+        <details>
+          <summary>Events we can't host</summary>
+          <p>No 18ths, bucks, hens or fancy dress parties.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap next" style="padding-top:0">
+    <div class="head">
+      <div>
+        <p class="eyebrow reveal">Keep exploring</p>
+        <h2 data-split>Come and see it <em>for yourself.</em></h2>
+      </div>
+      <a class="btn reveal" href="../dining/">Dining &amp; bars <span class="arrow">→</span></a>
+    </div>
+    <div class="next__grid">
+      <a class="tile wipe" style="view-transition-name:vis-hero" href="../visit/">
+        <img src="../../assets/img/vi-grounds.jpg" alt="The club's terraced grounds and lawn, looking out to the ocean" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Getting here, hours &amp; contact</p><h3>Plan your visit</h3></div><span class="tile__go">→</span></div>
+      </a>
+      <a class="tile wipe" style="--d:1;view-transition-name:mem-hero" href="../membership/">
+        <img src="../../assets/img/ot-table.jpg" alt="Three friends sharing a table of food and drinks on the Ocean Terrace" loading="lazy">
+        <div class="tile__body"><div><p class="eyebrow">Eight venues, one card</p><h3>Membership</h3></div><span class="tile__go">→</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Harbord Diggers © 2026. Part of Mounties Group.</span>
+    <nav>
+      <a href="../dining/">Dining</a>
+      <a href="../whats-on/">What's On</a>
+      <a href="../community/">Community</a>
+      <a href="../functions/">Functions</a>
+      <a href="../visit/#courtesy-bus">Courtesy bus</a>
+      <a href="../visit/#contact">Contact</a>
+      <a href="../privacy/">Privacy</a>
+      <a href="tel:1800858858">Help is close at hand — GambleAware 1800 858 858</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/common.js"></script>
+<script>
+(() => {
+  // Space finder: nothing is filtered until the slider or a chip is touched
+  const find = document.querySelector('[data-find]');
+  const range = find.querySelector('input');
+  const out = find.querySelector('[data-guests]');
+  const line = find.querySelector('[data-find-line]');
+  const reset = find.querySelector('[data-find-reset]');
+  const chips = [...find.querySelectorAll('.chips button')];
+  const spaces = [...document.querySelectorAll('.sp')];
+  const intro = line.textContent;
+  const NUM = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+  let setting = 'any';
+  let on = false;
+
+  const paint = () => {
+    const n = +range.value;
+    range.style.setProperty('--f', `${((n - range.min) / (range.max - range.min)) * 100}%`);
+    out.textContent = n;
+    document.body.classList.toggle('is-finding', on);
+    reset.hidden = !on;
+    let hits = 0;
+    spaces.forEach((sp) => {
+      const cap = +sp.dataset.cap;
+      const min = +(sp.dataset.min || 0);
+      const why = !on ? '' : setting !== 'any' && sp.dataset.set !== setting ? (setting === 'in' ? 'Not indoors' : 'Not outdoors')
+        : n > cap ? `Up to ${cap}` : n < min ? `Minimum ${min}` : '';
+      sp.classList.toggle('is-out', !!why);
+      sp.querySelector('.sp__fit').textContent = why || 'Good fit';
+      if (!why) hits++;
+    });
+    line.textContent = !on ? intro
+      : `${NUM[hits]} ${hits === 1 ? 'space suits' : 'spaces suit'} ${n} guests${setting === 'any' ? '' : setting === 'in' ? ' indoors' : ' outdoors'}.${hits ? '' : ' Call us on (02) 9105 4888 and we will help you find a way.'}`;
+  };
+  range.addEventListener('input', () => { on = true; paint(); });
+  chips.forEach((chip, i) => chip.addEventListener('click', () => {
+    setting = chip.dataset.set;
+    on = true;
+    chips.forEach((c) => c.setAttribute('aria-pressed', c === chip));
+    chip.parentElement.style.setProperty('--i', i);
+    paint();
+  }));
+  reset.addEventListener('click', () => {
+    on = false;
+    setting = 'any';
+    chips.forEach((c, i) => c.setAttribute('aria-pressed', i === 0));
+    chips[0].parentElement.style.setProperty('--i', 0);
+    paint();
+  });
+  paint();
+
+  // "Enquire" on a card carries the space (and the guest count, if chosen) into the form
+  const form = document.querySelector('form[data-mock]');
+  document.querySelectorAll('[data-space]').forEach((a) => a.addEventListener('click', () => {
+    form.elements.space.value = a.dataset.space;
+    if (on) form.elements.guests.value = range.value;
+  }));
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const note = form.querySelector('.form__note');
+    note.hidden = false;
+    note.classList.remove('in');
+    void note.offsetWidth;
+    note.classList.add('in');
+  });
+})();
+</script>
+</body>
+</html>

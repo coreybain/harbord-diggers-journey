@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mounties Group — Homepage concepts</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/base.css">
+<style>
+:root{--ink:#16171b;--paper:#f6f3ee;--line:rgba(22,23,27,.13);--muted:rgba(22,23,27,.62);--display:Newsreader,Georgia,serif}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 Inter,system-ui,sans-serif}
+.page{max-width:1500px;margin-inline:auto;padding:clamp(28px,5vw,72px) clamp(20px,5vw,72px) 80px}
+.kicker{font:600 11px/1 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1{font:300 clamp(40px,6.4vw,104px)/1.02 var(--display);letter-spacing:-.025em;margin-top:22px;max-width:14ch}
+h1 em{font-style:italic}
+.lede{max-width:56ch;color:var(--muted);margin-top:24px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px);margin-top:clamp(24px,3vw,40px)}
+.group{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 24px;margin-top:clamp(48px,7vw,104px);padding-bottom:16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.group__t{font:400 clamp(28px,3vw,44px)/1.1 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.group__t em{font:600 11px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;vertical-align:middle;margin-left:10px;padding:6px 10px;border-radius:999px;background:#ffd200}
+.c{display:block}
+.c__img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#ddd;box-shadow:0 30px 60px -40px rgba(22,23,27,.55);transition:transform .8s var(--ease),box-shadow .8s var(--ease)}
+.c__img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c.in:hover .c__img{transform:translateY(-8px);box-shadow:0 44px 70px -40px rgba(22,23,27,.6)}
+.c.in:hover .c__img img{transform:scale(1.04)}
+.c__row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:22px;padding-bottom:14px;border-bottom:1px solid var(--line);position:relative}
+.c__row::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.c:hover .c__row::after{transform:scaleX(1)}
+.c h2{font:400 clamp(26px,2.4vw,36px)/1.1 var(--display);letter-spacing:-.02em}
+.c__n{font:500 12px/1 Inter,sans-serif;letter-spacing:.14em;color:var(--muted)}
+.c p{color:var(--muted);font-size:14.5px;margin-top:14px;max-width:44ch}
+.c ul{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.c li{font:500 11.5px/1 Inter,sans-serif;padding:7px 11px;border-radius:999px;border:1px solid var(--line)}
+.c__go{display:inline-flex;gap:8px;margin-top:20px;font-weight:600;font-size:14px}
+.c__go span{transition:transform .5s var(--ease)}
+.c:hover .c__go span{transform:translateX(6px)}
+.note{margin-top:clamp(48px,6vw,88px);padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 40px;font-size:13px;color:var(--muted)}
+.note a{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="page">
+  <p class="kicker reveal">Mounties Group · Harbord Diggers &amp; Mounties</p>
+  <h1 data-split="load">Four concepts, <em>two clubs.</em></h1>
+  <p class="lede reveal" style="--d:3">Three homepage concepts for Harbord Diggers, each a full clickable journey through every venue, What's On, membership, functions and more in the same style, plus the Long Table homepage concept for Mounties. Open one, click through, and switch between styles with the control at the bottom of each page.</p>
+
+  <div class="group reveal" id="harbord"><h2 class="group__t">Harbord Diggers homepage <em>+ journey</em></h2><span>Concepts 01 – 03 · each now clicks through to Bau Truong and What's On pages</span></div>
+  <div class="grid">
+    <a class="c" href="v1/">
+      <div class="c__img wipe"><img src="assets/thumbs/v1.jpg" alt="Concept 1 preview"></div>
+      <div class="c__row reveal"><h2>Shoreline</h2><span class="c__n">01</span></div>
+      <p class="reveal">Warm cream and deep purple, closest to the new landing page example. A framed, slowly drifting photo banner and a header that condenses into a floating pill.</p>
+      <ul class="reveal"><li>Crossfading banner</li><li>Scroll-lit statement</li><li>Drag dining rail</li><li>Bau Truong + What's On pages</li></ul>
+      <span class="c__go reveal">View concept <span>→</span></span>
+    </a>
+    <a class="c" href="v2/">
+      <div class="c__img wipe" style="--d:1"><img src="assets/thumbs/v2.jpg" alt="Concept 2 preview"></div>
+      <div class="c__row reveal"><h2>Golden Hour</h2><span class="c__n">02</span></div>
+      <p class="reveal">An evening mood in ink and sand. The full-screen banner settles into a framed picture as you scroll, and the dining list swaps its photo as you move through it.</p>
+      <ul class="reveal"><li>Scroll-framed banner</li><li>Interactive dining list</li><li>Parallax close</li><li>Bau Truong + What's On pages</li></ul>
+      <span class="c__go reveal">View concept <span>→</span></span>
+    </a>
+    <a class="c" href="v3/">
+      <div class="c__img wipe" style="--d:2"><img src="assets/thumbs/v3.jpg" alt="Concept 3 preview"></div>
+      <div class="c__row reveal"><h2>Freshwater</h2><span class="c__n">03</span></div>
+      <p class="reveal">Light, coastal and the most playful of the three. A centred-logo header, arched photo windows, a rotating headline word and cards that stack as you scroll.</p>
+      <ul class="reveal"><li>Arched banner</li><li>Rotating headline</li><li>Stacking cards</li><li>Bau Truong + What's On pages</li></ul>
+      <span class="c__go reveal">View concept <span>→</span></span>
+    </a>
+  </div>
+
+  <div class="group reveal" id="mounties"><h2 class="group__t">Mounties</h2><span>Concept 04 · mounties.com.au</span></div>
+  <div class="grid">
+    <a class="c" href="v4/">
+      <div class="c__img wipe"><img src="assets/thumbs/v4.jpg" alt="Concept 4 preview"></div>
+      <div class="c__row reveal"><h2>Long Table</h2><span class="c__n">04</span></div>
+      <p class="reveal">Dining-led and warm, in navy, paper and amber. A split banner where the photo wipes from one kitchen to the next, and nav links that roll over on hover.</p>
+      <ul class="reveal"><li>Wiping split banner</li><li>Drifting dining grid</li><li>Rolling nav links</li></ul>
+      <span class="c__go reveal">View concept <span>→</span></span>
+    </a>
+  </div>
+
+
+  <div class="note">
+    <span>Design concepts for discussion — not the live site. Photography and copy from <a href="https://www.harborddiggers.com.au/">harborddiggers.com.au</a> and <a href="https://mounties.com.au/">mounties.com.au</a>.</span>
+    <span>Best viewed on desktop; all four adapt to mobile.</span>
+  </div>
+</main>
+<script src="assets/common.js"></script>
+</body>
+</html>
